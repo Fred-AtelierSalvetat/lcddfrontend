@@ -1,0 +1,36 @@
+#footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    min-height: 81px;
+}
+
+#footer-contact {
+    color: #007bff;
+}
+
+#footer-contact a {
+    margin-left: 5px;
+}
+
+#footer-legales {
+    text-align: center;
+    color: white;
+}
+
+#social div {
+    padding-left: 0;
+    padding-right: 15px;
+}
+
+body {
+    min-height: 100vh;
+    margin: 0;
+    position: relative;
+}
+
+body::after {
+    content: '';
+    display: block;
+    height: 80px;
+}

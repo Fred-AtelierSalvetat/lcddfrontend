@@ -1,0 +1,96 @@
+.jumbotron {
+    padding: 0px !important;
+}
+
+.container-transparent {
+    min-height: inherit;
+    padding-left: clamp(10px, 50%, 50px) !important;
+    padding-right: clamp(10px, 50%, 50px) !important;
+    background: rgba(255, 255, 255, 0.9);
+    padding-bottom: min(50px);
+}
+
+@media screen and (min-width: 1200px) {
+    .container-transparent {
+        max-width: 920px !important;
+    }
+
+    .container-transparent-large {
+        max-width: 1300px !important;
+    }
+}
+
+@media screen and (min-width: 920px) {
+    .container-transparent {
+        padding-left: 80px !important;
+        padding-right: 80px !important;
+        padding-bottom: 100px;
+    }
+}
+
+.container form,
+.container-transparent form {
+    margin-bottom: 20px;
+}
+
+.container-header .row {
+    margin: auto;
+}
+
+
+.container-transparent h1,
+.container-transparent h2,
+.container-transparent h3,
+.container-transparent h4,
+.container-transparent h5,
+.container-transparent h6 {
+    padding-left: 0;
+    text-align: left;
+}
+
+.role-image {
+    margin: 8px;
+}
+
+.role-image:hover {
+    cursor: pointer;
+}
+
+.role-image:hover path,
+.role-image-clicked path {
+    fill: #113F59;
+}
+
+.role-image:hover rect,
+.role-image-clicked rect {
+    stroke: #113F59;
+    stroke-width: 3;
+}
+
+::placeholder {
+    font-style: italic;
+    font-size: 0.9rem;
+}
+
+input.form-check-input {
+    width: unset;
+    margin-top: 0.7rem;
+    margin-left: unset;
+}
+
+label.label-check {
+    margin-left: 1.25rem;
+    margin-bottom: 0;
+    margin-top: 0;
+}
+
+.link {
+    color: #007bff;
+    text-decoration: none;
+    background-color: transparent;
+}
+
+.link:hover {
+    cursor: pointer;
+    color: #113F59;
+}

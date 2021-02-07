@@ -1,0 +1,109 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+:root {
+  --blue: #113F59 !important;
+  --primary: #113F59 !important;
+  --green: #27AE60 !important;
+  --success: #27AE60 !important;
+  --teal: #20D6C7 !important;
+  --orange: #F2994A !important;
+  --cyan: #19BEC0 !important;
+  --info: #19BEC0 !important;
+  --red: #D54F58 !important;
+  --danger: #D54F58 !important;
+  --yellow: #F2C94C !important;
+  --warning: #F2C94C !important;
+  --dark: #333333 !important;
+  --gray-dark: #4F4F4F !important;
+  --gray: #828282 !important;
+  --light: #F2F2F2 !important;
+  --gray-light: #BDBDBD !important;
+  --beige: #F3EDD3 !important;
+  --secondary: #BDBDBD !important;
+}
+
+[class*="-primary"] {
+  background-color: #113F59 !important;
+  border-color: #113F59 !important;
+}
+
+.btn-primary:hover {
+  background-color: #0B2534 !important;
+  border-color: #0B2534 !important;
+}
+
+[class*="-success"] {
+  background-color: #219653 !important;
+  border-color: #219653 !important;
+}
+
+.btn-success:hover {
+  background-color: #27AE60 !important;
+  border-color: #27AE60 !important;
+}
+
+[class*="-info"] {
+  background-color: #19BEC0 !important;
+  border-color: #19BEC0 !important;
+}
+
+.btn-info:hover {
+  background-color: #19A99D !important;
+  border-color: #19A99D !important;
+}
+
+[class*="-danger"] {
+  background-color: #D54F58 !important;
+  border-color: #D54F58 !important;
+}
+
+.btn-danger:hover {
+  background-color: #A63E45 !important;
+  border-color: #A63E45 !important;
+}
+
+[class*="-warning"] {
+  background-color: #F2C94C !important;
+  border-color: #F2C94C !important;
+}
+
+.btn-warning:hover {
+  background-color: #E7B51E !important;
+  border-color: #E7B51E !important;
+}
+
+[class*="-secondary"] {
+  background-color: #BDBDBD !important;
+  border-color: #BDBDBD !important;
+}
+
+.btn-secondary:hover {
+  background-color: #828282 !important;
+  border-color: #828282 !important;
+}
+
+.btn-link {
+  background-color: #20D6C7 !important;
+  border-color: #20D6C7 !important;
+}
+
+.btn-link:hover {
+  background-color: #113F59 !important;
+  border-color: #113F59 !important;
+}
+
+.jumbotron {
+  background-color: #F3EDD3 !important;
+}

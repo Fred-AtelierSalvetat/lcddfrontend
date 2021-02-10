@@ -25,7 +25,7 @@ const Header: React.FC<{}> = () => {
                             <Nav.Link href="#/signUp">{"S'inscrire"}</Nav.Link>
 
                             <NavDropdown title="Vos questions" id="basic-nav-dropdown" className="text-dark">
-                                <NavDropdown.Item href="#action/3.1">Vos questions</NavDropdown.Item>
+                                <NavDropdown.Item href="#/questions">Vos questions</NavDropdown.Item>
                                 <NavDropdown.Divider />
                                 <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
                             </NavDropdown>

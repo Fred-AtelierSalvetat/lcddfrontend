@@ -1,0 +1,122 @@
+.sideBar {
+    background: #f2f2f2;
+    box-shadow: 0px 1px 3px rgba(17, 63, 89, 0.25);
+    min-height: calc(100vh - 71.96px - 40px);
+    width: 20%;
+}
+.desktop {
+    margin-top: 140px;
+}
+
+.mobile {
+    background: #f2f2f2;
+    width: 100%;
+    display: none;
+}
+
+.links h5 {
+    font-weight: 350;
+    font-size: 15px;
+    margin: 16px 0;
+    color: #113f59;
+    text-align: start;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+.active {
+    font-style: normal;
+    font-weight: 600 !important;
+}
+
+.content {
+    padding: 70px 30px !important;
+    text-align: start;
+    width: 80%;
+}
+
+.content h1 {
+    color: #113f59;
+    font-weight: 350;
+    font-size: 30px;
+}
+
+.content h3 {
+    font-style: normal;
+    font-weight: 350;
+    font-size: 21px;
+    line-height: 23px;
+    color: #333333;
+    margin-top: 30px;
+}
+
+.content select {
+    width: 100%;
+    background: #f2f2f2;
+    border: 1px solid #cccccc;
+    box-sizing: border-box;
+    border-radius: 4px;
+    outline: none;
+    margin-bottom: 20px;
+    padding: 5px;
+}
+.content p {
+    margin: 0;
+}
+
+.search-form {
+    position: relative;
+    height: 40px;
+    margin: 30px 0;
+}
+
+.search-form .formLabel {
+    position: absolute;
+    right: 10px;
+    bottom: 0;
+    top: 0;
+    margin: 0;
+    padding-top: 2px;
+}
+
+.search-form .formLabel img {
+    height: 20px;
+    width: 20px;
+}
+
+@media (max-width: 768px) {
+    .sideBar {
+        display: none;
+    }
+
+    .mobile {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        position: absolute;
+        left: 0;
+        margin-bottom: 50px;
+    }
+    .active {
+        margin: 0;
+    }
+
+    .content {
+        margin: 0;
+        padding: 0px;
+        width: 100% !important;
+    }
+    .container {
+        margin: 0;
+        max-width: 100%;
+        position: relative;
+    }
+    .content h1 {
+        margin-bottom: 40px;
+    }
+
+    .search {
+        margin-top: 220px;
+    }
+}

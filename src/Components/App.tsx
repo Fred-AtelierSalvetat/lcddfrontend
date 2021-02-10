@@ -2,14 +2,15 @@ import React from 'react';
 import './App.css';
 import { Route, HashRouter } from 'react-router-dom';
 import Header from './header/Header';
-import Footer from "./footer/Footer";
+import Footer from './footer/Footer';
 import Home from './home/Home';
 import Speakers from './speakers/Speakers';
 import Profile from './speakers/Profile';
-import ContactForm from "./contact/ContactForm";
+import ContactForm from './contact/ContactForm';
 import MentionsLegales from './mentions_legales/MentionsLegales';
 import SignUp from './sign_up/SignUp';
 import SignIn from './sign_in/SignIn';
+import Questions from './questions/Questions.component';
 
 // eslint-disable-next-line @typescript-eslint/ban-types
 const App: React.FC<{}> = () => {
@@ -23,6 +24,7 @@ const App: React.FC<{}> = () => {
                 <Route path="/about" component={About} />
                 <Route path="/contact" component={ContactForm} />
                 <Route path="/mentions-legales" component={MentionsLegales} />
+                <Route path="/questions" component={Questions} />
                 <Route path="/signUp" component={SignUp} />
                 <Route path="/signIn" component={SignIn} />
             </HashRouter>

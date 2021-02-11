@@ -3,6 +3,8 @@ import { Button, Form, Row } from 'react-bootstrap';
 import { ReactComponent as CitoyenImage } from '~/assets/images/Citoyen.svg';
 import { ReactComponent as ProDuDroitImage } from '~/assets/images/Pro-du-droit.svg';
 import { ReactComponent as EtudiantImage } from '~/assets/images/Etudiant.svg';
+import ButtonFC from '~/assets/images/Button-FC.png';
+
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
 
@@ -52,6 +54,7 @@ const UserRole = ({ step, setStep, user, setUser }) => {
                         onClick={e => handleChange("citoyen")}
                         tabIndex={1}
                         onKeyUp={e => handleSpaceKeyUp(e, "citoyen")}
+                        style={{ height: "100%" }}
                     />
                     <ProDuDroitImage
                         className={getListClasses(user.role === "proDuDroit")}
@@ -59,6 +62,7 @@ const UserRole = ({ step, setStep, user, setUser }) => {
                         onClick={e => handleChange("proDuDroit")}
                         tabIndex={1}
                         onKeyUp={e => handleSpaceKeyUp(e, "proDuDroit")}
+                        style={{ height: "100%" }}
                     />
                     <EtudiantImage
                         className={getListClasses(user.role === "etudiant")}
@@ -66,17 +70,38 @@ const UserRole = ({ step, setStep, user, setUser }) => {
                         onClick={e => handleChange("etudiant")}
                         tabIndex={1}
                         onKeyUp={e => handleSpaceKeyUp(e, "etudiant")}
+                        style={{ height: "100%" }}
                     />
                 </Row>
-            </div>
+                {user.role !== '' &&
+                    <Row>
+                        <p>Vous pouvez créer votre compte</p>
+                    </Row>
+                }
+                {user.role !== '' &&
+                    <Row style={{ alignItems: "center", justifyContent: "space-between" }}>
+                        <div>
+                            <img
+                                src={ButtonFC}
+                                alt="Button FranceConnect"
+                                tabIndex={1}
+                                className="img-button"
+                                style={{ backgroundColor: "white", maxWidth: "100%" }}
+                            />
+                        </div>
+                        <div>–––&nbsp;&nbsp;Ou&nbsp;&nbsp;–––</div>
+                        <Button
+                            className="btn btn-primary float-right"
+                            type="button"
+                            tabIndex={1}
+                            onClick={handleContinue}
+                            style={{ width: "310px" }}>
+                            S'inscire avec<br /><span style={{ fontSize: "1.1rem" }}>Votre adresse e-mail</span>
+                        </Button>
 
-            <Button
-                className="btn btn-primary float-right"
-                type="button"
-                tabIndex={1}
-                onClick={handleContinue}>
-                Suivant
-            </Button>
+                    </Row>
+                }
+            </div>
 
         </Form>
 

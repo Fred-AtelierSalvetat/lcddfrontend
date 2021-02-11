@@ -94,3 +94,12 @@ label.label-check {
     cursor: pointer;
     color: #113F59;
 }
+
+.img-button {
+    border-radius: 5px;
+}
+
+.img-button:hover {
+    cursor: pointer;
+    box-shadow: 3px 5px 0px #113F59;
+}

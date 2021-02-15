@@ -24,7 +24,7 @@ const Speakers: React.FC<{}> = () => {
         <>
             <Wrapper>
                 <h4>Nos intervenants</h4>
-                <p>Phasellus eu suscipit felis, et laoreet est. Nam consectetur quis neque in laoreet. </p>
+                <p>Chercher directement la réponse à vore question parmi les 27 thèmes traités par nos intervenants </p>
             </Wrapper>
             <div className="d-flex justify-content-center flex-wrap mx-5 mt-2">
                 {speakers &&

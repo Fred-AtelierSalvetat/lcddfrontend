@@ -38,28 +38,4 @@ export const fakeData: Speakers = [
         rool: 'Juriste',
         description: 'Président Fondateur de La Chaine du Droit',
     },
-    {
-        id: 4,
-        name: 'Ambroise ARMAND',
-        rool: 'Juriste',
-        description: 'Président Fondateur de La Chaine du Droit',
-    },
-    {
-        id: 5,
-        name: 'Ambroise ARMAND',
-        rool: 'Juriste',
-        description: 'Président Fondateur de La Chaine du Droit',
-    },
-    {
-        id: 6,
-        name: 'Ambroise ARMAND',
-        rool: 'Juriste',
-        description: 'Président Fondateur de La Chaine du Droit',
-    },
-    {
-        id: 7,
-        name: 'Ambroise ARMAND',
-        rool: 'Juriste',
-        description: 'Président Fondateur de La Chaine du Droit',
-    },
 ];

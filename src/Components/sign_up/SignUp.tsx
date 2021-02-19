@@ -61,8 +61,8 @@ const SignUp = (props) => {
             <Container className={getClassesForContainer(step)}>
                 <div className="container-header pt-md-5">
                     <Row style={{ justifyContent: "space-between", alignItems: "baseline" }}>
-                        <h1>{steps[`${step}`].title}</h1>
-                        <p style={{ textAlign: "center" }}>Etape {step + 1}/3</p>
+                        <div><h1 className="display-4">{steps[`${step}`].title}</h1></div>
+                        <div><p style={{ textAlign: "center" }}>Étape {step + 1}/3</p></div>
                     </Row>
 
                     <Row style={{ margin: "40px auto", justifyContent: "space-between" }}>

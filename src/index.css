@@ -95,15 +95,111 @@ code {
 }
 
 .btn-link {
-  background-color: #20D6C7 !important;
-  border-color: #20D6C7 !important;
+  color: #20D6C7 !important;
+  border: none !important;
 }
 
 .btn-link:hover {
-  background-color: #113F59 !important;
-  border-color: #113F59 !important;
+  text-decoration: underline !important;
 }
 
 .jumbotron {
   background-color: #F3EDD3 !important;
+}
+
+/* outline buttons */
+[class*="-outline"] {
+  background-color: #FFF !important;
+}
+
+[class*="-outline"]:hover {
+  color: #FFF !important;
+}
+
+[class*="outline-primary"] {
+  color: #113F59 !important;
+  border-color: #113F59 !important;
+}
+
+.btn-outline-primary:hover {
+  background-color: #113F59 !important;
+  border-color: #113F59 !important;
+}
+
+[class*="-outline-success"] {
+  color: #219653 !important;
+  border-color: #219653 !important;
+}
+
+.btn-outline-success:hover {
+  background-color: #219653 !important;
+  border-color: #219653 !important;
+}
+
+[class*="-outline-info"] {
+  color: #19BEC0 !important;
+  border-color: #19BEC0 !important;
+}
+
+.btn-outline-info:hover {
+  background-color: #19BEC0 !important;
+  border-color: #19BEC0 !important;
+}
+
+[class*="-outline-danger"] {
+  color: #D54F58 !important;
+  border-color: #D54F58 !important;
+}
+
+.btn-outline-danger:hover {
+  background-color: #D54F58 !important;
+  border-color: #D54F58 !important;
+}
+
+[class*="-outline-warning"] {
+  color: #F2C94C !important;
+  border-color: #F2C94C !important;
+}
+
+.btn-outline-warning:hover {
+  background-color: #F2C94C !important;
+  border-color: #F2C94C !important;
+}
+
+[class*="-outline-secondary"] {
+  color: #BDBDBD !important;
+  border-color: #BDBDBD !important;
+}
+
+.btn-outline-secondary:hover {
+  background-color: #BDBDBD !important;
+  border-color: #BDBDBD !important;
+}
+
+/* dropdown nav button */
+.navbar .dropdown:hover .dropdown-menu {
+  display: block;
+}
+
+.navbar .dropdown-menu {
+  margin: 0;
+  padding: 0;
+  min-width: 250px;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 0 !important;
+}
+
+.navbar .dropdown-menu .dropdown-item {
+  padding: 10px 25px;
+  font-size: 0.9rem;
+  transition: font-size .01s ease;
+}
+
+.navbar .dropdown-menu .dropdown-item:hover {
+  font-size: medium;
+}
+
+.navbar .dropdown-menu .dropdown-item:focus {
+  font-size: medium;
+  background: #f8f9fa;
 }

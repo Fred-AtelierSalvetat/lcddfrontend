@@ -40,7 +40,7 @@ const ContactForm = (props: any) => {
                     "subject": data.subject,
                     "message": data.message
                 })
-            }).then(function(response) {
+            }).then(function (response) {
                 if (response.ok) {
                     console.log(response);
                     return response.json();
@@ -48,7 +48,7 @@ const ContactForm = (props: any) => {
                 else {
                     console.log('Mauvaise réponse du réseau');
                 }
-            }).catch(function(error) {
+            }).catch(function (error) {
                 console.log("Il y a eu un problème avec l'opération fetch: " + error.message);
             });
 
@@ -222,19 +222,15 @@ const ContactForm = (props: any) => {
                     </Form.Group>
 
                     <Form.Group>
-                        <Row>
-                            <Col>
-                                <ReCAPTCHA
-                                    ref={(r) => setCaptchaRef(r)}
-                                    sitekey={SITE_KEY}
-                                    onChange={handleChange}
-                                />
-                            </Col>
-                            <Col lg="2" style={{ right: "15px" }}>
-                                <Button variant="primary" type="submit" style={{ right: 0, position: "absolute" }}>
-                                    Envoyer
-                                </Button>
-                            </Col>
+                        <Row className="flex-row-space">
+                            <ReCAPTCHA
+                                ref={(r) => setCaptchaRef(r)}
+                                sitekey={SITE_KEY}
+                                onChange={handleChange}
+                            />
+                            <Button id="submit-contact-btn" variant="primary" type="submit">
+                                Envoyer
+                            </Button>
                         </Row>
                     </Form.Group>
                 </Form>

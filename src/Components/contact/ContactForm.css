@@ -23,3 +23,31 @@ label {
     margin-bottom: 13px;
     margin-top: 20px;
 }
+
+/* desktop */
+@media only screen and (min-width:992px) {
+    #submit-contact-btn {
+        width: 163px;
+    }
+
+    .flex-row-space {
+        margin: 0 auto !important;
+        justify-content: space-between;
+        align-items: flex-start;
+    }
+}
+
+/* tablet and mobile */
+@media only screen and (max-width:991px) {
+    #submit-contact-btn {
+        width: 100%;
+        margin-top: 15px;
+        margin-bottom: 50px;
+    }
+
+    .flex-row-space {
+        margin: 0 auto !important;
+        justify-content: space-around;
+    }
+
+}

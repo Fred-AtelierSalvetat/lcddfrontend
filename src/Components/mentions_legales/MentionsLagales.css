@@ -9,6 +9,11 @@ p {
 .container h2 {
     margin-top: unset;
     text-align: left;
+    font-weight: 350 !important;
     font-size: 24px !important;
+    line-height: 26px !important;
+}
+
+.container-large-space h2 {
     line-height: 99px !important;
 }

@@ -18,6 +18,7 @@ code {
   --green: #27AE60 !important;
   --success: #27AE60 !important;
   --teal: #20D6C7 !important;
+  --link: #20D6C7 !important;
   --orange: #F2994A !important;
   --cyan: #19BEC0 !important;
   --info: #19BEC0 !important;
@@ -202,4 +203,9 @@ code {
 .navbar .dropdown-menu .dropdown-item:focus {
   font-size: medium;
   background: #f8f9fa;
+}
+
+/* link */
+.link {
+  color: var(--link) !important;
 }

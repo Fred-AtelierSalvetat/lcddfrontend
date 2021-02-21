@@ -17,7 +17,7 @@ const MentionsLegales: FC<{}> = () => {
                     </p>
                 </Container>
             </Wrapper>
-            <Container>
+            <Container className="container-large-space">
                 <h2>L’EDITEUR</h2>
                 <p>Le site <a href="https://lachainedudroit.fr" title="Visiter ce site">lachainedudroit.fr</a> est la propriété exclusive de l’association LA CHAINE DU DROIT, qui l’édite.</p>
 

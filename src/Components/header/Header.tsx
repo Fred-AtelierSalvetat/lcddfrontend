@@ -1,22 +1,21 @@
 import React from 'react';
 import { Button, Nav, Navbar } from 'react-bootstrap';
-import Logo from '../../assets/header/logo.png';
+import Logo from '~/assets/header/logo.png';
 
 // eslint-disable-next-line @typescript-eslint/ban-types
 const Header: React.FC<{}> = () => {
     return (
         <div>
-            <Navbar bg="lcdd-primary" expand="sm" variant="dark">
+            <Navbar bg="lcdd-primary" expand="lg" variant="dark">
                 <div className="mr-5">
                     <Navbar.Brand href="/">
                         <img alt="" src={Logo} width="154" className="d-inline-block align-top" />
                     </Navbar.Brand>
                 </div>
-                {/* <div> */}
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                 <Navbar.Collapse id="responsive-navbar-nav">
                     <Nav className="mr-auto">
-                        
+
                         <li className="nav-item dropdown">
                             <a className="nav-link dropdown-toggle" href="#/questions/" data-toggle="dropdown">Vos questions</a>
                             <ul className="dropdown-menu">
@@ -35,7 +34,6 @@ const Header: React.FC<{}> = () => {
                         <Button variant="outline-primary">Se connecter</Button>
                     </Nav>
                 </Navbar.Collapse>
-                {/* </div> */}
             </Navbar>
         </div>
     );

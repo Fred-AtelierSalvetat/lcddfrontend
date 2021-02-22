@@ -45,6 +45,7 @@ const icon = {
     Width: 140,
     height: 140,
     margin: 10,
+    border: 'solid 1px',
 };
 
 // eslint-disable-next-line @typescript-eslint/ban-types

@@ -6,7 +6,6 @@ import Concept from '~/assets/home/question.jpg';
 import ConfirmDialog from '../dialogs/ConfirmDialog';
 import FormSteps from './form-steps';
 import classNames from 'classnames';
-
 import "./SignUp.css";
 import { UserReducer, DefaultUser } from './user-reducer';
 

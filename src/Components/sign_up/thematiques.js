@@ -8,7 +8,7 @@ const thematiques = [
     { id: 2, src: 'image02.svg', title: 'Associations et fondations'},
     { id: 3, src: 'image03.svg', title: 'Assurances'},
     { id: 4, src: 'image04.svg', title: 'Banque et bourse'},
-    { id: 5, src: 'image05.svg', title: 'Commercial, affaires et concurence'},
+    { id: 5, src: 'image05.svg', title: 'affaires et concurence'},
     { id: 6, src: 'image06.svg', title: 'Crédit et consommation'},
     { id: 7, src: 'image07.svg', title: 'Dommages corporels'},
     { id: 8, src: 'image08.svg', title: 'Droit international et de l\'Union Européenne'},

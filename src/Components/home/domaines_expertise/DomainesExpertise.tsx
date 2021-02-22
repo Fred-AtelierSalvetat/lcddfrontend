@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Row, Col, Form } from 'react-bootstrap';
+import { Container, Row, Col, Form, Image } from 'react-bootstrap';
 import Arbitrage from './../../../assets/thematiques/image01.svg';
 import Asso from './../../../assets/thematiques/image02.svg';
 import Assurance from './../../../assets/thematiques/image03.svg';
@@ -48,11 +48,18 @@ const icon = {
     border: 'solid 1px',
 };
 
+const card = {
+    Width: 140,
+    height: 140,
+    margin: 10,
+    border: 'solid 1px',
+};
+
 // eslint-disable-next-line @typescript-eslint/ban-types
 const DomainesExpertiseComponent: React.FC<{}> = () => {
     return (
         <div>
-            <div style={{ margin: '50px' }}>
+            <div style={{ margin: '50px', textAlign: 'center' }}>
                 <Row>
                     <h4>Nos domaines d'expertise</h4>
                 </Row>
@@ -65,7 +72,7 @@ const DomainesExpertiseComponent: React.FC<{}> = () => {
             <div>
                 <Row>
                     <Col xs="2">
-                        <img style={icon} src={Arbitrage} alt="Arbitrage" />
+                        <img style={icon} src={Arbitrage} alt="Arbitrage" title="Arbitrage" />
                     </Col>
                     <Col xs="2">
                         <img style={icon} src={Asso} alt="Asso" />

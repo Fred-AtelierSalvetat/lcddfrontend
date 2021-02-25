@@ -14,7 +14,6 @@ const jumbotron = {
     backgroundRepeat: 'no-repeat',
     backgroundSize: 'cover',
     backgroundPosition: 'top',
-    minHeight: '50vw',
     marginBottom: 0,
 };
 
@@ -26,28 +25,36 @@ const title = {
     textAlign: 'left' as 'left',
     marginLeft: 30,
     marginTop: 30,
-    fontSize: '3vw',
+    fontSize: '4vw',
 };
 
 const subtitle = {
     textAlign: 'left' as 'left',
     marginBottom: 30,
     marginLeft: 40,
+    fontSize: 30
 };
 const link = {
     textAlign: 'right' as 'right',
+    fontSize: 20
 };
 
 const icon = {
-    Width: 70,
-    height: 40,
+    Width: 90,
+    height: 80,
     margin: 10
 }
 
 const enumeration = {
     color: '#00BFFF	',
-    fontSize: 40
+    fontSize: 50
 }
+
+const text = {
+    fontSize: 19
+
+}
+
 
 
 
@@ -73,12 +80,12 @@ const QuestionsComponent: React.FC<{}> = () => {
                             </Col>
                             <Col xs="11">
                                 <div>  <img style={icon} src={Icon1} alt="icon1" />
-                                    <a style={enumeration}> 1. </a>  <a> Vous avez une question de droit</a>  </div>
-                                <div> <a style={enumeration}> 2. </a> <a>Nous vous proposons des réponses claires en vidéo</a>
+                                    <a style={enumeration}> 1. </a>  <a style={text}> Vous avez une question de droit</a>  </div>
+                                <div> <a style={enumeration}> 2. </a> <a style={text}>Nous vous proposons des réponses claires en vidéo</a>
                                     <img style={icon} src={Icon2} alt="icon2" />
                                 </div>
-                                <div> <img style={icon} src={Icon3} alt="icon3" /> <a style={enumeration}> 3. </a> <a>Vous visionnez la réponse qui vpis convient</a> </div>
-                                <div>  <a style={enumeration}> 4. </a> <a>Et vous pouvez aussi nous suggérer une nouvelle question</a>
+                                <div> <img style={icon} src={Icon3} alt="icon3" /> <a style={enumeration}> 3. </a> <a style={text}>Vous visionnez la réponse qui vpis convient</a> </div>
+                                <div>  <a style={enumeration}> 4. </a> <a style={text}>Et vous pouvez aussi nous suggérer une nouvelle question</a>
                                     <img style={icon} src={Icon4} alt="icon4" />
                                 </div>
 

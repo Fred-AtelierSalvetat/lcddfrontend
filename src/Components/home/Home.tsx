@@ -2,9 +2,10 @@ import React from 'react';
 import ConceptComponent from './concept/Concept';
 import QuestionsComponent from './questions/Questions';
 import AteliersComponent from './ateliers/Ateliers';
-import SpeakersComponent from './../speakers/Speakers';
+import IntervenantsComponent from './intervenants/Intervenants';
 import DomainesExpertiseComponent from './domaines_expertise/DomainesExpertise';
 import ProchainAtelierComponent from './prochain_atelier/ProchainAtelier';
+import { Wrapper } from '../wrapper/Wrapper';
 
 
 
@@ -16,7 +17,7 @@ const Home: React.FC<{}> = () => {
             <QuestionsComponent />
             <AteliersComponent />
             <ProchainAtelierComponent />
-            <SpeakersComponent />
+            <IntervenantsComponent />
             <DomainesExpertiseComponent />
         </div>
     );

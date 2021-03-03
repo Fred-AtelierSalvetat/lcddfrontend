@@ -26,12 +26,12 @@ const Speakers: React.FC<{}> = () => {
                 <h4>Nos intervenants</h4>
                 <p>Chercher directement la réponse à vore question parmi les 27 thèmes traités par nos intervenants </p>
             </Wrapper>
-            <div className="d-flex justify-content-center flex-wrap mx-5 mt-2">
+            <div className="d-flex justify-content-center flex-wrap">
                 {speakers &&
-                !isHome &&
-                speakers.map((speaker, key: number) => (
-                    <Speaker id={speaker.id} name={speaker.name} rool={speaker.rool} key={key} />
-                ))}
+                    !isHome &&
+                    speakers.map((speaker, key: number) => (
+                        <Speaker id={speaker.id} name={speaker.name} rool={speaker.rool} description={speaker.description} key={key} />
+                    ))}
                 {speakers && isHome && <div>Speakers home componenet </div>}
             </div>
         </>

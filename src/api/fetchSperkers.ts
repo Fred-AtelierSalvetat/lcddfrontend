@@ -28,8 +28,8 @@ export const fakeData: Speakers = [
     },
     {
         id: 2,
-        name: 'Ambroise ARMAND',
-        rool: 'Juriste',
+        name: 'Julien GENOVA',
+        rool: '',
         description: 'Président Fondateur de La Chaine du Droit',
     },
     {

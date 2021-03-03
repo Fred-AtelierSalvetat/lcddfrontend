@@ -20,20 +20,28 @@ const title = {
     align: 'center',
 };
 
+const subtitle = {
+    fontFamily: 'Segoe UI',
+    fontStyle: 'normal',
+    fontWeight: 200,
+    fontSize: '20px',
+    align: 'center',
+};
+
 
 // eslint-disable-next-line @typescript-eslint/ban-types
 const DomainesExpertiseComponent: React.FC<{}> = () => {
     return (
         <div>
             <div >
-                <Row style={{ textAlign: 'center' }}>
+                <div>
                     <h4 style={title}>Nos domaines d'expertise</h4>
-                </Row>
-                <Row>
-                    <p>
+                </div>
+                <div>
+                    <h2 style={subtitle}>
                         Chercher directement la réponse à vore question parmi les 27 thèmes traités par nos intervenants{' '}
-                    </p>
-                </Row>
+                    </h2>
+                </div>
             </div>
             <div className="card-deck" style={{ justifyContent: "center" }}>
                 {thematiques.map(thematique =>

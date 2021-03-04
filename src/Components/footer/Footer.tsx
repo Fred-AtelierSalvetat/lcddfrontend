@@ -9,31 +9,31 @@ import "./Footer.css";
 const Footer: React.FC<{}> = () => {
 
   return (
-    <Navbar bg="lcdd-primary" expand="sm" id="footer">
-      <Row style={{ width: "100%", margin: "unset" }}>
-        <Col lg={4} id="footer-contact">
-          <a href="#/speakers">Devenir intervenant</a> |
+    <div id="lcdd-footer">
+
+      <Navbar bg="lcdd-primary" expand="sm">
+        <div id="footer-contact">
+          {/* Disponible que pour les professionnels */}
+          {/* <a href="#/speakers">Devenir intervenant</a> | */}
           <a href="#/contact">Contact</a> |
           <a href="#/mentions-legales">Mentions Légales</a>
-        </Col>
+        </div>
 
-        <Col lg={4} style={{ color: "white" }}>
-          © 2020 La Chaine du Droit. Tous droits réservés.
-        </Col>
-
-        <Col lg={2}>
-        </Col>
-
-        <Col lg="auto">
-          <Row id="social" style={{ flexWrap: "nowrap" }}>
-            <Col sm="auto"><a href="https://facebook.com/lachainedudroit"><Social0 /></a></Col>
-            <Col sm="auto"><a href="https://www.linkedin.com/company/la-cha%C3%AEne-du-droit"><Social1 /></a></Col>
-            <Col sm="auto"><a href="https://twitter.com/lachainedudroit"><Social2 /></a></Col>
-            <Col sm="auto"><a href="https://www.instagram.com/lachainedudroit/"><Social3 /></a></Col>
+        <div id="footer-right">
+          <Row id="footer-social" style={{ flexWrap: "nowrap" }}>
+            <div><a href="https://facebook.com/lachainedudroit"><Social0 /></a></div>
+            <div><a href="https://www.linkedin.com/company/la-cha%C3%AEne-du-droit"><Social1 /></a></div>
+            <div><a href="https://twitter.com/lachainedudroit"><Social2 /></a></div>
+            <div><a href="https://www.instagram.com/lachainedudroit/"><Social3 /></a></div>
           </Row>
-        </Col>
-      </Row>
-    </Navbar>
+
+          <div id="footer-condition" style={{ color: "white" }}>
+            © 2020 La Chaine du Droit. Tous droits réservés.
+          </div>
+        </div>
+      </Navbar>
+
+    </div >
   );
 };
 

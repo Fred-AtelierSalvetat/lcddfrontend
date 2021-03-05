@@ -26,6 +26,7 @@ const subtitle = {
     fontWeight: 200,
     fontSize: '20px',
     align: 'center',
+    marginBottom: '50px'
 };
 
 

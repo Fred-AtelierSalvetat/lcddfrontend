@@ -1,16 +1,12 @@
 import React from 'react';
 import { Jumbotron, Container, Row, Col, Card } from 'react-bootstrap';
+import Calendar from './../../../assets/icons/calendar.png';
 
-const jumbotron = {
-    backgroundRepeat: 'no-repeat',
-    backgroundSize: 'cover',
-    backgroundPosition: 'top',
-    marginBottom: 0,
-    backgroundColor: '',
-};
+
 
 const backgroundTransparency = {
     backgroundColor: 'rgba(17,63,89,0.9)',
+    align: 'center',
 };
 
 const textContainer = {
@@ -31,29 +27,38 @@ const link = {
     textAlign: 'right' as 'right',
 };
 
+const styledCard = {
+    width: '1140px',
+    height: '87px',
+    align: 'center',
+    margin: '30px',
+    marginLeft: '170px',
+    marginBottom: '100px',
+
+};
+
 // eslint-disable-next-line @typescript-eslint/ban-types
 const ProchainAtelierComponent: React.FC<{}> = () => {
     return (
         <div>
-            <Col style={backgroundTransparency}>
-                <Row>
-                    <Col xs="8">
-                        <h4 style={textContainer}>Prochain Atelier</h4>
-                    </Col>
-                </Row>
-                <Row>
-                    <Col xs="8" style={{ marginBottom: '30px' }}>
-                        <Card>
-                            <Col xs="6">
-                                <Row>
-                                    <p>Atelier titre</p>
-                                </Row>
-                                <Row>20 Mai 2020 : 15:30 - 18:30</Row>
+            <div style={backgroundTransparency}>
+                <div>
+                    <h4 style={textContainer}>Prochain Atelier</h4>
+                </div>
+                <div>
+                    <Card style={styledCard}>
+                        <Row>
+                            <Col xs="11">
+                                <p >Atelier titre</p>
+                                <p>20 Mai 2020 : 15:30 - 18:30</p>
                             </Col>
-                        </Card>
-                    </Col>
-                </Row>
-            </Col>
+                            <Col xs="1" style={{ padding: '15px' }}>
+                                <a href="/"><img src={Calendar} alt="calendar" /></a>
+                                <a href="/">Reserver</a>
+                            </Col></Row>
+                    </Card>
+                </div>
+            </div>
         </div>
     );
 };

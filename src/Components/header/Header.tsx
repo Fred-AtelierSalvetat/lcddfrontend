@@ -25,7 +25,7 @@ const Header: React.FC<{}> = () => {
                             </li>
                             <Nav.Link className="nav-item" href="#/webTV">WebTV</Nav.Link>
                             <Nav.Link className="nav-item" href="#/speakers/">Nos intervenants</Nav.Link>
-                            <Nav.Link className="nav-item" href="#/becomeSpeaker">Devenir intervenant</Nav.Link>
+                            <Nav.Link className="nav-item" href="#/devenirintervenant">Devenir intervenant</Nav.Link>
                             <Nav.Link className="nav-item" href="#/contact">Contactez nous</Nav.Link>
                         </div>
                         <div id="navbar-right" className="navbar-nav">

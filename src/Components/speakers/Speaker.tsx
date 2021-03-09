@@ -26,7 +26,7 @@ export const Speaker: React.FC<SpeakerProps> = ({ id, name, rool, description })
                 className="border border-dark"
                 width="230"
                 height="230"
-                style={{ filter: 'grayscale(100%)' }}
+                style={{ filter: 'grayscale(100%)', border: '2px' }}
                 onClick={Redirection}
             />
             <p>{name}</p>

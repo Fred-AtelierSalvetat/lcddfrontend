@@ -1,6 +1,9 @@
 import React from 'react';
 import { Container, Row, Col, Form } from 'react-bootstrap';
-import { Wrapper } from '../../wrapper/Wrapper';
+import thematiques from './../../sign_up/thematiques';
+import InterestCard from './../../sign_up/InterestCard';
+
+
 
 
 const textContainer = {
@@ -13,17 +16,44 @@ const title = {
     fontFamily: 'Segoe UI',
     fontStyle: 'normal',
     fontWeight: 300,
-    fontSize: '7vw',
+    fontSize: '42px',
+    align: 'center',
 };
+
+const subtitle = {
+    fontFamily: 'Segoe UI',
+    fontStyle: 'normal',
+    fontWeight: 200,
+    fontSize: '20px',
+    align: 'center',
+    marginBottom: '50px'
+};
+
 
 // eslint-disable-next-line @typescript-eslint/ban-types
 const DomainesExpertiseComponent: React.FC<{}> = () => {
     return (
-            <Wrapper>
-                <h4>Nos domaines d'expertise</h4>
-                <p>Chercher directement la réponse à vore question parmi les 27 thèmes traités par nos intervenants </p>
-            </Wrapper>
-           
+        <div>
+            <div >
+                <div>
+                    <h4 style={title}>Nos domaines d'expertise</h4>
+                </div>
+                <div>
+                    <h2 style={subtitle}>
+                        Chercher directement la réponse à vore question parmi les 27 thèmes traités par nos intervenants{' '}
+                    </h2>
+                </div>
+            </div>
+            <div className="card-deck" style={{ justifyContent: "center" }}>
+                {thematiques.map(thematique =>
+                    <InterestCard
+                        key={thematique.id}
+                        src={thematique.src}
+                        title={thematique.title}
+                    />
+                )}
+            </div>
+        </div>
     );
 };
 

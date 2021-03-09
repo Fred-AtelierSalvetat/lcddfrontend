@@ -6,7 +6,6 @@ import Concept from '~/assets/home/question.jpg';
 import ConfirmDialog from '../dialogs/ConfirmDialog';
 import FormSteps from './form-steps';
 import classNames from 'classnames';
-
 import "./SignUp.css";
 import { UserReducer, DefaultUser } from './user-reducer';
 
@@ -61,8 +60,8 @@ const SignUp = (props) => {
             <Container className={getClassesForContainer(step)}>
                 <div className="container-header pt-md-5">
                     <Row style={{ justifyContent: "space-between", alignItems: "baseline" }}>
-                        <div><h1 className="display-4">{steps[`${step}`].title}</h1></div>
-                        <div><p style={{ textAlign: "center" }}>Étape {step + 1}/3</p></div>
+                        <h1>{steps[`${step}`].title}</h1>
+                        <p style={{ textAlign: "center" }}>Etape {step + 1}/3</p>
                     </Row>
 
                     <Row style={{ margin: "40px auto", justifyContent: "space-between" }}>

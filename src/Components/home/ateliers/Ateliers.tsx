@@ -13,10 +13,8 @@ const jumbotron = {
     backgroundRepeat: 'no-repeat',
     backgroundSize: 'cover',
     backgroundPosition: 'top',
-    minHeight: '50vw',
     marginBottom: 0,
 };
-
 const backgroundTransparency = {
     backgroundColor: 'rgba(17,63,89,0.9)',
 }
@@ -25,7 +23,7 @@ const title = {
     textAlign: 'left' as 'left',
     marginLeft: 30,
     marginTop: 30,
-    fontSize: '3vw',
+    fontSize: '4vw',
     color: 'white',
 };
 
@@ -33,26 +31,28 @@ const subtitle = {
     textAlign: 'left' as 'left',
     marginBottom: 30,
     marginLeft: 40,
+    fontSize: 30,
     color: 'white',
-};
 
+};
 const link = {
     textAlign: 'right' as 'right',
+    fontSize: 20
 };
 
-const enumeration = {
-    color: '#00BFFF	',
-    fontSize: 40
-}
-
 const icon = {
-    Width: 70,
-    height: 40,
+    Width: 90,
+    height: 80,
     margin: 10
 }
 
+const enumeration = {
+    color: '#00BFFF	',
+    fontSize: 50
+}
 const text = {
-    color: 'white'
+    color: 'white',
+    fontSize: 19
 }
 
 

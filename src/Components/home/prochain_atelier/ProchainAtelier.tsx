@@ -56,6 +56,8 @@ const styledCard = {
     height: '87px',
     marginLeft: '170px',
     marginBottom: '50px',
+    border: '2px solid #979797',
+    backgroundColor: '#FFFFFF'
 };
 
 const seeMore = {

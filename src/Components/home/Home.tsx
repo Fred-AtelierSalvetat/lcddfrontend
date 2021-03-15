@@ -5,7 +5,7 @@ import AteliersComponent from './ateliers/Ateliers';
 import IntervenantsComponent from './intervenants/Intervenants';
 import DomainesExpertiseComponent from './domaines_expertise/DomainesExpertise';
 import ProchainAtelierComponent from './prochain_atelier/ProchainAtelier';
-import { Wrapper } from '../wrapper/Wrapper';
+import QuestionsAttenteComponent from './questions_attente/QuestionsAttente';
 
 
 
@@ -16,6 +16,7 @@ const Home: React.FC<{}> = () => {
             <ConceptComponent />
             <QuestionsComponent />
             <AteliersComponent />
+            <QuestionsAttenteComponent />
             <ProchainAtelierComponent />
             <IntervenantsComponent />
             <DomainesExpertiseComponent />

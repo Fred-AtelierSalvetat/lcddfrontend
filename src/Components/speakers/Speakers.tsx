@@ -4,7 +4,7 @@ import { Speaker } from './Speaker';
 import { useSelector, useDispatch } from 'react-redux';
 import { AppState } from '../../state/reducers';
 import { fetchSpeakers } from '../../api/fetchSperkers';
-import { Wrapper } from '../wrapper/Wrapper';
+import { Wrapper } from '../shared/wrapper/Wrapper';
 
 // eslint-disable-next-line @typescript-eslint/ban-types
 const Speakers: React.FC<{}> = () => {

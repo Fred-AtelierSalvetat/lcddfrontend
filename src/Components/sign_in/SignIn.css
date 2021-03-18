@@ -1,0 +1,42 @@
+.container-login {
+    width: 464px !important;
+    background-color: white;
+}
+
+.FC-btn,
+.FC-btn-email {
+    display: flex !important;
+    align-items: center;
+    padding: 0 16px !important;
+}
+
+.FC-btn:hover {
+    background-color: var(--white) !important;
+    color: var(--fc) !important;
+    text-decoration: underline !important;
+}
+
+.FC-btn-email:hover {
+    background-color: var(--blue) !important;
+    text-decoration: underline !important;
+}
+
+.FC-text,
+.FC-text-email {
+    padding-left: 45px;
+    font-weight: 350 !important;
+    font-size: 20px !important;
+    text-align: left;
+}
+
+.FC-text {
+    color: var(--fc) !important;
+}
+
+.FC-text-email {
+    color: #F2F2F2 !important;
+}
+
+.FC-text-bold {
+    font-weight: 400 !important;
+}

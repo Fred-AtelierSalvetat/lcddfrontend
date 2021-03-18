@@ -1,18 +1,23 @@
 import React, { useEffect, useState } from 'react';
-import { Button, Form, Row } from 'react-bootstrap';
+import { Form, Row } from 'react-bootstrap';
 import { ReactComponent as CitoyenSquare } from '~/assets/images/CitoyenS.svg';
 import { ReactComponent as ProDuDroitSquare } from '~/assets/images/ProS.svg';
 import { ReactComponent as EtudiantSquare } from '~/assets/images/EtudiantS.svg';
 import { ReactComponent as CitoyenRect } from '~/assets/images/CitoyenR.svg';
 import { ReactComponent as ProDuDroitRect } from '~/assets/images/ProR.svg';
 import { ReactComponent as EtudiantRect } from '~/assets/images/EtudiantR.svg';
-import ButtonFCDesktop from '~/assets/images/ButtonFC-desktop.png';
-import ButtonFCMobile from '~/assets/images/ButtonFC-mobile.png';
+import { FranceConnectButton, FranceConnectButtonEmail } from '../shared/buttons/FranceConnectButton';
 
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
 
-const DESKTOP_VIEW_BREAKPOINT = 720;
+const DESKTOP_VIEW_BREAKPOINT = 726;
+
+const OU = () => {
+    return (
+        <div style={{ maxWidth: "100%", margin: "24px 0" }}>–––&nbsp;&nbsp;ou&nbsp;&nbsp;–––</div>
+    )
+}
 
 // Step 1 UI
 const UserRole = ({ step, setStep, user, setUser }) => {
@@ -58,9 +63,6 @@ const UserRole = ({ step, setStep, user, setUser }) => {
         <Form onSubmit={handleContinue}>
             <div className="form-group">
                 <h2>Vous êtes</h2>
-                <Row>
-                    <i><span>*</span> Veuillez choisir un rôle</i>
-                </Row>
                 <Row style={{ margin: "10px auto", flexWrap: "wrap", justifyContent: isDesktop ? "space-between" : "center" }}>
 
                     {isDesktop ?
@@ -121,46 +123,30 @@ const UserRole = ({ step, setStep, user, setUser }) => {
                             <p>Vous pouvez créer votre compte</p>
                         </Row>
                         {isDesktop ?
-                            <Row style={{ justifyContent: isDesktop ? "space-between" : "space-around" }}>
-                                <div>
-                                    <img
-                                        src={isDesktop ? ButtonFCDesktop : ButtonFCMobile}
-                                        alt="Button FranceConnect"
-                                        tabIndex={1}
-                                        className="img-button"
-                                        style={{ backgroundColor: "white", maxWidth: "100%" }}
-                                    />
-                                </div>
-                                <div style={{ backgroundColor: "white", maxWidth: "100%", margin: "24px 0" }}>–––&nbsp;&nbsp;ou&nbsp;&nbsp;–––</div>
-                                <Button
-                                    className="btn btn-primary float-right"
-                                    type="button"
-                                    tabIndex={1}
+                            <Row style={{ justifyContent: "space-between" }}>
+                                <FranceConnectButton
+                                    text="S'incrire avec"
+                                    style={{ flexGrow: "5", maxWidth: "310px" }}
+                                />
+                                <OU />
+                                <FranceConnectButtonEmail
+                                    text="S'incrire avec"
+                                    style={{ flexGrow: "5", maxWidth: "310px" }}
                                     onClick={handleContinue}
-                                    style={{ width: "280px", height: "62px", textAlign: "left", paddingLeft: "42px" }}>
-                                    Avec<br /><span style={{ fontSize: "1.1rem" }}>votre adresse e-mail</span>
-                                </Button>
+                                />
                             </Row>
                             :
                             <div style={{ display: "flex", flexFlow: "column wrap", alignItems: "center" }}>
-                                <div>
-                                    <img
-                                        src={isDesktop ? ButtonFCDesktop : ButtonFCMobile}
-                                        alt="Button FranceConnect"
-                                        tabIndex={1}
-                                        className="img-button"
-                                        style={{ backgroundColor: "white", maxWidth: "100%" }}
-                                    />
-                                </div>
-                                <div style={{ backgroundColor: "white", maxWidth: "100%", margin: "24px 0" }}>–––&nbsp;&nbsp;ou&nbsp;&nbsp;–––</div>
-                                <Button
-                                    className="btn btn-primary float-right"
-                                    type="button"
-                                    tabIndex={1}
+                                <FranceConnectButton
+                                    text="Avec"
+                                    style={{ flexGrow: "5", maxWidth: "330px", width: "100%" }}
+                                />
+                                <OU />
+                                <FranceConnectButtonEmail
+                                    text="Avec"
+                                    style={{ flexGrow: "5", maxWidth: "330px", width: "100%" }}
                                     onClick={handleContinue}
-                                    style={{ width: "100%", maxWidth: "330px", height: "62px", textAlign: "left", paddingLeft: "42px" }}>
-                                    Avec<br /><span style={{ fontSize: "1.1rem" }}>votre adresse e-mail</span>
-                                </Button>
+                                />
                             </div>
                         }
 
@@ -168,7 +154,7 @@ const UserRole = ({ step, setStep, user, setUser }) => {
                 }
             </div>
 
-        </Form>
+        </Form >
 
     )
 }

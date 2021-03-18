@@ -129,14 +129,13 @@ const Interests = ({ step, setStep, user, setUser }) => {
                 </label>
             </Form.Group>
 
-            <Button className="btn btn-secondary float-left" tabIndex={50} type="button" onClick={e => setStep(step - 1)}>
-                Précédent
+            <Button
+                id="submit-btn-final"
+                type="submit"
+                tabIndex={50}
+                style={{ width: "100%" }}>
+                Finaliser l'inscription
             </Button>
-
-            <Button id="submit-button" className="btn btn-primary float-right" tabIndex={50} type="submit">
-                Soumettre
-            </Button>
-
 
         </Form>
     )

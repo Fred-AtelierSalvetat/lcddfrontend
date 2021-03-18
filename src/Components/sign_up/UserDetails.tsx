@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { Button, Form } from 'react-bootstrap';
 import { useForm } from 'react-hook-form';
-import { Validator } from './validator';
+import { Validator } from '../../util/validator';
 import PropTypes from 'prop-types';
 
 const FormFeedback = (props: any) => {
@@ -37,28 +37,12 @@ const UserDetails = ({ step, setStep, user, setUser }) => {
     }, [user]);
 
     return (
-        <Form onSubmit={handleSubmit(handleContinue)} noValidate>
-            <Form.Group controlId="inscriptionFirstName">
-                <Form.Label>Prénom *</Form.Label>
-                <Form.Control
-                    type="text"
-                    name="firstName"
-                    placeholder="Entrer votre prénom"
-                    onChange={onHandleChange}
-                    value={getValues("firstName")}
-                    ref={register(Validator.firstName)}
-                    isInvalid={errors.firstName}
-                    tabIndex={1}
-                />
-                <FormFeedback field={errors.firstName}></FormFeedback>
-            </Form.Group>
-
+        <Form id="user-detail-form" onSubmit={handleSubmit(handleContinue)} noValidate>
             <Form.Group controlId="inscriptionLastName">
-                <Form.Label>Nom *</Form.Label>
+                <Form.Label>Nom</Form.Label>
                 <Form.Control
                     type="text"
                     name="lastName"
-                    placeholder="Entrer votre nom"
                     onChange={onHandleChange}
                     value={getValues("lastName")}
                     ref={register(Validator.lastName)}
@@ -68,12 +52,25 @@ const UserDetails = ({ step, setStep, user, setUser }) => {
                 <FormFeedback field={errors.lastName}></FormFeedback>
             </Form.Group>
 
+            <Form.Group controlId="inscriptionFirstName">
+                <Form.Label>Prénom</Form.Label>
+                <Form.Control
+                    type="text"
+                    name="firstName"
+                    onChange={onHandleChange}
+                    value={getValues("firstName")}
+                    ref={register(Validator.firstName)}
+                    isInvalid={errors.firstName}
+                    tabIndex={1}
+                />
+                <FormFeedback field={errors.firstName}></FormFeedback>
+            </Form.Group>
+
             <Form.Group controlId="inscriptionCity">
                 <Form.Label>Ville (facultatif)</Form.Label>
                 <Form.Control
                     type="text"
                     name="city"
-                    placeholder="Ex: Nice"
                     onChange={onHandleChange}
                     value={getValues("city")}
                     ref={register}
@@ -84,11 +81,10 @@ const UserDetails = ({ step, setStep, user, setUser }) => {
             </Form.Group>
 
             <Form.Group controlId="inscriptionEmail">
-                <Form.Label>Email *</Form.Label>
+                <Form.Label>Email</Form.Label>
                 <Form.Control
                     type="email"
                     name="email"
-                    placeholder="Entrer votre adresse e-mail"
                     onChange={onHandleChange}
                     value={getValues("email")}
                     ref={register(Validator.email)}
@@ -99,11 +95,10 @@ const UserDetails = ({ step, setStep, user, setUser }) => {
             </Form.Group>
 
             <Form.Group controlId="inscriptionPassword">
-                <Form.Label>Mot de passe *</Form.Label>
+                <Form.Label>Mot de passe</Form.Label>
                 <Form.Control
                     type="password"
                     name="password"
-                    placeholder="Entrer le mot de passe"
                     onChange={onHandleChange}
                     value={getValues("password")}
                     ref={register(Validator.password)}
@@ -113,21 +108,13 @@ const UserDetails = ({ step, setStep, user, setUser }) => {
                 <FormFeedback field={errors.password}></FormFeedback>
             </Form.Group>
 
-            <Form.Group>
-                <Button
-                    className="btn btn-secondary float-left"
-                    type="button"
-                    onClick={e => setStep(step - 1)}
-                    tabIndex={1}>
-                    Précédent
-                </Button>
-                <Button
-                    className="btn btn-primary float-right"
-                    type="submit"
-                    tabIndex={1}>
-                    Suivant
+            <Button
+                id="submit-btn"
+                type="submit"
+                tabIndex={1}
+                style={{ width: "100%" }}>
+                Soumettre
             </Button>
-            </Form.Group>
         </Form>
     )
 }

@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 import { Container } from 'react-bootstrap';
-import { Wrapper } from '../wrapper/Wrapper';
+import { Wrapper } from '../shared/wrapper/Wrapper';
 import "./MentionsLagales.css";
 
 const MentionsLegales: FC<{}> = () => {

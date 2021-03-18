@@ -6,7 +6,7 @@
     min-height: inherit;
     padding-left: clamp(10px, 50%, 50px) !important;
     padding-right: clamp(10px, 50%, 50px) !important;
-    background: rgba(255, 255, 255, 0.9);
+    background: rgba(255, 255, 255, 0.97);
     padding-bottom: min(150px) !important;
 }
 
@@ -54,8 +54,16 @@
 }
 
 ::placeholder {
-    font-style: italic;
+    color: #999999;
     font-size: 0.9rem;
+}
+
+#user-detail-form .form-group {
+    margin-bottom: 2rem;
+}
+
+#user-detail-form #submit-btn {
+    margin-top: 1rem;
 }
 
 input.form-check-input {
@@ -89,6 +97,33 @@ label.label-check {
     box-shadow: 3px 5px 0px #113F59;
 }
 
+div.text {
+    color: var(--gray-dark);
+    font-weight: 300;
+    font-size: 20px;
+    text-align: justify;
+}
+
+@media screen and (max-width: 768px) {
+
+    #inscriptionLastName,
+    #inscriptionFirstName {
+        width: 344px;
+    }
+
+    #inscriptionCity {
+        width: 469px;
+    }
+
+    #inscriptionEmail {
+        width: 100%;
+    }
+
+    #inscriptionPassword {
+        width: 469px;
+    }
+}
+
 @media screen and (max-width: 991px) {
     .container-transparent {
         max-width: 100% !important;
@@ -107,6 +142,7 @@ label.label-check {
     }
 }
 
+
 @media screen and (min-width: 992px) {
     .container-transparent {
         max-width: 100% !important;
@@ -117,6 +153,24 @@ label.label-check {
     .container-transparent-large {
         max-width: 1300px !important;
     }
+
+    #inscriptionLastName,
+    #inscriptionFirstName {
+        width: 360px;
+    }
+
+    #inscriptionCity {
+        width: 458px;
+    }
+
+    #inscriptionEmail {
+        width: 100%;
+    }
+
+    #inscriptionPassword {
+        width: 458px;
+    }
+
 }
 
 @media screen and (min-width: 1120px) {

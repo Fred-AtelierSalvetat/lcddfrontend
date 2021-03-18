@@ -30,7 +30,7 @@ const Header: React.FC<{}> = () => {
                         </div>
                         <div id="navbar-right" className="navbar-nav">
                             <Nav.Link href="#/signUp" className="btn-link" style={{ marginRight: "2em" }}>{"S'inscrire"}</Nav.Link>
-                            <Button variant="outline-primary" id="connexion-btn">Se connecter</Button>
+                            <a href="#/signIn"><Button variant="outline-primary" id="connexion-btn">Se connecter</Button></a>
                         </div>
                     </Nav>
                 </Navbar.Collapse>

@@ -9,5 +9,6 @@ export const Wrapper = styled.div`
     align-items: center;
     justify-content: center;
     min-height: 130px;
-    background: #f3edd3;
+    background: var(--beige);
+    box-shadow: 0px 1px 3px rgba(17, 63, 89, 0.25);
 `;

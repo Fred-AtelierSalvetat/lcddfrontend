@@ -4,7 +4,12 @@
 
 .contact-form {
     max-width: 750px;
-    margin: auto;
+    margin: 64px auto;
+    margin-bottom: 112px !important;
+}
+
+.contact-form .form-group {
+    margin-bottom: 44px;
 }
 
 input {
@@ -50,4 +55,24 @@ label {
         justify-content: space-around;
     }
 
+}
+
+@media only screen and (min-width: 768px) {
+
+    #contactFormFirstName,
+    #contactFormLastName {
+        width: 357px;
+    }
+
+    #contactFormEmail {
+        width: 100%;
+    }
+
+    #contactFormSubject {
+        width: 555px;
+    }
+
+    #contactFormMessage {
+        width: 100%;
+    }
 }

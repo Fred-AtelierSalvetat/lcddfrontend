@@ -2,6 +2,7 @@ const NAME_PATTERN = /^[A-Za-zÀ-ÖØ-öø-ÿ]+(?:(\s|.|-|.\s)[A-Za-zÀ-ÖØ-ö�
 const EMAIL_PATTERN = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i;
 const PASSWORD_PATTERN = /^(?=.*[0-9])(?=.*[!#$%&'()*+,-./:;<=>?@[\]^_`{|}~"])(?=.*[A-Za-z]).{8,}$/;
 const PHONE_NUMBER_PATTERN = /^[0-9]*$/;
+
 export const Validator = {
     "firstName": {
         required: "Le prénom est requis",
@@ -64,6 +65,34 @@ export const Validator = {
         pattern: {
             value: PHONE_NUMBER_PATTERN,
             message: "Le numéro de téléphone doit contenir des nombres"
+        }
+    },
+    "contactSubject": {
+        required: {
+            value: true,
+            message: "Le sujet est requis"
+        },
+        minLength: {
+            value: 2,
+            message: "Le sujet doit contenir au moins 2 caractères"
+        },
+        maxLength: {
+            value: 100,
+            message: "Le sujet ne doit pas dépasser 100 caractères"
+        }
+    },
+    "contactMessage": {
+        required: {
+            value: true,
+            message: "Le message est requis"
+        },
+        minLength: {
+            value: 2,
+            message: "Le message doit contenir au moins 2 caractères"
+        },
+        maxLength: {
+            value: 300,
+            message: "Le message ne doit pas dépasser 300 caractères"
         }
     }
 

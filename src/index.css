@@ -14,6 +14,21 @@ code {
     monospace;
 }
 
+h1,
+.h1,
+h2,
+.h2,
+h3,
+.h3,
+h4,
+.h4,
+h5,
+.h5,
+h6,
+.h6 {
+  font-weight: 350 !important;
+}
+
 :root {
   --blue: #113F59 !important;
   --primary: #113F59 !important;
@@ -33,8 +48,9 @@ code {
   --gray: #828282 !important;
   --light: #F2F2F2 !important;
   --gray-light: #BDBDBD !important;
-  --beige: #F3EDD3 !important;
+  --beige: #FFF9E1 !important;
   --secondary: #BDBDBD !important;
+  --fc: #034EA2 !important;
 }
 
 [class*="-primary"] {

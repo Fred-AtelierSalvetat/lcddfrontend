@@ -2,12 +2,11 @@ import React, { useState } from 'react';
 import { Button, Col, Container, Form, Row } from 'react-bootstrap';
 import { useForm } from 'react-hook-form';
 import ReCAPTCHA from "react-google-recaptcha";
+import { Wrapper } from '../shared/wrapper/Wrapper';
+import { Validator } from '~/util/validator.js';
 
 import "./ContactForm.css";
-import { Wrapper } from '../wrapper/Wrapper';
 
-const NAME_PATTERN = /^[A-Za-zÀ-ÖØ-öø-ÿ]+(?:(\s|.|-|.\s)[A-Za-zÀ-ÖØ-öø-ÿ]+)*$/;
-const EMAIL_PATTERN = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i;
 const SITE_KEY = "6LdORCwaAAAAAOe_439Ng6N51SVAlhW2cgPrm5zZ";
 
 const FormFeedback = (props: any) => {
@@ -97,24 +96,7 @@ const ContactForm = (props: any) => {
                             type="text"
                             name="firstName"
                             placeholder="Entrer votre prénom"
-                            ref={register({
-                                required: {
-                                    value: true,
-                                    message: "Le prénom est requis"
-                                },
-                                pattern: {
-                                    value: NAME_PATTERN,
-                                    message: "Le prénom ne doit pas contenir des numéros et des caractères spéciaux"
-                                },
-                                minLength: {
-                                    value: 2,
-                                    message: "Le prénom doit contenir au moins 2 caractères"
-                                },
-                                maxLength: {
-                                    value: 30,
-                                    message: "Le prénom ne doit pas dépasser 30 caractères"
-                                }
-                            })}
+                            ref={register(Validator.firstName)}
                             isInvalid={errors.firstName}
                         />
                         <FormFeedback field={errors.firstName}></FormFeedback>
@@ -126,24 +108,7 @@ const ContactForm = (props: any) => {
                             type="text"
                             name="lastName"
                             placeholder="Entrer votre nom"
-                            ref={register({
-                                required: {
-                                    value: true,
-                                    message: "Le nom est requis"
-                                },
-                                pattern: {
-                                    value: NAME_PATTERN,
-                                    message: "Le nom ne doit pas contenir des numéros et des caractères spéciaux"
-                                },
-                                minLength: {
-                                    value: 2,
-                                    message: "Le nom doit contenir au moins 2 caractères"
-                                },
-                                maxLength: {
-                                    value: 30,
-                                    message: "Le nom ne doit pas dépasser 30 caractères"
-                                }
-                            })}
+                            ref={register(Validator.lastName)}
                             isInvalid={errors.lastName}
                         />
                         <FormFeedback field={errors.lastName}></FormFeedback>
@@ -155,41 +120,19 @@ const ContactForm = (props: any) => {
                             type="email"
                             name="email"
                             placeholder="Entrer votre adresse e-mail"
-                            ref={register({
-                                required: {
-                                    value: true,
-                                    message: "L'adresse e-mail est requise"
-                                },
-                                pattern: {
-                                    value: EMAIL_PATTERN,
-                                    message: "Entrer une addresse e-mail valide",
-                                }
-                            })}
+                            ref={register(Validator.email)}
                             isInvalid={errors.email}
                         />
                         <FormFeedback field={errors.email}></FormFeedback>
                     </Form.Group>
 
-                    <Form.Group controlId="contactFormSujet">
+                    <Form.Group controlId="contactFormSubject">
                         <Form.Label>Sujet</Form.Label>
                         <Form.Control
                             type="text"
                             name="subject"
                             placeholder="Entrer un sujet"
-                            ref={register({
-                                required: {
-                                    value: true,
-                                    message: "Le sujet est requis"
-                                },
-                                minLength: {
-                                    value: 2,
-                                    message: "Le sujet doit contenir au moins 2 caractères"
-                                },
-                                maxLength: {
-                                    value: 100,
-                                    message: "Le sujet ne doit pas dépasser 100 caractères"
-                                }
-                            })}
+                            ref={register(Validator.contactSubject)}
                             isInvalid={errors.subject}
                         />
                         <FormFeedback field={errors.subject}></FormFeedback>
@@ -200,22 +143,9 @@ const ContactForm = (props: any) => {
                         <Form.Control
                             as="textarea"
                             name="message"
-                            rows={3}
+                            rows={5}
                             placeholder="Entrer votre message"
-                            ref={register({
-                                required: {
-                                    value: true,
-                                    message: "Le message est requis"
-                                },
-                                minLength: {
-                                    value: 2,
-                                    message: "Le message doit contenir au moins 2 caractères"
-                                },
-                                maxLength: {
-                                    value: 300,
-                                    message: "Le message ne doit pas dépasser 300 caractères"
-                                }
-                            })}
+                            ref={register(Validator.contactMessage)}
                             isInvalid={errors.message}
                         />
                         <FormFeedback field={errors.message}></FormFeedback>

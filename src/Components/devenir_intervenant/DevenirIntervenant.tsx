@@ -4,7 +4,7 @@ import Icon1 from '~/assets/home/2.jpg';
 import Concept from '~/assets/home/question.jpg';
 import { Button, Form } from 'react-bootstrap';
 import { useForm } from 'react-hook-form';
-import { Validator } from '../sign_up/validator';
+import { Validator } from '../../util/validator';
 
 
 const jumbotron = {

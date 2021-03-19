@@ -8,6 +8,7 @@ import FormSteps from './form-steps';
 import classNames from 'classnames';
 import "./SignUp.css";
 import { UserReducer, DefaultUser } from './user-reducer';
+import styled from 'styled-components';
 
 const jumbotron = {
     backgroundImage: `url(${Concept})`,
@@ -18,6 +19,11 @@ const jumbotron = {
     marginBottom: 0,
     padding: '0px !important',
 };
+
+const StepText = styled.p`
+    text-align: center;
+    color: var(--primary);
+`
 
 const getClassesForContainer = (step: number) => {
     return classNames({
@@ -61,7 +67,12 @@ const SignUp = (props) => {
                 <div className="container-header pt-md-5">
                     <Row style={{ justifyContent: "space-between", alignItems: "baseline" }}>
                         <h1>{steps[`${step}`].title}</h1>
-                        <p style={{ textAlign: "center" }}>Etape {step + 1}/3</p>
+                        <StepText>Étape {step + 1}/3</StepText>
+                    </Row>
+
+                    <Row>
+                        <div className="text">Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                            Lorem Ipsum has been the industry's standard dummy text ever.</div>
                     </Row>
 
                     <Row style={{ margin: "40px auto", justifyContent: "space-between" }}>
@@ -74,7 +85,7 @@ const SignUp = (props) => {
                         {(step + 1 === 3) ?
                             <div className="link" tabIndex={1}>
                                 <SrollLink
-                                    to="submit-button"
+                                    to="submit-btn-final"
                                     spy={true}
                                     smooth={true}
                                     duration={500}
@@ -91,7 +102,7 @@ const SignUp = (props) => {
 
                 </div>
             </Container>
-        </Jumbotron>
+        </Jumbotron >
     );
 };
 

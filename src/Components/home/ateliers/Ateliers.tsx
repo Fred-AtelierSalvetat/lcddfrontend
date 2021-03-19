@@ -1,99 +1,56 @@
 import React from 'react';
-import { Jumbotron, Container, Row, Col } from 'react-bootstrap';
-import Concept from './../../../assets/home/atelier.jpg';
-import Icon5 from './../../../assets/home/5.jpg';
-import Icon6 from './../../../assets/home/6.jpg';
-import Icon7 from './../../../assets/home/7.jpg';
-import Icon8 from './../../../assets/home/8.jpg';
-
-
-
-const jumbotron = {
-    backgroundImage: `url(${Concept})`,
-    backgroundRepeat: 'no-repeat',
-    backgroundSize: 'cover',
-    backgroundPosition: 'top',
-    marginBottom: 0,
-};
-const backgroundTransparency = {
-    backgroundColor: 'rgba(17,63,89,0.9)',
-}
-
-const title = {
-    textAlign: 'left' as 'left',
-    marginLeft: 30,
-    marginTop: 30,
-    fontSize: '4vw',
-    color: 'white',
-};
-
-const subtitle = {
-    textAlign: 'left' as 'left',
-    marginBottom: 30,
-    marginLeft: 40,
-    fontSize: 30,
-    color: 'white',
-
-};
-const link = {
-    textAlign: 'right' as 'right',
-    fontSize: 20
-};
-
-const icon = {
-    Width: 90,
-    height: 80,
-    margin: 10
-}
-
-const enumeration = {
-    color: '#00BFFF	',
-    fontSize: 50
-}
-const text = {
-    color: 'white',
-    fontSize: 19
-}
+import { Container, Row } from 'react-bootstrap';
+import Icon1 from '~/assets/home/atelier/1.svg';
+import Icon2 from '~/assets/home/atelier/2.svg';
+import Icon3 from '~/assets/home/atelier/3.svg';
+import Icon4 from '~/assets/home/atelier/4.svg';
+import "./Ateliers.css";
 
 
 // eslint-disable-next-line @typescript-eslint/ban-types
 const AteliersComponent: React.FC<{}> = () => {
     return (
-        <Jumbotron fluid style={jumbotron} className="d-flex flex-column justify-content-center">
-            <Container fluid>
-                <Row>
-                    <Col xs="6" style={backgroundTransparency}>
-                        <Row>
-                            <Col xs="8">
-                                <p style={title}>Les Ateliers</p>
-                            </Col>
-                            <Col style={{ margin: '50px' }}>
-                                <a href="/" style={link}>voir plus</a>
-                            </Col>
+        <div className="container-atelier">
+            <div className="row">
+                <div className="col-6 background-transparency-atelier" >
+                    <div style={{ marginBottom: '50px' }}>
+                        <Row className="flex">
+                            <p className="title-atelier">Les Ateliers</p>
+                            <a href="/" className="voir-plus">Voir plus</a>
                         </Row>
-                        <Row><Col><p style={subtitle}>en direct</p></Col></Row>
-                        <Row style={{ paddingBottom: '30px' }}>
-                            <Col xs="1">
-                            </Col>
-                            <Col xs="11">
-                                <div>  <img style={icon} src={Icon5} alt="icon5" />
-                                    <a style={enumeration}> 1. </a>  <a style={text}> Vous avez une question de droit</a>  </div>
-                                <div> <a style={enumeration}> 2. </a> <a style={text}>Nous vous proposons des réponses claires en vidéo</a>
-                                    <img style={icon} src={Icon6} alt="icon6" />
-                                </div>
-                                <div> <img style={icon} src={Icon7} alt="icon7" /> <a style={enumeration}> 3. </a> <a style={text}>Vous visionnez la réponse qui vpis convient</a> </div>
-                                <div>  <a style={enumeration}> 4. </a> <a style={text}>Et vous pouvez aussi nous suggérer une nouvelle question</a>
-                                    <img style={icon} src={Icon8} alt="icon8" />
-                                </div>
+                        <p className="subtitle-atelier">En direct</p>
+                    </div>
+                    <Container fluid style={{ marginLeft: '150px' }} >
+                        <Row className="mb-5">
+                            <img className="icon-questions mr-5" src={Icon1} alt="icon1" />
+                            <p className="enumeration-atelier mr-5">1.</p>
+                            <p className="text-atelier mt-2">Chaque mois, la Chaine du Droit proposera une conférence web diffusée en direct et accessible à tous</p>
+                        </Row>
+                        <Row className="mb-5">
+                            <p className="enumeration-atelier mr-5">2.</p>
+                            <p className="text-atelier mr-5 mt-2">Un thème ou un domaine juridique sera mis à l'honneur avec un intervenant qui répond aux interrogations</p>
+                            <img className="icon-questions" src={Icon2} alt="icon2" />
 
-                            </Col>
                         </Row>
-                    </Col>
-                    <Col>
-                    </Col>
-                </Row>
-            </Container>
-        </Jumbotron>
+                        <Row className="mb-5">
+                            <img className="icon-questions mr-5" src={Icon3} alt="icon3" />
+                            <p className="enumeration-atelier mr-5">3.</p>
+                            <p className="text-atelier mt-2">Les internautes pourront ainsi interragir avec le plateau en posant des questions écrites</p>
+
+                        </Row>
+                        <Row>
+                            <p className="enumeration-atelier mr-5" >4.</p>
+                            <p className="text-atelier mr-5 mt-2">Une fois le direct terminé, l'atelier sera prédécoupé, chapitré puis mis en ligne</p>
+                            <img className="icon-questions" src={Icon4} alt="icon4" />
+
+                        </Row>
+                    </Container>
+                </div>
+                <div className="col-6"></div>
+
+            </div>
+
+        </div>
     );
 };
 

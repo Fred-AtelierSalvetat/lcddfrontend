@@ -12,6 +12,7 @@ import SignUp from './sign_up/SignUp';
 import SignIn from './sign_in/SignIn';
 import Questions from './questions/Questions.component';
 import DevenirIntervenant from './devenir_intervenant/DevenirIntervenant';
+import DevenirIntervenantEnvoyee from './devenir_intervenant/DevenirIntervenantEnvoyee';
 
 
 // eslint-disable-next-line @typescript-eslint/ban-types
@@ -29,7 +30,9 @@ const App: React.FC<{}> = () => {
                 <Route path="/questions" component={Questions} />
                 <Route path="/signUp" component={SignUp} />
                 <Route path="/signIn" component={SignIn} />
-                <Route path="/becomeSpeaker" component={DevenirIntervenant} />
+                <Route path="/devenirintervenant" component={DevenirIntervenant} />
+                <Route path="/devenirintervenantenvoyee" component={DevenirIntervenantEnvoyee} />
+
             </HashRouter>
             <Footer />
         </div>

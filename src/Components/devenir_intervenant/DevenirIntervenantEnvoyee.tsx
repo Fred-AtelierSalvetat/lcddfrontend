@@ -1,10 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { Jumbotron, Container, Row, Col } from 'react-bootstrap';
 import Icon1 from '~/assets/home/2.jpg';
+import Icon5 from '~/assets/home/a.png';
 import Concept from '~/assets/home/question.jpg';
-import { Button, Form } from 'react-bootstrap';
-import { useForm } from 'react-hook-form';
-import { Validator } from '../../util/validator';
 
 
 const jumbotron = {
@@ -14,12 +12,9 @@ const jumbotron = {
     backgroundPosition: 'top',
     minHeight: '50vw',
     marginBottom: 0,
-
+    
 
 };
-
-
-
 
 const backgroundTransparency = {
     backgroundColor: 'rgba(255,255,255,0.9)',
@@ -30,7 +25,7 @@ const title = {
     marginLeft: 1,
     marginTop: 10,
     fontSize: '2VW',
-
+    
 };
 
 const subtitle = {
@@ -54,33 +49,8 @@ const enumeration = {
 }
 
 
-const FormFeedback = (props: any) => {
-    return (
-        <Form.Control.Feedback type="invalid">
-            {props.field && props.field.message}
-        </Form.Control.Feedback>
-    )
-}
 
-
-
-
-const DevenirintervenantComponent = () => {
-    const { register, handleSubmit, setValue, getValues, errors } = useForm();
-    const [email, setEmail] = useState(null);
-
-    const onHandleChange = ({ target }) => {
-        const { name, value } = target;
-
-    }
-
-    const onSubmit = () => {
-
-
-
-    }
-
-
+const DevenirintervenantenvoyeeComponent = () => {
 
     return (
         <Jumbotron fluid style={jumbotron} className="d-flex flex-column justify-content-center">
@@ -99,7 +69,6 @@ const DevenirintervenantComponent = () => {
                                 </p>
                             </div>
                             <br />
-
                             <div className='mt-md-5 mt-3'>
                                 <Row>
                                     <Col xs='12' md='10'>
@@ -135,7 +104,6 @@ const DevenirintervenantComponent = () => {
                                 </Row>
                             </div>
                             <br />
-
                             <div className='mt-md-5 mt-3'>
                                 <Row>
                                     <Col xs='12' md='10'>
@@ -154,7 +122,6 @@ const DevenirintervenantComponent = () => {
                                 </Row>
                             </div>
                             <br />
-
                             <div className='my-md-5 pb-md-5 my-3'>
                                 <Row>
                                     <Col xs='2' className='pr-0 d-none d-md-block' >
@@ -179,48 +146,23 @@ const DevenirintervenantComponent = () => {
                         <div className="intervenir mt-5 pb-5 mx-auto pt-md-5">
                             <div className="bg-white mb-5">
                                 <div className='py-4 px-3 py-md-5 px-md-4'>
-                                    <h2 className='text-left font-weight-normal'>
-                                        Je souhaiterai intervenir
-                                        </h2>
-                                    <h5 className='text-left font-weight-normal'>
-                                        Nous vous contacterons</h5>
-                                    <Form noValidate onSubmit={handleSubmit(onSubmit)}>
-                                        <Form.Group controlId="inscriptionEmail" >
-                                            <Form.Label >Adresse email professionelle </Form.Label>
-                                            <Form.Control
-                                                type="email"
-                                                name="email"
-                                                placeholder="Entrer votre adresse e-mail"
-                                                ref={register(Validator.email)}
-                                                isInvalid={errors.email}
-                                                tabIndex={1}
-                                            />
-                                            <FormFeedback field={errors.email}></FormFeedback>
-                                        </Form.Group>
-                                        <Form.Group controlId="Numero de télephone" >
-                                            <Form.Label >Numéro de téléphone</Form.Label>
-                                            <Form.Control
-                                                type="text"
-                                                name="phone_number"
-                                                placeholder="Entrer votre numéro de téléphone"
+                                <Row>
+                                    <Col></Col>
+                                    <Col> <img className='w-100' src={Icon5} alt="a" /></Col>
+                                    <Col></Col>
+                                        
+                                    
+                                </Row>
+                                <br /> <br />
 
-                                                ref={register(Validator.phone_number)}
-                                                isInvalid={errors.phone_number}
-                                                tabIndex={1}
-                                            />
-                                            <FormFeedback field={errors.phone_number}></FormFeedback>
-                                        </Form.Group>
-                                        <Form.Group>
-                                            <div className="text-right">
-                                                <Button
-                                                    className="btn btn-primary"
-                                                    type="submit"
-                                                    tabIndex={4}>
-                                                    Envoyer
-                                                </Button>
-                                            </div>
-                                        </Form.Group>
-                                    </Form>
+                                <Row>
+                                     <div className="row h-100 justify-content-center align-items-center">
+                                        <h2>Votre requête a été envoyée avec succès</h2>
+                                        <br /> <br /> <br /> <br /> 
+                                        
+                                        <p className=''>Nous vous contacterons bientôt</p>
+                                    </div>
+                                </Row>
                                 </div>
                             </div>
                         </div>
@@ -235,4 +177,4 @@ const DevenirintervenantComponent = () => {
 
 }
 
-export default DevenirintervenantComponent;
+export default DevenirintervenantenvoyeeComponent;

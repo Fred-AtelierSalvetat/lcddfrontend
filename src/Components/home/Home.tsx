@@ -1,6 +1,6 @@
 import React from 'react';
 import ConceptComponent from './concept/Concept';
-import QuestionsComponent from './questions/Questions';
+import VosQuestionsComponent from './vos_questions/VosQuestions';
 import AteliersComponent from './ateliers/Ateliers';
 import IntervenantsComponent from './intervenants/Intervenants';
 import DomainesExpertiseComponent from './domaines_expertise/DomainesExpertise';
@@ -14,7 +14,7 @@ const Home: React.FC<{}> = () => {
     return (
         <div>
             <ConceptComponent />
-            <QuestionsComponent />
+            <VosQuestionsComponent />
             <AteliersComponent />
             <QuestionsAttenteComponent />
             <ProchainAtelierComponent />

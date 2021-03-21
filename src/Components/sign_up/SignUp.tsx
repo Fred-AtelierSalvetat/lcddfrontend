@@ -3,7 +3,7 @@ import { withRouter } from 'react-router-dom';
 import { Link as SrollLink } from 'react-scroll';
 import { Jumbotron, Container, Row, Col } from 'react-bootstrap';
 import Concept from '~/assets/home/question.jpg';
-import ConfirmDialog from '../dialogs/ConfirmDialog';
+import ConfirmDialog from '../shared/modals/ConfirmDialog';
 import FormSteps from './form-steps';
 import classNames from 'classnames';
 import "./SignUp.css";

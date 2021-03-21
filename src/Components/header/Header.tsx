@@ -1,12 +1,14 @@
 import React from 'react';
-import { Button, Nav, Navbar } from 'react-bootstrap';
+import { Nav, Navbar } from 'react-bootstrap';
 import Logo from '~/assets/header/logo.png';
+import SignInContainer from '../sign_in/SignInContainer';
 import './Header.css';
 
-// eslint-disable-next-line @typescript-eslint/ban-types
 const Header: React.FC<{}> = () => {
+
     return (
         <div id="lcdd-header">
+
             <Navbar bg="lcdd-primary" expand="lg" variant="dark">
                 <Navbar.Brand href="/">
                     <img alt="" src={Logo} width="154" className="d-inline-block align-top" />
@@ -29,12 +31,14 @@ const Header: React.FC<{}> = () => {
                             <Nav.Link className="nav-item" href="#/contact">Contactez nous</Nav.Link>
                         </div>
                         <div id="navbar-right" className="navbar-nav">
-                            <Nav.Link href="#/signUp" className="btn-link" style={{ marginRight: "2em" }}>{"S'inscrire"}</Nav.Link>
-                            <a href="#/signIn"><Button variant="outline-primary" id="connexion-btn">Se connecter</Button></a>
+                            <Nav.Link href="#/sign-up" className="btn-link" style={{ marginRight: "2em" }}>{"S'inscrire"}</Nav.Link>
+                            <SignInContainer />
                         </div>
                     </Nav>
                 </Navbar.Collapse>
             </Navbar>
+
+
         </div>
     );
 };

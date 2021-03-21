@@ -78,14 +78,13 @@ label.label-check {
 }
 
 .link {
-    color: #20D6C7;
     text-decoration: none;
     background-color: transparent;
 }
 
 .link:hover {
     cursor: pointer;
-    color: #113F59;
+    color: #113F59 !important;
 }
 
 .img-button {

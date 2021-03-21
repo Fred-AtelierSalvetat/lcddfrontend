@@ -1,7 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { Modal, Button } from 'react-bootstrap';
-// import { Confirm } from 'semantic-ui-react';
-// import 'semantic-ui-css/semantic.min.css';
 
 const ConfirmDialog = ({ show, title, body, cancelButton, okButton, handleClose, handleConfirm }) => {
 

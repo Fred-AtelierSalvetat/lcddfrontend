@@ -1,33 +1,8 @@
 import React from 'react';
-import { Container, Row, Col, Form } from 'react-bootstrap';
 import thematiques from './../../sign_up/thematiques';
 import InterestCard from './../../sign_up/InterestCard';
+import "./DomainesExpertise.css";
 
-
-
-
-const textContainer = {
-    color: 'white',
-    fontFamily: 'Segoe UI',
-    textShadow: '1px 1px 2px black',
-};
-
-const title = {
-    fontFamily: 'Segoe UI',
-    fontStyle: 'normal',
-    fontWeight: 300,
-    fontSize: '42px',
-    align: 'center',
-};
-
-const subtitle = {
-    fontFamily: 'Segoe UI',
-    fontStyle: 'normal',
-    fontWeight: 200,
-    fontSize: '20px',
-    align: 'center',
-    marginBottom: '50px'
-};
 
 
 // eslint-disable-next-line @typescript-eslint/ban-types
@@ -36,15 +11,15 @@ const DomainesExpertiseComponent: React.FC<{}> = () => {
         <div>
             <div >
                 <div>
-                    <h4 style={title}>Nos domaines d'expertise</h4>
+                    <h4 className="title-thematiques">Nos domaines d'expertise</h4>
                 </div>
                 <div>
-                    <h2 style={subtitle}>
+                    <h2 className="subtitle-thematiques">
                         Chercher directement la réponse à vore question parmi les 27 thèmes traités par nos intervenants{' '}
                     </h2>
                 </div>
             </div>
-            <div className="card-deck" style={{ justifyContent: "center" }}>
+            <div className="cards-container row row-cols-2 row-cols-sm-3 row-cols-md-4 row-cols-lg-4 row-cols-xl-6" style={{ justifyContent: "center" }}>
                 {thematiques.map(thematique =>
                     <InterestCard
                         key={thematique.id}

@@ -10,20 +10,20 @@
     background-position: top;
     }
 
-.p-atelier-title {
-    color: #FFFFFF;
-    font-family: 'Segoe UI';
+.p-atelier-title {   
+    font-family: Segoe UI;
     font-style: normal;
     font-weight: 350;
     font-size: 30px;
-    line-height: 33px;
+    line-height: 33px;    
+    color: #FFFFFF;
+    margin-top: 20px;
 }
 
 
 .styled-card  {
     width: 1140px;
     height: 87px;
-    margin-left: 170px;
     margin-bottom: 50px;
     border: 2px solid #979797;
     background-color: #FFFFFF;

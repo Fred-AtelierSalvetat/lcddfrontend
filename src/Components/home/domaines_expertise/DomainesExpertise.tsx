@@ -15,7 +15,7 @@ const DomainesExpertiseComponent: React.FC<{}> = () => {
                 </div>
                 <div>
                     <h2 className="subtitle-thematiques">
-                        Chercher directement la réponse à vore question parmi les 27 thèmes traités par nos intervenants{' '}
+                        Chercher directement la réponse à votre question parmi les 27 thèmes traités par nos intervenants{' '}
                     </h2>
                 </div>
             </div>

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Row, Col, Card, Container } from 'react-bootstrap';
+import { Row, Col, Container } from 'react-bootstrap';
 import Calendar from './../../../assets/icons/calendar.png';
 import "./ProchainAtelier.css";
 
@@ -7,8 +7,8 @@ import "./ProchainAtelier.css";
 // eslint-disable-next-line @typescript-eslint/ban-types
 const ProchainAtelierComponent: React.FC<{}> = () => {
     return (
-        <div id="prochain-atelier-container" className="justify-content-center d-flex flex-column">
-            <Container className="container-bb">
+        <div id="prochain-atelier-container" className="d-flex justify-content-center flex-wrap">
+            <Container>
                 <p className="p-atelier-title">Prochain Atelier</p>
             </Container>
 

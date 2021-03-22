@@ -1,0 +1,42 @@
+.speaker-name {
+    width: 171px;
+    height: 30px;
+    left: 989px;
+    top: 415px;
+    font-family: Segoe UI;
+    font-style: normal;
+    font-weight: 350;
+    font-size: 20px;
+    line-height: 30px;
+    text-align: center;
+    color: #333333;
+    text-align: center;
+}
+
+.speaker-rool {
+    width: 45px;
+    height: 24px;
+    left: 466px; 
+    top: 453px;
+    font-family: Segoe UI;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 24px;
+    text-align: center;
+    color: #4F4F4F;
+}
+
+.speaker-description {
+    width: 217px;
+    height: 24px;
+    left: 678px;
+    top: 454px;
+    font-family: Segoe UI;
+    font-style: italic;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 24px;
+    text-align: center;
+    color: #4F4F4F;
+}

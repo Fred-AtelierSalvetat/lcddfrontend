@@ -1,0 +1,67 @@
+#prochain-atelier-container  {
+    height: 244px;
+    background: linear-gradient(185.5deg, rgba(17,63,89,0.9) 8.87%, 
+    rgba(17,63,89,0.9) 31.46%, 
+    rgba(17,63,89,0.9) 69.43%, 
+    rgba(17,63,89,0.9) 95.61%), 
+    url(./../../../assets/home/pro-atelier.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: top;
+    }
+
+.p-atelier-title {   
+    font-family: Segoe UI;
+    font-style: normal;
+    font-weight: 350;
+    font-size: 30px;
+    line-height: 33px;    
+    color: #FFFFFF;
+    margin-top: 20px;
+}
+
+
+.styled-card  {
+    width: 1140px;
+    height: 87px;
+    margin-bottom: 50px;
+    border: 2px solid #979797;
+    background-color: #FFFFFF;
+}
+
+.atelier-title  {
+    font-size: 21px;
+    font-weight: 350;
+    font-style: normal;
+    width: 111px;
+    height: 23px;
+    color: #113F59;
+    font-family: 'Segoe UI';
+}
+
+.date {
+    font-size: 16px;
+    font-weight: 600;
+    font-style: normal;
+    width: 192px;
+    height: 24px;
+    color: #113F59;
+}
+
+.link-to-reserve {
+    width: 82px;
+    height: 24px;
+    left: 1190px;
+    top: 142px; 
+    font-family: Segoe UI;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 21px;
+    line-height: 24px;
+    color: #113F59;
+}
+
+
+.info {
+   justify-content: space-between;
+}

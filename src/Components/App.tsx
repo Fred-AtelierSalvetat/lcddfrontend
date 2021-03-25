@@ -9,7 +9,6 @@ import Profile from './speakers/Profile';
 import ContactForm from './contact/ContactForm';
 import MentionsLegales from './mentions_legales/MentionsLegales';
 import SignUp from './sign_up/SignUp';
-import SignIn from './sign_in/SignIn';
 import Questions from './questions/Questions.component';
 import DevenirIntervenant from './devenir_intervenant/DevenirIntervenant';
 import DevenirIntervenantEnvoyee from './devenir_intervenant/DevenirIntervenantEnvoyee';
@@ -28,8 +27,7 @@ const App: React.FC<{}> = () => {
                 <Route path="/contact" component={ContactForm} />
                 <Route path="/mentions-legales" component={MentionsLegales} />
                 <Route path="/questions" component={Questions} />
-                <Route path="/signUp" component={SignUp} />
-                <Route path="/signIn" component={SignIn} />
+                <Route path="/sign-up" component={SignUp} />
                 <Route path="/devenirintervenant" component={DevenirIntervenant} />
                 <Route path="/devenirintervenantenvoyee" component={DevenirIntervenantEnvoyee} />
 

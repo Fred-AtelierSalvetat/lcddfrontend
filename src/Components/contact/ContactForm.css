@@ -21,6 +21,32 @@ input {
     margin-bottom: 10px;
 }
 
+.alert-danger {
+    background-color: #f8d7da !important;
+    border-color: #f5c6cb !important;
+    text-align: left;
+    opacity: 1;
+    transition: all 1000ms linear;
+}
+
+.alert-success {
+    background-color: #d4edda !important;
+    border-color: #c3e6cb !important;
+    text-align: left;
+}
+
+.alert-shown {
+    visibility: visible;
+    opacity: 1;
+    transition: opacity 250ms linear;
+}
+
+.alert-hidden {
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s 250ms, opacity 250ms linear;
+}
+
 label {
     line-height: 2;
     text-align: left;

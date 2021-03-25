@@ -1,6 +1,7 @@
 import React from 'react';
 import { Button, Nav, Navbar } from 'react-bootstrap';
 import Logo from '~/assets/header/logo.png';
+import { ReactComponent as DropdownIcon } from '~/assets/icons/dropdown-chevron.svg';
 import './Header.css';
 
 // eslint-disable-next-line @typescript-eslint/ban-types
@@ -16,7 +17,10 @@ const Header: React.FC<{}> = () => {
                     <Nav>
                         <div id="navbar-main" className="navbar-nav">
                             <li className="nav-item dropdown">
-                                <a className="nav-link dropdown-toggle" href="#/questions/" data-toggle="dropdown">Vos questions</a>
+                                <a className="nav-link" href="#/questions/" data-toggle="dropdown">
+                                    Vos questions
+                                    <DropdownIcon style={{ marginLeft: "8px" }}></DropdownIcon>
+                                </a>
                                 <ul className="dropdown-menu">
                                     <li><a className="dropdown-item" href="#/questions/1">Questions en vidéo</a></li>
                                     <li><a className="dropdown-item" href="#/questions/2">Questions en attente</a></li>
@@ -29,7 +33,7 @@ const Header: React.FC<{}> = () => {
                             <Nav.Link className="nav-item" href="#/contact">Contactez nous</Nav.Link>
                         </div>
                         <div id="navbar-right" className="navbar-nav">
-                            <Nav.Link href="#/signUp" className="btn-link" style={{ marginRight: "2em" }}>{"S'inscrire"}</Nav.Link>
+                            <Nav.Link href="#/sign-up" className="btn-link" style={{ marginRight: "1.2em" }}>{"S'inscrire"}</Nav.Link>
                             <a href="#/signIn"><Button variant="outline-primary" id="connexion-btn">Se connecter</Button></a>
                         </div>
                     </Nav>

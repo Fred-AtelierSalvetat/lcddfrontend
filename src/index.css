@@ -198,4 +198,17 @@ h6,
 /* link */
 .link {
   color: var(--link) !important;
+  text-decoration: none;
+  background-color: transparent;
+}
+
+.link:hover {
+  cursor: pointer;
+  color: var(--primary) !important;
+}
+
+/* placeholder */
+::placeholder {
+  color: #999999 i !important;
+  font-size: 0.9rem;
 }

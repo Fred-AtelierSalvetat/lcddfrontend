@@ -7,7 +7,6 @@ import { ReactComponent as CitoyenRect } from '~/assets/images/CitoyenR.svg';
 import { ReactComponent as ProDuDroitRect } from '~/assets/images/ProR.svg';
 import { ReactComponent as EtudiantRect } from '~/assets/images/EtudiantR.svg';
 import { FranceConnectButton, FranceConnectButtonEmail } from '../shared/buttons/FranceConnectButton';
-
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
 
@@ -53,7 +52,7 @@ const UserRole = ({ step, setStep, user, setUser }) => {
     }
 
     const handleSpaceKeyUp = (e, role: string) => {
-        if (e.keyCode == 32 || e.keyCode == 13) {
+        if (e.keyCode === 32 || e.keyCode === 13) {
             e.preventDefault();
             handleChange(role);
         }

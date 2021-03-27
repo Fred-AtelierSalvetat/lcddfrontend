@@ -9,19 +9,19 @@ const ProchainAtelierComponent: React.FC<{}> = () => {
     return (
         <div id="prochain-atelier-container" className="d-flex justify-content-center flex-wrap">
             <Container>
-                <p className="p-atelier-title">Prochain Atelier</p>
+                <h1 className=" mb-4 mt-3" style={{ color: '#FFFFFF', textAlign: 'left' }}>Prochain Atelier</h1>
             </Container>
 
             <div className="styled-card">
                 <Row className="info">
                     <Col className="ml-2 mt-2" xs="9">
-                        <p className="atelier-title">Atelier titre</p>
+                        <h3 style={{ color: '#113F59', textAlign: 'left' }}>Atelier titre</h3>
                         <p className="date">20 Mai 2020 : 15:30 - 18:30</p>
                     </Col>
                     <Col xs="2" >
                         <div className="mt-3 ml-1">
                             <a href="/"><img className="icon-reserve" src={Calendar} alt="calendar" /></a>
-                            <p><a className="link-to-reserve ml-5" href="/">Reserver</a></p>
+                            <div><a className="link-to-reserve ml-3" href="/">Reserver</a></div>
                         </div>
                     </Col>
                 </Row>

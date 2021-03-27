@@ -1,6 +1,6 @@
 import React from 'react';
-import { Container, Row } from 'react-bootstrap';
-import Icon1 from '~/assets/home/atelier/1.svg';
+import { Container, Row, Col } from 'react-bootstrap';
+import Icon1 from '~/assets/home/question/1.svg';
 import Icon2 from '~/assets/home/question/2.svg';
 import Icon3 from '~/assets/home/question/3.svg';
 import Icon4 from '~/assets/home/question/4.svg';
@@ -16,37 +16,36 @@ const VosQuestionsComponent: React.FC<{}> = () => {
             <div className="row">
                 <div className="col-6"></div>
                 <div className="col-6 background-transparency-question" >
-                    <div style={{ marginBottom: '50px' }}>
-                        <Row className="flex">
-                            <p className="title-questions">Vos questions</p>
-                            <a href="/" className="voir-plus">Voir plus</a>
+                    <div className="mb-5">
+                        <Row>
+                            <Col xs='6' className="display-4 mt-4" style={{ color: '#113F59' }}>Vos questions</Col>
+                            <Col xs='3' className="mt-5 ml-5"><a href="/" className="link">Voir plus</a></Col>
                         </Row>
 
-                        <p className="subtitle-questions">C'est simple</p>
+                        <h2 className="ml-4" style={{ textAlign: 'left', color: '#333333', opacity: '0.8' }}>C'est simple</h2>
                     </div>
-                    <Container fluid style={{ marginLeft: '150px' }} >
+                    <Container fluid style={{ marginLeft: '130px' }} >
                         <Row className="mb-4">
-                            <img className="icon-questions mr-5" src={Icon1} alt="icon1" />
-                            <p className="enumeration mr-5">1.</p>
-                            <p className="text mt-4">Vous avez une question de droit</p>
+                            <img className="icon-questions mr-5 mt-3" src={Icon1} alt="icon1" />
+                            <div className="display-1 mr-4 enum">1.</div>
+                            <h4 className="text-question mt-5">Vous avez une question de droit.</h4>
                         </Row>
                         <Row className="mb-4">
-                            <p className="enumeration mr-5">2.</p>
-                            <p className="text mr-5 mt-3">Nous vous proposons des réponses claires en vidéo</p>
-                            <img className="icon-questions" src={Icon2} alt="icon2" />
+                            <div className="display-1 mr-4 enum">2.</div>
+                            <h4 className="text-question mr-3 mt-3">Nous vous proposons des réponses claires en vidéo.</h4>
+                            <img className="icon-questions mt-1" src={Icon2} alt="icon2" />
 
                         </Row>
                         <Row className="mb-4">
-                            <img className="icon-questions mr-5" src={Icon3} alt="icon3" />
-                            <p className="enumeration mr-5">3.</p>
-                            <p className="text mt-3">Vous visionnez la réponse qui vous convient</p>
+                            <img className="icon-questions mr-5 mt-3" src={Icon3} alt="icon3" />
+                            <div className="display-1 mr-4 enum">3.</div>
+                            <h4 className="text-question mt-3">Vous visionnez la réponse qui vous correspond.</h4>
 
                         </Row>
                         <Row >
-                            <p className="enumeration mr-5" >4.</p>
-                            <p className="text mr-5 mt-3">Et vous pouvez aussi nous suggérer une nouvelle question</p>
-                            <img className="icon-questions" src={Icon4} alt="icon4" />
-
+                            <div className="display-1 mr-4 enum">4.</div>
+                            <h4 className="text-question mr-3 mt-3">Et vous pouvez aussi nous suggérer une nouvelle question.</h4>
+                            <img className="icon-questions mt-1" src={Icon4} alt="icon4" />
                         </Row>
                     </Container>
                 </div>

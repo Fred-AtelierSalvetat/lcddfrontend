@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Row } from 'react-bootstrap';
+import { Container, Row, Col } from 'react-bootstrap';
 import Icon1 from '~/assets/home/atelier/1.svg';
 import Icon2 from '~/assets/home/atelier/2.svg';
 import Icon3 from '~/assets/home/atelier/3.svg';
@@ -14,35 +14,34 @@ const AteliersComponent: React.FC<{}> = () => {
             <div className="row">
                 <div className="col-6 background-transparency-atelier" >
                     <div style={{ marginBottom: '50px' }}>
-                        <Row className="flex">
-                            <p className="title-atelier">Les Ateliers</p>
-                            <a href="/" className="voir-plus">Voir plus</a>
-                        </Row>
-                        <p className="subtitle-atelier">En direct</p>
-                    </div>
-                    <Container fluid style={{ marginLeft: '150px' }} >
-                        <Row className="mb-5">
-                            <img className="icon-questions mr-5" src={Icon1} alt="icon1" />
-                            <p className="enumeration-atelier mr-5">1.</p>
-                            <p className="text-atelier mt-2">Chaque mois, la Chaine du Droit proposera une conférence web diffusée en direct et accessible à tous</p>
-                        </Row>
-                        <Row className="mb-5">
-                            <p className="enumeration-atelier mr-5">2.</p>
-                            <p className="text-atelier mr-5 mt-2">Un thème ou un domaine juridique sera mis à l'honneur avec un intervenant qui répond aux interrogations</p>
-                            <img className="icon-questions" src={Icon2} alt="icon2" />
-
-                        </Row>
-                        <Row className="mb-5">
-                            <img className="icon-questions mr-5" src={Icon3} alt="icon3" />
-                            <p className="enumeration-atelier mr-5">3.</p>
-                            <p className="text-atelier mt-2">Les internautes pourront ainsi interragir avec le plateau en posant des questions écrites</p>
-
-                        </Row>
                         <Row>
-                            <p className="enumeration-atelier mr-5" >4.</p>
-                            <p className="text-atelier mr-5 mt-2">Une fois le direct terminé, l'atelier sera prédécoupé, chapitré puis mis en ligne</p>
-                            <img className="icon-questions" src={Icon4} alt="icon4" />
+                            <Col xs='6' className="display-4 mt-4" style={{ color: '#F2F2F2' }}>Les Ateliers</Col>
+                            <Col xs='3' className="mt-5 ml-5"><a href="/" className="link">Voir plus</a></Col>
+                        </Row>
+                        <h2 className="ml-5" style={{ textAlign: 'left', color: '#FFFFFF', opacity: '0.8' }}>En direct</h2>
+                    </div>
+                    <Container fluid style={{ marginLeft: '130px' }} >
+                        <Row className="mb-4">
+                            <img className="icon-questions mr-5 mt-3" src={Icon1} alt="icon1" />
+                            <div className="display-1 mr-3" style={{ color: '#F2F2F2' }}>1.</div>
+                            <h4 className="text-atelier">Chaque mois, la Chaine du Droit proposera une conférence web diffusée en direct et accessible à tous.</h4>
+                        </Row>
+                        <Row className="mb-4">
+                            <div className="display-1 mr-4" style={{ color: '#F2F2F2' }}>2.</div>
+                            <h4 className="text-atelier mr-5 mt-3">Un thème ou un domaine juridique sera mis à l'honneur avec un intervenant qui répond aux interrogations.</h4>
+                            <img className="icon-questions mt-3" src={Icon2} alt="icon2" />
 
+                        </Row>
+                        <Row className="mb-4">
+                            <img className="icon-questions mr-5 mt-3" src={Icon3} alt="icon3" />
+                            <div className="display-1 mr-5" style={{ color: '#F2F2F2' }}>3.</div>
+                            <h4 className="text-atelier mt-3">Les internautes pourront ainsi interragir avec le plateau en posant des questions écrites.</h4>
+
+                        </Row>
+                        <Row >
+                            <div className="display-1 mr-5" style={{ color: '#F2F2F2' }}>4.</div>
+                            <h4 className="text-atelier mr-4 mt-3">Une fois le direct terminé, l'atelier sera prédécoupé, chapitré puis mis en ligne.</h4>
+                            <img className="icon-questions mt-3" src={Icon4} alt="icon4" />
                         </Row>
                     </Container>
                 </div>

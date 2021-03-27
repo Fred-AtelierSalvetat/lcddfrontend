@@ -1,57 +1,10 @@
 
- .textContainer  {
-    color: white;
-    font-family: 'Segoe UI';
-    text-shadow: '1px 1px 2px black';
-}
 
-
-.title  {
-    left: 27.71%;
-    right: 27.64%;
-    top: 26.58%;
-    bottom: 60.3%;
-    font-family: 'Segoe UI';
-    font-style: 'normal';
-    font-weight : 300;
-    font-size: 71px;
-    line-height: 79px;
-    margin-bottom: 20px;
+.text-shadow {
+    color: #FFFFFF;
     text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
-.sub-title {
-    height: 26px;
-    left: 373px;
-    top: 255px;
-    font-family: 'Segoe UI';
-    font-style: normal;
-    font-size: 24px;
-    line-height: 26px;
-    margin-bottom: 50px;
-    text-align: center;
-    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-
-}
-
-.form {
-    width: 1140px;
-    height: 52px;
-    background-color: #FFFFFF;
-    border: 1px solid #CCCCCC;
-    border-radius: 4px;
-    box-sizing: border-box;
-}
-
-.form::placeholder {
-    width: 211px;
-    font-family: 'Segoe UI';
-    font-style: normal;
-    font-weight: normal;
-    font-size: 20px;
-    line-height: 24px;
-    color: #999999;
-}
 
 #overlay {
     height: 602px;
@@ -68,4 +21,35 @@
 }
 
 
+.search-form-concept {
+    position: relative;
+}
+
+.form-label {
+    position: absolute;
+    right: 10px;
+    bottom: 0;
+    top: 0;
+    margin: 0;
+    padding: 10px;
+}
+
+.search-icon {
+    height: 20px;
+    width: 20px;
+}
+
+Form .form-control {
+    height: 52px;
+}
+
+.form::placeholder {
+    width: 211px;
+    font-family: 'Segoe UI';
+    font-style: normal;
+    font-weight: normal;
+    font-size: 20px;
+    line-height: 24px;
+    color: #999999;
+}
 

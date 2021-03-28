@@ -28,20 +28,11 @@ const InterestCardStyled = styled(Card)`
     height: ${props => props.isMobile ? '165px' : '170px'};
     width: ${props => props.isMobile ? '165px' : '170px'};
     border: 1px solid #113F59;
-    border-radius: 4px;
     background-color: white;
     
     &:hover {
         cursor: pointer;
         box-shadow: 0 0 6px rgba(35, 173, 278, 1);
-        svg {
-            display: block;
-        }
-        g {
-            rect {
-                fill: #bce3cc;
-            }
-        }
     }
 `;
 

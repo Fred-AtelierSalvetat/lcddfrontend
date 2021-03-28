@@ -16,7 +16,7 @@ const ConceptComponent: React.FC<{}> = () => {
                 <Col md={{ span: 8, offset: 2 }}>
                     <Form className="search-form-concept">
                         <Form.Group controlId="formGroupSearch">
-                            <Form.Label className="form-label">
+                            <Form.Label className="form-label-concept">
                                 <img className="search-icon" src="./search.svg" alt="" />
                             </Form.Label>
                             <Form.Control className="form" type="search" placeholder="Entrer votre question ici" />

@@ -25,13 +25,13 @@
     position: relative;
 }
 
-.form-label {
+.form-label-concept  {
     position: absolute;
     right: 10px;
     bottom: 0;
     top: 0;
     margin: 0;
-    padding: 10px;
+    padding: 10px;  
 }
 
 .search-icon {
@@ -39,7 +39,7 @@
     width: 20px;
 }
 
-Form .form-control {
+.search-form-concept .form-control {
     height: 52px;
 }
 

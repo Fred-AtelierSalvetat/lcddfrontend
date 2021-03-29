@@ -32,9 +32,9 @@ export const Speaker: React.FC<SpeakerProps> = ({ id, name, rool, description })
                     onClick={Redirection}
                 />
                 <Container>
-                    <p className="speaker-name" style={{ textAlign: 'center' }}>{name}</p>
-                    <p className="speaker-rool" style={{ textAlign: 'center' }}>{rool}</p>
-                    <p className="speaker-description" style={{ textAlign: 'center' }}>{description}</p>
+                    <h3 style={{ textAlign: 'center', color: '#333333' }}>{name}</h3>
+                    <p style={{ textAlign: 'center', color: '#4F4F4F' }}>{rool}</p>
+                    <em style={{ textAlign: 'center', color: '#4F4F4F' }}>{description}</em>
                 </Container>
             </div>
         </Card>

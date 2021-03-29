@@ -10,17 +10,6 @@
     background-position: top;
     }
 
-.p-atelier-title {   
-    font-family: Segoe UI;
-    font-style: normal;
-    font-weight: 350;
-    font-size: 30px;
-    line-height: 33px;    
-    color: #FFFFFF;
-    margin-top: 20px;
-}
-
-
 .styled-card  {
     width: 1140px;
     height: 87px;
@@ -29,22 +18,13 @@
     background-color: #FFFFFF;
 }
 
-.atelier-title  {
-    font-size: 21px;
-    font-weight: 350;
-    font-style: normal;
-    width: 111px;
-    height: 23px;
-    color: #113F59;
-    font-family: 'Segoe UI';
-}
-
 .date {
-    font-size: 16px;
-    font-weight: 600;
-    font-style: normal;
     width: 192px;
     height: 24px;
+    font-size: 16px;
+    font-weight: 600;
+    font-style: normal;  
+    font-family: 'Segoe UI';
     color: #113F59;
 }
 

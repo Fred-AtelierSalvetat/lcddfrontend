@@ -12,7 +12,7 @@ import SignUp from './sign_up/SignUp';
 import Questions from './questions/Questions.component';
 import DevenirIntervenant from './devenir_intervenant/DevenirIntervenant';
 import DevenirIntervenantEnvoyee from './devenir_intervenant/DevenirIntervenantEnvoyee';
-
+import SignInResetPassword from './sign_in/SignInResetPassword';
 
 // eslint-disable-next-line @typescript-eslint/ban-types
 const App: React.FC<{}> = () => {
@@ -28,6 +28,7 @@ const App: React.FC<{}> = () => {
                 <Route path="/mentions-legales" component={MentionsLegales} />
                 <Route path="/questions" component={Questions} />
                 <Route path="/sign-up" component={SignUp} />
+                <Route path="/sign-in/reset-password" component={SignInResetPassword} />
                 <Route path="/devenirintervenant" component={DevenirIntervenant} />
                 <Route path="/devenirintervenantenvoyee" component={DevenirIntervenantEnvoyee} />
 

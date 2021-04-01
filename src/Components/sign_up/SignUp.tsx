@@ -2,7 +2,7 @@ import React, { useReducer, useState } from 'react';
 import { Container, Row } from 'react-bootstrap';
 import { UserReducer, DefaultUser } from './user-reducer';
 import { Link as SrollLink } from 'react-scroll';
-import ConfirmDialog from '../dialogs/ConfirmDialog';
+import ConfirmDialog from '../shared/modals/ConfirmDialog';
 import classNames from 'classnames';
 import styled from 'styled-components';
 import FormSteps from './form-steps';

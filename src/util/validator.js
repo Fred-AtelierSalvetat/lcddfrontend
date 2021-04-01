@@ -94,6 +94,12 @@ export const Validator = {
             value: 300,
             message: "Le message ne doit pas dépasser 300 caractères"
         }
+    },
+    "loginPassword": {
+        required: {
+            value: true,
+            message: "Le mot de passe est requis"
+        }
     }
 
 }

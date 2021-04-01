@@ -1,6 +1,43 @@
+.lcdd-body-bg {
+    background-image: url("../../assets/home/question.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: top;
+    background-attachment: fixed;
+    min-height: 100vh;
+    padding-top: 10px;
+    padding-bottom: 30px;
+    margin-bottom: 0;
+}
+
+.modal-header .close {
+    position: absolute;
+    right: 1rem;
+    font-size: 2rem;
+    font-weight: 400;
+}
+
 .container-login {
     width: 464px !important;
     background-color: white;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    box-sizing: border-box;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    border-radius: 4px;
+}
+
+.login-header {
+    padding: 32px 32px;
+    text-align: left;
+}
+
+.login-header h1 {
+    margin-bottom: 24px;
+}
+
+.login-body {
+    padding: 40px 32px 57px 32px;
 }
 
 .FC-btn,
@@ -14,11 +51,8 @@
     background-color: var(--white) !important;
     color: var(--fc) !important;
     text-decoration: underline !important;
-}
-
-.FC-btn-email:hover {
-    background-color: var(--blue) !important;
-    text-decoration: underline !important;
+    --shadow: 0 10px 6px -6px #777;
+    box-shadow: var(--shadow);
 }
 
 .FC-text,

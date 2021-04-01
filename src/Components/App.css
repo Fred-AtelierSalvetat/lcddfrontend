@@ -94,3 +94,25 @@
   position: absolute;
   width: auto;
 }
+
+.lcdd-body-bg {
+  background-image: url("../assets/home/question.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: top;
+  background-attachment: fixed;
+  min-height: 100vh;
+  margin-bottom: 0;
+}
+
+.primary {
+  color: var(--primary);
+}
+
+@media screen and (min-width: 768px) {
+  .container {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+
+}

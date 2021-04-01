@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { Button, Container, Form, Row, Spinner } from 'react-bootstrap';
 import { useForm } from 'react-hook-form';
 import ReCAPTCHA from "react-google-recaptcha";
@@ -6,6 +6,7 @@ import { Wrapper } from '../shared/wrapper/Wrapper';
 import { Validator } from '~/util/validator.js';
 import Expire from '../shared/utils/Expire';
 import "./ContactForm.css";
+import { FormFeedback } from '../shared/form/FormFeedBack';
 
 const SITE_KEY = process.env.REACT_APP_GOOGLE_CAPTCHA_SITE_KEY!;
 const MESSAGE_SENT_SUCCESS = "Votre message a été bien envoyé";
@@ -21,15 +22,7 @@ const scrollToTopSmoothly = () => {
     });
 }
 
-const FormFeedback = (props: any) => {
-    return (
-        <Form.Control.Feedback type="invalid">
-            {props.field && props.field.message}
-        </Form.Control.Feedback>
-    )
-}
-
-const _Spinner = () => {
+const RoundSpinner = () => {
     return (
         <Spinner animation="border" role="status">
             <span className="sr-only">Loading...</span>
@@ -69,10 +62,6 @@ const ContactForm = (props: any) => {
     const [message, setMessage] = useState("");
     const [loading, setLoading] = useState(false);
     let captcha: { reset: () => void; };
-
-    useEffect(() => {
-        console.log("SITE_KEY:", SITE_KEY)
-    }, [])
 
     const onSubmit = (data: any) => {
         setMessage("");
@@ -176,7 +165,7 @@ const ContactForm = (props: any) => {
                                     <AlertSuccess show={showAlertMessage} message={message} onClick={() => setShowAlertMessage(false)} />
                                 </Expire>
                         ) : (loading &&
-                            <_Spinner />)
+                            <RoundSpinner />)
                         }
                     </div>
 

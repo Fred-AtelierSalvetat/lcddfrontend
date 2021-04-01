@@ -3,14 +3,7 @@ import { Button, Form } from 'react-bootstrap';
 import { useForm } from 'react-hook-form';
 import { Validator } from '../../util/validator';
 import PropTypes from 'prop-types';
-
-const FormFeedback = (props: any) => {
-    return (
-        <Form.Control.Feedback type="invalid">
-            {props.field && props.field.message}
-        </Form.Control.Feedback>
-    )
-}
+import { FormFeedback } from '../shared/form/FormFeedBack';
 
 // Step 2 UI
 const UserDetails = ({ step, setStep, user, setUser }) => {

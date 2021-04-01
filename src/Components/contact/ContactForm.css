@@ -12,15 +12,6 @@
     margin-bottom: 44px;
 }
 
-input {
-    display: block;
-    box-sizing: border-box;
-    width: 100%;
-    border-radius: 4px;
-    padding: 10px 15px;
-    margin-bottom: 10px;
-}
-
 .alert-danger {
     background-color: #f8d7da !important;
     border-color: #f5c6cb !important;
@@ -47,11 +38,12 @@ input {
     transition: visibility 0s 250ms, opacity 250ms linear;
 }
 
-label {
+.contact-form label,
+#user-detail-form label {
     line-height: 2;
     text-align: left;
     display: block !important;
-    margin-bottom: 13px;
+    margin-bottom: 13px !important;
     margin-top: 20px;
 }
 

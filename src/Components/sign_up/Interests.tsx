@@ -16,6 +16,8 @@ const Interests = ({ step, setStep, user, setUser }) => {
     const [isTablet, setIsTablet] = useState(window.innerWidth < TABLET_VIEW_BREAKPOINT);
     const [isDesktop, setIsDesktop] = useState(!isMobile && !isTablet);
     const [fullDisplay, setFullDisplay] = useState(!isMobile && !isTablet);
+    let checkboxRef;
+
     const getThematiquesToDisplay = () => {
         if (fullDisplay) return thematiques;
         if (isMobile) return thematiques_mobile_plus;
@@ -25,7 +27,19 @@ const Interests = ({ step, setStep, user, setUser }) => {
     const [thematiquesToDisplay, setThematiquesToDisplay] = useState(getThematiquesToDisplay());
 
     const handleSubmit = () => {
-        alert("C'est presque fini ! Allez dans votre boîte mail pour confirmer votre inscription")
+        if (checkboxRef) {
+            if (!checkboxRef.checked) {
+                checkboxRef.setCustomValidity("Veuillez cocher cette case pour continuer");
+            }
+            else {
+                checkboxRef.setCustomValidity("");
+                // TODO
+                // Handle the submit action here
+                alert("C'est presque fini ! Allez dans votre boîte mail pour confirmer votre inscription")
+            }
+        }
+
+        return false;
     }
 
     useEffect(() => {
@@ -94,7 +108,7 @@ const Interests = ({ step, setStep, user, setUser }) => {
     }
 
     return (
-        <Form onSubmit={handleSubmit}>
+        <Form>
             <div className="row row-cols-2 row-cols-sm-3 row-cols-md-4 row-cols-lg-4 row-cols-xl-6" style={{ justifyContent: "center" }}>
                 {thematiquesToDisplay.map(thematique =>
                     <InterestCard
@@ -122,6 +136,7 @@ const Interests = ({ step, setStep, user, setUser }) => {
                         className="form-check-input"
                         id="mentionsLegales"
                         tabIndex={50}
+                        ref={r => checkboxRef = r}
                         required />
                     J'ai lu et j'accepte les&nbsp;
                     <a className="link" target="_blank" rel="noopener noreferrer" href="#/mentions-legales">mentions légales</a>&nbsp;
@@ -133,11 +148,13 @@ const Interests = ({ step, setStep, user, setUser }) => {
                 id="submit-btn-final"
                 type="submit"
                 tabIndex={50}
-                style={{ width: "100%" }}>
+                style={{ width: "100%" }}
+                onClick={handleSubmit}
+            >
                 Finaliser l'inscription
             </Button>
 
-        </Form>
+        </Form >
     )
 }
 

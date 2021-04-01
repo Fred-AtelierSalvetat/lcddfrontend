@@ -18,7 +18,7 @@ export const fakeData: Speakers = [
         id: 0,
         name: 'Julien GENOVA',
         rool: '',
-        description: 'Président Fondateur de La Chaine du Droit',
+        description: 'Avocat au Barreau de Marseille',
     },
     {
         id: 1,
@@ -30,7 +30,7 @@ export const fakeData: Speakers = [
         id: 2,
         name: 'Julien GENOVA',
         rool: '',
-        description: 'Président Fondateur de La Chaine du Droit',
+        description: 'Avocat au Barreau de Marseille',
     },
     {
         id: 3,

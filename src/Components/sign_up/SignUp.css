@@ -53,11 +53,6 @@
     outline: unset;
 }
 
-::placeholder {
-    color: #999999;
-    font-size: 0.9rem;
-}
-
 #user-detail-form .form-group {
     margin-bottom: 2rem;
 }
@@ -77,16 +72,6 @@ label.label-check {
     margin-top: 0;
 }
 
-.link {
-    text-decoration: none;
-    background-color: transparent;
-}
-
-.link:hover {
-    cursor: pointer;
-    color: #113F59 !important;
-}
-
 .img-button {
     border-radius: 5px;
 }
@@ -96,7 +81,7 @@ label.label-check {
     box-shadow: 3px 5px 0px #113F59;
 }
 
-div.text {
+div.text-standard {
     color: var(--gray-dark);
     font-weight: 300;
     font-size: 20px;

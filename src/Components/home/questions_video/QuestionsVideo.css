@@ -1,0 +1,48 @@
+.background-transparency  {
+    background-color:#FFFFFF;
+}
+
+
+.styled-card-questions  {
+   width: 1140px;
+   height: 53px;
+   margin-bottom: 50px;
+   border: 2px solid #BDBDBD;
+   border-radius: 3px;
+   background-color: #FFFFFF;
+   box-sizing: border-box;
+}
+
+.likes-container  {
+    width: 83px;
+    height: 49px;  
+    background-color: #113F59;
+    border-radius: 0px 1px 1px 0px;
+}
+
+.number-likes  {
+    color: #FFFFFF;
+    width: 14px;
+    height: 20.3px;
+    font-style: normal;
+    font-family:  Roboto;
+    font-size: 20px;
+    font-weight: 700;
+    margin-left: 20px;
+    margin-top: 10px;
+    margin-right: 15px;
+
+}
+
+.like-icon {
+    width: 12px;
+    height: 15.32px;
+    color: #FFFFFF;
+    font-weight: bold;
+    font-size: 25px;
+}
+
+.flex {
+    justify-content: space-between;
+}
+

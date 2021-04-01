@@ -21,7 +21,7 @@ const Speakers: React.FC<{}> = () => {
     }, [dispatch, speakers]);
 
     return (
-        <>
+        <div>
             <Wrapper>
                 <h4>Nos intervenants</h4>
                 <p>Chercher directement la réponse à vore question parmi les 27 thèmes traités par nos intervenants </p>
@@ -34,7 +34,7 @@ const Speakers: React.FC<{}> = () => {
                     ))}
                 {speakers && isHome && <div>Speakers home componenet </div>}
             </div>
-        </>
+        </div>
     );
 };
 

@@ -1,99 +1,55 @@
 import React from 'react';
-import { Jumbotron, Container, Row, Col } from 'react-bootstrap';
-import Concept from './../../../assets/home/atelier.jpg';
-import Icon5 from './../../../assets/home/5.jpg';
-import Icon6 from './../../../assets/home/6.jpg';
-import Icon7 from './../../../assets/home/7.jpg';
-import Icon8 from './../../../assets/home/8.jpg';
-
-
-
-const jumbotron = {
-    backgroundImage: `url(${Concept})`,
-    backgroundRepeat: 'no-repeat',
-    backgroundSize: 'cover',
-    backgroundPosition: 'top',
-    marginBottom: 0,
-};
-const backgroundTransparency = {
-    backgroundColor: 'rgba(17,63,89,0.9)',
-}
-
-const title = {
-    textAlign: 'left' as 'left',
-    marginLeft: 30,
-    marginTop: 30,
-    fontSize: '4vw',
-    color: 'white',
-};
-
-const subtitle = {
-    textAlign: 'left' as 'left',
-    marginBottom: 30,
-    marginLeft: 40,
-    fontSize: 30,
-    color: 'white',
-
-};
-const link = {
-    textAlign: 'right' as 'right',
-    fontSize: 20
-};
-
-const icon = {
-    Width: 90,
-    height: 80,
-    margin: 10
-}
-
-const enumeration = {
-    color: '#00BFFF	',
-    fontSize: 50
-}
-const text = {
-    color: 'white',
-    fontSize: 19
-}
+import { Container, Row, Col } from 'react-bootstrap';
+import Icon1 from '~/assets/home/atelier/1.svg';
+import Icon2 from '~/assets/home/atelier/2.svg';
+import Icon3 from '~/assets/home/atelier/3.svg';
+import Icon4 from '~/assets/home/atelier/4.svg';
+import "./Ateliers.css";
 
 
 // eslint-disable-next-line @typescript-eslint/ban-types
 const AteliersComponent: React.FC<{}> = () => {
     return (
-        <Jumbotron fluid style={jumbotron} className="d-flex flex-column justify-content-center">
-            <Container fluid>
-                <Row>
-                    <Col xs="6" style={backgroundTransparency}>
+        <div className="container-atelier">
+            <div className="row">
+                <div className="col-6 background-transparency-atelier" >
+                    <div style={{ marginBottom: '50px' }}>
                         <Row>
-                            <Col xs="8">
-                                <p style={title}>Les Ateliers</p>
-                            </Col>
-                            <Col style={{ margin: '50px' }}>
-                                <a href="/" style={link}>voir plus</a>
-                            </Col>
+                            <Col xs='6' className="display-4 mt-4" style={{ color: '#F2F2F2' }}>Les Ateliers</Col>
+                            <Col xs='3' className="mt-5 ml-5"><a href="/" className="link">Voir plus</a></Col>
                         </Row>
-                        <Row><Col><p style={subtitle}>en direct</p></Col></Row>
-                        <Row style={{ paddingBottom: '30px' }}>
-                            <Col xs="1">
-                            </Col>
-                            <Col xs="11">
-                                <div>  <img style={icon} src={Icon5} alt="icon5" />
-                                    <a style={enumeration}> 1. </a>  <a style={text}> Vous avez une question de droit</a>  </div>
-                                <div> <a style={enumeration}> 2. </a> <a style={text}>Nous vous proposons des réponses claires en vidéo</a>
-                                    <img style={icon} src={Icon6} alt="icon6" />
-                                </div>
-                                <div> <img style={icon} src={Icon7} alt="icon7" /> <a style={enumeration}> 3. </a> <a style={text}>Vous visionnez la réponse qui vpis convient</a> </div>
-                                <div>  <a style={enumeration}> 4. </a> <a style={text}>Et vous pouvez aussi nous suggérer une nouvelle question</a>
-                                    <img style={icon} src={Icon8} alt="icon8" />
-                                </div>
+                        <h2 className="ml-5" style={{ textAlign: 'left', color: '#FFFFFF', opacity: '0.8' }}>En direct</h2>
+                    </div>
+                    <Container fluid style={{ marginLeft: '130px' }} >
+                        <Row className="mb-4">
+                            <img className="icon-questions mr-5 mt-3" src={Icon1} alt="icon1" />
+                            <div className="display-1 mr-3" style={{ color: '#F2F2F2' }}>1.</div>
+                            <h4 className="text-atelier">Chaque mois, la Chaine du Droit proposera une conférence web diffusée en direct et accessible à tous.</h4>
+                        </Row>
+                        <Row className="mb-4">
+                            <div className="display-1 mr-4" style={{ color: '#F2F2F2' }}>2.</div>
+                            <h4 className="text-atelier mr-5 mt-3">Un thème ou un domaine juridique sera mis à l'honneur avec un intervenant qui répond aux interrogations.</h4>
+                            <img className="icon-questions mt-3" src={Icon2} alt="icon2" />
 
-                            </Col>
                         </Row>
-                    </Col>
-                    <Col>
-                    </Col>
-                </Row>
-            </Container>
-        </Jumbotron>
+                        <Row className="mb-4">
+                            <img className="icon-questions mr-5 mt-3" src={Icon3} alt="icon3" />
+                            <div className="display-1 mr-5" style={{ color: '#F2F2F2' }}>3.</div>
+                            <h4 className="text-atelier mt-3">Les internautes pourront ainsi interragir avec le plateau en posant des questions écrites.</h4>
+
+                        </Row>
+                        <Row >
+                            <div className="display-1 mr-5" style={{ color: '#F2F2F2' }}>4.</div>
+                            <h4 className="text-atelier mr-4 mt-3">Une fois le direct terminé, l'atelier sera prédécoupé, chapitré puis mis en ligne.</h4>
+                            <img className="icon-questions mt-3" src={Icon4} alt="icon4" />
+                        </Row>
+                    </Container>
+                </div>
+                <div className="col-6"></div>
+
+            </div>
+
+        </div>
     );
 };
 

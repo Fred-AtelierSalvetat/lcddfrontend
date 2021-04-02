@@ -52,7 +52,7 @@ const SignUp = (props) => {
                 handleConfirm={handleConfirmDialog}
             />
             <Container className={getClassesForContainer(step)}>
-                <div className="container-header pt-md-5">
+                <div className="container-header pt-5">
                     <Row style={{ justifyContent: "space-between", alignItems: "baseline" }}>
                         <h1>{steps[`${step}`].title}</h1>
                         <StepText>Étape {step + 1}/3</StepText>

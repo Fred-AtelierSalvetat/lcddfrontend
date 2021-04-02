@@ -1,16 +1,6 @@
-p {
-    text-align: left;
-}
-
-.p-center {
-    text-align: center;
-}
-
 .container h2 {
     margin-top: unset;
     text-align: left;
-    font-weight: 350 !important;
-    font-size: 24px !important;
     line-height: 26px !important;
 }
 

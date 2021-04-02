@@ -63,7 +63,7 @@
 
 input.form-check-input {
     width: unset;
-    margin-top: 0.7rem;
+    margin-top: 0.4rem;
 }
 
 label.label-check {
@@ -88,8 +88,7 @@ div.text-standard {
     text-align: justify;
 }
 
-@media screen and (max-width: 768px) {
-
+@media screen and (min-width: 768px) {
     #inscriptionLastName,
     #inscriptionFirstName {
         width: 344px;

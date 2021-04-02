@@ -7,8 +7,13 @@ body {
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   color: #4f4f4f !important;
+  /* font-weight: 300; */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+p {
+  text-align: left;
 }
 
 h1,
@@ -74,47 +79,47 @@ h4 {
   h1 {
     font-size: 2rem !important;
   }
-  
+
   h2 {
     font-size: 1.75rem !important;
   }
-  
+
   h3 {
     font-size: 1.5rem !important;
   }
-  
+
   h4 {
     font-size: 1.25rem !important;
   }
-  
+
   h5 {
     font-size: 1.125rem !important;
   }
-  
+
   h6 {
     font-size: 1rem !important;
   }
-  
+
   .display-1 {
     font-size: 4.5rem !important;
   }
-  
+
   .display-2 {
     font-size: 4rem !important;
   }
-  
+
   .display-3 {
     font-size: 3.5rem !important;
   }
-  
+
   .display-4 {
     font-size: 3rem !important;
   }
-  
+
   .display-5 {
     font-size: 2.5rem !important;
   }
-  
+
   .display-6 {
     font-size: 2rem !important;
   }

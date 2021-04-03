@@ -23,10 +23,11 @@ const Speakers: React.FC<{}> = () => {
     return (
         <div>
             <Wrapper>
-                <h4>Nos intervenants</h4>
-                <p>Chercher directement la réponse à vore question parmi les 27 thèmes traités par nos intervenants </p>
+                <h1 className="primary">Nos intervenants</h1>
+                <h3 className="mb-4" style={{ color: '#333333', opacity: '0.8' }}>
+                    Chercher directement la réponse à votre question parmi les 27 thèmes traités par nos intervenants </h3>
             </Wrapper>
-            <div className="d-flex justify-content-center flex-wrap">
+            <div className="d-flex justify-content-center flex-wrap mt-4">
                 {speakers &&
                     !isHome &&
                     speakers.map((speaker, key: number) => (

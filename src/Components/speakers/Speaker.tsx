@@ -1,7 +1,9 @@
 import React from 'react';
 import { Card, Image, Container } from 'react-bootstrap';
 import { useHistory } from 'react-router-dom';
-import Avatar from './../../assets/shared/julien.jpg';
+import Avatar from './../../assets/shared/avatar.jpg';
+import "./Speaker.css";
+
 
 
 type SpeakerProps = {
@@ -20,15 +22,13 @@ export const Speaker: React.FC<SpeakerProps> = ({ id, name, rool, description })
     }, [id, history]);
 
     return (
-        <Card className="border-0 m-3">
+        <Card className="border-0 m-3 ">
             <div className="justify-content-center d-flex flex-column">
-                <Image
+                <img
                     src={Avatar}
-                    className="mb-4"
-                    roundedCircle
+                    className="mb-4 speaker-image"
                     width="263"
                     height="263"
-                    style={{ filter: 'grayscale(100%)', border: '2px solid #0B2534', boxSizing: "border-box" }}
                     onClick={Redirection}
                 />
                 <Container>

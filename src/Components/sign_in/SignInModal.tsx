@@ -77,7 +77,7 @@ const SignInModal = ({ show, onHandleClose, onSignUpLinkClick, onLostPasswordCli
                         <Form.Check type="checkbox" label="Se souvenir de moi"></Form.Check>
                     </Form.Group>
 
-                    <Button variant="primary" type="submit" style={{ width: "100%" }}>
+                    <Button variant="primary" type="submit" style={{ width: "100%", marginTop: "1rem" }}>
                         S'identifier
                     </Button>
                 </Form>

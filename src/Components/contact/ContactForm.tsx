@@ -3,16 +3,15 @@ import { Button, Container, Form, Row, Spinner } from 'react-bootstrap';
 import { useForm } from 'react-hook-form';
 import ReCAPTCHA from "react-google-recaptcha";
 import { Wrapper } from '../shared/wrapper/Wrapper';
-import { Validator } from '~/util/validator.js';
 import Expire from '../shared/utils/Expire';
-import "./ContactForm.css";
 import { FormFeedback } from '../shared/form/FormFeedBack';
+import { Validator } from '~/util/validator.js';
+import "./ContactForm.css";
 
 const SITE_KEY = process.env.REACT_APP_GOOGLE_CAPTCHA_SITE_KEY!;
 const MESSAGE_SENT_SUCCESS = "Votre message a été bien envoyé";
 const MESSAGE_SENT_ERROR_NETWORK = "Mauvaise réponse du réseau";
 const MESSAGE_SENT_FAILED = "Votre message n'a pas été bien envoyé";
-// const SEND_EMAIL_URL = "http://localhost:8089/api/contact/sendMail";
 const SEND_EMAIL_URL = "http://lcdddevtestapp-env.eba-d22aejrz.eu-west-3.elasticbeanstalk.com/api/v1/sendMail";
 
 const scrollToTopSmoothly = () => {
@@ -54,14 +53,18 @@ const AlertError = ({ show, message, onClick }) => {
     )
 }
 
-const ContactForm = (props: any) => {
-    const { register, handleSubmit, setValue, errors, setError } = useForm();
+const ContactForm = () => {
+    const { register, handleSubmit, setValue, trigger, errors, setError } = useForm();
     const [recaptchaValidated, setRecaptchaValidated] = useState(false);
     const [showAlertMessage, setShowAlertMessage] = useState(false);
     const [messageSuccessfullySent, setMessageSuccessfullySent] = useState(false);
     const [message, setMessage] = useState("");
     const [loading, setLoading] = useState(false);
     let captcha: { reset: () => void; };
+
+    const onHandleChange = ({ target }) => {
+        trigger(target.name);
+    }
 
     const onSubmit = (data: any) => {
         setMessage("");
@@ -139,7 +142,7 @@ const ContactForm = (props: any) => {
         setRecaptchaValidated(false);
     }
 
-    const handleChange = () => {
+    const handleChangeCaptcha = () => {
         setReCAPTCHAVerified();
     };
 
@@ -176,6 +179,7 @@ const ContactForm = (props: any) => {
                             name="firstName"
                             placeholder="Entrer votre prénom"
                             ref={register(Validator.firstName)}
+                            onChange={onHandleChange}
                             isInvalid={errors.firstName}
                         />
                         <FormFeedback field={errors.firstName}></FormFeedback>
@@ -188,6 +192,7 @@ const ContactForm = (props: any) => {
                             name="lastName"
                             placeholder="Entrer votre nom"
                             ref={register(Validator.lastName)}
+                            onChange={onHandleChange}
                             isInvalid={errors.lastName}
                         />
                         <FormFeedback field={errors.lastName}></FormFeedback>
@@ -200,6 +205,7 @@ const ContactForm = (props: any) => {
                             name="email"
                             placeholder="Entrer votre adresse e-mail"
                             ref={register(Validator.email)}
+                            onChange={onHandleChange}
                             isInvalid={errors.email}
                         />
                         <FormFeedback field={errors.email}></FormFeedback>
@@ -212,6 +218,7 @@ const ContactForm = (props: any) => {
                             name="subject"
                             placeholder="Entrer un sujet"
                             ref={register(Validator.contactSubject)}
+                            onChange={onHandleChange}
                             isInvalid={errors.subject}
                         />
                         <FormFeedback field={errors.subject}></FormFeedback>
@@ -225,6 +232,7 @@ const ContactForm = (props: any) => {
                             rows={5}
                             placeholder="Entrer votre message"
                             ref={register(Validator.contactMessage)}
+                            onChange={onHandleChange}
                             isInvalid={errors.message}
                         />
                         <FormFeedback field={errors.message}></FormFeedback>
@@ -235,7 +243,7 @@ const ContactForm = (props: any) => {
                             <ReCAPTCHA
                                 ref={(r) => setCaptchaRef(r)}
                                 sitekey={SITE_KEY}
-                                onChange={handleChange}
+                                onChange={handleChangeCaptcha}
                                 onExpired={onRecaptchaExpired}
                             />
 

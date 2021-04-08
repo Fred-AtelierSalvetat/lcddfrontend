@@ -7,7 +7,7 @@
     padding-left: clamp(10px, 50%, 50px) !important;
     padding-right: clamp(10px, 50%, 50px) !important;
     background: rgba(255, 255, 255, 0.97);
-    padding-bottom: min(150px) !important;
+    padding-bottom: 8em !important;
 }
 
 .container form,
@@ -58,7 +58,7 @@
 }
 
 #user-detail-form #submit-btn {
-    margin-top: 1rem;
+    margin-top: 2rem;
 }
 
 input.form-check-input {
@@ -70,6 +70,11 @@ label.label-check {
     margin-left: 1.25rem;
     margin-bottom: 0;
     margin-top: 0;
+}
+
+.checkbox-zone {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
 }
 
 .img-button {

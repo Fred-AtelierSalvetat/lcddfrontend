@@ -93,6 +93,11 @@
 .invalid-feedback {
   position: absolute;
   width: auto;
+  color: var(--red) !important;
+}
+
+.form-control.is-invalid {
+  border-color: var(--red) !important;
 }
 
 .lcdd-body-bg {
@@ -115,4 +120,8 @@
     padding-right: 0 !important;
   }
 
+}
+
+#lcdd-body {
+  padding-top: 72px;
 }

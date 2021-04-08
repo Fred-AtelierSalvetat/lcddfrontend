@@ -1,6 +1,6 @@
 const NAME_PATTERN = /^[A-Za-zÀ-ÖØ-öø-ÿ]+(?:(\s|.|-|.\s)[A-Za-zÀ-ÖØ-öø-ÿ]+)*$/;
 const EMAIL_PATTERN = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i;
-const PASSWORD_PATTERN = /^(?=.*[0-9])(?=.*[!#$%&'()*+,-./:;<=>?@[\]^_`{|}~"])(?=.*[A-Za-z]).{8,}$/;
+const PASSWORD_PATTERN = /^(?=.*[0-9])(?=.*[!#$%&'()*+,-./:;<=>?@[\]^_`{|}~"])(?=.*[A-Z])(?=.*[a-z]).{8,}$/;
 const PHONE_NUMBER_PATTERN = /^[0-9]*$/;
 
 export const Validator = {
@@ -44,7 +44,7 @@ export const Validator = {
         },
         pattern: {
             value: EMAIL_PATTERN,
-            message: "Entrer une addresse e-mail valide",
+            message: "Entrer une addresse e-mail valide (Ex: exemple@xxx.xx)",
         }
     },
     "password": {
@@ -54,7 +54,8 @@ export const Validator = {
         },
         pattern: {
             value: PASSWORD_PATTERN,
-            message: "Le mot de passe doit contenir et mélanger au moins 8 caractères alphanumériques et spéciaux"
+            message: "Le mot de passe doit contenir au minimum 8 caractères, à savoir : " +
+                "au moins 1 lettre minuscule et 1 lettre majuscule, 1 caractère spécial et 1 chiffre"
         }
     },
     "phone_number": {

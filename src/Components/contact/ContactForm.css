@@ -1,5 +1,6 @@
 .form-group {
     text-align: left;
+    position: relative;
 }
 
 .contact-form {

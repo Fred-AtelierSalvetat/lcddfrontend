@@ -7,10 +7,11 @@ import { FormFeedback } from '../shared/form/FormFeedBack';
 
 // Step 2 UI
 const UserDetails = ({ step, setStep, user, setUser }) => {
-    const { register, handleSubmit, setValue, getValues, errors } = useForm();
+    const { register, handleSubmit, setValue, getValues, trigger, errors } = useForm();
 
     const onHandleChange = ({ target }) => {
         const { name, value } = target;
+        trigger(name);
         setUser({
             type: 'UPDATE_PERSONAL_INFO',
             payload: { [name]: value },

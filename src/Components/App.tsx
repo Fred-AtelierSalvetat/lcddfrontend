@@ -19,20 +19,22 @@ const App: React.FC<{}> = () => {
     return (
         <div className="App">
             <Header />
-            <HashRouter>
-                <Route path="/" exact component={Home} />
-                <Route path="/speakers" component={Speakers} />
-                <Route path="/profile/:id" component={Profile} />
-                <Route path="/about" component={About} />
-                <Route path="/contact" component={ContactForm} />
-                <Route path="/mentions-legales" component={MentionsLegales} />
-                <Route path="/questions" component={Questions} />
-                <Route path="/sign-up" component={SignUp} />
-                <Route path="/sign-in/reset-password" component={SignInResetPassword} />
-                <Route path="/devenirintervenant" component={DevenirIntervenant} />
-                <Route path="/devenirintervenantenvoyee" component={DevenirIntervenantEnvoyee} />
+            <div id="lcdd-body">
+                <HashRouter>
+                    <Route path="/" exact component={Home} />
+                    <Route path="/speakers" component={Speakers} />
+                    <Route path="/profile/:id" component={Profile} />
+                    <Route path="/about" component={About} />
+                    <Route path="/contact" component={ContactForm} />
+                    <Route path="/mentions-legales" component={MentionsLegales} />
+                    <Route path="/questions" component={Questions} />
+                    <Route path="/sign-up" component={SignUp} />
+                    <Route path="/sign-in/reset-password" component={SignInResetPassword} />
+                    <Route path="/devenirintervenant" component={DevenirIntervenant} />
+                    <Route path="/devenirintervenantenvoyee" component={DevenirIntervenantEnvoyee} />
 
-            </HashRouter>
+                </HashRouter>
+            </div>
             <Footer />
         </div>
     );

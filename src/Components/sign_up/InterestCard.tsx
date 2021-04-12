@@ -28,6 +28,7 @@ const InterestCardStyled = styled(Card)`
     height: ${props => props.isMobile ? '165px' : '170px'};
     width: ${props => props.isMobile ? '165px' : '170px'};
     border: 1px solid #113F59;
+    border-radius: 2px;
     background-color: white;
     
     &:hover {

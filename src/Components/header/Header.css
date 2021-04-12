@@ -1,9 +1,23 @@
+#lcdd-header {
+    top: 0;
+    width: 100%;
+    position: fixed;
+    transition: all 0.3s ease;
+    z-index: 100;
+}
+
+#lcdd-header.hide {
+    top: -99px;
+}
+
 #lcdd-header>.navbar {
     padding-left: 2em !important;
     padding-right: 2em !important;
 }
 
 #lcdd-header .navbar-nav {
+    flex-wrap: wrap;
+    justify-content: flex-end;
     flex-grow: 1;
 }
 
@@ -17,6 +31,7 @@
 
 #lcdd-header .nav-item,
 #lcdd-header .nav-item .nav-link {
+    white-space: nowrap;
     padding-left: 0.75rem !important;
     padding-right: 0.75rem !important;
     font-weight: 350 !important;
@@ -30,6 +45,10 @@
 }
 
 /* dropdown nav button */
+#lcdd-header .dropdown {
+    padding-right: 0 !important;
+}
+
 .navbar .dropdown:hover .dropdown-menu {
     display: block;
 }

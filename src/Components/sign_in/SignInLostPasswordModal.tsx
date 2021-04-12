@@ -6,7 +6,7 @@ import { FormFeedback } from '../shared/form/FormFeedBack';
 import OverlayModal from '../shared/modals/OverlayModal';
 
 const SignInLostPasswordModal = ({ show, onHandleClose, onHandleSubmit, onSignInClick }) => {
-    
+
     const { register, handleSubmit, errors } = useForm();
 
     const header =
@@ -19,22 +19,23 @@ const SignInLostPasswordModal = ({ show, onHandleClose, onHandleSubmit, onSignIn
 
     const body =
         <div className="login-body">
-            <h4 style={{ textAlign: "left" }}>Remplir votre adresse e-mail pour réinitialiser votre mot de passe.</h4>
+            <h4 style={{ textAlign: "left", marginBottom: "2rem" }}>Remplir votre adresse e-mail pour réinitialiser votre mot de passe.</h4>
             <div className="login-form">
-                <Form className="login-form" onSubmit={handleSubmit(onHandleSubmit)}>
+                <Form onSubmit={handleSubmit(onHandleSubmit)}>
                     <Form.Group controlId="loginFormEmail">
-                        <Form.Label>Adresse e-mail</Form.Label>
+                        {/* <Form.Label>Adresse e-mail</Form.Label> */}
                         <Form.Control
                             autoFocus
                             type="text"
                             name="email"
                             ref={register(Validator.email)}
                             isInvalid={errors.email}
+                            placeholder="Adresse e-mail"
                         />
                         <FormFeedback field={errors.email}></FormFeedback>
                     </Form.Group>
 
-                    <Button variant="primary" type="submit" style={{ width: "100%", marginTop: "57px" }}>
+                    <Button variant="primary" type="submit" style={{ width: "100%", marginTop: "3rem" }}>
                         Envoyer
                     </Button>
                 </Form>

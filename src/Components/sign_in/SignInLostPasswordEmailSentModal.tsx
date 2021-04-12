@@ -6,8 +6,8 @@ import OverlayModal from '../shared/modals/OverlayModal';
 const SignInLostPasswordEmailSentModal = ({ show, onHandleClose }) => {
 
     const body =
-        <div className="login-body">
-            <div style={{ textAlign: "center" }}>
+        <div className="login-body login-body-center">
+            <div>
                 <EmailIcon style={{ marginBottom: "67px" }} />
             </div>
             <h1 style={{ marginBottom: "24px" }}>Un e-mail vous sera envoyé</h1>

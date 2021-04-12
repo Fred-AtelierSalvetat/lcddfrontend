@@ -1,11 +1,17 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Nav, Navbar } from 'react-bootstrap';
 import Logo from '~/assets/header/logo.png';
 import SignInContainer from '../sign_in/SignInContainer';
 import { ReactComponent as DropdownIcon } from '~/assets/icons/dropdown-chevron.svg';
+import { checkScroll } from './checkScroll';
 import './Header.css';
 
 const Header: React.FC<{}> = () => {
+
+    useEffect(() => {
+        let header = document.getElementById('lcdd-header')!;
+        window.addEventListener('scroll', () => checkScroll(header));
+    })
 
     return (
         <div id="lcdd-header">

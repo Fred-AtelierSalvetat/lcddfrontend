@@ -69,7 +69,7 @@ const Interests = ({ step, setStep, user, setUser }) => {
         }
 
         return (
-            <Row style={{ justifyContent: "center", alignItems: "flex-end", color: "var(--teal)", marginBottom: "72px" }}>
+            <Row style={{ justifyContent: "center", alignItems: "flex-end", color: "var(--teal)" }}>
                 <div onClick={plusIconClick}
                     onMouseEnter={toggleHover}
                     onMouseLeave={toggleHover}
@@ -92,7 +92,7 @@ const Interests = ({ step, setStep, user, setUser }) => {
         }
 
         return (
-            <Row style={{ justifyContent: "center", alignItems: "flex-end", color: "var(--teal)", marginBottom: "72px" }}>
+            <Row style={{ justifyContent: "center", alignItems: "flex-end", color: "var(--teal)" }}>
                 <div onClick={moinsIconClick}
                     onMouseEnter={toggleHover}
                     onMouseLeave={toggleHover}
@@ -121,28 +121,30 @@ const Interests = ({ step, setStep, user, setUser }) => {
 
             {!isDesktop && (fullDisplay && <MoinsIcon /> || <PlusIcon />)}
 
-            <Form.Group controlId="helloAsso" style={{ marginBottom: "0" }}>
-                <label className="label-check">
-                    <input type="checkbox" name="helloAsso" className="form-check-input" tabIndex={50} />
+
+            <div className="checkbox-zone">
+                <Form.Group controlId="helloAsso" style={{ marginBottom: "0.6rem" }}>
+                    <label className="label-check">
+                        <input type="checkbox" name="helloAsso" className="form-check-input" tabIndex={50} />
                     Je souhaite m'inscrire à&nbsp;
-                    <a className="link" target="_blank" rel="noopener noreferrer" href='https://www.helloasso.com/'>HelloAsso</a>
+                    <a className="link" target="_blank" rel="noopener noreferrer" href='https://www.helloasso.com/'>HelloAsso</a> (facultatif)
                 </label>
-            </Form.Group>
-            <Form.Group controlId="mentionsLegales">
-                <label className="label-check">
-                    <input
-                        type="checkbox"
-                        name="mlAgreed"
-                        className="form-check-input"
-                        id="mentionsLegales"
-                        tabIndex={50}
-                        ref={r => checkboxRef = r}
-                        required />
+                </Form.Group>
+                <Form.Group controlId="mentionsLegales">
+                    <label className="label-check">
+                        <input
+                            type="checkbox"
+                            name="mlAgreed"
+                            className="form-check-input"
+                            id="mentionsLegales"
+                            tabIndex={50}
+                            ref={r => checkboxRef = r}
+                            required />
                     J'ai lu et j'accepte les&nbsp;
                     <a className="link" target="_blank" rel="noopener noreferrer" href="#/mentions-legales">mentions légales</a>&nbsp;
-                    <span>*</span>
                 </label>
-            </Form.Group>
+                </Form.Group>
+            </div>
 
             <Button
                 id="submit-btn-final"

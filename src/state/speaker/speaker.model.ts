@@ -1,5 +1,3 @@
-import { Speaker } from '../../Components/speakers/Speaker';
-
 export type Speaker = {
     id: number;
     name: string;

@@ -1,8 +1,5 @@
 import { Speakers } from './speaker.model';
 
-export type SpeakersActions = SpeakersRequested | SpeakersReceived;
-//| SpeakersRequestedFailed;
-
 ////////////////
 
 export const speakersRequested = () => {
@@ -19,6 +16,11 @@ export const speakersReceived = (speakers: Speakers) => ({
 });
 
 export type SpeakersReceived = ReturnType<typeof speakersReceived>;
+
+////////////////
+
+export type SpeakersActions = SpeakersRequested | SpeakersReceived;
+//| SpeakersRequestedFailed;
 
 ////////////////
 

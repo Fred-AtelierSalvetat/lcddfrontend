@@ -114,13 +114,13 @@
   color: var(--primary);
 }
 
-@media screen and (min-width: 768px) {
+/* @media screen and (min-width: 768px) {
   .container {
     padding-left: 0 !important;
     padding-right: 0 !important;
   }
 
-}
+} */
 
 #lcdd-body {
   padding-top: 72px;

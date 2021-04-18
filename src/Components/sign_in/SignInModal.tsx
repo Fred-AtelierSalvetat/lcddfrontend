@@ -37,7 +37,7 @@ const SignInModal = ({ show, onHandleClose, onSignUpLinkClick, onLostPasswordCli
             <h1>S'identifier</h1>
             <div className="lead">Vous n'êtes pas encore inscrit ?</div>
             <div className="lead">
-                Inscrivez-vous <a href="#/sign-up" className="link" onClick={onSignUpLinkClick}>ici</a>
+                Inscrivez-vous <a href="/sign-up" className="link" onClick={onSignUpLinkClick}>ici</a>
             </div>
         </div>
 

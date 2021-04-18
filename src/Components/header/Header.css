@@ -44,6 +44,10 @@
     font-weight: 700 !important;
 }
 
+#lcdd-header .nav-item.btn-link {
+    color: var(--link) !important;
+}
+
 /* dropdown nav button */
 #lcdd-header .dropdown {
     padding-right: 0 !important;

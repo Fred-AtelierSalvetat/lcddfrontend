@@ -3,6 +3,8 @@ import { Button, Form, Row } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 import InterestCard from './InterestCard';
 import thematiques from './thematiques';
+import { userActions } from '~/state/user/user.actions';
+import { connect, useDispatch } from 'react-redux';
 
 const thematiques_mobile_plus = thematiques.slice(0, 6);
 const thematiques_tablet_plus = thematiques.slice(0, 9);
@@ -18,6 +20,8 @@ const Interests = ({ step, setStep, user, setUser }) => {
     const [fullDisplay, setFullDisplay] = useState(!isMobile && !isTablet);
     let checkboxRef;
 
+    const dispatch = useDispatch();
+
     const getThematiquesToDisplay = () => {
         if (fullDisplay) return thematiques;
         if (isMobile) return thematiques_mobile_plus;
@@ -26,7 +30,9 @@ const Interests = ({ step, setStep, user, setUser }) => {
     }
     const [thematiquesToDisplay, setThematiquesToDisplay] = useState(getThematiquesToDisplay());
 
-    const handleSubmit = () => {
+    const handleSubmit = (e) => {
+        e.preventDefault();
+
         if (checkboxRef) {
             if (!checkboxRef.checked) {
                 checkboxRef.setCustomValidity("Veuillez cocher cette case pour continuer");
@@ -35,7 +41,10 @@ const Interests = ({ step, setStep, user, setUser }) => {
                 checkboxRef.setCustomValidity("");
                 // TODO
                 // Handle the submit action here
-                alert("C'est presque fini ! Allez dans votre boîte mail pour confirmer votre inscription")
+
+                dispatch(userActions.register(user))
+
+                // alert("C'est presque fini ! Allez dans votre boîte mail pour confirmer votre inscription")
             }
         }
 
@@ -167,4 +176,15 @@ Interests.propsType = {
     setUser: PropTypes.func
 }
 
-export default Interests;
+const mapState = (state) => {
+    const { registering } = state.registration;
+    return { registering };
+}
+
+const actionCreators = {
+    register: userActions.register
+}
+
+const connectedInterestsPage = connect(mapState, actionCreators)(Interests);
+
+export default connectedInterestsPage;

@@ -4,6 +4,11 @@ import * as status from './constants/Status';
 import * as api from '../../api/fetchUsers';
 import { isRequestInProgress } from '../reducers';
 import * as alertActions from '../alerts/actions';
+import { userServices } from '~/services/user.services';
+import * as usersConstants from './constants/ActionTypes';
+import { createBrowserHistory } from 'history';
+
+const history = createBrowserHistory();
 
 const apiCallWrapper = ({
     apiFct,

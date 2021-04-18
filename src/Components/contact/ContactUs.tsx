@@ -6,7 +6,7 @@ import { Wrapper } from '../shared/wrapper/Wrapper';
 import Expire from '../shared/utils/Expire';
 import { FormFeedback } from '../shared/form/FormFeedBack';
 import { Validator } from '~/util/validator.js';
-import "./ContactForm.css";
+import "./ContactUs.css";
 
 const SITE_KEY = process.env.REACT_APP_GOOGLE_CAPTCHA_SITE_KEY!;
 const MESSAGE_SENT_SUCCESS = "Votre message a été bien envoyé";
@@ -53,7 +53,7 @@ const AlertError = ({ show, message, onClick }) => {
     )
 }
 
-const ContactForm = () => {
+const ContactUs = () => {
     const { register, handleSubmit, setValue, trigger, errors, setError } = useForm();
     const [recaptchaValidated, setRecaptchaValidated] = useState(false);
     const [showAlertMessage, setShowAlertMessage] = useState(false);
@@ -262,4 +262,4 @@ const ContactForm = () => {
     );
 };
 
-export default ContactForm;
+export default ContactUs;

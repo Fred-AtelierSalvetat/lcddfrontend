@@ -7,6 +7,8 @@ import classNames from 'classnames';
 import styled from 'styled-components';
 import FormSteps from './form-steps';
 import "./SignUp.css";
+import { connect } from 'react-redux';
+import { userActions } from '~/state/user/user.actions';
 
 const StepText = styled.p`
     text-align: center;
@@ -94,4 +96,15 @@ const SignUp = (props) => {
     );
 };
 
-export default SignUp;
+const mapState = (state) => {
+    const { registering } = state.registration;
+    return { registering };
+}
+
+const actionCreators = {
+    register: userActions.register
+}
+
+const connectedSignUpPage = connect(mapState, actionCreators)(SignUp);
+
+export default connectedSignUpPage;

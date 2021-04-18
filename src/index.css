@@ -211,7 +211,7 @@ code {
 }
 
 .btn-link {
-    color: #20d6c7 !important;
+    color: var(--link) !important;
     border: none !important;
 }
 
@@ -224,14 +224,6 @@ code {
 }
 
 /* outline buttons */
-[class*='-outline'] {
-    background-color: #fff !important;
-}
-
-[class*='-outline']:hover {
-    color: #fff !important;
-}
-
 [class*='outline-primary'] {
     color: #113f59 !important;
     border-color: #113f59 !important;
@@ -239,6 +231,12 @@ code {
 
 .btn-outline-primary:hover {
     background-color: #113f59 !important;
+    border-color: #113f59 !important;
+}
+
+.btn-fc {
+    color: #113f59 !important;
+    background-color: var(--white) !important;
     border-color: #113f59 !important;
 }
 
@@ -290,6 +288,14 @@ code {
 .btn-outline-secondary:hover {
     background-color: #bdbdbd !important;
     border-color: #bdbdbd !important;
+}
+
+[class*='-outline'] {
+    background-color: #fff !important;
+}
+
+[class*='-outline']:hover {
+    color: #fff !important;
 }
 
 /* link */

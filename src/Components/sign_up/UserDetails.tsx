@@ -38,7 +38,6 @@ const UserDetails = ({ step, setStep, user, setUser }) => {
                     type="text"
                     name="lastName"
                     onChange={onHandleChange}
-                    value={getValues("lastName")}
                     ref={register(Validator.lastName)}
                     isInvalid={errors.lastName}
                     tabIndex={1}
@@ -52,7 +51,6 @@ const UserDetails = ({ step, setStep, user, setUser }) => {
                     type="text"
                     name="firstName"
                     onChange={onHandleChange}
-                    value={getValues("firstName")}
                     ref={register(Validator.firstName)}
                     isInvalid={errors.firstName}
                     tabIndex={1}
@@ -66,7 +64,6 @@ const UserDetails = ({ step, setStep, user, setUser }) => {
                     type="text"
                     name="city"
                     onChange={onHandleChange}
-                    value={getValues("city")}
                     ref={register}
                     isInvalid={errors.city}
                     tabIndex={1}
@@ -80,7 +77,6 @@ const UserDetails = ({ step, setStep, user, setUser }) => {
                     type="email"
                     name="email"
                     onChange={onHandleChange}
-                    value={getValues("email")}
                     ref={register(Validator.email)}
                     isInvalid={errors.email}
                     tabIndex={1}
@@ -94,7 +90,6 @@ const UserDetails = ({ step, setStep, user, setUser }) => {
                     type="password"
                     name="password"
                     onChange={onHandleChange}
-                    value={getValues("password")}
                     ref={register(Validator.password)}
                     isInvalid={errors.password}
                     tabIndex={1}

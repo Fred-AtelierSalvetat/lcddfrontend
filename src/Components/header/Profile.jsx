@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { userActions } from '~/state/user/user.actions';
-import avatar from '../../assets/profile/avatar.svg';
+import { BsPerson } from 'react-icons/bs';
 import settings from '../../assets/profile/settings.svg';
 import history from '../../util/history';
 
@@ -19,20 +19,17 @@ const Profile = (props) => {
     const AvatarImg = () => {
         return (
             <div className="profile-avatar">
-                <img className="avatar-img" src={avatar} alt="Profile" />
+                <BsPerson />
                 <img className="settings-img" src={settings} alt="settings" />
             </div>
         )
     }
 
-    const ProfileDropdown = () => {
-        return (
-            <ul id="settingsList" className="dropdown-menu dropdown-menu-right dropdown-menu-profile">
-                <li className="dropdown-item">Mon profil</li>
-                <li className="dropdown-item" onClick={handleLogout}>Déconnexion</li>
-            </ul>
-        )
-    }
+    const ProfileDropdown =
+        <ul id="settingsList" className="dropdown-menu dropdown-menu-right dropdown-menu-profile">
+            <li className="dropdown-item">Mon profil</li>
+            <li className="dropdown-item" onClick={handleLogout}>Déconnexion</li>
+        </ul>
 
     return (
         <div id="header-profile" className="dropdown">
@@ -41,7 +38,7 @@ const Profile = (props) => {
                 <Name firstName={props.user.firstName} lastName={props.user.lastName} />
             </div>
 
-            <ProfileDropdown />
+            {ProfileDropdown}
         </div>
     )
 }

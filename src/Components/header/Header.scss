@@ -2,6 +2,7 @@
 #lcdd-header {
 	top: 0;
 	width: 100%;
+	min-height: 82px;
 	position: fixed;
 	transition: all 0.3s ease;
 	z-index: 100;
@@ -9,6 +10,7 @@
 	.navbar {
 		padding-left: 2em !important;
 		padding-right: 2em !important;
+		min-height: 82px;
 	}
 
 	.navbar-nav {
@@ -64,6 +66,7 @@
 
 	#navbar-main {
 		justify-content: center;
+		align-items: center;
 	}
 
 	#navbar-right {
@@ -110,21 +113,49 @@
 		}
 	}
 
+	@mixin avatar {
+		position: relative;
+		margin: auto;
+		width: 40px;
+		height: 40px;
+		border-radius: 50%;
+		font-size: 1.5em;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		border: solid 2px;
+	}
+
 	.notifications {
-		margin-right: 10px;
+		cursor: pointer;
+		margin-right: 20px;
+		color: var(--white);
+
+		.bell {
+			@include avatar;
+			border-color: var(--white);
+
+			.notifications-number {
+				position: absolute;
+				bottom: -4px;
+				right: -4px;
+				width: 20px;
+				height: 20px;
+				border-radius: 50%;
+				font-size: small;
+				background-color: var(--red);
+				border: 1px solid var(--dark);
+			}
+		}
 	}
 
 	#header-profile {
-		.profile-avatar {
-			position: relative;
-			margin: auto;
-			width: 40px;
-			height: 40px;
+		cursor: pointer;
 
-			.avatar-img {
-				vertical-align: middle;
-				border-radius: 50%;
-			}
+		.profile-avatar {
+			@include avatar;
+			border-color: var(--dark);
+			background-color: var(--light);
 
 			.settings-img {
 				position: absolute;
@@ -133,17 +164,17 @@
 			}
 		}
 
-		.profile-name {
-			color: var(--white);
+		.dropdown-menu-profile {
+			.dropdown-item {
+				cursor: pointer;
+			}
 		}
 	}
 
-
-	// #header-profile.dropdown:active {
-	// 	.dropdown-menu {
-	// 		display: block;
-	// 	}
-	// }
+	.profile-name {
+		color: var(--white);
+		font-size: 0.8em;
+	}
 
 }
 

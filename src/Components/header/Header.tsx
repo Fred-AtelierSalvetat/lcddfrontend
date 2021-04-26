@@ -4,11 +4,10 @@ import Logo from '~/assets/header/logo.png';
 import SignInContainer from '../sign_in/SignInContainer';
 import { ReactComponent as DropdownIcon } from '~/assets/icons/dropdown-chevron.svg';
 import { checkScroll } from './checkScroll';
-import './Header.scss';
-import { Link, NavLink } from 'react-router-dom';
 import Profile from './Profile';
 import Notifications from './Notifications';
 import { connect } from 'react-redux';
+import './Header.scss';
 
 const Header = (props) => {
 
@@ -47,7 +46,7 @@ const Header = (props) => {
                         <div id="navbar-right" className="navbar-nav">
                             {props.loggedIn ?
                                 <>
-                                    <Notifications />
+                                    <Notifications number={2} />
                                     <Profile />
                                 </> :
                                 <>

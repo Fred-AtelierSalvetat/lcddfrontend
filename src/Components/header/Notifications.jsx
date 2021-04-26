@@ -1,11 +1,15 @@
 import React from 'react';
-import notification from '../../assets/profile/notification.svg';
+import { BsBell } from 'react-icons/bs';
 
-const Notifications = () => {
+const Notifications = ({ number }) => {
 
     return (
         <div className="notifications">
-            <img src={notification} alt="notifications" />
+            <div className="bell">
+                <BsBell />
+                <div className="notifications-number">{number}</div>
+            </div>
+            <div className="profile-name">Notifications</div>
         </div>
     )
 }

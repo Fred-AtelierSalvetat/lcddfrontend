@@ -13,8 +13,6 @@ var threshold = 300;
 
 export const checkScroll = (header) => {
     curScroll = w.scrollY || doc.scrollTop;
-    console.log("current Scroll:", curScroll);
-    console.log("prev Scroll:", prevScroll);
     if (curScroll > prevScroll) {
         // scrolled down
         curDirection = 2;

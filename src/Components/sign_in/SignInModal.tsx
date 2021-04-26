@@ -1,6 +1,9 @@
 import React from 'react';
 import { Button, Form } from 'react-bootstrap';
 import { useForm } from 'react-hook-form';
+import { connect, useDispatch } from 'react-redux';
+import { useHistory } from 'react-router';
+import { userActions } from '~/state/user/user.actions';
 import { Validator } from '~/util/validator';
 import { FranceConnectButton } from '../shared/buttons/FranceConnectButton';
 import { FormFeedback } from '../shared/form/FormFeedBack';
@@ -27,8 +30,10 @@ const SignInModal = ({ show, onHandleClose, onSignUpLinkClick, onLostPasswordCli
 
     const { register, handleSubmit, errors } = useForm();
 
+    const dispatch = useDispatch();
+
     const onHandleSummit = (data: any) => {
-        alert(JSON.stringify(data));
+        dispatch(userActions.login(data.email, data.password))
         return false;
     }
 
@@ -94,4 +99,15 @@ const SignInModal = ({ show, onHandleClose, onSignUpLinkClick, onLostPasswordCli
     )
 }
 
-export default SignInModal;
+const mapState = (state) => {
+    const { loggingIn } = state.authentication;
+    return { loggingIn };
+}
+
+const actionCreators = {
+    login: userActions.login
+}
+
+const connectedInterestsPage = connect(mapState, actionCreators)(SignInModal);
+
+export default connectedInterestsPage;

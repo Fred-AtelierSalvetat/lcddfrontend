@@ -4,10 +4,13 @@ import Logo from '~/assets/header/logo.png';
 import SignInContainer from '../sign_in/SignInContainer';
 import { ReactComponent as DropdownIcon } from '~/assets/icons/dropdown-chevron.svg';
 import { checkScroll } from './checkScroll';
-import './Header.css';
+import './Header.scss';
 import { Link, NavLink } from 'react-router-dom';
+import Profile from './Profile';
+import Notifications from './Notifications';
+import { connect } from 'react-redux';
 
-const Header: React.FC<{}> = () => {
+const Header = (props) => {
 
     useEffect(() => {
         let header = document.getElementById('lcdd-header')!;
@@ -30,7 +33,7 @@ const Header: React.FC<{}> = () => {
                                     Vos questions
                                     <DropdownIcon style={{ marginLeft: "8px" }}></DropdownIcon>
                                 </Nav.Link>
-                                <ul className="dropdown-menu">
+                                <ul className="dropdown-menu dropdown-menu-standard">
                                     <li><a className="dropdown-item" href="/questions/1">Questions en vidéo</a></li>
                                     <li><a className="dropdown-item" href="/questions/2">Questions en attente</a></li>
                                     <li><a className="dropdown-item" href="/questions/3">Sugérer une question</a></li>
@@ -42,8 +45,17 @@ const Header: React.FC<{}> = () => {
                             <Nav.Link className="nav-item" href="/contact-us">Contactez nous</Nav.Link>
                         </div>
                         <div id="navbar-right" className="navbar-nav">
-                            <Nav.Link href="/sign-up" className="nav-item btn-link" style={{ marginRight: "1.2em" }}>{"S'inscrire"}</Nav.Link>
-                            <SignInContainer />
+                            {props.loggedIn ?
+                                <>
+                                    <Notifications />
+                                    <Profile />
+                                </> :
+                                <>
+                                    <Nav.Link href="/sign-up" className="nav-item btn-link" style={{ marginRight: "1.2em" }}>{"S'inscrire"}</Nav.Link>
+                                    <SignInContainer />
+                                </>
+                            }
+
                         </div>
                     </Nav>
                 </Navbar.Collapse>
@@ -54,6 +66,11 @@ const Header: React.FC<{}> = () => {
     );
 };
 
-export default Header;
+const mapStateToProps = (state) => {
+    const { loggedIn, user } = state.authentication;
+    return { loggedIn, user };
+}
 
-Header.displayName = 'Header';
+const connectedHeader = connect(mapStateToProps)(Header);
+
+export default connectedHeader;

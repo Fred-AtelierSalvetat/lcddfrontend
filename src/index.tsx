@@ -6,6 +6,7 @@ import App from './Components/App';
 import * as serviceWorker from './serviceWorker';
 import { Provider } from 'react-redux';
 import { store } from './state/store';
+import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.css';
 import './index.css';
 import Amplify, { Auth } from 'aws-amplify';

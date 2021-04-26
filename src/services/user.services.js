@@ -2,7 +2,9 @@ import { Auth } from 'aws-amplify';
 
 export const userServices = {
     register,
+    confirmRegister,
     login,
+    logout,
 }
 
 async function register(user) {
@@ -18,11 +20,9 @@ async function register(user) {
                 locale: user.city
             }
         });
-        console.log("register response", response);
+        // console.log("register response", response);
         const _user = response.user;
-        console.log("_user", _user);
 
-        // const _user = await handleResponse(response);
         return _user;
     }
     catch (error) {
@@ -30,13 +30,38 @@ async function register(user) {
     }
 }
 
-function confirmRegister() {
+async function confirmRegister(username, code) {
+    try {
+        const response = await Auth.confirmSignUp(username, code);
+        // console.log("register response", response);
+        const _user = response.user;
+
+        return _user;
+    }
+    catch (error) {
+        return Promise.reject(error && error.message);
+    }
+}
+
+async function login(username, password) {
+    try {
+        const response = await Auth.signIn(username, password);
+        console.log("response", response);
+        return response;
+    }
+    catch (error) {
+        return Promise.reject(error && error.message);
+    }
 
 }
 
-function login(username, password) {
-    // Auth.signIn()
-
+async function logout() {
+    try {
+        await Auth.signOut();
+    }
+    catch (error) {
+        return Promise.reject(error && error.message);
+    }
 }
 
 

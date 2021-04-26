@@ -99,7 +99,7 @@ const YourQuestions: React.FC<any> = () => {
                             <Form className="search-form">
                                 <Form.Group controlId="formGroupEmail">
                                     <Form.Label className="formLabel">
-                                        <img src="./search.svg" alt="" />
+                                        <img src="/search.svg" alt="" />
                                     </Form.Label>
                                     <Form.Control type="search" placeholder="Entrer votre question ici" />
                                 </Form.Group>
@@ -119,7 +119,7 @@ const YourQuestions: React.FC<any> = () => {
                         </select>
                         <CardColumns>
                             <Card>
-                                <Card.Img variant="top" src="./cardImage.svg" />
+                                <Card.Img variant="top" src="/cardImage.svg" />
                                 <Card.Body>
                                     <Card.Title style={{ fontSize: '18px' }}>Card Title</Card.Title>
                                     <Card.Text style={{ fontSize: '16px' }}>
@@ -129,7 +129,7 @@ const YourQuestions: React.FC<any> = () => {
                                 </Card.Body>
                             </Card>
                             <Card>
-                                <Card.Img variant="top" src="./cardImage.svg" />
+                                <Card.Img variant="top" src="/cardImage.svg" />
                                 <Card.Body>
                                     <Card.Title style={{ fontSize: '18px' }}>Card Title</Card.Title>
                                     <Card.Text style={{ fontSize: '16px' }}>
@@ -139,7 +139,7 @@ const YourQuestions: React.FC<any> = () => {
                                 </Card.Body>
                             </Card>
                             <Card>
-                                <Card.Img variant="top" src="./cardImage.svg" />
+                                <Card.Img variant="top" src="/cardImage.svg" />
                                 <Card.Body>
                                     <Card.Title style={{ fontSize: '18px' }}>Card Title</Card.Title>
                                     <Card.Text style={{ fontSize: '16px' }}>
@@ -149,7 +149,7 @@ const YourQuestions: React.FC<any> = () => {
                                 </Card.Body>
                             </Card>
                             <Card>
-                                <Card.Img variant="top" src="./cardImage.svg" />
+                                <Card.Img variant="top" src="/cardImage.svg" />
                                 <Card.Body>
                                     <Card.Title style={{ fontSize: '18px' }}>Card Title</Card.Title>
                                     <Card.Text style={{ fontSize: '16px' }}>
@@ -159,7 +159,7 @@ const YourQuestions: React.FC<any> = () => {
                                 </Card.Body>
                             </Card>
                             <Card>
-                                <Card.Img variant="top" src="./cardImage.svg" />
+                                <Card.Img variant="top" src="/cardImage.svg" />
                                 <Card.Body>
                                     <Card.Title style={{ fontSize: '18px' }}>Card Title</Card.Title>
                                     <Card.Text style={{ fontSize: '16px' }}>
@@ -169,7 +169,7 @@ const YourQuestions: React.FC<any> = () => {
                                 </Card.Body>
                             </Card>
                             <Card>
-                                <Card.Img variant="top" src="./cardImage.svg" />
+                                <Card.Img variant="top" src="/cardImage.svg" />
                                 <Card.Body>
                                     <Card.Title style={{ fontSize: '18px' }}>Card Title</Card.Title>
                                     <Card.Text style={{ fontSize: '16px' }}>
@@ -179,7 +179,7 @@ const YourQuestions: React.FC<any> = () => {
                                 </Card.Body>
                             </Card>
                             <Card>
-                                <Card.Img variant="top" src="./cardImage.svg" />
+                                <Card.Img variant="top" src="/cardImage.svg" />
                                 <Card.Body>
                                     <Card.Title style={{ fontSize: '18px' }}>Card Title</Card.Title>
                                     <Card.Text style={{ fontSize: '16px' }}>
@@ -189,7 +189,7 @@ const YourQuestions: React.FC<any> = () => {
                                 </Card.Body>
                             </Card>
                             <Card>
-                                <Card.Img variant="top" src="./cardImage.svg" />
+                                <Card.Img variant="top" src="/cardImage.svg" />
                                 <Card.Body>
                                     <Card.Title style={{ fontSize: '18px' }}>Card Title</Card.Title>
                                     <Card.Text style={{ fontSize: '16px' }}>

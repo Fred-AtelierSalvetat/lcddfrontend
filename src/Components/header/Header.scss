@@ -1,0 +1,152 @@
+/* dropdown nav button */
+#lcdd-header {
+	top: 0;
+	width: 100%;
+	position: fixed;
+	transition: all 0.3s ease;
+	z-index: 100;
+
+	.navbar {
+		padding-left: 2em !important;
+		padding-right: 2em !important;
+	}
+
+	.navbar-nav {
+		flex-wrap: wrap;
+		justify-content: flex-end;
+		flex-grow: 1;
+
+		.dropdown {
+			&:hover {
+				.dropdown-menu-standard {
+					display: block;
+				}
+			}
+		}
+
+		@mixin dropdown-menu {
+			margin: 0;
+			padding: 0;
+			border-radius: 0 !important;
+
+			.dropdown-item {
+				padding: 10px 25px;
+				font-size: 0.9rem;
+				transition: font-size .1s ease;
+			}
+		}
+
+		.dropdown-menu-standard {
+			@include dropdown-menu;
+			background: rgba(255, 255, 255, 0.9);
+			min-width: 250px;
+
+			.dropdown-item {
+				&:hover {
+					font-size: medium;
+				}
+
+				&:focus {
+					font-size: medium;
+					background: #f8f9fa;
+				}
+			}
+		}
+
+		.dropdown-menu-profile {
+			@include dropdown-menu;
+		}
+
+		.dropdown-menu#settingsList {
+			min-width: unset;
+		}
+	}
+
+	#navbar-main {
+		justify-content: center;
+	}
+
+	#navbar-right {
+		flex-grow: unset;
+	}
+
+	.nav-item {
+		white-space: nowrap;
+		padding-left: 0.75rem !important;
+		padding-right: 0.75rem !important;
+		font-weight: 350 !important;
+		font-size: 1.125rem;
+		color: rgba(255, 255, 255, 0.93) !important;
+
+		.nav-link {
+			white-space: nowrap;
+			padding-left: 0.75rem !important;
+			padding-right: 0.75rem !important;
+			font-weight: 350 !important;
+			font-size: 1.125rem;
+			color: rgba(255, 255, 255, 0.93) !important;
+		}
+
+		.nav-link.active {
+			font-weight: 700 !important;
+		}
+	}
+
+	.nav-item.active {
+		font-weight: 700 !important;
+	}
+
+	.nav-item.btn-link {
+		color: var(--link) !important;
+	}
+
+	.dropdown {
+		padding-right: 0 !important;
+	}
+
+	#connexion-btn {
+		&:hover {
+			text-decoration: underline;
+		}
+	}
+
+	.notifications {
+		margin-right: 10px;
+	}
+
+	#header-profile {
+		.profile-avatar {
+			position: relative;
+			margin: auto;
+			width: 40px;
+			height: 40px;
+
+			.avatar-img {
+				vertical-align: middle;
+				border-radius: 50%;
+			}
+
+			.settings-img {
+				position: absolute;
+				bottom: 0;
+				right: 0;
+			}
+		}
+
+		.profile-name {
+			color: var(--white);
+		}
+	}
+
+
+	// #header-profile.dropdown:active {
+	// 	.dropdown-menu {
+	// 		display: block;
+	// 	}
+	// }
+
+}
+
+#lcdd-header.hide {
+	top: -99px;
+}

@@ -1,6 +1,6 @@
 /* eslint-disable */
 import React from 'react';
-import { Switch, Route, BrowserRouter } from 'react-router-dom';
+import { Switch, Route, BrowserRouter, Router, useHistory } from 'react-router-dom';
 import Header from './header/Header';
 import Footer from './footer/Footer';
 import Home from './home/Home';
@@ -14,13 +14,34 @@ import DevenirIntervenantEnvoyee from './devenir_intervenant/DevenirIntervenantE
 import SignInResetPassword from './sign_in/SignInResetPassword';
 import Dashboard from './dashboard/Dashboard';
 import ContactUs from './contact/ContactUs';
+import Auth from '@aws-amplify/auth';
+import { useDispatch } from 'react-redux';
+import { userActionTypes } from '~/state/user/constants/UserActionType';
+import { getUserFromCognitoUser } from '~/state/users/constants/utils/CognitoUser';
 import './App.css';
+import Logout from './logout/Logout';
+import history from '../util/history';
 
 // eslint-disable-next-line @typescript-eslint/ban-types
 const App: React.FC<{}> = () => {
+
+    const dispatch = useDispatch();
+
+    Auth.currentAuthenticatedUser()
+        .then(user => {
+            let cognitoUser = user.attributes;
+            let currentUser = getUserFromCognitoUser(cognitoUser);
+            console.log("current user", currentUser);
+            dispatch({ type: userActionTypes.GET_CURRENT_USER_SUCCESS, user: currentUser })
+        })
+        .catch(err => {
+            console.log("current user", err);
+            dispatch({ type: userActionTypes.GET_CURRENT_USER_FAILURE })
+        });
+
     return (
         <div className="App">
-            <BrowserRouter forceRefresh>
+            <Router history={history}>
                 <Header />
                 <div id="lcdd-body">
                     <Switch>
@@ -32,6 +53,7 @@ const App: React.FC<{}> = () => {
                         <Route path="/mentions-legales" component={MentionsLegales} />
                         <Route path="/questions" component={Questions} />
                         <Route path="/sign-up" component={SignUp} />
+                        <Route path="/logout" component={Logout} />
                         <Route path="/sign-in/reset-password" component={SignInResetPassword} />
                         <Route path="/devenirintervenant" component={DevenirIntervenant} />
                         <Route path="/devenirintervenantenvoyee" component={DevenirIntervenantEnvoyee} />
@@ -43,7 +65,7 @@ const App: React.FC<{}> = () => {
                     </Switch>
                 </div>
                 <Footer />
-            </BrowserRouter>
+            </Router>
         </div>
     );
 };

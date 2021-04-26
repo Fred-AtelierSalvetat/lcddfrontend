@@ -42,7 +42,7 @@ const Interests = ({ step, setStep, user, setUser }) => {
                 // TODO
                 // Handle the submit action here
 
-                dispatch(userActions.register(user))
+                dispatch(userActions.register(user));
 
                 // alert("C'est presque fini ! Allez dans votre boîte mail pour confirmer votre inscription")
             }

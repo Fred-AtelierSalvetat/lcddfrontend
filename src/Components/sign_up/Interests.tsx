@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { Button, Form, Row } from 'react-bootstrap';
 import PropTypes from 'prop-types';
-import InterestCard from './InterestCard';
-import thematiques from './thematiques';
+import InterestCard from '../shared/cards/InterestCard';
+import thematiques from '../shared/thematiques';
 import { userActions } from '~/state/user/user.actions';
 import { connect, useDispatch } from 'react-redux';
 

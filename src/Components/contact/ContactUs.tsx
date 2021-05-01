@@ -1,14 +1,14 @@
-import React, { useState } from 'react';
-import { Button, Container, Form, Row, Spinner } from 'react-bootstrap';
+import React, { useEffect, useState } from 'react';
+import { Button, Container, Form, Row } from 'react-bootstrap';
 import { useForm } from 'react-hook-form';
 import ReCAPTCHA from "react-google-recaptcha";
-import { Wrapper } from '../shared/wrapper/Wrapper';
+import { Wrapper } from '../shared/wrapper';
 import Expire from '../shared/utils/Expire';
 import { FormFeedback } from '../shared/form/FormFeedBack';
-import { Validator } from '~/util/validator.js';
-import "./ContactUs.css";
 import RoundSpinner from '../shared/RoundSpinner';
+import { Validator } from '~/util/validator.js';
 import scrollToTopSmoothly from '~/util/scrollToTopSmoothly';
+import "./ContactUs.css";
 
 const SITE_KEY = process.env.REACT_APP_GOOGLE_CAPTCHA_SITE_KEY!;
 const MESSAGE_SENT_SUCCESS = "Votre message a été bien envoyé";
@@ -41,7 +41,7 @@ const AlertError = ({ show, message, onClick }) => {
 }
 
 const ContactUs = () => {
-    const { register, handleSubmit, setValue, trigger, errors, setError } = useForm();
+    const { register, handleSubmit, setValue, trigger, errors, setError, clearErrors } = useForm();
     const [recaptchaValidated, setRecaptchaValidated] = useState(false);
     const [showAlertMessage, setShowAlertMessage] = useState(false);
     const [messageSuccessfullySent, setMessageSuccessfullySent] = useState(false);
@@ -50,6 +50,8 @@ const ContactUs = () => {
     let captcha: { reset: () => void; };
 
     const onHandleChange = ({ target }) => {
+        console.log(target.name, target.value);
+        
         trigger(target.name);
     }
 
@@ -96,11 +98,9 @@ const ContactUs = () => {
 
         } else {
             setError("captcha", {
-                type: "manual",
-                message: "La vérification n'est pas encore faite"
+                type: "validate",
+                message: "Veuillez vérifier que vous n'êtes pas un robot pour continuer !"
             });
-            console.log("recaptcha unverified");
-            alert("Veuillez valider la vérification avant d'Envoyer votre message !");
         }
     }
 
@@ -131,6 +131,7 @@ const ContactUs = () => {
 
     const handleChangeCaptcha = () => {
         setReCAPTCHAVerified();
+        clearErrors("captcha");
     };
 
     return (
@@ -234,14 +235,11 @@ const ContactUs = () => {
                                 onExpired={onRecaptchaExpired}
                             />
 
-
                             <Button id="submit-contact-btn" variant="primary" type="submit">
                                 Envoyer
                             </Button>
                         </Row>
-                        <Form.Control.Feedback type="invalid" id="captcha">
-                            Hello
-                        </Form.Control.Feedback>
+                        {!recaptchaValidated && <FormFeedback field={errors.captcha}></FormFeedback>}
                     </Form.Group>
                 </Form>
             </Container>

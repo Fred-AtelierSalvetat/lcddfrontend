@@ -4,12 +4,9 @@ import { userActions } from '~/state/user/user.actions';
 import { BsPerson } from 'react-icons/bs';
 import settings from '../../assets/profile/settings.svg';
 import history from '../../util/history';
+import { Nav } from 'react-bootstrap';
 
 const Profile = (props) => {
-
-    const handleLogout = () => {
-        history.push('/logout');
-    }
 
     const Name = ({ firstName, lastName }) => {
         const text = `${firstName} ${lastName.length > 0 ? (lastName[0] + '.') : ''}`;
@@ -26,9 +23,9 @@ const Profile = (props) => {
     }
 
     const ProfileDropdown =
-        <ul id="settingsList" className="dropdown-menu dropdown-menu-right dropdown-menu-profile">
-            <li className="dropdown-item">Mon profil</li>
-            <li className="dropdown-item" onClick={handleLogout}>Déconnexion</li>
+        <ul id="settingsList">
+            <li className="dropdown-item" onClick={() => history.push('/my-profile')}>Mon profil</li>
+            <li className="dropdown-item" onClick={() => history.push('/logout')}>Déconnexion</li>
         </ul>
 
     return (
@@ -38,7 +35,9 @@ const Profile = (props) => {
                 <Name firstName={props.user.firstName} lastName={props.user.lastName} />
             </div>
 
-            {ProfileDropdown}
+            <div className="dropdown-menu dropdown-menu-right dropdown-menu-profile">
+                {ProfileDropdown}
+            </div>
         </div>
     )
 }

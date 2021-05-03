@@ -1,8 +1,10 @@
-.modal-header .close {
-    position: absolute;
-    right: 1rem;
-    font-size: 2rem;
-    font-weight: 400;
+.modal-header {
+    .close {
+        position: absolute;
+        right: 1rem;
+        font-size: 2rem;
+        font-weight: 400;
+    }
 }
 
 .container-login {
@@ -18,52 +20,59 @@
 .login-header {
     padding: 32px 32px 10px 32px;
     text-align: left;
-}
 
-.login-header h1 {
-    margin-bottom: 24px;
+    h1 {
+        margin-bottom: 24px;
+    }
 }
 
 .login-body {
     padding: 20px 32px 57px 32px;
 }
 
-.login-body-center * {
-    text-align: center;
+.login-body-center {
+    * {
+        text-align: center;
+    }
 }
 
 .login-options {
     margin-bottom: 40px;
 }
 
-.FC-btn,
+.FC-btn {
+    display: flex !important;
+    align-items: center;
+    padding: 0 16px !important;
+
+    &:hover {
+        background-color: var(--white) !important;
+        color: var(--fc) !important;
+        text-decoration: underline !important;
+        --shadow: 0 10px 6px -6px #777;
+        box-shadow: var(--shadow);
+    }
+}
+
 .FC-btn-email {
     display: flex !important;
     align-items: center;
     padding: 0 16px !important;
 }
 
-.FC-btn:hover {
-    background-color: var(--white) !important;
+.FC-text {
+    padding-left: 45px;
+    font-weight: 350 !important;
+    font-size: 20px !important;
+    text-align: left;
     color: var(--fc) !important;
-    text-decoration: underline !important;
-    --shadow: 0 10px 6px -6px #777;
-    box-shadow: var(--shadow);
 }
 
-.FC-text,
 .FC-text-email {
     padding-left: 45px;
     font-weight: 350 !important;
     font-size: 20px !important;
     text-align: left;
-}
-
-.FC-text {
-    color: var(--fc) !important;
-}
-
-.FC-text-email {
     color: #F2F2F2 !important;
 }
 

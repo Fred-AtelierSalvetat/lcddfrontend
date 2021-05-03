@@ -219,10 +219,6 @@ code {
     text-decoration: underline !important;
 }
 
-.jumbotron {
-    background-color: #f3edd3 !important;
-}
-
 /* outline buttons */
 [class*='outline-primary'] {
     color: #113f59 !important;

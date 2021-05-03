@@ -6,9 +6,9 @@ import ConfirmDialog from '../shared/modals/ConfirmDialog';
 import classNames from 'classnames';
 import styled from 'styled-components';
 import FormSteps from './form-steps';
-import "./SignUp.css";
 import { connect } from 'react-redux';
 import { userActions } from '~/state/user/user.actions';
+import "./SignUp.scss";
 
 const StepText = styled.p`
     text-align: center;

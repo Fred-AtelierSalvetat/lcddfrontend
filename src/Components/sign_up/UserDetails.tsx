@@ -4,10 +4,43 @@ import { useForm } from 'react-hook-form';
 import { Validator } from '../../util/validator';
 import PropTypes from 'prop-types';
 import { FormFeedback } from '../shared/form/FormFeedBack';
+import Feedback from 'react-bootstrap/esm/Feedback';
 
 // Step 2 UI
 const UserDetails = ({ step, setStep, user, setUser }) => {
-    const { register, handleSubmit, setValue, getValues, trigger, errors } = useForm();
+    const { register, handleSubmit, setValue, trigger, errors } = useForm({
+        criteriaMode: "all",
+    });
+
+    const passwordError = {
+        required: "Le mot de passe est requis",
+        oneLowerCase: "Un charactère minuscule",
+        oneUpperCase: "Un charactère majuscule",
+        oneDigit: "Un chiffre",
+        oneSpecial: "Un charactère spécial",
+        minLength: "Au moins 8 caractères"
+    }
+
+    const getValidityErrorOnType = (type) => {
+        if (errors) {
+            if (errors.password) {
+                if (errors.password.types) {
+                    if (errors.password.types[type]) return "invalid";
+                }
+            }
+        }
+        return undefined;
+    }
+
+    const PasswordError = () => {
+        return (
+            <div className="error-password">
+                {Object.keys(passwordError).map((type, index) => {
+                    return <li key={index}><Feedback type={getValidityErrorOnType(type)} style={{ color: "unset" }}>{passwordError[type]}</Feedback></li>
+                })}
+            </div>
+        )
+    }
 
     const onHandleChange = ({ target }) => {
         const { name, value } = target;
@@ -16,7 +49,19 @@ const UserDetails = ({ step, setStep, user, setUser }) => {
             type: 'UPDATE_PERSONAL_INFO',
             payload: { [name]: value },
         });
+
+        // setTimeout(() => {
+        //     console.log("error", errors);
+        // }, 100)
     }
+
+    // useEffect(() => {
+    //     trigger("password");
+    // });
+
+    useEffect(() => {
+        console.log(errors);
+    });
 
     const handleContinue = () => {
         setStep(step + 1);
@@ -84,17 +129,20 @@ const UserDetails = ({ step, setStep, user, setUser }) => {
                 <FormFeedback field={errors.email}></FormFeedback>
             </Form.Group>
 
-            <Form.Group controlId="inscriptionPassword">
+            <Form.Group controlId="inscriptionPassword" className="password-input-group">
                 <Form.Label>Mot de passe</Form.Label>
-                <Form.Control
-                    type="password"
-                    name="password"
-                    onChange={onHandleChange}
-                    ref={register(Validator.password)}
-                    isInvalid={errors.password}
-                    tabIndex={1}
-                />
-                <FormFeedback field={errors.password}></FormFeedback>
+                <div style={{ width: "max-content" }}>
+                    <Form.Control
+                        type="password"
+                        name="password"
+                        onChange={onHandleChange}
+                        ref={register(Validator.password)}
+                        isInvalid={errors.password}
+                        tabIndex={1}
+                    />
+                    <PasswordError />
+                </div>
+                {/* <FormFeedback field={errors.password}></FormFeedback> */}
             </Form.Group>
 
             <Button
@@ -104,7 +152,7 @@ const UserDetails = ({ step, setStep, user, setUser }) => {
                 style={{ width: "100%" }}>
                 Soumettre
             </Button>
-        </Form>
+        </Form >
     )
 }
 

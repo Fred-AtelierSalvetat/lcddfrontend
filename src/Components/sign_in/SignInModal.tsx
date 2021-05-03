@@ -1,10 +1,7 @@
 import React from 'react';
 import { Button, Form } from 'react-bootstrap';
 import { useForm } from 'react-hook-form';
-import { VscLoading } from 'react-icons/vsc';
-import { BiRefresh } from 'react-icons/bi';
 import { connect, useDispatch } from 'react-redux';
-import { useHistory } from 'react-router';
 import { userActions } from '~/state/user/user.actions';
 import { Validator } from '~/util/validator';
 import { FranceConnectButton } from '../shared/buttons/FranceConnectButton';

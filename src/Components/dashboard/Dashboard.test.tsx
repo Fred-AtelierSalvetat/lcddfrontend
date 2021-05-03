@@ -11,7 +11,7 @@ import UserManagement from './usermanagement/UserManagement';
 jest.mock('./usermanagement/UserManagement');
 
 describe('<Dashboard />', () => {
-    it('contains 6 navigation links', () => {
+    it('contains 2 navigation links', () => {
         const wrapper = mount(
             <MemoryRouter initialEntries={['/dashboard']}>
                 <Route path="/dashboard" exact={true}>
@@ -19,9 +19,9 @@ describe('<Dashboard />', () => {
                 </Route>
             </MemoryRouter>,
         );
-        expect(wrapper.find(NavLink)).to.have.length(6);
+        expect(wrapper.find(NavLink)).to.have.length(2);
     });
-    it('contains a link to #/dashboard/workshops', () => {
+    it('contains a link to #/dashboard/newWorkshop', () => {
         const wrapper = mount(
             <MemoryRouter initialEntries={['/dashboard']}>
                 <Route path="/dashboard" exact={true}>
@@ -29,7 +29,7 @@ describe('<Dashboard />', () => {
                 </Route>
             </MemoryRouter>,
         );
-        expect(wrapper.find({ href: '#/dashboard/workshops' })).to.exist;
+        expect(wrapper.find({ href: '#/dashboard/newWorkshop' })).to.exist;
     });
 
     it('contains a link to #/dashboard/users', () => {
@@ -41,39 +41,6 @@ describe('<Dashboard />', () => {
             </MemoryRouter>,
         );
         expect(wrapper.find({ href: '#/dashboard/users' })).to.exist;
-    });
-
-    it('contains a link to #/dashboard/analytics', () => {
-        const wrapper = mount(
-            <MemoryRouter initialEntries={['/dashboard']}>
-                <Route path="/dashboard" exact={true}>
-                    <Dashboard />
-                </Route>
-            </MemoryRouter>,
-        );
-        expect(wrapper.find({ href: '#/dashboard/analytics' })).to.exist;
-    });
-
-    it('contains a link to #/dashboard/notifications', () => {
-        const wrapper = mount(
-            <MemoryRouter initialEntries={['/dashboard']}>
-                <Route path="/dashboard" exact={true}>
-                    <Dashboard />
-                </Route>
-            </MemoryRouter>,
-        );
-        expect(wrapper.find({ href: '#/dashboard/notifications' })).to.exist;
-    });
-
-    it('contains a link to #/dashboard/help', () => {
-        const wrapper = mount(
-            <MemoryRouter initialEntries={['/dashboard']}>
-                <Route path="/dashboard" exact={true}>
-                    <Dashboard />
-                </Route>
-            </MemoryRouter>,
-        );
-        expect(wrapper.find({ href: '#/dashboard/help' })).to.exist;
     });
 
     it("shall handle route's params to activate the corresponding NavLink", () => {

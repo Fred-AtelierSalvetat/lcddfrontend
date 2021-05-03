@@ -28,16 +28,22 @@ describe("alerts' action creator", () => {
         });
     });
 
-    it('newFailureAlert function should create an action to add a failure alert', () => {
+    it('newFailureAlert function should create an action to add a failure alert then DISMISS_ALERT', () => {
         const expectedAlertContent = {
             alertSubject: 'alertCategoryTEST',
             message: 'alertMessageTEST',
         };
-        expect(actions.newFailureAlert(expectedAlertContent)).to.nested.include({
-            type: types.NEW_ALERT,
-            'alert.alertType': alertTypes.FAILURE,
-            'alert.alertSubject': expectedAlertContent.alertSubject,
-            'alert.message': expectedAlertContent.message,
+        const mockStore = configureMockStore([thunk]);
+        const store = mockStore({});
+        return store.dispatch(actions.newFailureAlert(expectedAlertContent)).then(() => {
+            const actionStoreArray = store.getActions();
+            expect(actionStoreArray[0]).to.nested.include({
+                type: types.NEW_ALERT,
+                'alert.alertType': alertTypes.FAILURE,
+                'alert.alertSubject': expectedAlertContent.alertSubject,
+                'alert.message': expectedAlertContent.message,
+            });
+            expect(actionStoreArray[1]).to.nested.include({ type: types.DISMISS_ALERT });
         });
     });
     it('dismissAlert function should create an action to dismiss the specified alert', () => {

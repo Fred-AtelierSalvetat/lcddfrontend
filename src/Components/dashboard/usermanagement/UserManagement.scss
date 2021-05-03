@@ -6,51 +6,26 @@ $input-place-holder-color: #999999;
 $awaiting-validation-background-color: #f0ad4e;
 
 #lcdd-dashboard-page {
-    .alertBox {
-        margin: 0.5rem 0 0.25rem 0;
-        height: 50px;
-        overflow-y: auto;
-        display: flex;
-        flex-direction: column;
-
-        .alert {
-            padding: 0.5rem 0;
-            margin-bottom: 0.5rem;
-            .JSXalertMsg {
-                height: 1.5rem;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                span {
-                    padding: 0 1rem;
-                }
-                button {
-                    &.retry {
-                        margin: 0.25rem 0;
-                        padding: 0.25px 0.5rem;
-                    }
-                }
-            }
-            button {
-                &.close {
-                    padding: 0.5rem 1rem;
-                }
-            }
-            &.alert-danger {
-                background-color: var(--danger) !important;
-            }
-            &.alert-success {
-                background-color: var(--success) !important;
-            }
+    .navPill {
+        &-enter {
+            background-color: yellowgreen !important;
         }
-    }
-    h1 {
-        margin: 0 0 40px 0;
-        padding: 0;
-        color: var(--primary);
-        text-align: left;
-        font-weight: 350;
-        font-size: 30px;
+
+        &-enter-active {
+            background-color: blue !important;
+            transition: background-color 2000ms !important;
+        }
+        &-exit {
+            opacity: 1;
+            background-color: yellow !important;
+            transition: opacity 1000ms;
+        }
+
+        &-exit-active {
+            opacity: 1;
+            background-color: yellow !important;
+            transition: opacity 1000ms;
+        }
     }
     .table_and_filters_pane {
         background-color: $header-background-color;
@@ -117,7 +92,7 @@ $awaiting-validation-background-color: #f0ad4e;
             background-color: var(--white);
             margin-bottom: 7px;
             .tab-pane {
-                height: calc(100vh - 300px);
+                height: calc(100vh - 200px);
                 min-height: 97px;
                 overflow: auto;
             }

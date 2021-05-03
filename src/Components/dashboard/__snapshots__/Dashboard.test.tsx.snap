@@ -83,9 +83,9 @@ exports[`<Dashboard /> should match its reference snapshot 1`] = `
                             "render": [Function],
                           }
                         }
-                        disabled={true}
-                        href="#/dashboard/workshops"
-                        key="#/dashboard/workshops"
+                        disabled={false}
+                        href="#/dashboard/newWorkshop"
+                        key="#/dashboard/newWorkshop"
                       >
                         <ForwardRef
                           active={false}
@@ -96,94 +96,36 @@ exports[`<Dashboard /> should match its reference snapshot 1`] = `
                               "render": [Function],
                             }
                           }
-                          className="nav-link disabled"
-                          disabled={true}
-                          href="#/dashboard/workshops"
+                          className="nav-link"
+                          disabled={false}
+                          href="#/dashboard/newWorkshop"
                         >
                           <SafeAnchor
-                            className="nav-link disabled"
-                            data-rb-event-key="#/dashboard/workshops"
-                            disabled={true}
-                            href="#/dashboard/workshops"
+                            className="nav-link"
+                            data-rb-event-key="#/dashboard/newWorkshop"
+                            disabled={false}
+                            href="#/dashboard/newWorkshop"
                             onClick={[Function]}
                           >
                             <a
-                              aria-disabled={true}
-                              className="nav-link disabled"
-                              data-rb-event-key="#/dashboard/workshops"
-                              href="#/dashboard/workshops"
+                              className="nav-link"
+                              data-rb-event-key="#/dashboard/newWorkshop"
+                              href="#/dashboard/newWorkshop"
                               onClick={[Function]}
                               onKeyDown={[Function]}
-                              tabIndex={-1}
                             >
                               <div
                                 className="button-panel"
                               >
-                                <ForwardRef(SvgWorkshops24Px)>
+                                <ForwardRef(SvgAdd24Px)>
                                   <svg>
-                                    workshops_24px.svg
+                                    add_24px.svg
                                   </svg>
-                                </ForwardRef(SvgWorkshops24Px)>
+                                </ForwardRef(SvgAdd24Px)>
                                 <p>
-                                  Ateliers
-                                </p>
-                              </div>
-                            </a>
-                          </SafeAnchor>
-                        </ForwardRef>
-                      </NavLink>
-                      <NavLink
-                        active={false}
-                        as={
-                          Object {
-                            "$$typeof": Symbol(react.forward_ref),
-                            "displayName": "SafeAnchor",
-                            "render": [Function],
-                          }
-                        }
-                        disabled={true}
-                        href="#/dashboard/questions"
-                        key="#/dashboard/questions"
-                      >
-                        <ForwardRef
-                          active={false}
-                          as={
-                            Object {
-                              "$$typeof": Symbol(react.forward_ref),
-                              "displayName": "SafeAnchor",
-                              "render": [Function],
-                            }
-                          }
-                          className="nav-link disabled"
-                          disabled={true}
-                          href="#/dashboard/questions"
-                        >
-                          <SafeAnchor
-                            className="nav-link disabled"
-                            data-rb-event-key="#/dashboard/questions"
-                            disabled={true}
-                            href="#/dashboard/questions"
-                            onClick={[Function]}
-                          >
-                            <a
-                              aria-disabled={true}
-                              className="nav-link disabled"
-                              data-rb-event-key="#/dashboard/questions"
-                              href="#/dashboard/questions"
-                              onClick={[Function]}
-                              onKeyDown={[Function]}
-                              tabIndex={-1}
-                            >
-                              <div
-                                className="button-panel"
-                              >
-                                <ForwardRef(SvgQuestions24Px)>
-                                  <svg>
-                                    questions_24px.svg
-                                  </svg>
-                                </ForwardRef(SvgQuestions24Px)>
-                                <p>
-                                  Questions
+                                  Créer
+                                  <br />
+                                  un atelier
                                 </p>
                               </div>
                             </a>
@@ -239,181 +181,9 @@ exports[`<Dashboard /> should match its reference snapshot 1`] = `
                                   </svg>
                                 </ForwardRef(SvgUsers24Px)>
                                 <p>
-                                  Gestion utilisateurs
-                                </p>
-                              </div>
-                            </a>
-                          </SafeAnchor>
-                        </ForwardRef>
-                      </NavLink>
-                      <NavLink
-                        active={false}
-                        as={
-                          Object {
-                            "$$typeof": Symbol(react.forward_ref),
-                            "displayName": "SafeAnchor",
-                            "render": [Function],
-                          }
-                        }
-                        disabled={true}
-                        href="#/dashboard/analytics"
-                        key="#/dashboard/analytics"
-                      >
-                        <ForwardRef
-                          active={false}
-                          as={
-                            Object {
-                              "$$typeof": Symbol(react.forward_ref),
-                              "displayName": "SafeAnchor",
-                              "render": [Function],
-                            }
-                          }
-                          className="nav-link disabled"
-                          disabled={true}
-                          href="#/dashboard/analytics"
-                        >
-                          <SafeAnchor
-                            className="nav-link disabled"
-                            data-rb-event-key="#/dashboard/analytics"
-                            disabled={true}
-                            href="#/dashboard/analytics"
-                            onClick={[Function]}
-                          >
-                            <a
-                              aria-disabled={true}
-                              className="nav-link disabled"
-                              data-rb-event-key="#/dashboard/analytics"
-                              href="#/dashboard/analytics"
-                              onClick={[Function]}
-                              onKeyDown={[Function]}
-                              tabIndex={-1}
-                            >
-                              <div
-                                className="button-panel"
-                              >
-                                <ForwardRef(SvgAnalytics24Px)>
-                                  <svg>
-                                    analytics_24px.svg
-                                  </svg>
-                                </ForwardRef(SvgAnalytics24Px)>
-                                <p>
-                                  Analytics
-                                </p>
-                              </div>
-                            </a>
-                          </SafeAnchor>
-                        </ForwardRef>
-                      </NavLink>
-                      <NavLink
-                        active={false}
-                        as={
-                          Object {
-                            "$$typeof": Symbol(react.forward_ref),
-                            "displayName": "SafeAnchor",
-                            "render": [Function],
-                          }
-                        }
-                        disabled={true}
-                        href="#/dashboard/notifications"
-                        key="#/dashboard/notifications"
-                      >
-                        <ForwardRef
-                          active={false}
-                          as={
-                            Object {
-                              "$$typeof": Symbol(react.forward_ref),
-                              "displayName": "SafeAnchor",
-                              "render": [Function],
-                            }
-                          }
-                          className="nav-link disabled"
-                          disabled={true}
-                          href="#/dashboard/notifications"
-                        >
-                          <SafeAnchor
-                            className="nav-link disabled"
-                            data-rb-event-key="#/dashboard/notifications"
-                            disabled={true}
-                            href="#/dashboard/notifications"
-                            onClick={[Function]}
-                          >
-                            <a
-                              aria-disabled={true}
-                              className="nav-link disabled"
-                              data-rb-event-key="#/dashboard/notifications"
-                              href="#/dashboard/notifications"
-                              onClick={[Function]}
-                              onKeyDown={[Function]}
-                              tabIndex={-1}
-                            >
-                              <div
-                                className="button-panel"
-                              >
-                                <ForwardRef(SvgNotifications24Px)>
-                                  <svg>
-                                    notifications_24px.svg
-                                  </svg>
-                                </ForwardRef(SvgNotifications24Px)>
-                                <p>
-                                  Notifications
-                                </p>
-                              </div>
-                            </a>
-                          </SafeAnchor>
-                        </ForwardRef>
-                      </NavLink>
-                      <NavLink
-                        active={false}
-                        as={
-                          Object {
-                            "$$typeof": Symbol(react.forward_ref),
-                            "displayName": "SafeAnchor",
-                            "render": [Function],
-                          }
-                        }
-                        disabled={true}
-                        href="#/dashboard/help"
-                        key="#/dashboard/help"
-                      >
-                        <ForwardRef
-                          active={false}
-                          as={
-                            Object {
-                              "$$typeof": Symbol(react.forward_ref),
-                              "displayName": "SafeAnchor",
-                              "render": [Function],
-                            }
-                          }
-                          className="nav-link disabled"
-                          disabled={true}
-                          href="#/dashboard/help"
-                        >
-                          <SafeAnchor
-                            className="nav-link disabled"
-                            data-rb-event-key="#/dashboard/help"
-                            disabled={true}
-                            href="#/dashboard/help"
-                            onClick={[Function]}
-                          >
-                            <a
-                              aria-disabled={true}
-                              className="nav-link disabled"
-                              data-rb-event-key="#/dashboard/help"
-                              href="#/dashboard/help"
-                              onClick={[Function]}
-                              onKeyDown={[Function]}
-                              tabIndex={-1}
-                            >
-                              <div
-                                className="button-panel"
-                              >
-                                <ForwardRef(SvgHelp24Px)>
-                                  <svg>
-                                    help_24px.svg
-                                  </svg>
-                                </ForwardRef(SvgHelp24Px)>
-                                <p>
-                                  Aide
+                                  Gestion
+                                  <br />
+                                  utilisateurs
                                 </p>
                               </div>
                             </a>

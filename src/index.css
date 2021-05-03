@@ -146,8 +146,9 @@ code {
     --beige: #fff9e1 !important;
     --secondary: #bdbdbd !important;
     --fc: #034ea2 !important;
-    --admin-nav-dark: #0b2534;
+    --dark-primary: #0b2534;
     --white: #ffffff;
+    --placeholder: #a3a3a3;
 }
 
 [class*='-primary'] {
@@ -156,8 +157,8 @@ code {
 }
 
 .btn-primary:hover {
-    background-color: #0b2534 !important;
-    border-color: #0b2534 !important;
+    background-color: var(--dark-primary) !important;
+    border-color: var(--dark-primary) !important;
 }
 
 [class*='-success'] {
@@ -224,6 +225,8 @@ code {
 }
 
 /* outline buttons */
+
+/* Attention les deux règles ci-dessous font disparaitre les boutons de types -outline lors du :hover */
 [class*='-outline'] {
     background-color: #fff !important;
 }
@@ -231,6 +234,11 @@ code {
 [class*='-outline']:hover {
     color: #fff !important;
 }
+
+/* Pour information les règles ci-dessous ne sont pas actives le pattern des classes n'est aps le bon */
+/* Ex : -> btn-secondary-outline*/
+/* Je ne "corrige" pas parce que je ne suis vraiment pas certain que l'impact sera positif (color ==  background-color on hover) */
+/* A discuter en review */
 
 [class*='outline-primary'] {
     color: #113f59 !important;
@@ -289,7 +297,7 @@ code {
 
 .btn-outline-secondary:hover {
     background-color: #bdbdbd !important;
-    border-color: #bdbdbd !important;
+    border-color: #b1a4a4 !important;
 }
 
 /* link */
@@ -306,6 +314,11 @@ code {
 
 /* placeholder */
 ::placeholder {
-    color: #999999 i !important;
+    color: var(--placeholder) !important;
     font-size: 0.9rem;
+}
+
+.btn-secondary-outline:hover {
+    color: var(--dark) !important;
+    background-color: var(--secondary) !important;
 }

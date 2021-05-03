@@ -9,7 +9,7 @@ import Button from 'react-bootstrap/Button';
 
 import { ReactComponent as ToggleOnIcon } from '../../../assets/icons/toggle_on_24px.svg';
 import { ReactComponent as ToggleOffIcon } from '../../../assets/icons/toggle_off_24px.svg';
-import { ReactComponent as DeleteIcon } from '../../../assets/icons/delete_24px.svg';
+import { ReactComponent as DeleteForeverIcon } from '../../../assets/icons/delete_forever_16px.svg';
 import { ReactComponent as AdminIcon } from '../../../assets/icons/admin_24px.svg';
 import { ReactComponent as ValidateIcon } from '../../../assets/icons/validate_24px.svg';
 import { ReactComponent as InviteSpeakerIcon } from '../../../assets/icons/group_add_24px.svg';
@@ -18,12 +18,13 @@ import * as userRoles from '../../../state/users/constants/Roles';
 import * as userStatus from '../../../state/users/constants/Status';
 import * as actionTypes from '../../../state/users/constants/ActionTypes';
 import * as usersAction from '../../../state/users/actions';
-import { getVisibleUsers, isRequestInProgress, getAlerts } from '../../../state/reducers';
+import { getVisibleUsers, isRequestInProgress } from '../../../state/reducers';
 import ErrorBoundary from '../ErrorBoundary';
-import AlertNotificationBox from './AlertNotificationBox';
+
 import SearchBox from './Searchbox';
 import ActionMenuCell from './ActionMenuCell';
 import Action from './Action';
+import ConfirmDialog from '../../shared/modals/ConfirmDialog';
 
 import './UserManagement.scss';
 
@@ -80,7 +81,6 @@ const UserManagement: FC = () => {
     const isFetching = useSelector(isRequestInProgress(actionTypes.FETCH_USERS_REQUEST));
 
     const users = useSelector(getVisibleUsers);
-    const alerts = useSelector(getAlerts).reverse();
 
     if (!roleFilter) {
         return <Redirect to={root_path + '/admin'} />;
@@ -145,20 +145,32 @@ const UserManagement: FC = () => {
                 {
                     key: 'actions',
                     renderHeader: () => <div className="CenteredHeader">Actions</div>,
-                    renderCell: ({ user_id }) => (
-                        <ActionMenuCell>
-                            <Action
-                                icon={<AdminIcon />}
-                                label="Revenir intervenant"
-                                action={() => dispatch(usersAction.revokeUserAdminRight(user_id))}
-                            />
-                            <Action
-                                icon={<DeleteIcon />}
-                                label="Supprimer"
-                                action={() => dispatch(usersAction.deleteUser(user_id))}
-                            />
-                        </ActionMenuCell>
-                    ),
+                    renderCell: ({ user_id }) => {
+                        return (
+                            <ActionMenuCell>
+                                <Action
+                                    icon={<AdminIcon />}
+                                    label="Revenir intervenant"
+                                    action={() => dispatch(usersAction.revokeUserAdminRight(user_id))}
+                                />
+                                <Action
+                                    icon={<DeleteForeverIcon />}
+                                    label="Supprimer"
+                                    modalConfirmation={
+                                        <ConfirmDialog
+                                            show={true}
+                                            title="Supprimer cet utilisateur"
+                                            body="Cette action n’est pas réversible."
+                                            cancelButton="Annuler"
+                                            okButton="Supprimer"
+                                            handleClose={() => {}}
+                                            handleConfirm={() => dispatch(usersAction.deleteUser(user_id))}
+                                        />
+                                    }
+                                />
+                            </ActionMenuCell>
+                        );
+                    },
                 },
                 {
                     key: 'profile',
@@ -248,9 +260,19 @@ const UserManagement: FC = () => {
                                 />
                             )}
                             <Action
-                                icon={<DeleteIcon />}
+                                icon={<DeleteForeverIcon />}
                                 label="Supprimer"
-                                action={() => dispatch(usersAction.deleteUser(user_id))}
+                                modalConfirmation={
+                                    <ConfirmDialog
+                                        show={true}
+                                        title="Supprimer cet utilisateur"
+                                        body="Cette action n’est pas réversible."
+                                        cancelButton="Annuler"
+                                        okButton="Supprimer"
+                                        handleClose={() => {}}
+                                        handleConfirm={() => dispatch(usersAction.deleteUser(user_id))}
+                                    />
+                                }
                             />
                         </ActionMenuCell>
                     ),
@@ -318,9 +340,19 @@ const UserManagement: FC = () => {
                                 />
                             )}
                             <Action
-                                icon={<DeleteIcon />}
+                                icon={<DeleteForeverIcon />}
                                 label="Supprimer"
-                                action={() => dispatch(usersAction.deleteUser(user_id))}
+                                modalConfirmation={
+                                    <ConfirmDialog
+                                        show={true}
+                                        title="Supprimer cet utilisateur"
+                                        body="Cette action n’est pas réversible."
+                                        cancelButton="Annuler"
+                                        okButton="Supprimer"
+                                        handleClose={() => {}}
+                                        handleConfirm={() => dispatch(usersAction.deleteUser(user_id))}
+                                    />
+                                }
                             />
                         </ActionMenuCell>
                     ),
@@ -331,8 +363,6 @@ const UserManagement: FC = () => {
 
     return (
         <ErrorBoundary>
-            <AlertNotificationBox />
-            <h1>Gestion utilisateurs</h1>
             {!users.length && isFetching ? (
                 <p>Chargement...</p>
             ) : (
@@ -342,12 +372,18 @@ const UserManagement: FC = () => {
                             {tabs_desc.map((tab_desc) => {
                                 return (
                                     <Nav.Item key={'tab_' + tab_desc.tab_label}>
+                                        {/* <CSSTransition
+                                            in={tab_desc.uri_filter === roleFilter}
+                                            timeout={{ enter: 3000, exit: 3000 }}
+                                            classNames="navPill"
+                                        > */}
                                         <Nav.Link
                                             href={`#${root_path}/${tab_desc.uri_filter}`}
                                             active={tab_desc.uri_filter === roleFilter}
                                         >
                                             {tab_desc.tab_label}
                                         </Nav.Link>
+                                        {/* </CSSTransition> */}
                                     </Nav.Item>
                                 );
                             })}

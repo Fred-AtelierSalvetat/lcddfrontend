@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { Nav, Navbar } from 'react-bootstrap';
 import Logo from '~/assets/header/logo.png';
-import SignInContainer from '../sign_in/SignInContainer';
+import { SignInContainer } from '../sign_in';
 import { ReactComponent as DropdownIcon } from '~/assets/icons/dropdown-chevron.svg';
 import { checkScroll } from './checkScroll';
 import Profile from './Profile';

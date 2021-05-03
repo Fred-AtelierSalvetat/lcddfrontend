@@ -1,29 +1,26 @@
-/* eslint-disable */
 import React from 'react';
-import { Switch, Route, BrowserRouter, Router, useHistory } from 'react-router-dom';
-import Header from './header/Header';
-import Footer from './footer/Footer';
-import Home from './home/Home';
-import Speakers from './speakers/Speakers';
-import SpeakerProfile from './speakers/Profile';
-import MentionsLegales from './mentions_legales/MentionsLegales';
-import SignUp from './sign_up/SignUp';
+import { Switch, Route, Router } from 'react-router-dom';
+import Header from './header';
+import Footer from './footer';
+import Home from './home';
+import { Speakers, SpeakerProfile } from './speakers';
+import LegalNotice from './legal_notice';
+import SignUp from './sign_up';
 import Questions from './questions/Questions.component';
 import DevenirIntervenant from './devenir_intervenant/DevenirIntervenant';
 import DevenirIntervenantEnvoyee from './devenir_intervenant/DevenirIntervenantEnvoyee';
-import SignInResetPassword from './sign_in/SignInResetPassword';
+import { SignInResetPassword } from './sign_in';
 import Dashboard from './dashboard/Dashboard';
-import ContactUs from './contact/ContactUs';
+import ContactUs from './contact_us';
 import Auth from '@aws-amplify/auth';
 import { useDispatch } from 'react-redux';
 import { userActionTypes } from '~/state/user/constants/UserActionType';
 import { getUserFromCognitoUser } from '~/state/users/constants/utils/CognitoUser';
-import Logout from './logout/Logout';
+import Logout from './logout';
 import history from '../util/history';
-import MyProfile from './my-profile';
+import MyProfile from './my_profile';
 import './App.scss';
 
-// eslint-disable-next-line @typescript-eslint/ban-types
 const App: React.FC<{}> = () => {
 
     const dispatch = useDispatch();
@@ -51,7 +48,7 @@ const App: React.FC<{}> = () => {
                         <Route path="/profile/:id" component={SpeakerProfile} />
                         <Route path="/about" component={About} />
                         <Route path="/contact-us" component={ContactUs} />
-                        <Route path="/mentions-legales" component={MentionsLegales} />
+                        <Route path="/legal-notice" component={LegalNotice} />
                         <Route path="/questions" component={Questions} />
                         <Route path="/sign-up" component={SignUp} />
                         <Route path="/logout" component={Logout} />

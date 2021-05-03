@@ -6,7 +6,6 @@ import alerts from './alerts/reducer';
 
 import * as fromUsers from './users/selectors';
 import * as fromAlerts from './alerts/selectors';
-import userReducer from './user/reducer';
 import { userRegistrationReducer } from './user/user.registation.reducer';
 import { userAuthenticationReducer } from './user/user.authentication.reducer';
 

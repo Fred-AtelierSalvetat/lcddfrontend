@@ -1,3 +1,4 @@
 import SignInContainer from './SignInContainer';
+import SignInResetPassword from './SignInResetPassword';
 
-export default SignInContainer;
+export {SignInContainer, SignInResetPassword};

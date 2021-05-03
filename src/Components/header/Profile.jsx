@@ -4,7 +4,6 @@ import { userActions } from '~/state/user/user.actions';
 import { BsPerson } from 'react-icons/bs';
 import settings from '../../assets/profile/settings.svg';
 import history from '../../util/history';
-import { Nav } from 'react-bootstrap';
 
 const Profile = (props) => {
 

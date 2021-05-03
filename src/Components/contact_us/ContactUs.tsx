@@ -8,7 +8,7 @@ import { FormFeedback } from '../shared/form/FormFeedBack';
 import RoundSpinner from '../shared/RoundSpinner';
 import { Validator } from '~/util/validator.js';
 import scrollToTopSmoothly from '~/util/scrollToTopSmoothly';
-import "./ContactUs.css";
+import "./ContactUs.scss";
 
 const SITE_KEY = process.env.REACT_APP_GOOGLE_CAPTCHA_SITE_KEY!;
 const MESSAGE_SENT_SUCCESS = "Votre message a été bien envoyé";
@@ -51,7 +51,7 @@ const ContactUs = () => {
 
     const onHandleChange = ({ target }) => {
         console.log(target.name, target.value);
-        
+
         trigger(target.name);
     }
 

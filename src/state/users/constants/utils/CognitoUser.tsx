@@ -1,5 +1,3 @@
-import { User } from "../../models"
-
 export type CognitoUser = {
     email: string,
     email_verified: boolean,
@@ -8,6 +6,7 @@ export type CognitoUser = {
     locale?: string,
     sub: string
 }
+
 export const getUserFromCognitoUser = (cognitoUser: CognitoUser) => {
     const user = {
         userId: cognitoUser.sub,

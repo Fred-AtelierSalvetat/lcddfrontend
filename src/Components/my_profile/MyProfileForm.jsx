@@ -42,61 +42,64 @@ const MyProfileForm = (props) => {
             <Form className="lcdd-form" onSubmit={handleSubmit(onSubmit)}>
                 <Form.Group controlId="myProfileLastName">
                     <Form.Label>Nom</Form.Label>
-                    <InputGroup id="lastNameInputGroup">
+                    {/* <InputGroup id="lastNameInputGroup"> */}
                         <Form.Control
                             type="text"
                             name="lastName"
                             ref={register(Validator.lastName)}
                             value={newUser.lastName}
                             onChange={onHandleChange}
+                            onClick={handleModifyClick}
                             isInvalid={errors.lastName}
                             readOnly
                         />
-                        <InputGroup.Append onClick={handleModifyClick}>
+                        {/* <InputGroup.Append onClick={handleModifyClick}>
                             <InputGroup.Text><TiPencil /></InputGroup.Text>
                         </InputGroup.Append>
-                    </InputGroup>
+                    </InputGroup> */}
                     <FormFeedback field={errors.lastName}></FormFeedback>
                 </Form.Group>
                 <Form.Group controlId="myProfileFirstName">
                     <Form.Label>Prénom</Form.Label>
-                    <InputGroup id="firstNameInputGroup">
+                    {/* <InputGroup id="firstNameInputGroup"> */}
                         <Form.Control
                             type="text"
                             name="firstName"
                             ref={register(Validator.firstName)}
                             value={newUser.firstName}
                             onChange={onHandleChange}
+                            onClick={handleModifyClick}
                             isInvalid={errors.firstName}
                             readOnly
                         ></Form.Control>
-                        <InputGroup.Append onClick={handleModifyClick}>
+                        {/* <InputGroup.Append onClick={handleModifyClick}>
                             <InputGroup.Text><TiPencil /></InputGroup.Text>
-                        </InputGroup.Append>
-                    </InputGroup>
+                        </InputGroup.Append> */}
+                    {/* </InputGroup> */}
                     <FormFeedback field={errors.firstName}></FormFeedback>
                 </Form.Group>
                 <Form.Group controlId="myProfileEmail">
                     <Form.Label>Adresse e-mail</Form.Label>
-                    <InputGroup id="emailInputGroup">
+                    {/* <InputGroup id="emailInputGroup"> */}
                         <Form.Control
                             type="email"
                             name="email"
                             ref={register(Validator.email)}
                             value={newUser.email}
                             onChange={onHandleChange}
+                            onClick={handleModifyClick}
                             isInvalid={errors.email}
                             readOnly
                         />
-                        <InputGroup.Append onClick={handleModifyClick}>
+                        {/* <InputGroup.Append onClick={handleModifyClick}>
                             <InputGroup.Text><TiPencil /></InputGroup.Text>
                         </InputGroup.Append>
-                    </InputGroup>
+                    </InputGroup> */}
                     <FormFeedback field={errors.email}></FormFeedback>
                 </Form.Group>
                 <Form.Group controlId="myProfileCity">
                     <Form.Label>Ville</Form.Label>
-                    <InputGroup id="cityInputGroup">
+                    {/* <InputGroup id="cityInputGroup"> */}
                         <Form.Control
                             type="text"
                             name="city"
@@ -104,12 +107,12 @@ const MyProfileForm = (props) => {
                             value={newUser.city}
                             onChange={onHandleChange}
                             isInvalid={errors.city}
-                            readOnly
+                            // readOnly
                         />
-                        <InputGroup.Append onClick={handleModifyClick}>
+                        {/* <InputGroup.Append onClick={handleModifyClick}>
                             <InputGroup.Text><TiPencil /></InputGroup.Text>
                         </InputGroup.Append>
-                    </InputGroup>
+                    </InputGroup> */}
                     <FormFeedback field={errors.city}></FormFeedback>
                 </Form.Group>
                 <Form.Group className="submit-group">

@@ -62,21 +62,25 @@
 
                 }
 
-
                 #lastNameInputGroup,
-                #firstNameInputGroup {
+                #firstNameInputGroup,
+                #myProfileLastName,
+                #myProfileFirstName {
                     width: 293px;
                 }
 
-                #emailInputGroup {
+                #emailInputGroup,
+                #myProfileEmail {
                     width: 457px;
                 }
 
-                #cityInputGroup {
+                #cityInputGroup,
+                #myProfileCity {
                     width: 360px;
                 }
 
-                #passwordInputGroup {
+                .passwordInputGroup,
+                #myProfilePassword {
                     width: 458px;
                 }
 
@@ -88,85 +92,4 @@
         }
     }
 
-    .label-test {
-        --mdc-ripple-fg-size: 302px;
-        --mdc-ripple-fg-scale: 1.71226;
-        --mdc-ripple-fg-translate-start: -58.4px, -148px;
-        --mdc-ripple-fg-translate-end: 101px, -123px;
-
-        border-top-left-radius: 4px;
-        border-top-left-radius: var(--mdc-shape-small, 4px);
-        border-top-right-radius: 4px;
-        border-top-right-radius: var(--mdc-shape-small, 4px);
-        border-bottom-right-radius: 0;
-        border-bottom-left-radius: 0;
-        display: -webkit-inline-box;
-        display: inline-flex;
-        align-items: baseline;
-        padding: 0 16px;
-        position: relative;
-        box-sizing: border-box;
-        overflow: hidden;
-        will-change: opacity, transform, color;
-
-        .span-test {
-            display: flex;
-            position: absolute;
-            top: 0;
-            right: 0;
-            left: 0;
-            box-sizing: border-box;
-            width: 100%;
-            max-width: 100%;
-            height: 100%;
-            text-align: left;
-            pointer-events: none;
-
-            .span-1 {
-                border-top-left-radius: 4px;
-                border-top-left-radius: var(--mdc-shape-small, 4px);
-                border-top-right-radius: 0;
-                border-bottom-right-radius: 0;
-                border-bottom-left-radius: 4px;
-                border-bottom-left-radius: var(--mdc-shape-small, 4px);
-
-                border-left: 1px solid;
-                border-right: none;
-                width: 12px;
-                border-color: var(--dark);
-                border-top: 1px solid;
-                border-bottom: 1px solid;
-            }
-
-            .span-2 {
-                width: 82.5px;
-                padding-left: 0;
-                padding-right: 8px;
-                border-top: none;
-                box-sizing: border-box;
-                height: 100%;
-                border-top: 1px solid;
-                border-bottom: 1px solid;
-                pointer-events: none;
-            }
-
-            .span-3 {
-                width: 100%;
-            }
-        }
-
-        .input-test {
-            display: flex;
-            border: none !important;
-            background-color: #1ca0bd3b;
-            width: 100%;
-            min-width: 0;
-            border: none;
-            border-radius: 0;
-            background: none;
-            -webkit-appearance: none;
-            appearance: none;
-            padding: 0;
-        }
-    }
 }

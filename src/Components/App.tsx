@@ -11,7 +11,6 @@ import MentionsLegales from './mentions_legales/MentionsLegales';
 import SignUp from './sign_up/SignUp';
 import Questions from './questions/Questions.component';
 import DevenirIntervenant from './devenir_intervenant/DevenirIntervenant';
-import DevenirIntervenantEnvoyee from './devenir_intervenant/DevenirIntervenantEnvoyee';
 import SignInResetPassword from './sign_in/SignInResetPassword';
 import Dashboard from './dashboard/Dashboard';
 

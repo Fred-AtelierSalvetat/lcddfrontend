@@ -31,37 +31,6 @@
                     margin-top: 20px;
                 }
 
-                .input-group {
-                    position: relative;
-
-                    .input-group-text {
-                        position: absolute;
-                        height: 95%;
-                        right: 0px;
-                        z-index: 10;
-                        border: none;
-                        margin-top: 1px;
-                    }
-
-                    .form-control {
-                        padding-right: 42px;
-                        border-radius: 0.25rem !important;
-
-                    }
-
-                    .form-control.is-invalid {
-                        background-image: none;
-                    }
-
-                    i {
-                        position: absolute;
-                        right: 10px;
-                        top: 15%;
-                        z-index: 10;
-                    }
-
-                }
-
                 #lastNameInputGroup,
                 #firstNameInputGroup,
                 #myProfileLastName,
@@ -87,6 +56,10 @@
                 &.submit-group {
                     text-align: right;
                 }
+            }
+
+            #newPasswordGroup {
+                margin-bottom: 5rem;
             }
 
         }

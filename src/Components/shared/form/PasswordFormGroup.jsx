@@ -21,11 +21,14 @@ const getValidityErrorOnType = (type, errors) => {
     if (errors) {
         if (errors.password) {
             if (errors.password.types) {
-                if (errors.password.types[type]) return "invalid";
+                if (errors.password.types[type]) {
+                    console.log(type);
+                    return "invalid";
+                }
             }
         }
     }
-    return undefined;
+    return "valid";
 }
 
 const FeedbackStyled = styled(Feedback)`
@@ -35,6 +38,7 @@ const FeedbackStyled = styled(Feedback)`
 `;
 
 const AlertMessage = styled.div`
+    position: absolute;
     font-size: 0.9em;
     color: var(--success);
     background-color: #d9eee1;
@@ -61,10 +65,12 @@ const PasswordError = ({ errors, columns, className, activateValidation }) => {
     else return (
         <div className={className}>
             {Object.keys(passwordError).map((type, index) => {
+                const _type = getValidityErrorOnType(type, errors);
+                const _color = activateValidation ? (_type === 'valid' ? 'var(--success)' : 'var(--danger)') : null;
                 return (
-                    <li key={index}>
+                    <li key={index} style={{ color: _color }}>
                         <FeedbackStyled
-                            type={getValidityErrorOnType(type, errors)}
+                            type={_type}
                             activatevalidation={activateValidation ? 1 : 0}
                         >
                             {passwordError[type]}
@@ -73,7 +79,7 @@ const PasswordError = ({ errors, columns, className, activateValidation }) => {
 
                 );
             })}
-        </div>
+        </div >
     );
 };
 
@@ -82,6 +88,9 @@ const PasswordErrorStyled = styled(PasswordError)`
     column-count: ${props => props.columns};
     -moz-column-count: ${props => props.columns}
     -webkit-column-count: ${props => props.columns};
+    position: absolute;
+    width: 100%;
+    list-style: inside;
 
     .valid-feedback,
     .invalid-feedback {
@@ -110,7 +119,7 @@ const PasswordFormGroup = ({ controlId, label, ...props }) => {
     }
 
     return (
-        <Form.Group controlId={controlId}>
+        <Form.Group controlId={controlId} id={props.id} className={props.className}>
             <Form.Label>{label}</Form.Label>
             <InputGroup className="passwordInputGroup">
                 <Form.Control
@@ -119,6 +128,9 @@ const PasswordFormGroup = ({ controlId, label, ...props }) => {
                     onChange={e => handleChange(e)}
                     ref={props._ref}
                     isInvalid={props.isInvalid}
+                    isValid={props.isValid}
+                    autoComplete="new-password"
+                    tabIndex={1}
                 />
                 <i onClick={handleEyeIconCurrentPassword}>{pwdEye}</i>
             </InputGroup>
@@ -127,7 +139,7 @@ const PasswordFormGroup = ({ controlId, label, ...props }) => {
                     errors={props.errors}
                     columns={props.errorColumns}
                     activateValidation={activateValidation}
-                ></PasswordErrorStyled>
+                />
             }
         </Form.Group>
     );

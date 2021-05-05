@@ -55,27 +55,19 @@
 
 	#user-detail-form {
 		.form-group {
-			margin-bottom: 2rem;
+			margin-bottom: 2em;
 		}
 
 		#submit-btn {
-			margin-top: 2rem;
+			margin-top: 2em;
 		}
 
-		.password-input-group {
-			// width: fit-content;
+		#passwordGroup {
+			margin-bottom: 5em;
 
-			.error-password {
-				column-count: 2;
-				-moz-column-count: 2;
-				-webkit-column-count: 2;
-
-				.valid-feedback,
-				.invalid-feedback {
-					display: contents;
-					position: unset;
-					margin-top: 0;
-				}
+			input.is-valid {
+				padding-right: calc(3.5em + 0.75rem);
+				background-position: right calc(1.875em + 0.1875rem) center !important;
 			}
 		}
 	}
@@ -106,7 +98,7 @@
 
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 520px) {
 	#inscriptionLastName {
 		width: 344px;
 	}
@@ -123,7 +115,8 @@
 		width: 100%;
 	}
 
-	#inscriptionPassword {
+	#inscriptionPassword,
+	#passwordGroup {
 		width: 469px;
 	}
 }
@@ -173,7 +166,8 @@
 		width: 100%;
 	}
 
-	#inscriptionPassword {
+	#inscriptionPassword,
+	#passwordGroup {
 		width: 458px;
 	}
 }

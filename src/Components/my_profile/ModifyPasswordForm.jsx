@@ -32,6 +32,7 @@ const ModifyPasswordForm = () => {
                 />
 
                 <PasswordFormGroup
+                    id="newPasswordGroup"
                     controlId="myProfileNewPassword"
                     label="Nouveau mot de passe"
                     name="password"

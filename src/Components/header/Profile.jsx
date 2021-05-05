@@ -24,6 +24,7 @@ const Profile = (props) => {
     const ProfileDropdown =
         <ul id="settingsList">
             <li className="dropdown-item" onClick={() => history.push('/my-profile')}>Mon profil</li>
+            <li className="dropdown-item" onClick={() => history.push('/my-profile/modify-password')}>Modifier le mot de passe</li>
             <li className="dropdown-item" onClick={() => history.push('/logout')}>Déconnexion</li>
         </ul>
 

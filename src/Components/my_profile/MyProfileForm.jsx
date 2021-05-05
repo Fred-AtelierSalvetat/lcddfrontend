@@ -3,7 +3,6 @@ import { Button, Form, InputGroup } from 'react-bootstrap';
 import { useForm } from 'react-hook-form';
 import { connect } from 'react-redux';
 import { Validator } from '~/util/validator';
-import { TiPencil } from 'react-icons/ti';
 import { FormFeedback } from '../shared/form/FormFeedBack';
 
 const MyProfileForm = (props) => {
@@ -42,7 +41,6 @@ const MyProfileForm = (props) => {
             <Form className="lcdd-form" onSubmit={handleSubmit(onSubmit)}>
                 <Form.Group controlId="myProfileLastName">
                     <Form.Label>Nom</Form.Label>
-                    {/* <InputGroup id="lastNameInputGroup"> */}
                         <Form.Control
                             type="text"
                             name="lastName"
@@ -53,15 +51,10 @@ const MyProfileForm = (props) => {
                             isInvalid={errors.lastName}
                             readOnly
                         />
-                        {/* <InputGroup.Append onClick={handleModifyClick}>
-                            <InputGroup.Text><TiPencil /></InputGroup.Text>
-                        </InputGroup.Append>
-                    </InputGroup> */}
                     <FormFeedback field={errors.lastName}></FormFeedback>
                 </Form.Group>
                 <Form.Group controlId="myProfileFirstName">
                     <Form.Label>Prénom</Form.Label>
-                    {/* <InputGroup id="firstNameInputGroup"> */}
                         <Form.Control
                             type="text"
                             name="firstName"
@@ -72,15 +65,10 @@ const MyProfileForm = (props) => {
                             isInvalid={errors.firstName}
                             readOnly
                         ></Form.Control>
-                        {/* <InputGroup.Append onClick={handleModifyClick}>
-                            <InputGroup.Text><TiPencil /></InputGroup.Text>
-                        </InputGroup.Append> */}
-                    {/* </InputGroup> */}
                     <FormFeedback field={errors.firstName}></FormFeedback>
                 </Form.Group>
                 <Form.Group controlId="myProfileEmail">
                     <Form.Label>Adresse e-mail</Form.Label>
-                    {/* <InputGroup id="emailInputGroup"> */}
                         <Form.Control
                             type="email"
                             name="email"
@@ -91,15 +79,10 @@ const MyProfileForm = (props) => {
                             isInvalid={errors.email}
                             readOnly
                         />
-                        {/* <InputGroup.Append onClick={handleModifyClick}>
-                            <InputGroup.Text><TiPencil /></InputGroup.Text>
-                        </InputGroup.Append>
-                    </InputGroup> */}
                     <FormFeedback field={errors.email}></FormFeedback>
                 </Form.Group>
                 <Form.Group controlId="myProfileCity">
                     <Form.Label>Ville</Form.Label>
-                    {/* <InputGroup id="cityInputGroup"> */}
                         <Form.Control
                             type="text"
                             name="city"
@@ -107,12 +90,7 @@ const MyProfileForm = (props) => {
                             value={newUser.city}
                             onChange={onHandleChange}
                             isInvalid={errors.city}
-                            // readOnly
                         />
-                        {/* <InputGroup.Append onClick={handleModifyClick}>
-                            <InputGroup.Text><TiPencil /></InputGroup.Text>
-                        </InputGroup.Append>
-                    </InputGroup> */}
                     <FormFeedback field={errors.city}></FormFeedback>
                 </Form.Group>
                 <Form.Group className="submit-group">

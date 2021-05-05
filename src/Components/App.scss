@@ -68,6 +68,37 @@
 		color: var(--red) !important;
 	}
 
+	.input-group {
+		position: relative;
+
+		.input-group-text {
+			position: absolute;
+			height: 95%;
+			right: 0px;
+			z-index: 10;
+			border: none;
+			margin-top: 1px;
+		}
+
+		.form-control {
+			padding-right: 42px;
+			border-radius: 0.25rem !important;
+
+		}
+
+		.form-control.is-invalid {
+			background-image: none;
+		}
+
+		i {
+			position: absolute;
+			right: 10px;
+			top: 15%;
+			z-index: 10;
+		}
+
+	}
+
 	.form-control.is-invalid {
 		border-color: var(--red) !important;
 	}
@@ -130,4 +161,5 @@
 			}
 		}
 	}
+
 }

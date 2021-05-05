@@ -9,7 +9,7 @@ import PasswordFormGroup from '../shared/form/PasswordFormGroup';
 
 // Step 2 UI
 const UserDetails = ({ step, setStep, user, setUser }) => {
-    const { register, handleSubmit, setValue, trigger, errors } = useForm({
+    const { register, handleSubmit, setValue, trigger, watch, errors } = useForm({
         criteriaMode: "all",
     });
 
@@ -30,9 +30,9 @@ const UserDetails = ({ step, setStep, user, setUser }) => {
     //     trigger("password");
     // });
 
-    useEffect(() => {
-        console.log(errors);
-    });
+    // useEffect(() => {
+    //     console.log(errors);
+    // });
 
     const handleContinue = () => {
         setStep(step + 1);
@@ -56,6 +56,7 @@ const UserDetails = ({ step, setStep, user, setUser }) => {
                     onChange={onHandleChange}
                     ref={register(Validator.lastName)}
                     isInvalid={errors.lastName}
+                    isValid={!errors.lastName && !!watch('lastName')}
                     tabIndex={1}
                 />
                 <FormFeedback field={errors.lastName}></FormFeedback>
@@ -69,6 +70,7 @@ const UserDetails = ({ step, setStep, user, setUser }) => {
                     onChange={onHandleChange}
                     ref={register(Validator.firstName)}
                     isInvalid={errors.firstName}
+                    isValid={!errors.firstName && !!watch('firstName')}
                     tabIndex={1}
                 />
                 <FormFeedback field={errors.firstName}></FormFeedback>
@@ -82,6 +84,7 @@ const UserDetails = ({ step, setStep, user, setUser }) => {
                     onChange={onHandleChange}
                     ref={register}
                     isInvalid={errors.city}
+                    isValid={!errors.city && !!watch('city')}
                     tabIndex={1}
                 />
                 <FormFeedback field={errors.city}></FormFeedback>
@@ -95,17 +98,24 @@ const UserDetails = ({ step, setStep, user, setUser }) => {
                     onChange={onHandleChange}
                     ref={register(Validator.email)}
                     isInvalid={errors.email}
+                    isValid={!errors.email && watch('email')}
                     tabIndex={1}
                 />
                 <FormFeedback field={errors.email}></FormFeedback>
             </Form.Group>
 
             <PasswordFormGroup
+                id="passwordGroup"
                 controlId="inscriptionPassword"
                 label="Mot de passe"
+                name="password"
                 errors={errors}
+                onChange={onHandleChange}
+                _ref={register(Validator.password)}
+                isInvalid={errors.password}
+                isValid={!errors.password && !!watch('password')}
+                errorColumns={2}
             />
-
 
             <Button
                 id="submit-btn"

@@ -1,5 +1,3 @@
-/* eslint-disable */
-// @ts-nocheck
 import React, { useEffect, useState } from 'react';
 import { ReactComponent as Selected } from '~/assets/icons/Selected.svg';
 import styled from 'styled-components';

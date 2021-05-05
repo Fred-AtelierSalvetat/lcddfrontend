@@ -3,22 +3,22 @@ import { Switch, Route, Router } from 'react-router-dom';
 import Header from './header';
 import Footer from './footer';
 import Home from './home';
-import { Speakers, SpeakerProfile } from './speakers';
 import LegalNotice from './legal_notice';
 import SignUp from './sign_up';
+import { SignInResetPassword } from './sign_in';
 import Questions from './questions/Questions.component';
 import DevenirIntervenant from './devenir_intervenant/DevenirIntervenant';
-import DevenirIntervenantEnvoyee from './devenir_intervenant/DevenirIntervenantEnvoyee';
-import { SignInResetPassword } from './sign_in';
+import { Speakers, SpeakerProfile } from './speakers';
 import Dashboard from './dashboard/Dashboard';
 import ContactUs from './contact_us';
+import MyProfile from './my_profile';
+import ErrorForm from './error/ErrorForm';
+import Logout from './logout';
 import Auth from '@aws-amplify/auth';
 import { useDispatch } from 'react-redux';
 import { userActionTypes } from '~/state/user/constants/UserActionType';
 import { getUserFromCognitoUser } from '~/state/users/constants/utils/CognitoUser';
-import Logout from './logout';
 import history from '../util/history';
-import MyProfile from './my_profile';
 import './App.scss';
 
 const App: React.FC<{}> = () => {
@@ -55,9 +55,10 @@ const App: React.FC<{}> = () => {
                         <Route path="/sign-in/reset-password" component={SignInResetPassword} />
                         <Route path="/my-profile" component={MyProfile} />
                         <Route path="/devenirintervenant" component={DevenirIntervenant} />
-                        <Route path="/devenirintervenantenvoyee" component={DevenirIntervenantEnvoyee} />
+                        <Route path="/devenirintervenantenvoyee" component={DevenirIntervenant} />
                         <Route path="/dashboard" exact={true} component={Dashboard} />
                         <Route path="/dashboard/:selectedPage/:roleFilter?" component={Dashboard} />
+                        <Route path="/error" component={ErrorForm} />
                         <Route path="*">
                             <p>No Match</p>
                         </Route>

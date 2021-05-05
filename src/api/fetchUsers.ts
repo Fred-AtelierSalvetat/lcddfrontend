@@ -238,9 +238,9 @@ const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
 export const fetchUsers = () => () => {
     return delay(1000).then(() => {
-        // if (Math.random() > 0.7) {
-        //     throw new Error("Pas de panique, c'est une erreur simulée (taux d'occurence 50%).");
-        // }
+        if (Math.random() > 0.7) {
+            throw new Error("Pas de panique, c'est une erreur simulée (taux d'occurence 50%).");
+        }
         return fakeDatabase;
     });
 };

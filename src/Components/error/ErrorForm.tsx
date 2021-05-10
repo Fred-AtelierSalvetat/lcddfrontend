@@ -1,20 +1,22 @@
 import React from 'react';
+import { useHistory } from 'react-router-dom';
 import { ReactComponent as Logo_error } from '~/assets/logos/Logo_error.svg';
-import "./ErrorForm.css";
+import './ErrorForm.css';
 
-const ErrorForm = (props) => {
+const ErrorForm = () => {
+    const history = useHistory();
 
-    const RedirectionVideo = () => {
-        props.history.push('/questions/'); // Redirect to contact
-    }
+    const redirectionVideo = () => {
+        history.push('/questions/'); // Redirect to contact
+    };
 
-    const RedirectionTV = () => {
-        props.history.push('/webTV'); // Redirect to contact
-    }
+    const redirectionTV = () => {
+        history.push('/webTV'); // Redirect to contact
+    };
 
-    const RedirectionNousContacter = () => {
-        props.history.push('/contact'); // Redirect to contact
-    }
+    const redirectionNousContacter = () => {
+        history.push('/contact-us'); // Redirect to contact
+    };
 
     return (
         <div>
@@ -22,19 +24,16 @@ const ErrorForm = (props) => {
             <div className="text_h1_heading">Something went wrong. We are working on it.</div>
             <div className="text_h3_heading">Where to go from here:</div>
 
-            <div onClick={RedirectionVideo} className="link_video">
-                Trouvez des reponses en videos a Vos questions
+            <div onClick={redirectionVideo} className="link_video">
+                Trouvez des réponses en videos à vos questions
             </div>
-            <div onClick={RedirectionTV} className="link_tv">
-                Regadrez des ateliers a notre WebTV
-                </div>
-            <div onClick={RedirectionNousContacter} className="link_contact">
+            <div onClick={redirectionTV} className="link_tv">
+                Regardez des ateliers sur notre WebTV
+            </div>
+            <div onClick={redirectionNousContacter} className="link_contact">
                 Nous contacter
             </div>
-            <Logo_error
-                className="image"
-                title="Logo_error"
-            />
+            <Logo_error className="image" title="Logo_error" />
         </div>
     );
 };

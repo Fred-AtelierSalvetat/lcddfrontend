@@ -6,6 +6,8 @@ import alerts from './alerts/reducer';
 
 import * as fromUsers from './users/selectors';
 import * as fromAlerts from './alerts/selectors';
+import * as fromUser from './user/selectors';
+
 import { userRegistrationReducer } from './user/user.registation.reducer';
 import { userAuthenticationReducer } from './user/user.authentication.reducer';
 
@@ -27,3 +29,5 @@ export const isRequestInProgress = (request_type) => (state) =>
 export const getRequestStatusMsgs = (state) => fromUsers.getRequestStatusMsgs(state.users);
 
 export const getAlerts = (state) => fromAlerts.getAlerts(state.alerts);
+
+export const isCurrentUserLoggedIn = (state) => fromUser.isCurrentUserLoggedIn(state.authentication);

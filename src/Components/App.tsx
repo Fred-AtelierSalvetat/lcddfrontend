@@ -1,5 +1,5 @@
 import React from 'react';
-import { Switch, Route, Router } from 'react-router-dom';
+import { Switch, Route, BrowserRouter } from 'react-router-dom';
 import Header from './header';
 import Footer from './footer';
 import Home from './home';
@@ -18,28 +18,27 @@ import Auth from '@aws-amplify/auth';
 import { useDispatch } from 'react-redux';
 import { userActionTypes } from '~/state/user/constants/UserActionType';
 import { getUserFromCognitoUser } from '~/state/users/constants/utils/CognitoUser';
-import history from '../util/history';
+
 import './App.scss';
 
 const App: React.FC<{}> = () => {
-
     const dispatch = useDispatch();
 
     Auth.currentAuthenticatedUser()
-        .then(user => {
+        .then((user) => {
             let cognitoUser = user.attributes;
             let currentUser = getUserFromCognitoUser(cognitoUser);
-            console.log("current user", currentUser);
-            dispatch({ type: userActionTypes.GET_CURRENT_USER_SUCCESS, user: currentUser })
+            console.log('current user', currentUser);
+            dispatch({ type: userActionTypes.GET_CURRENT_USER_SUCCESS, user: currentUser });
         })
-        .catch(err => {
-            console.log("current user", err);
-            dispatch({ type: userActionTypes.GET_CURRENT_USER_FAILURE })
+        .catch((err) => {
+            console.log('current user', err);
+            dispatch({ type: userActionTypes.GET_CURRENT_USER_FAILURE });
         });
 
     return (
         <div className="App">
-            <Router history={history}>
+            <BrowserRouter>
                 <Header />
                 <div id="lcdd-body">
                     <Switch>
@@ -65,7 +64,7 @@ const App: React.FC<{}> = () => {
                     </Switch>
                 </div>
                 <Footer />
-            </Router>
+            </BrowserRouter>
         </div>
     );
 };

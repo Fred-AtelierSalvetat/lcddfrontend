@@ -17,7 +17,7 @@ export const checkScroll = (header) => {
         // scrolled down
         curDirection = 2;
     }
-    else {
+    else if (curScroll < prevScroll) {
         //scrolled up
         curDirection = 1;
     }

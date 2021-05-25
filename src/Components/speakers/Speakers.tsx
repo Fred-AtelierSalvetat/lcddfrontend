@@ -1,14 +1,11 @@
 import React from 'react';
-import styled from 'styled-components';
 import { Speaker } from './Speaker';
 import { useSelector, useDispatch } from 'react-redux';
 import { AppState } from '../../state/reducers';
 import { fetchSpeakers } from '../../api/fetchSperkers';
-import { Wrapper } from '../shared/wrapper/Wrapper';
+import { Wrapper } from '../shared/wrapper';
 
-// eslint-disable-next-line @typescript-eslint/ban-types
 const Speakers: React.FC<{}> = () => {
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const [isHome, setIsHome] = React.useState(false);
     const dispatch = useDispatch();
 

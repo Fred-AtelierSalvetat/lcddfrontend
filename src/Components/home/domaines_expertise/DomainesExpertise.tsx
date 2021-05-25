@@ -1,6 +1,6 @@
 import React from 'react';
-import thematiques from './../../sign_up/thematiques';
-import InterestCard from './../../sign_up/InterestCard';
+import thematiques from '../../shared/thematiques';
+import InterestCard from '../../shared/cards/InterestCard';
 import "./DomainesExpertise.css";
 
 

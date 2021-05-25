@@ -4,7 +4,7 @@ import SignInLostPasswordEmailSentModal from './SignInLostPasswordEmailSentModal
 import SignInLostPasswordModal from './SignInLostPasswordModal';
 import SignInModal from './SignInModal';
 import SignInResetPasswordModal from './SignInResetPasswordModal';
-import './SignIn.css';
+import './SignIn.scss';
 
 const SignInContainer = () => {
     const [showSignIn, setShowSignIn] = useState(false);

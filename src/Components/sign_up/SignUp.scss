@@ -1,0 +1,201 @@
+.container-transparent {
+	min-height: inherit;
+	padding-left: clamp(10px, 50%, 50px) !important;
+	padding-right: clamp(10px, 50%, 50px) !important;
+	background: rgba(255, 255, 255, 0.97);
+	padding-bottom: 8em !important;
+
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6 {
+		padding-left: 0;
+		text-align: left;
+	}
+
+	.container-header {
+		.row {
+			margin: auto;
+		}
+	}
+
+	.role-image {
+		margin: 34px 0;
+
+		&:hover {
+			cursor: pointer;
+
+			path {
+				fill: #113F59;
+			}
+
+			rect {
+				stroke: #113F59;
+				stroke-width: 3;
+			}
+		}
+
+		&:focus {
+			outline: auto;
+		}
+	}
+
+	.role-image-clicked {
+		path {
+			fill: #113F59;
+		}
+
+		rect {
+			stroke: #113F59;
+			stroke-width: 3;
+		}
+	}
+
+	#user-detail-form {
+		.form-group {
+			margin-bottom: 2em;
+		}
+
+		#submit-btn {
+			margin-top: 2em;
+		}
+
+		#passwordGroup {
+			margin-bottom: 5em;
+
+			input.is-valid {
+				padding-right: calc(3.5em + 0.75rem);
+				background-position: right calc(1.875em + 0.1875rem) center !important;
+			}
+		}
+	}
+
+	input.form-check-input {
+		width: unset;
+		margin-top: 0.4rem;
+	}
+
+	label.label-check {
+		margin-left: 1.25rem;
+		margin-bottom: 0;
+		margin-top: 0;
+	}
+
+	.checkbox-zone {
+		margin-top: 2rem;
+		margin-bottom: 2rem;
+	}
+
+	div.text-standard {
+		color: var(--gray-dark);
+		font-weight: 300;
+		font-size: 20px;
+		text-align: justify;
+	}
+
+
+}
+
+@media screen and (min-width: 520px) {
+	#inscriptionLastName {
+		width: 344px;
+	}
+
+	#inscriptionFirstName {
+		width: 344px;
+	}
+
+	#inscriptionCity {
+		width: 469px;
+	}
+
+	#inscriptionEmail {
+		width: 100%;
+	}
+
+	#inscriptionPassword,
+	#passwordGroup {
+		width: 469px;
+	}
+}
+
+@media screen and (max-width: 991px) {
+	.container-transparent {
+		max-width: 100% !important;
+		padding-left: 25px !important;
+		padding-right: 25px !important;
+	}
+
+	.container-transparent-large {
+		max-width: 1300px !important;
+		padding-left: 15px !important;
+		padding-right: 15px !important;
+	}
+
+	.role-image {
+		margin: 12px 0;
+	}
+}
+
+@media screen and (min-width: 992px) {
+	.container-transparent {
+		max-width: 100% !important;
+		padding-left: clamp(10px, 50%, 95px) !important;
+		padding-right: clamp(10px, 50%, 95px) !important;
+	}
+
+	.container-transparent-large {
+		max-width: 1300px !important;
+	}
+
+	#inscriptionLastName {
+		width: 360px;
+	}
+
+	#inscriptionFirstName {
+		width: 360px;
+	}
+
+	#inscriptionCity {
+		width: 458px;
+	}
+
+	#inscriptionEmail {
+		width: 100%;
+	}
+
+	#inscriptionPassword,
+	#passwordGroup {
+		width: 458px;
+	}
+}
+
+@media screen and (min-width: 1120px) {
+	.container-transparent {
+		max-width: 100% !important;
+		padding-left: clamp(10px, 50%, 195px) !important;
+		padding-right: clamp(10px, 50%, 195px) !important;
+	}
+
+	.container-transparent-large {
+		max-width: 1300px !important;
+		padding-left: 25px !important;
+		padding-right: 25px !important;
+	}
+}
+
+@media screen and (min-width: 1190px) {
+	.container-transparent {
+		max-width: 1132px !important;
+		padding-left: 195px !important;
+		padding-right: 195px !important;
+	}
+
+	.container-transparent-large {
+		max-width: 1300px !important;
+		padding-left: 80px !important;
+		padding-right: 80px !important;
+	}
+}

@@ -1,33 +1,20 @@
-import React, { useState } from 'react';
-import { Button, Container, Form, Row, Spinner } from 'react-bootstrap';
+import React, { useEffect, useState } from 'react';
+import { Button, Container, Form, Row } from 'react-bootstrap';
 import { useForm } from 'react-hook-form';
 import ReCAPTCHA from "react-google-recaptcha";
-import { Wrapper } from '../shared/wrapper/Wrapper';
+import { Wrapper } from '../shared/wrapper';
 import Expire from '../shared/utils/Expire';
 import { FormFeedback } from '../shared/form/FormFeedBack';
+import RoundSpinner from '../shared/RoundSpinner';
 import { Validator } from '~/util/validator.js';
-import "./ContactForm.css";
+import scrollToTopSmoothly from '~/util/scrollToTopSmoothly';
+import "./ContactUs.scss";
 
 const SITE_KEY = process.env.REACT_APP_GOOGLE_CAPTCHA_SITE_KEY!;
 const MESSAGE_SENT_SUCCESS = "Votre message a été bien envoyé";
 const MESSAGE_SENT_ERROR_NETWORK = "Mauvaise réponse du réseau";
 const MESSAGE_SENT_FAILED = "Votre message n'a pas été bien envoyé";
 const SEND_EMAIL_URL = "http://lcdddevtestapp-env.eba-d22aejrz.eu-west-3.elasticbeanstalk.com/api/v1/sendMail";
-
-const scrollToTopSmoothly = () => {
-    window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
-    });
-}
-
-const RoundSpinner = () => {
-    return (
-        <Spinner animation="border" role="status">
-            <span className="sr-only">Loading...</span>
-        </Spinner>
-    )
-}
 
 const AlertSuccess = ({ show, message, onClick }) => {
     return (
@@ -53,8 +40,8 @@ const AlertError = ({ show, message, onClick }) => {
     )
 }
 
-const ContactForm = () => {
-    const { register, handleSubmit, setValue, trigger, errors, setError } = useForm();
+const ContactUs = () => {
+    const { register, handleSubmit, setValue, trigger, errors, setError, clearErrors } = useForm();
     const [recaptchaValidated, setRecaptchaValidated] = useState(false);
     const [showAlertMessage, setShowAlertMessage] = useState(false);
     const [messageSuccessfullySent, setMessageSuccessfullySent] = useState(false);
@@ -63,6 +50,8 @@ const ContactForm = () => {
     let captcha: { reset: () => void; };
 
     const onHandleChange = ({ target }) => {
+        console.log(target.name, target.value);
+
         trigger(target.name);
     }
 
@@ -109,11 +98,9 @@ const ContactForm = () => {
 
         } else {
             setError("captcha", {
-                type: "manual",
-                message: "La vérification n'est pas encore faite"
+                type: "validate",
+                message: "Veuillez vérifier que vous n'êtes pas un robot pour continuer !"
             });
-            console.log("recaptcha unverified");
-            alert("Veuillez valider la vérification avant d'Envoyer votre message !");
         }
     }
 
@@ -144,6 +131,7 @@ const ContactForm = () => {
 
     const handleChangeCaptcha = () => {
         setReCAPTCHAVerified();
+        clearErrors("captcha");
     };
 
     return (
@@ -247,14 +235,11 @@ const ContactForm = () => {
                                 onExpired={onRecaptchaExpired}
                             />
 
-
                             <Button id="submit-contact-btn" variant="primary" type="submit">
                                 Envoyer
                             </Button>
                         </Row>
-                        <Form.Control.Feedback type="invalid" id="captcha">
-                            Hello
-                        </Form.Control.Feedback>
+                        {!recaptchaValidated && <FormFeedback field={errors.captcha}></FormFeedback>}
                     </Form.Group>
                 </Form>
             </Container>
@@ -262,4 +247,4 @@ const ContactForm = () => {
     );
 };
 
-export default ContactForm;
+export default ContactUs;

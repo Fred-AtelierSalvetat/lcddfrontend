@@ -1,0 +1,68 @@
+.containerX {
+    display: flex;
+    text-align: left;
+
+    .container {
+        padding-top: 3rem;
+        padding-bottom: 3rem;
+        margin-right: unset;
+        margin-left: 5rem;
+        width: auto;
+
+        .container-title {
+            height: 4em;
+        }
+
+        .form-title {
+            height: 2em;
+            margin-bottom: 2rem;
+        }
+
+        .lcdd-form {
+
+            .form-group {
+                margin-bottom: 44px;
+
+                label {
+                    line-height: 2;
+                    text-align: left;
+                    display: block !important;
+                    margin-bottom: 13px !important;
+                    margin-top: 20px;
+                }
+
+                #lastNameInputGroup,
+                #firstNameInputGroup,
+                #myProfileLastName,
+                #myProfileFirstName {
+                    width: 293px;
+                }
+
+                #emailInputGroup,
+                #myProfileEmail {
+                    width: 457px;
+                }
+
+                #cityInputGroup,
+                #myProfileCity {
+                    width: 360px;
+                }
+
+                .passwordInputGroup,
+                #myProfilePassword {
+                    width: 458px;
+                }
+
+                &.submit-group {
+                    text-align: right;
+                }
+            }
+
+            #newPasswordGroup {
+                margin-bottom: 5rem;
+            }
+
+        }
+    }
+
+}

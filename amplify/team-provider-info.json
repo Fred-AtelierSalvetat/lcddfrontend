@@ -1,0 +1,24 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-webapp-dev-125136-authRole",
+      "UnauthRoleArn": "arn:aws:iam::456802669634:role/amplify-webapp-dev-125136-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::456802669634:role/amplify-webapp-dev-125136-authRole",
+      "Region": "eu-west-3",
+      "DeploymentBucketName": "amplify-webapp-dev-125136-deployment",
+      "UnauthRoleName": "amplify-webapp-dev-125136-unauthRole",
+      "StackName": "amplify-webapp-dev-125136",
+      "StackId": "arn:aws:cloudformation:eu-west-3:456802669634:stack/amplify-webapp-dev-125136/61a3b100-9d0f-11eb-93ae-0e51c6f5f8f6"
+    },
+    "categories": {
+      "auth": {
+        "webappe5739f08": {
+          "userPoolId": "eu-west-3_P1GqaZf7x",
+          "userPoolName": "lcddPool-H3bZBRuTwI3Q",
+          "webClientId": "7tnd2kdl7hrvelh0iksmi3ohb2",
+          "nativeClientId": "7tnd2kdl7hrvelh0iksmi3ohb2"
+        }
+      }
+    }
+  }
+}

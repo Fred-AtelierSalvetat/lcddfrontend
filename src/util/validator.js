@@ -1,7 +1,8 @@
-const NAME_PATTERN = /^[A-Za-zÀ-ÖØ-öø-ÿ]+(?:(\s|.|-|.\s)[A-Za-zÀ-ÖØ-öø-ÿ]+)*$/;
+const NAME_PATTERN = /^[A-Za-zÀ-ÖØ-öø-ÿ\s]+(?:(\s|\.|-|\.\s)[A-Za-zÀ-ÖØ-öø-ÿ\s]+)*$/;
 const EMAIL_PATTERN = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i;
 const PASSWORD_PATTERN = /^(?=.*[0-9])(?=.*[!#$%&'()*+,-./:;<=>?@[\]^_`{|}~"])(?=.*[A-Z])(?=.*[a-z]).{8,}$/;
 const PHONE_NUMBER_PATTERN = /^(?:(?:\+|00)33|0)\s*[1-9](?:[\s.-]*\d{2}){4}$/;
+const PASSWORD_PATTERN_ONE_NUMBER = /^(?=.*[0-9])$/;
 
 export const Validator = {
     "firstName": {
@@ -52,11 +53,24 @@ export const Validator = {
             value: true,
             message: "Le mot de passe est requis"
         },
-        pattern: {
-            value: PASSWORD_PATTERN,
-            message: "Le mot de passe doit contenir au minimum 8 caractères, à savoir : " +
-                "au moins 1 lettre minuscule et 1 lettre majuscule, 1 caractère spécial et 1 chiffre"
-        }
+        validate: {
+            required: value => /./.test(value),
+            oneLowerCase : value => /[a-z]/.test(value),// || "one lowercase",
+            oneUpperCase: value => /[A-Z]/.test(value),// || "one uppercase",
+            oneDigit: value => /\d/.test(value),// || "one digit",
+            oneSpecial: value => /[!#$%&'()*+,-./:;<=>?@[\]^_`{|}~"]/.test(value),// || "one special",
+            minLength: value => /.{8,}/.test(value),// || "At least 8 characters"
+        },
+        // minLength: {
+        //     value: 8,
+        //     message: "Au moins 8 caractères"
+        // },
+        // pattern:
+        // {
+        //     value: PASSWORD_PATTERN,
+        //     message: "Le mot de passe doit contenir au minimum 8 caractères, à savoir : " +
+        //         "au moins 1 lettre minuscule et 1 lettre majuscule, 1 caractère spécial et 1 chiffre"
+        // },
     },
     "phone_number": {
         required: {

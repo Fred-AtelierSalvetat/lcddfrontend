@@ -4,10 +4,14 @@ import { useForm } from 'react-hook-form';
 import { Validator } from '../../util/validator';
 import PropTypes from 'prop-types';
 import { FormFeedback } from '../shared/form/FormFeedBack';
+import Feedback from 'react-bootstrap/esm/Feedback';
+import PasswordFormGroup from '../shared/form/PasswordFormGroup';
 
 // Step 2 UI
 const UserDetails = ({ step, setStep, user, setUser }) => {
-    const { register, handleSubmit, setValue, getValues, trigger, errors } = useForm();
+    const { register, handleSubmit, setValue, trigger, watch, errors } = useForm({
+        criteriaMode: "all",
+    });
 
     const onHandleChange = ({ target }) => {
         const { name, value } = target;
@@ -16,7 +20,19 @@ const UserDetails = ({ step, setStep, user, setUser }) => {
             type: 'UPDATE_PERSONAL_INFO',
             payload: { [name]: value },
         });
+
+        // setTimeout(() => {
+        //     console.log("error", errors);
+        // }, 100)
     }
+
+    // useEffect(() => {
+    //     trigger("password");
+    // });
+
+    // useEffect(() => {
+    //     console.log(errors);
+    // });
 
     const handleContinue = () => {
         setStep(step + 1);
@@ -38,9 +54,9 @@ const UserDetails = ({ step, setStep, user, setUser }) => {
                     type="text"
                     name="lastName"
                     onChange={onHandleChange}
-                    value={getValues("lastName")}
                     ref={register(Validator.lastName)}
                     isInvalid={errors.lastName}
+                    isValid={!errors.lastName && !!watch('lastName')}
                     tabIndex={1}
                 />
                 <FormFeedback field={errors.lastName}></FormFeedback>
@@ -52,9 +68,9 @@ const UserDetails = ({ step, setStep, user, setUser }) => {
                     type="text"
                     name="firstName"
                     onChange={onHandleChange}
-                    value={getValues("firstName")}
                     ref={register(Validator.firstName)}
                     isInvalid={errors.firstName}
+                    isValid={!errors.firstName && !!watch('firstName')}
                     tabIndex={1}
                 />
                 <FormFeedback field={errors.firstName}></FormFeedback>
@@ -66,9 +82,9 @@ const UserDetails = ({ step, setStep, user, setUser }) => {
                     type="text"
                     name="city"
                     onChange={onHandleChange}
-                    value={getValues("city")}
                     ref={register}
                     isInvalid={errors.city}
+                    isValid={!errors.city && !!watch('city')}
                     tabIndex={1}
                 />
                 <FormFeedback field={errors.city}></FormFeedback>
@@ -80,27 +96,26 @@ const UserDetails = ({ step, setStep, user, setUser }) => {
                     type="email"
                     name="email"
                     onChange={onHandleChange}
-                    value={getValues("email")}
                     ref={register(Validator.email)}
                     isInvalid={errors.email}
+                    isValid={!errors.email && watch('email')}
                     tabIndex={1}
                 />
                 <FormFeedback field={errors.email}></FormFeedback>
             </Form.Group>
 
-            <Form.Group controlId="inscriptionPassword">
-                <Form.Label>Mot de passe</Form.Label>
-                <Form.Control
-                    type="password"
-                    name="password"
-                    onChange={onHandleChange}
-                    value={getValues("password")}
-                    ref={register(Validator.password)}
-                    isInvalid={errors.password}
-                    tabIndex={1}
-                />
-                <FormFeedback field={errors.password}></FormFeedback>
-            </Form.Group>
+            <PasswordFormGroup
+                id="passwordGroup"
+                controlId="inscriptionPassword"
+                label="Mot de passe"
+                name="password"
+                errors={errors}
+                onChange={onHandleChange}
+                _ref={register(Validator.password)}
+                isInvalid={errors.password}
+                isValid={!errors.password && !!watch('password')}
+                errorColumns={2}
+            />
 
             <Button
                 id="submit-btn"
@@ -109,7 +124,7 @@ const UserDetails = ({ step, setStep, user, setUser }) => {
                 style={{ width: "100%" }}>
                 Soumettre
             </Button>
-        </Form>
+        </Form >
     )
 }
 

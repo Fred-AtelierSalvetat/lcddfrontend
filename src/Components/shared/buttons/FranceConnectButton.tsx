@@ -4,7 +4,7 @@ import { ReactComponent as FCLogo } from '~/assets/logos/FC-logo.svg';
 
 export const FranceConnectButton = ({ text, style }) => {
     return (
-        <Button variant="outline-primary" className="FC-btn" style={style}>
+        <Button variant="fc" className="FC-btn" style={style}>
             <FCLogo></FCLogo>
             <div className="FC-text">
                 {text}<br />

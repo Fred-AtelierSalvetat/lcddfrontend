@@ -4,7 +4,7 @@ import { ReactComponent as Social0 } from "~/assets/icons/Social-0.svg";
 import { ReactComponent as Social1 } from "~/assets/icons/Social-1.svg";
 import { ReactComponent as Social2 } from "~/assets/icons/Social-2.svg";
 import { ReactComponent as Social3 } from "~/assets/icons/Social-3.svg";
-import "./Footer.css";
+import "./Footer.scss";
 
 const Footer: React.FC<{}> = () => {
 
@@ -15,8 +15,8 @@ const Footer: React.FC<{}> = () => {
         <div id="footer-contact">
           {/* Disponible que pour les professionnels */}
           {/* <a href="#/speakers">Devenir intervenant</a> | */}
-          <a href="#/contact">Contact</a> |
-          <a href="#/mentions-legales">Mentions Légales</a>
+          <a href="/contact-us">Contact</a> |
+          <a href="/legal-notice">Mentions Légales</a>
         </div>
 
         <div id="footer-right">

@@ -3,7 +3,7 @@ import { useForm } from 'react-hook-form';
 import { Container, Button, Form } from 'react-bootstrap';
 import { Validator } from '~/util/validator';
 import { FormFeedback } from '../shared/form/FormFeedBack';
-import './SignIn.css';
+import './SignIn.scss';
 
 const Header = () => {
     return (

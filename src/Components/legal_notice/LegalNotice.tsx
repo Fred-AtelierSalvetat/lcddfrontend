@@ -1,9 +1,9 @@
 import React, { FC } from 'react';
 import { Container } from 'react-bootstrap';
-import { Wrapper } from '../shared/wrapper/Wrapper';
-import "./MentionsLagales.css";
+import { Wrapper } from '../shared/wrapper';
+import './LegalNotice.scss';
 
-const MentionsLegales: FC<{}> = () => {
+const LegalNotice: FC<{}> = () => {
 
     return (
         <div>
@@ -41,4 +41,4 @@ const MentionsLegales: FC<{}> = () => {
     )
 }
 
-export default MentionsLegales;
+export default LegalNotice;

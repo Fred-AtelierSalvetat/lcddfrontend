@@ -1,37 +1,58 @@
 import React from 'react';
-import './App.css';
-import { HashRouter, Switch, Route } from 'react-router-dom';
-import Header from './header/Header';
-import Footer from './footer/Footer';
-import Home from './home/Home';
-import Speakers from './speakers/Speakers';
-import Profile from './speakers/Profile';
-import ContactForm from './contact/ContactForm';
-import MentionsLegales from './mentions_legales/MentionsLegales';
-import SignUp from './sign_up/SignUp';
+import { Switch, Route, BrowserRouter } from 'react-router-dom';
+import Header from './header';
+import Footer from './footer';
+import Home from './home';
+import LegalNotice from './legal_notice';
+import SignUp from './sign_up';
+import { SignInResetPassword } from './sign_in';
 import Questions from './questions/Questions.component';
 import DevenirIntervenant from './devenir_intervenant/DevenirIntervenant';
-import SignInResetPassword from './sign_in/SignInResetPassword';
+import { Speakers, SpeakerProfile } from './speakers';
 import Dashboard from './dashboard/Dashboard';
+import ContactUs from './contact_us';
+import MyProfile from './my_profile';
 import ErrorForm from './error/ErrorForm';
+import Logout from './logout';
+import Auth from '@aws-amplify/auth';
+import { useDispatch } from 'react-redux';
+import { userActionTypes } from '~/state/user/constants/UserActionType';
+import { getUserFromCognitoUser } from '~/state/users/constants/utils/CognitoUser';
 
-// eslint-disable-next-line @typescript-eslint/ban-types
+import './App.scss';
+
 const App: React.FC<{}> = () => {
+    const dispatch = useDispatch();
+
+    Auth.currentAuthenticatedUser()
+        .then((user) => {
+            let cognitoUser = user.attributes;
+            let currentUser = getUserFromCognitoUser(cognitoUser);
+            console.log('current user', currentUser);
+            dispatch({ type: userActionTypes.GET_CURRENT_USER_SUCCESS, user: currentUser });
+        })
+        .catch((err) => {
+            console.log('current user', err);
+            dispatch({ type: userActionTypes.GET_CURRENT_USER_FAILURE });
+        });
+
     return (
         <div className="App">
-            <Header />
-            <div id="lcdd-body">
-                <HashRouter>
+            <BrowserRouter>
+                <Header />
+                <div id="lcdd-body">
                     <Switch>
                         <Route path="/" exact component={Home} />
                         <Route path="/speakers" component={Speakers} />
-                        <Route path="/profile/:id" component={Profile} />
+                        <Route path="/profile/:id" component={SpeakerProfile} />
                         <Route path="/about" component={About} />
-                        <Route path="/contact" component={ContactForm} />
-                        <Route path="/mentions-legales" component={MentionsLegales} />
+                        <Route path="/contact-us" component={ContactUs} />
+                        <Route path="/legal-notice" component={LegalNotice} />
                         <Route path="/questions" component={Questions} />
                         <Route path="/sign-up" component={SignUp} />
+                        <Route path="/logout" component={Logout} />
                         <Route path="/sign-in/reset-password" component={SignInResetPassword} />
+                        <Route path="/my-profile" component={MyProfile} />
                         <Route path="/devenirintervenant" component={DevenirIntervenant} />
                         <Route path="/devenirintervenantenvoyee" component={DevenirIntervenant} />
                         <Route path="/dashboard" exact={true} component={Dashboard} />
@@ -41,9 +62,9 @@ const App: React.FC<{}> = () => {
                             <p>No Match</p>
                         </Route>
                     </Switch>
-                </HashRouter>
-            </div>
-            <Footer />
+                </div>
+                <Footer />
+            </BrowserRouter>
         </div>
     );
 };

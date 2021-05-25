@@ -13,7 +13,7 @@ import chroma from 'chroma-js';
 
 import { ReactComponent as CalendarIcon } from '../../../assets/icons/date_range_24px.svg';
 //Temp to be removed after redux implementation
-import topics from '../../sign_up/thematiques';
+import topics from '../../shared/thematiques';
 
 import { useForm, Controller } from 'react-hook-form';
 import Keywords from './Keywords';
@@ -181,12 +181,10 @@ const NewWorkshop: FC = () => {
                                     return (
                                         <DatePicker
                                             id="datepicker"
-                                            wrapperClassName={` ${
-                                                errors.timestamp ? 'is-invalid' : watch('timestamp') ? 'is-valid' : ''
-                                            }`}
-                                            className={`form-control ${
-                                                errors.timestamp ? 'is-invalid' : watch('timestamp') ? 'is-valid' : ''
-                                            }`}
+                                            wrapperClassName={` ${errors.timestamp ? 'is-invalid' : watch('timestamp') ? 'is-valid' : ''
+                                                }`}
+                                            className={`form-control ${errors.timestamp ? 'is-invalid' : watch('timestamp') ? 'is-valid' : ''
+                                                }`}
                                             {...field}
                                             selected={field.value}
                                             locale="fr"
@@ -220,15 +218,14 @@ const NewWorkshop: FC = () => {
                                 rules={validator.speakers}
                                 render={(field) => (
                                     <Select
-                                        className={`select ${
-                                            errors.speakers ? 'is-invalid' : watch('speakers').length ? 'is-valid' : ''
-                                        }`}
+                                        className={`select ${errors.speakers ? 'is-invalid' : watch('speakers').length ? 'is-valid' : ''
+                                            }`}
                                         classNamePrefix={
                                             errors.speakers
                                                 ? 'select-invalid'
                                                 : watch('speakers').length
-                                                ? 'select-valid'
-                                                : 'select'
+                                                    ? 'select-valid'
+                                                    : 'select'
                                         }
                                         {...field}
                                         components={animatedComponents}
@@ -259,15 +256,14 @@ const NewWorkshop: FC = () => {
                                     rules={validator.topics}
                                     render={(field) => (
                                         <Select
-                                            className={`select ${
-                                                errors.topics ? 'is-invalid' : watch('topics').length ? 'is-valid' : ''
-                                            }`}
+                                            className={`select ${errors.topics ? 'is-invalid' : watch('topics').length ? 'is-valid' : ''
+                                                }`}
                                             classNamePrefix={
                                                 errors.topics
                                                     ? 'select-invalid'
                                                     : watch('topics').length
-                                                    ? 'select-valid'
-                                                    : 'select'
+                                                        ? 'select-valid'
+                                                        : 'select'
                                             }
                                             {...field}
                                             components={animatedComponents}
@@ -294,19 +290,18 @@ const NewWorkshop: FC = () => {
                                     rules={validator.refsLegifrance}
                                     render={(field) => (
                                         <Select
-                                            className={`select ${
-                                                errors.refsLegifrance
+                                            className={`select ${errors.refsLegifrance
                                                     ? 'is-invalid'
                                                     : watch('refsLegifrance').length
-                                                    ? 'is-valid'
-                                                    : ''
-                                            }`}
+                                                        ? 'is-valid'
+                                                        : ''
+                                                }`}
                                             classNamePrefix={
                                                 errors.refsLegifrance
                                                     ? 'select-invalid'
                                                     : watch('refsLegifrance').length
-                                                    ? 'select-valid'
-                                                    : 'select'
+                                                        ? 'select-valid'
+                                                        : 'select'
                                             }
                                             {...field}
                                             components={animatedComponents}

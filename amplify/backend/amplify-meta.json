@@ -1,0 +1,31 @@
+{
+  "providers": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-webapp-dev-125136-authRole",
+      "UnauthRoleArn": "arn:aws:iam::456802669634:role/amplify-webapp-dev-125136-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::456802669634:role/amplify-webapp-dev-125136-authRole",
+      "Region": "eu-west-3",
+      "DeploymentBucketName": "amplify-webapp-dev-125136-deployment",
+      "UnauthRoleName": "amplify-webapp-dev-125136-unauthRole",
+      "StackName": "amplify-webapp-dev-125136",
+      "StackId": "arn:aws:cloudformation:eu-west-3:456802669634:stack/amplify-webapp-dev-125136/61a3b100-9d0f-11eb-93ae-0e51c6f5f8f6"
+    }
+  },
+  "auth": {
+    "webappe5739f08": {
+      "service": "Cognito",
+      "serviceType": "imported",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": [],
+      "customAuth": false,
+      "output": {
+        "UserPoolId": "eu-west-3_P1GqaZf7x",
+        "UserPoolName": "lcddPool-H3bZBRuTwI3Q",
+        "AppClientID": "7tnd2kdl7hrvelh0iksmi3ohb2",
+        "AppClientIDWeb": "7tnd2kdl7hrvelh0iksmi3ohb2",
+        "HostedUIDomain": "lcdd-connection"
+      },
+      "lastPushTimeStamp": "2021-04-14T11:04:28.191Z"
+    }
+  }
+}

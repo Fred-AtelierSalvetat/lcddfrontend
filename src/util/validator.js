@@ -1,8 +1,8 @@
 const NAME_PATTERN = /^[A-Za-zÀ-ÖØ-öø-ÿ\s]+(?:(\s|\.|-|\.\s)[A-Za-zÀ-ÖØ-öø-ÿ\s]+)*$/;
 const EMAIL_PATTERN = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i;
 const PASSWORD_PATTERN = /^(?=.*[0-9])(?=.*[!#$%&'()*+,-./:;<=>?@[\]^_`{|}~"])(?=.*[A-Z])(?=.*[a-z]).{8,}$/;
+const PHONE_NUMBER_PATTERN = /^(?:(?:\+|00)33|0)\s*[1-9](?:[\s.-]*\d{2}){4}$/;
 const PASSWORD_PATTERN_ONE_NUMBER = /^(?=.*[0-9])$/;
-const PHONE_NUMBER_PATTERN = /^[0-9]*$/;
 
 export const Validator = {
     "firstName": {
@@ -79,7 +79,7 @@ export const Validator = {
         },
         pattern: {
             value: PHONE_NUMBER_PATTERN,
-            message: "Le numéro de téléphone doit contenir des nombres"
+            message: "Entrer Le numéro de téléphone valide"
         }
     },
     "contactSubject": {

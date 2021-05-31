@@ -229,7 +229,6 @@ code {
 }
 
 /* outline buttons */
-/* Attention les deux règles ci-dessous font disparaitre les boutons de types -outline lors du :hover */
 [class*='-outline-'] {
     background-color: var(--white) !important;
 }
@@ -237,11 +236,6 @@ code {
 [class*='-outline-']:hover {
     color: var(--white) !important;
 }
-
-/* Pour information les règles ci-dessous ne sont pas actives le pattern des classes n'est aps le bon */
-/* Ex : -> btn-secondary-outline*/
-/* Je ne "corrige" pas parce que je ne suis vraiment pas certain que l'impact sera positif (color ==  background-color on hover) */
-/* A discuter en review */
 
 [class*='-outline-primary'] {
     color: var(--primary) !important;
@@ -327,7 +321,8 @@ code {
     color: var(--placeholder) !important;
     font-size: 0.9rem;
 }
-
+/* Note FSA: En fait c'était une erreur de ma part, à corriger*/
+/* voir https://gitlab.com/lcdd/webapp/-/merge_requests/44 */
 .btn-secondary-outline:hover {
     color: var(--dark) !important;
     background-color: var(--secondary) !important;

@@ -140,7 +140,7 @@
 			padding-right: 0.75rem !important;
 			font-weight: 350 !important;
 			font-size: 1.125rem;
-			color: rgba(255, 255, 255, 0.93) !important;
+			color: rgba(255, 255, 255, 0.93);
 
 			.nav-link {
 				white-space: nowrap;
@@ -161,7 +161,11 @@
 		}
 
 		.nav-item.btn-link {
-			color: var(--link) !important;
+			border: none !important;
+		}
+
+		.nav-item.btn-link:hover {
+			text-decoration: underline !important;
 		}
 
 		.dropdown {
@@ -177,5 +181,5 @@
 }
 
 #lcdd-header.hide {
-	top: -99px;
+	top: -101px;
 }

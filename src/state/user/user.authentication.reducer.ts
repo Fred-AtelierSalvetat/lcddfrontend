@@ -2,8 +2,12 @@ import Auth from '@aws-amplify/auth';
 import { useDispatch } from 'react-redux';
 import { userActionTypes } from './constants/UserActionType';
 
+export type AuthenticationState = {
+    loggingIn?: boolean;
+    user?: string;
+};
 
-export const userAuthenticationReducer = (state = {}, action) => {
+export const userAuthenticationReducer = (state: AuthenticationState = {}, action) => {
     switch (action.type) {
         case userActionTypes.GET_CURRENT_USER_REQUEST: {
             return { loggingIn: true };
@@ -26,6 +30,7 @@ export const userAuthenticationReducer = (state = {}, action) => {
         case userActionTypes.LOGOUT_USER_REQUEST: {
             return {};
         }
-        default: return state;
+        default:
+            return state;
     }
-}
+};

@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { FC } from 'react';
 import { useHistory } from 'react-router-dom';
 import { ReactComponent as Logo_error } from '~/assets/logos/Logo_error.svg';
 import './ErrorForm.css';
 
-const ErrorForm = () => {
+const ErrorForm: FC = () => {
     const history = useHistory();
 
     const redirectionVideo = () => {

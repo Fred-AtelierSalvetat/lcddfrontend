@@ -4,20 +4,19 @@
 
 const doc = document.documentElement;
 const w = window;
-var curScroll;
-var prevScroll = w.scrollY || doc.scrollTop;
-var curDirection = 0;
-var prevDirection = 0;
-var toggled;
-var threshold = 300;
+let curScroll;
+let prevScroll = w.scrollY || doc.scrollTop;
+let curDirection = 0;
+let prevDirection = 0;
+let toggled;
+const threshold = 300;
 
-export const checkScroll = (header) => {
+export const checkScroll: (header: HTMLElement) => void = (header) => {
     curScroll = w.scrollY || doc.scrollTop;
     if (curScroll > prevScroll) {
         // scrolled down
         curDirection = 2;
-    }
-    else if (curScroll < prevScroll) {
+    } else if (curScroll < prevScroll) {
         //scrolled up
         curDirection = 1;
     }
@@ -36,11 +35,9 @@ const toggleHeader = (header) => {
     toggled = true;
     if (curDirection === 2 && curScroll > threshold) {
         header.classList.add('hide');
-    }
-    else if (curDirection === 1) {
+    } else if (curDirection === 1) {
         header.classList.remove('hide');
-    }
-    else {
+    } else {
         toggled = false;
     }
     return toggled;

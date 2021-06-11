@@ -5,6 +5,20 @@ import { userActions } from '~/state/user/user.actions';
 import { BsPerson } from 'react-icons/bs';
 import settings from '../../assets/profile/settings.svg';
 
+import PropTypes from 'prop-types';
+
+const profilePropsTypes = {
+    user: PropTypes.exact({
+        firstName: PropTypes.string.isRequired,
+        lastName: PropTypes.string.isRequired,
+    }),
+};
+
+const namePropsTypes = {
+    firstName: PropTypes.string.isRequired,
+    lastName: PropTypes.string.isRequired,
+};
+
 const Profile = (props) => {
     const history = useHistory();
 
@@ -12,6 +26,7 @@ const Profile = (props) => {
         const text = `${firstName} ${lastName.length > 0 ? lastName[0] + '.' : ''}`;
         return <div className="profile-name">{text}</div>;
     };
+    Name.propTypes = namePropsTypes;
 
     const AvatarImg = () => {
         return (
@@ -58,5 +73,7 @@ const actionCreators = {
 };
 
 const connectedProfile = connect(mapStateToProps, actionCreators)(Profile);
+
+Profile.propTypes = profilePropsTypes;
 
 export default connectedProfile;

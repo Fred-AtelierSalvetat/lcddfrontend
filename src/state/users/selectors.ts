@@ -23,4 +23,3 @@ export const getVisibleUsers = createSelector(
 
 export const isRequestInProgress = (state: UsersState, request_type: UsersActionType): boolean =>
     state.inProgressRequests.includes(request_type);
-export const getRequestStatusMsgs = (state) => state.requestsStatusMsgs;

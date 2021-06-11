@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { FC, useState } from 'react';
 import { Button, Container, Form, Row } from 'react-bootstrap';
 import { useForm } from 'react-hook-form';
 import ReCAPTCHA from 'react-google-recaptcha';
@@ -10,13 +10,21 @@ import { Validator } from '~/util/validator';
 import scrollToTopSmoothly from '~/util/scrollToTopSmoothly';
 import './ContactUs.scss';
 
-const SITE_KEY = process.env.REACT_APP_GOOGLE_CAPTCHA_SITE_KEY!;
+import PropTypes from 'prop-types';
+
+const SITE_KEY = process.env.REACT_APP_GOOGLE_CAPTCHA_SITE_KEY || '';
 const MESSAGE_SENT_SUCCESS = 'Votre message a été bien envoyé';
 const MESSAGE_SENT_ERROR_NETWORK = 'Mauvaise réponse du réseau';
 const MESSAGE_SENT_FAILED = "Votre message n'a pas été bien envoyé";
 const SEND_EMAIL_URL = 'http://lcdddevtestapp-env.eba-d22aejrz.eu-west-3.elasticbeanstalk.com/api/v1/sendMail';
 
-const AlertSuccess = ({ show, message, onClick }) => {
+const alertPropsTypes = {
+    show: PropTypes.bool.isRequired,
+    message: PropTypes.string.isRequired,
+    onClick: PropTypes.func.isRequired,
+};
+
+const AlertSuccess: FC<PropTypes.InferProps<typeof alertPropsTypes>> = ({ show, message, onClick }) => {
     return (
         <div className={`alert alert-success ${show ? 'alert-shown' : 'alert-hidden'}`}>
             <button type="button" className="close" data-dismiss="alert" aria-label="Close" onClick={onClick}>
@@ -27,8 +35,9 @@ const AlertSuccess = ({ show, message, onClick }) => {
         </div>
     );
 };
+AlertSuccess.propTypes = alertPropsTypes;
 
-const AlertError = ({ show, message, onClick }) => {
+const AlertError: FC<PropTypes.InferProps<typeof alertPropsTypes>> = ({ show, message, onClick }) => {
     return (
         <div className={`alert alert-danger ${show ? 'alert-shown' : 'alert-hidden'}`}>
             <button type="button" className="close" data-dismiss="alert" aria-label="Close" onClick={onClick}>
@@ -39,9 +48,19 @@ const AlertError = ({ show, message, onClick }) => {
         </div>
     );
 };
+AlertError.propTypes = alertPropsTypes;
 
-const ContactUs = () => {
-    const { register, handleSubmit, setValue, trigger, errors, setError, clearErrors } = useForm();
+type ContactUsFormData = {
+    firstName: string;
+    lastName: string;
+    email: string;
+    subject: string;
+    message: string;
+    captcha: string;
+};
+
+const ContactUs: FC = () => {
+    const { register, handleSubmit, setValue, trigger, errors, setError, clearErrors } = useForm<ContactUsFormData>();
     const [recaptchaValidated, setRecaptchaValidated] = useState(false);
     const [showAlertMessage, setShowAlertMessage] = useState(false);
     const [messageSuccessfullySent, setMessageSuccessfullySent] = useState(false);
@@ -55,7 +74,7 @@ const ContactUs = () => {
         trigger(target.name);
     };
 
-    const onSubmit = (data: any) => {
+    const onSubmit: (data: ContactUsFormData) => void = (data) => {
         setMessage('');
         if (recaptchaValidated) {
             scrollToTopSmoothly();
@@ -88,7 +107,7 @@ const ContactUs = () => {
                     }
                     setLoading(false);
                 })
-                .catch((error) => {
+                .catch(() => {
                     setMessage(MESSAGE_SENT_FAILED);
                     setLoading(false);
                 });
@@ -108,7 +127,7 @@ const ContactUs = () => {
         resetCaptcha();
     };
 
-    const setCaptchaRef = (ref: any) => {
+    const setCaptchaRef = (ref: ReCAPTCHA | null) => {
         if (ref) {
             return (captcha = ref);
         }
@@ -172,7 +191,7 @@ const ContactUs = () => {
                             placeholder="Entrer votre prénom"
                             ref={register(Validator.firstName)}
                             onChange={onHandleChange}
-                            isInvalid={errors.firstName}
+                            isInvalid={!!errors.firstName}
                         />
                         <FormFeedback field={errors.firstName}></FormFeedback>
                     </Form.Group>
@@ -185,7 +204,7 @@ const ContactUs = () => {
                             placeholder="Entrer votre nom"
                             ref={register(Validator.lastName)}
                             onChange={onHandleChange}
-                            isInvalid={errors.lastName}
+                            isInvalid={!!errors.lastName}
                         />
                         <FormFeedback field={errors.lastName}></FormFeedback>
                     </Form.Group>
@@ -198,7 +217,7 @@ const ContactUs = () => {
                             placeholder="Entrer votre adresse e-mail"
                             ref={register(Validator.email)}
                             onChange={onHandleChange}
-                            isInvalid={errors.email}
+                            isInvalid={!!errors.email}
                         />
                         <FormFeedback field={errors.email}></FormFeedback>
                     </Form.Group>
@@ -211,7 +230,7 @@ const ContactUs = () => {
                             placeholder="Entrer un sujet"
                             ref={register(Validator.contactSubject)}
                             onChange={onHandleChange}
-                            isInvalid={errors.subject}
+                            isInvalid={!!errors.subject}
                         />
                         <FormFeedback field={errors.subject}></FormFeedback>
                     </Form.Group>
@@ -225,7 +244,7 @@ const ContactUs = () => {
                             placeholder="Entrer votre message"
                             ref={register(Validator.contactMessage)}
                             onChange={onHandleChange}
-                            isInvalid={errors.message}
+                            isInvalid={!!errors.message}
                         />
                         <FormFeedback field={errors.message}></FormFeedback>
                     </Form.Group>

@@ -1,68 +1,58 @@
-src/state/user/user.authentication.reducer.ts
-src/state/user/user.registation.reducer.ts
-src/state/users/constants/utils/CognitoUser.tsx
-src/util/history.js
-src/util/scrollToTopSmoothly.js
-src/state/user/user.actions.ts
-src/state/user/constants/UserActionType.js
-src/state/speaker/speaker.action.ts
-src/services/user.services.js
-src/serviceWorker.ts
-src/index.tsx
-src/Components/speakers/index.js
-src/Components/speakers/Speakers.tsx
-src/Components/speakers/Speaker.tsx
-src/Components/sign_up/user-reducer.js
-src/Components/sign_up/index.js
-src/Components/sign_up/form-steps.js
-src/Components/sign_up/UserRole.tsx
-src/Components/sign_up/SignUp.tsx
-src/Components/sign_up/Interests.tsx
-src/Components/sign_in/index.js
-src/Components/sign_in/SignInResetPasswordModal.tsx
-src/Components/sign_in/SignInResetPassword.tsx
-src/Components/sign_in/SignInLostPasswordModal.tsx
-src/Components/sign_up/UserDetails.tsx
-src/Components/sign_in/SignInLostPasswordEmailSentModal.tsx
-src/Components/sign_in/SignInContainer.tsx
-src/Components/shared/wrapper/index.js
-src/Components/shared/utils/Expire.tsx
-src/Components/shared/thematiques.js
-src/Components/shared/modals/OverlayModal.tsx
-src/Components/shared/form/PasswordFormGroup.jsx
-src/Components/shared/form/FormFeedBack.tsx
-src/Components/shared/cards/InterestCard.tsx
-src/Components/shared/buttons/FranceConnectButton.tsx
-src/Components/shared/RoundSpinner.jsx
-src/Components/questions/Questions.component.tsx
-src/Components/my_profile/index.js
-src/Components/my_profile/SideBarNav.js
-src/Components/my_profile/SideBarData.js
-src/Components/my_profile/MyProfileForm.jsx
-src/Components/my_profile/MyProfile.jsx
-src/Components/my_profile/ModifyPasswordForm.jsx
-src/Components/my_profile/ModifyInterestsForm.jsx
-src/Components/logout/index.js
-src/Components/logout/Logout.jsx
-src/Components/legal_notice/index.js
-src/Components/sign_in/SignInModal.tsx
-src/Components/legal_notice/LegalNotice.tsx
-src/Components/home/vos_questions/VosQuestions.tsx
-src/Components/home/questions_video/QuestionsVideo.tsx
-src/Components/home/prochain_atelier/ProchainAtelier.tsx
-src/Components/home/intervenants/Intervenants.tsx
-src/Components/home/index.js
-src/Components/home/domaines_expertise/DomainesExpertise.tsx
-src/Components/home/concept/Concept.tsx
-src/Components/home/ateliers/Ateliers.tsx
-src/Components/home/Home.tsx
-src/Components/header/checkScroll.js
-src/Components/header/Profile.jsx
-src/Components/header/Notifications.jsx
-src/Components/header/Header.tsx
-src/Components/footer/index.js
-src/Components/footer/Footer.tsx
-src/Components/error/ErrorForm.tsx
-src/Components/devenir_intervenant/DevenirIntervenant.tsx
-src/Components/contact_us/index.js
-src/Components/contact_us/ContactUs.tsx
+# src/state/user/user.authentication.reducer.ts
+# src/state/user/user.registation.reducer.ts
+# src/state/users/constants/utils/CognitoUser.tsx
+# src/util/history.js
+# src/util/scrollToTopSmoothly.js
+# src/state/user/user.actions.ts
+# src/state/user/constants/UserActionType.js
+# src/state/speaker/speaker.action.ts
+# src/services/user.services.js
+# src/serviceWorker.ts
+# src/index.tsx
+# src/Components/speakers/index.js
+# src/Components/speakers/Speakers.tsx
+# src/Components/speakers/Speaker.tsx
+# src/Components/sign_up/user-reducer.js
+# src/Components/sign_up/index.js
+# src/Components/sign_up/form-steps.js
+# src/Components/sign_up/UserRole.tsx
+# src/Components/sign_up/SignUp.tsx
+# src/Components/sign_up/Interests.tsx
+# src/Components/sign_in/index.js
+# src/Components/sign_in/SignInResetPasswordModal.tsx
+# src/Components/sign_in/SignInResetPassword.tsx
+# src/Components/sign_in/SignInLostPasswordModal.tsx
+# src/Components/sign_up/UserDetails.tsx
+# src/Components/sign_in/SignInLostPasswordEmailSentModal.tsx
+# src/Components/sign_in/SignInContainer.tsx
+# src/Components/shared/wrapper/index.js
+# src/Components/shared/utils/Expire.tsx
+# src/Components/shared/thematiques.js
+# src/Components/shared/modals/OverlayModal.tsx
+# src/Components/shared/form/PasswordFormGroup.jsx
+# src/Components/shared/form/FormFeedBack.tsx
+# src/Components/shared/cards/InterestCard.tsx
+# src/Components/shared/buttons/FranceConnectButton.tsx
+# src/Components/shared/RoundSpinner.jsx
+# src/Components/questions/Questions.component.tsx
+# src/Components/my_profile/index.js
+# src/Components/my_profile/SideBarNav.js
+# src/Components/my_profile/SideBarData.js
+# src/Components/my_profile/MyProfileForm.jsx
+# src/Components/my_profile/MyProfile.jsx
+# src/Components/my_profile/ModifyPasswordForm.jsx
+# src/Components/my_profile/ModifyInterestsForm.jsx
+# src/Components/logout/index.js
+# src/Components/logout/Logout.jsx
+# src/Components/legal_notice/index.js
+# src/Components/sign_in/SignInModal.tsx
+# src/Components/legal_notice/LegalNotice.tsx
+# src/Components/home/vos_questions/VosQuestions.tsx
+# src/Components/home/questions_video/QuestionsVideo.tsx
+# src/Components/home/prochain_atelier/ProchainAtelier.tsx
+# src/Components/home/intervenants/Intervenants.tsx
+# src/Components/home/index.js
+# src/Components/home/domaines_expertise/DomainesExpertise.tsx
+# src/Components/home/concept/Concept.tsx
+# src/Components/home/ateliers/Ateliers.tsx
+# src/Components/home/Home.tsx

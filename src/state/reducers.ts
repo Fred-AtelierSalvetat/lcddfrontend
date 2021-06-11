@@ -35,6 +35,6 @@ export const searchFilterSelector = (state: RootStateType): UIfiltersSearch =>
 export const getVisibleUsers = (state: RootStateType): User[] => fromUsers.getVisibleUsers(state.users);
 export const isRequestInProgress = (request_type: UsersActionType) => (state: RootStateType): boolean =>
     fromUsers.isRequestInProgress(state.users, request_type);
-export const getRequestStatusMsgs = (state) => fromUsers.getRequestStatusMsgs(state.users);
 export const getAlerts = (state: RootStateType): Alert[] => fromAlerts.getAlerts(state.alerts);
-export const isCurrentUserLoggedIn = (state) => fromUser.isCurrentUserLoggedIn(state.authentication);
+export const isCurrentUserLoggedIn = (state: RootStateType): boolean =>
+    fromUser.isCurrentUserLoggedIn(state.authentication);

@@ -2,8 +2,10 @@ import * as types from './constants/ActionTypes';
 import * as userRoles from './constants/Roles';
 import * as status from './constants/Status';
 import * as api from '../../api/fetchUsers';
-import { isRequestInProgress } from '../reducers';
+import { isRequestInProgress, rolesFilterSelector } from '../reducers';
 import * as alertActions from '../alerts/actions';
+import { UserId, UIfiltersRoles, UIfiltersSearch } from './model';
+import { RootStateType, AppDispatchType } from '../store';
 
 const apiCallWrapper = ({
     apiFct,
@@ -51,7 +53,9 @@ const apiCallWrapper = ({
     );
 };
 
-export const fetchUsers = ({ failureAlertMsg }) =>
+type ApiCallWrapperType = ReturnType<typeof apiCallWrapper>;
+
+export const fetchUsers = ({ failureAlertMsg }: { failureAlertMsg: JSX.Element }): ApiCallWrapperType =>
     apiCallWrapper({
         apiFct: api.fetchUsers(),
         requestActionType: types.FETCH_USERS_REQUEST,
@@ -61,7 +65,7 @@ export const fetchUsers = ({ failureAlertMsg }) =>
         failureAlertMsg,
     });
 
-export const activateUser = (user_id) =>
+export const activateUser = (user_id: UserId): ApiCallWrapperType =>
     apiCallWrapper({
         apiFct: api.updateUser(user_id, { status: status.ACTIVE }),
         requestActionType: types.ACTIVATE_USER_REQUEST,
@@ -71,7 +75,7 @@ export const activateUser = (user_id) =>
         failureAlertMsg: "Erreur lors de l'activation de l'utilisateur",
     });
 
-export const deactivateUser = (user_id) =>
+export const deactivateUser = (user_id: UserId): ApiCallWrapperType =>
     apiCallWrapper({
         apiFct: api.updateUser(user_id, { status: status.INACTIVE }),
         requestActionType: types.DEACTIVATE_USER_REQUEST,
@@ -81,7 +85,7 @@ export const deactivateUser = (user_id) =>
         failureAlertMsg: "Erreur lors de la désactivation de l'utilisateur",
     });
 
-export const deleteUser = (user_id) =>
+export const deleteUser = (user_id: UserId): ApiCallWrapperType =>
     apiCallWrapper({
         apiFct: api.deleteUser(user_id),
         requestActionType: types.DELETE_USER_REQUEST,
@@ -91,7 +95,7 @@ export const deleteUser = (user_id) =>
         failureAlertMsg: "Erreur lors de la supression de l'utilisateur",
     });
 
-export const promoteUserToAdmin = (user_id) =>
+export const promoteUserToAdmin = (user_id: UserId): ApiCallWrapperType =>
     apiCallWrapper({
         apiFct: api.updateUser(user_id, { role: userRoles.ROLE_ADMIN }),
         requestActionType: types.PROMOTE_USER_TO_ADMIN_REQUEST,
@@ -101,7 +105,7 @@ export const promoteUserToAdmin = (user_id) =>
         failureAlertMsg: "Erreur lors de la promotion de l'utilisateur à admin",
     });
 
-export const promoteUserToSpeaker = (user_id) =>
+export const promoteUserToSpeaker = (user_id: UserId): ApiCallWrapperType =>
     apiCallWrapper({
         apiFct: api.updateUser(user_id, { role: userRoles.ROLE_SPEAKER_AWAITING_ANSWER }),
         requestActionType: types.PROMOTE_USER_TO_SPEAKER_REQUEST,
@@ -111,7 +115,7 @@ export const promoteUserToSpeaker = (user_id) =>
         failureAlertMsg: "Erreur lors de la promotion de l'utilisateur à intervenant",
     });
 
-export const validateSpeaker = (user_id) =>
+export const validateSpeaker = (user_id: UserId): ApiCallWrapperType =>
     apiCallWrapper({
         apiFct: api.updateUser(user_id, { role: userRoles.ROLE_SPEAKER }),
         requestActionType: types.VALIDATE_SPEAKER_REQUEST,
@@ -121,7 +125,7 @@ export const validateSpeaker = (user_id) =>
         failureAlertMsg: "Erreur lors de la validation de l'intervenant",
     });
 
-export const revokeUserAdminRight = (user_id) =>
+export const revokeUserAdminRight = (user_id: UserId): ApiCallWrapperType =>
     apiCallWrapper({
         apiFct: api.updateUser(user_id, { role: userRoles.ROLE_SPEAKER }),
         requestActionType: types.REVOKE_USER_ADMIN_RIGHT_REQUEST,
@@ -131,12 +135,22 @@ export const revokeUserAdminRight = (user_id) =>
         failureAlertMsg: 'Erreur lors de la suppression des droits administrateurs',
     });
 
-export const setUsersRoleFilter = (roles_filter) => ({
-    type: types.SET_USER_ROLE_FILTER,
-    roles_filter,
-});
+export const setUsersRoleFilter = (roles_filter: UIfiltersRoles) => (
+    dispatch: AppDispatchType,
+    getstate: () => RootStateType,
+): (() => void) | { type: typeof types.SET_USER_ROLE_FILTER; roles_filter: UIfiltersRoles } => {
+    if (rolesFilterSelector(getstate()) === roles_filter) {
+        return () => {};
+    }
+    return dispatch({
+        type: types.SET_USER_ROLE_FILTER,
+        roles_filter,
+    });
+};
 
-export const setUsersSearchFilter = (search_filter) => ({
+export const setUsersSearchFilter = (
+    search_filter: UIfiltersSearch,
+): { type: typeof types.SET_USER_SEARCH_FILTER; search_filter: UIfiltersSearch } => ({
     type: types.SET_USER_SEARCH_FILTER,
     search_filter,
 });

@@ -2,12 +2,21 @@ import React, { FC, useState, useRef } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 
-import { ReactComponent as DeleteIcon } from '../../../assets/icons/delete_24px.svg';
+import { ReactComponent as DeleteIcon } from '~/assets/icons/delete_24px.svg';
 
-const Links: FC<{
-    value: { title: string; url: string }[];
-    setValue: (newValue: { title: string; url: string }[]) => void;
-}> = ({ value, setValue }) => {
+import PropTypes from 'prop-types';
+
+const linksPropTypes = {
+    value: PropTypes.arrayOf(
+        PropTypes.exact({
+            title: PropTypes.string.isRequired,
+            url: PropTypes.string.isRequired,
+        }),
+    ).isRequired,
+    setValue: PropTypes.func.isRequired,
+};
+
+const Links: FC<PropTypes.InferProps<typeof linksPropTypes>> = ({ value, setValue }) => {
     const [inputLinkURL, setInputLinkURL] = useState('');
     const [inputLinkTitle, setInputLinkTitle] = useState('');
     const refUrlInput = useRef<HTMLInputElement>(null);
@@ -77,20 +86,30 @@ const Links: FC<{
             </Button>
 
             <div className="list">
-                {value.map((link) => (
-                    <div className="item flex-shrink-1">
-                        <div className="no-margin flex-shrink-1">
-                            <div className="flex-shrink-1 wrap-anywhere">{link.title}</div>
-                            <a className="flex-shrink-1 wrap-anywhere" href={link.url} target="_blank">
-                                {link.url}
-                            </a>
-                        </div>
-                        <DeleteIcon className="action-icon" onClick={() => deleteLink(link)} />
-                    </div>
-                ))}
+                {value.map(
+                    (link) =>
+                        link && (
+                            <div key={link.title + link.url} className="item flex-shrink-1">
+                                <div className="no-margin flex-shrink-1">
+                                    <div className="flex-shrink-1 wrap-anywhere">{link.title}</div>
+                                    <a
+                                        className="flex-shrink-1 wrap-anywhere"
+                                        href={link.url}
+                                        target="_blank"
+                                        rel="noreferrer"
+                                    >
+                                        {link.url}
+                                    </a>
+                                </div>
+                                <DeleteIcon className="action-icon" onClick={() => deleteLink(link)} />
+                            </div>
+                        ),
+                )}
             </div>
         </>
     );
 };
+
+Links.propTypes = linksPropTypes;
 
 export default Links;

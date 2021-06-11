@@ -1,10 +1,10 @@
 import React, { FC, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { ReactComponent as SearchIcon } from '../../../assets/icons/search.svg';
-import { searchFilterSelector } from '../../../state/reducers';
-import * as usersAction from '../../../state/users/actions';
+import { ReactComponent as SearchIcon } from '~/assets/icons/search.svg';
+import { searchFilterSelector } from '~/state/reducers';
+import * as usersAction from '~/state/users/actions';
 
-const SearchBox: FC<{}> = () => {
+const SearchBox: FC = () => {
     const [searchbox, setSearchbox] = useState(useSelector(searchFilterSelector));
     const dispatch = useDispatch();
 

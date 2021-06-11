@@ -1,53 +1,34 @@
-// @ts-nocheck
-
-import React, { FC, forwardRef } from 'react';
-import ErrorBoundary from '../ErrorBoundary';
-
+import React, { FC } from 'react';
+import { useForm, Controller } from 'react-hook-form';
 import Col from 'react-bootstrap/Col';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 
-import Select from 'react-select';
-import makeAnimated from 'react-select/animated';
-import chroma from 'chroma-js';
+import ErrorBoundary from '~/Components/shared/ErrorBoundary';
+import DatePicker from '~/Components/shared/form/DatePicker';
+//import LcddDatePicker from '~/Components/shared/form/LcddDatePicker/LcddDatePicker';
+import Select from '~/Components/shared/form/Select';
 
-import { ReactComponent as CalendarIcon } from '../../../assets/icons/date_range_24px.svg';
-//Temp to be removed after redux implementation
-import topics from '../../shared/thematiques';
-
-import { useForm, Controller } from 'react-hook-form';
+import { FormFeedback } from '~/Components/shared/form/FormFeedBack';
+import { Validator } from '~/util/validator';
 import Keywords from './Keywords';
 import Links from './Links';
 import Uploads from './Uploads';
+import defaultValues from './defaultValues';
 import './NewWorkshop.scss';
 
-import DatePicker, { registerLocale } from 'react-datepicker';
-import { fr, enUS } from 'date-fns/locale';
-import 'react-datepicker/dist/react-datepicker.css';
-registerLocale('fr', fr);
-registerLocale('enUS', enUS);
+//Temp to be removed after redux implementation
+import topics from '~/Components/shared/thematiques';
 
 const NewWorkshop: FC = () => {
-    const defaultValues = {
-        title: '',
-        timestamp: '',
-        speakers: '',
-        topics: '',
-        refsLegifrance: '',
-        description: '',
-        keywords: [],
-        uploads: [],
-        links: [],
-    };
-
-    const { register, watch, handleSubmit, trigger, getValues, setValue, errors, control, reset } = useForm({
+    const { register, watch, handleSubmit, trigger, setValue, errors, control, reset } = useForm({
         mode: 'all',
         defaultValues,
     });
 
-    register('keywords');
-    register('uploads');
-    register('links');
+    register('workshopKeywords');
+    register('workshopUploads');
+    register('workshopLinks');
 
     //TODO get real data from redux when backend// MDD ready
     const intervenants = [
@@ -66,80 +47,12 @@ const NewWorkshop: FC = () => {
         };
     });
 
-    const getOneColorMultiValueStyle = (multivalueColor) => {
-        return {
-            control: (styles) => ({ ...styles, backgroundColor: 'white' }),
-
-            multiValue: (styles) => {
-                const color = chroma(multivalueColor);
-                return {
-                    ...styles,
-                    backgroundColor: color.alpha(0.1).css(),
-                };
-            },
-            multiValueLabel: (styles) => ({
-                ...styles,
-                color: multivalueColor,
-            }),
-            multiValueRemove: (styles) => ({
-                ...styles,
-                color: multivalueColor,
-                ':hover': {
-                    backgroundColor: multivalueColor,
-                    color: 'white',
-                },
-            }),
-        };
-    };
-
-    const animatedComponents = makeAnimated();
-
     const onSubmit = (data) => {
         console.log('onSubmit, createNewWorkshop action call with data =', data);
     };
     const onSubmitError = (errors) => console.error('onSubmitError :', errors);
 
-    const validator = {
-        title: {
-            required: 'Champ obligatoire',
-            maxLength: {
-                value: 255,
-                message: 'Le titre ne doit pas dépasser 255 caractères.',
-            },
-        },
-        timestamp: {
-            required: 'Champ obligatoire',
-        },
-        speakers: {
-            validate: (list) => (list && !!list.length) || 'Champ obligatoire',
-        },
-        topics: {
-            validate: (list) => (list && !!list.length) || 'Champ obligatoire',
-        },
-        refsLegifrance: {
-            validate: (list) => true,
-        },
-        description: {
-            required: 'Champ obligatoire',
-        },
-        keywords: {
-            validate: (list) => true,
-        },
-        uploads: {
-            validate: (uploads) => true,
-        },
-        links: {
-            validate: (links) => true,
-        },
-    };
-
-    const DatePickerCustomInput = forwardRef(({ value, className, placeholder, onClick, onChange, onBlur }, ref) => (
-        <div className="datepicker-custom-input" onClick={onClick} onChange={onChange} onBlur={onBlur} ref={ref}>
-            <input className={className} type="text" name="timestamp" placeholder={placeholder} value={value} />
-            <CalendarIcon />
-        </div>
-    ));
-
+    console.log('');
     return (
         <ErrorBoundary>
             <Form className="new-workshop-form" onSubmit={handleSubmit(onSubmit, onSubmitError)}>
@@ -155,92 +68,59 @@ const NewWorkshop: FC = () => {
                 <Form.Row>
                     <Col xs={12} md={7} lg={9}>
                         <Form.Group>
-                            <Form.Label>Titre d'atelier</Form.Label>
+                            <Form.Label>{"Titre d'atelier (obligatoire)"}</Form.Label>
                             <Form.Control
                                 type="text"
-                                name="title"
+                                name="workshopTitle"
                                 placeholder="Ajouter un titre"
-                                ref={register(validator.title)}
-                                isInvalid={!!errors.title}
-                                isValid={!errors.title && !!watch('title')}
+                                ref={register(Validator.workshopTitle)}
+                                isInvalid={!!errors.workshopTitle}
                                 onChange={({ target }) => trigger(target.name)}
                             />
-                            <Form.Control.Feedback type="invalid">
-                                {errors.title && errors.title.message}
-                            </Form.Control.Feedback>
+                            <FormFeedback field={errors.workshopTitle}></FormFeedback>
                         </Form.Group>
                     </Col>
                     <Col xs={12} md={5} lg={3}>
                         <Form.Group>
-                            <Form.Label>Date & Heure</Form.Label>
+                            <Form.Label>Date & Heure (obligatoire)</Form.Label>
                             <Controller
-                                name="timestamp"
+                                name="workshopTimestamp"
                                 control={control}
-                                rules={validator.timestamp}
-                                render={(field) => {
-                                    return (
-                                        <DatePicker
-                                            id="datepicker"
-                                            wrapperClassName={` ${errors.timestamp ? 'is-invalid' : watch('timestamp') ? 'is-valid' : ''
-                                                }`}
-                                            className={`form-control ${errors.timestamp ? 'is-invalid' : watch('timestamp') ? 'is-valid' : ''
-                                                }`}
-                                            {...field}
-                                            selected={field.value}
-                                            locale="fr"
-                                            timeCaption="Heure"
-                                            showTimeSelect
-                                            popperPlacement="left-start"
-                                            placeholderText="DD/MM/YYYY HH:mm"
-                                            dateFormat="dd/MM/yyyy HH:mm"
-                                            filterDate={(d) => {
-                                                return new Date() < d;
-                                            }}
-                                            //customInput={<Button>{field.value}</Button>}
-                                            customInput={<DatePickerCustomInput />}
-                                        />
-                                    );
-                                }}
+                                rules={Validator.workshopTimestamp}
+                                render={(field) => (
+                                    <DatePicker
+                                        {...field}
+                                        isInvalid={!!errors.workshopTimestamp}
+                                        placeholder="DD/MM/YYYY HH:mm"
+                                        dateFormat="dd/MM/yyyy HH:mm"
+                                    />
+                                )}
                             />
-                            <Form.Control.Feedback type="invalid">
-                                {errors.timestamp && errors.timestamp.message}
-                            </Form.Control.Feedback>
+                            <FormFeedback field={errors.workshopTimestamp}></FormFeedback>
                         </Form.Group>
                     </Col>
                 </Form.Row>
                 <Form.Row>
                     <Col>
                         <Form.Group>
-                            <Form.Label>Intervenants</Form.Label>
+                            <Form.Label>Intervenants (obligatoire)</Form.Label>
                             <Controller
-                                name="speakers"
+                                name="workshopSpeakers"
                                 control={control}
-                                rules={validator.speakers}
+                                rules={Validator.workshopSpeakers}
                                 render={(field) => (
                                     <Select
-                                        className={`select ${errors.speakers ? 'is-invalid' : watch('speakers').length ? 'is-valid' : ''
-                                            }`}
-                                        classNamePrefix={
-                                            errors.speakers
-                                                ? 'select-invalid'
-                                                : watch('speakers').length
-                                                    ? 'select-valid'
-                                                    : 'select'
-                                        }
                                         {...field}
-                                        components={animatedComponents}
-                                        placeholder="Sélectionner les intervenants"
                                         isMulti
-                                        closeMenuOnSelect={false}
-                                        isSearchable
                                         options={intervenants}
-                                        styles={getOneColorMultiValueStyle('#029eF8')}
+                                        isSearchable
+                                        closeMenuOnSelect={false}
+                                        placeholder="Sélectionner les intervenants"
+                                        isInvalid={!!errors.workshopSpeakers}
                                     />
                                 )}
                             />
-                            <Form.Control.Feedback type="invalid">
-                                {errors.speakers && errors.speakers.message}
-                            </Form.Control.Feedback>
+                            <FormFeedback field={errors.workshopSpeakers}></FormFeedback>
                         </Form.Group>
                     </Col>
                 </Form.Row>
@@ -248,75 +128,46 @@ const NewWorkshop: FC = () => {
                     <Col className="fullheight-flex-col" xs={12} md={8}>
                         <Form.Row>
                             <Form.Group>
-                                <Form.Label>Thématiques</Form.Label>
-
+                                <Form.Label>Thématiques (obligatoire)</Form.Label>
                                 <Controller
-                                    name="topics"
+                                    name="workshopTopics"
                                     control={control}
-                                    rules={validator.topics}
+                                    rules={Validator.workshopTopics}
                                     render={(field) => (
                                         <Select
-                                            className={`select ${errors.topics ? 'is-invalid' : watch('topics').length ? 'is-valid' : ''
-                                                }`}
-                                            classNamePrefix={
-                                                errors.topics
-                                                    ? 'select-invalid'
-                                                    : watch('topics').length
-                                                        ? 'select-valid'
-                                                        : 'select'
-                                            }
                                             {...field}
-                                            components={animatedComponents}
-                                            placeholder="Sélectionner les thématiques"
                                             isMulti
-                                            closeMenuOnSelect={false}
-                                            isSearchable
                                             options={topicsList}
-                                            styles={getOneColorMultiValueStyle('#745696')}
+                                            isSearchable
+                                            closeMenuOnSelect={false}
+                                            placeholder="Sélectionner les thématiques"
+                                            isInvalid={!!errors.workshopTopics}
                                         />
                                     )}
                                 />
-                                <Form.Control.Feedback type="invalid">
-                                    {errors.topics && errors.topics.message}
-                                </Form.Control.Feedback>
+                                <FormFeedback field={errors.workshopTopics}></FormFeedback>
                             </Form.Group>
                         </Form.Row>
                         <Form.Row>
                             <Form.Group>
                                 <Form.Label>Références Légifrance</Form.Label>
                                 <Controller
-                                    name="refsLegifrance"
+                                    name="workshopRefsLegifrance"
                                     control={control}
-                                    rules={validator.refsLegifrance}
+                                    rules={Validator.workshopRefsLegifrance}
                                     render={(field) => (
                                         <Select
-                                            className={`select ${errors.refsLegifrance
-                                                    ? 'is-invalid'
-                                                    : watch('refsLegifrance').length
-                                                        ? 'is-valid'
-                                                        : ''
-                                                }`}
-                                            classNamePrefix={
-                                                errors.refsLegifrance
-                                                    ? 'select-invalid'
-                                                    : watch('refsLegifrance').length
-                                                        ? 'select-valid'
-                                                        : 'select'
-                                            }
                                             {...field}
-                                            components={animatedComponents}
-                                            placeholder="Sélectionner les références Légifrance"
                                             isMulti
-                                            closeMenuOnSelect={false}
-                                            isSearchable
                                             options={refLegifrance}
-                                            styles={getOneColorMultiValueStyle('#19bec0')}
+                                            isSearchable
+                                            closeMenuOnSelect={false}
+                                            placeholder="Sélectionner les références Légifrance"
+                                            isInvalid={!!errors.workshopRefsLegifrance}
                                         />
                                     )}
                                 />
-                                <Form.Control.Feedback type="invalid">
-                                    {errors.refsLegifrance && errors.refsLegifrance.message}
-                                </Form.Control.Feedback>
+                                <FormFeedback field={errors.workshopRefsLegifrance}></FormFeedback>
                             </Form.Group>
                         </Form.Row>
                         <Form.Row className="no-margin">
@@ -325,16 +176,13 @@ const NewWorkshop: FC = () => {
                                 <Form.Control
                                     as="textarea"
                                     rows={3}
-                                    name="description"
+                                    name="workshopDescription"
                                     placeholder="Ajouter une description"
-                                    ref={register(validator.description)}
-                                    isInvalid={!!errors.description}
-                                    isValid={!errors.description && !!watch('description')}
+                                    ref={register(Validator.workshopDescription)}
+                                    isInvalid={!!errors.workshopDescription}
                                     onChange={({ target }) => trigger(target.name)}
                                 />
-                                <Form.Control.Feedback type="invalid">
-                                    {errors.description && errors.description.message}
-                                </Form.Control.Feedback>
+                                <FormFeedback field={errors.workshopDescription}></FormFeedback>
                             </Form.Group>
                         </Form.Row>
                     </Col>
@@ -343,9 +191,9 @@ const NewWorkshop: FC = () => {
                             <Form.Label>Mots-clés</Form.Label>
                             <fieldset>
                                 <Keywords
-                                    value={watch('keywords')}
+                                    value={watch('workshopKeywords')}
                                     setValue={(newValue) =>
-                                        setValue('keywords', newValue, {
+                                        setValue('workshopKeywords', newValue, {
                                             shouldValidate: true,
                                             //    shouldDirty: true
                                         })
@@ -359,11 +207,11 @@ const NewWorkshop: FC = () => {
                     <Col className="fullheight-flex-col" xs={12} md={8}>
                         <Form.Group>
                             <Form.Label>Téléchargements</Form.Label>
-                            <fieldset className="uploads">
+                            <fieldset className="workshopUploads">
                                 <Uploads
-                                    value={watch('uploads')}
+                                    value={watch('workshopUploads')}
                                     setValue={(newValue) =>
-                                        setValue('uploads', newValue, {
+                                        setValue('workshopUploads', newValue, {
                                             shouldValidate: true,
                                             //    shouldDirty: true
                                         })
@@ -377,9 +225,9 @@ const NewWorkshop: FC = () => {
                             <Form.Label>Liens</Form.Label>
                             <fieldset>
                                 <Links
-                                    value={watch('links')}
+                                    value={watch('workshopLinks')}
                                     setValue={(newValue) =>
-                                        setValue('links', newValue, {
+                                        setValue('workshopLinks', newValue, {
                                             shouldValidate: true,
                                             //    shouldDirty: true
                                         })

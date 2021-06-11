@@ -7,7 +7,7 @@ import * as userRoles from './constants/Roles';
 import * as usersActionTypes from './constants/ActionTypes';
 import * as alertTypes from '../alerts/constants/AlertTypes';
 import * as alertsActionTypes from '../alerts/constants/ActionTypes';
-import { fakeDatabase } from '../../api/fetchUsers';
+import { fakeDatabase } from '~/api/fetchUsers';
 
 describe("Users'action ", () => {
     it('creates FETCH_USERS_SUCCESS and NEW_ALERT actions when fetching users has been done', () => {
@@ -37,7 +37,20 @@ describe("Users'action ", () => {
 
     it('setUsersRoleFilter should create an action to set the roleFilter value', () => {
         const roles_filter = [userRoles.ADMIN, userRoles.SPEAKER];
-        expect(actions.setUsersRoleFilter(roles_filter)).to.deep.include({
+        const mockStore = configureMockStore([thunk]);
+        const store = mockStore({
+            users: {
+                users: fakeDatabase,
+                inProgressRequests: [],
+                uiFilters: {
+                    roles: [],
+                    search: '',
+                },
+            },
+        });
+        store.dispatch(actions.setUsersRoleFilter(roles_filter));
+        const actionStoreArray = store.getActions();
+        expect(actionStoreArray[0]).to.nested.include({
             type: usersActionTypes.SET_USER_ROLE_FILTER,
             roles_filter,
         });

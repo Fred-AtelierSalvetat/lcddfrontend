@@ -2,12 +2,16 @@ import React, { FC, useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 
-import { ReactComponent as DeleteIcon } from '../../../assets/icons/delete_24px.svg';
+import { ReactComponent as DeleteIcon } from '~/assets/icons/delete_24px.svg';
 
-const Keywords: FC<{
-    value: string[];
-    setValue: (newValue: string[]) => void;
-}> = ({ value, setValue }) => {
+import PropTypes from 'prop-types';
+
+const keywordsPropTypes = {
+    value: PropTypes.arrayOf(PropTypes.string).isRequired,
+    setValue: PropTypes.func.isRequired,
+};
+
+const Keywords: FC<PropTypes.InferProps<typeof keywordsPropTypes>> = ({ value, setValue }) => {
     const [inputKeyword, setInputKeyword] = useState('');
 
     const addKeyword = () => {
@@ -42,7 +46,7 @@ const Keywords: FC<{
             </Button>
             <div className="list">
                 {value.map((keyword) => (
-                    <div className="item flex-shrink-1">
+                    <div key={keyword} className="item flex-shrink-1">
                         <div className="flex-shrink-1 wrap-anywhere">{keyword}</div>
                         <DeleteIcon className="action-icon" onClick={() => deleteKeyword(keyword)} />
                     </div>
@@ -51,5 +55,7 @@ const Keywords: FC<{
         </>
     );
 };
+
+Keywords.propTypes = keywordsPropTypes;
 
 export default Keywords;

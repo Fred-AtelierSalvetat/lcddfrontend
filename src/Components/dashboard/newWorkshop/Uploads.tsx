@@ -3,20 +3,23 @@ import Form from 'react-bootstrap/Form';
 import Col from 'react-bootstrap/Col';
 
 import { useDropzone } from 'react-dropzone';
-import { FileWithPath } from 'react-dropzone';
 
-import { ReactComponent as UploadIcon } from '../../../assets/icons/upload_94px.svg';
-import { ReactComponent as FileIcon } from '../../../assets/icons/insert_drive_file_24px.svg';
-import { ReactComponent as DeleteIcon } from '../../../assets/icons/delete_24px.svg';
+import { ReactComponent as UploadIcon } from '~/assets/icons/upload_94px.svg';
+import { ReactComponent as FileIcon } from '~/assets/icons/insert_drive_file_24px.svg';
+import { ReactComponent as DeleteIcon } from '~/assets/icons/delete_24px.svg';
 
-const Uploads: FC<{
-    value: FileWithPath[];
-    setValue: (newValue: FileWithPath[]) => void;
-}> = ({ value, setValue }) => {
+import PropTypes from 'prop-types';
+
+const uploadsPropTypes = {
+    value: PropTypes.arrayOf(PropTypes.instanceOf(File)).isRequired,
+    setValue: PropTypes.func.isRequired,
+};
+
+const Uploads: FC<PropTypes.InferProps<typeof uploadsPropTypes>> = ({ value, setValue }) => {
     const onDrop = (acceptedFiles) => {
         setValue([...value, ...acceptedFiles]);
     };
-    const { getRootProps, getInputProps } = useDropzone({ onDrop });
+    const { getRootProps, getInputProps } = useDropzone({ onDrop, maxFiles: 10, maxSize: 7864320 });
 
     const deleteUpload = (toDelete) => {
         setValue(value.filter((upload) => upload !== toDelete));
@@ -35,19 +38,24 @@ const Uploads: FC<{
             </Col>
             <Col xs={8} sm={6}>
                 <div className="list">
-                    {value.map((file) => (
-                        <div className="item">
-                            <div className="upload-item-header flex-shrink-1">
-                                <FileIcon />
-                                <div className="flex-shrink-1 wrap-anywhere">{file.name}</div>
-                            </div>
-                            <DeleteIcon className="action-icon" onClick={() => deleteUpload(file)} />
-                        </div>
-                    ))}
+                    {value.map(
+                        (file) =>
+                            file && (
+                                <div key={file.name} className="item">
+                                    <div className="upload-item-header flex-shrink-1">
+                                        <FileIcon />
+                                        <div className="flex-shrink-1 wrap-anywhere">{file.name}</div>
+                                    </div>
+                                    <DeleteIcon className="action-icon" onClick={() => deleteUpload(file)} />
+                                </div>
+                            ),
+                    )}
                 </div>
             </Col>
         </Form.Row>
     );
 };
+
+Uploads.propTypes = uploadsPropTypes;
 
 export default Uploads;

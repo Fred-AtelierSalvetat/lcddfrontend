@@ -1,7 +1,8 @@
 import * as userModel from '../state/users/constants/Roles';
 import * as userStatus from '../state/users/constants/Status';
+import { User, UserUpdate } from '../state/users/model';
 
-export let fakeDatabase = [
+export let fakeDatabase: User[] = [
     {
         user_id: 0,
         firstname: 'François',
@@ -9,6 +10,7 @@ export let fakeDatabase = [
         phone: '0102030405',
         email_pro: '',
         email: 'francois.dupont@free.fr',
+        email_verified: false,
         town: 'Paris',
         status: userStatus.INACTIVE,
         role: userModel.ROLE_SPEAKER,
@@ -20,6 +22,7 @@ export let fakeDatabase = [
         phone: '0607080910',
         email_pro: '',
         email: 'michel.petit@etu-univ.fr',
+        email_verified: false,
         town: 'Grenoble',
         status: userStatus.ACTIVE,
         role: userModel.ROLE_PRO_USER,
@@ -31,6 +34,7 @@ export let fakeDatabase = [
         phone: '111122224444',
         email_pro: 'Albert@avocat.fr',
         email: 'albert.dupont@gmail.com',
+        email_verified: false,
         town: 'Marseille',
         status: userStatus.ACTIVE,
         role: userModel.ROLE_STUDENT,
@@ -42,6 +46,7 @@ export let fakeDatabase = [
         phone: '987654321',
         email_pro: 'Camille.Martin@pro.com',
         email: '',
+        email_verified: false,
         town: 'Marseille',
         status: userStatus.ACTIVE,
         role: userModel.ROLE_CITIZEN,
@@ -53,6 +58,7 @@ export let fakeDatabase = [
         phone: '987654321',
         email_pro: 'admin@root.com',
         email: '',
+        email_verified: false,
         town: '@',
         status: userStatus.ACTIVE,
         role: userModel.ROLE_ADMIN,
@@ -64,6 +70,7 @@ export let fakeDatabase = [
         phone: '987654321',
         email_pro: 'albert@lcdd.com',
         email: '',
+        email_verified: false,
         town: 'Toulouse',
         status: userStatus.ACTIVE,
         role: userModel.ROLE_SPEAKER_AWAITING_ANSWER,
@@ -75,6 +82,7 @@ export let fakeDatabase = [
         phone: '987654321',
         email_pro: 'martin@lcdd.com',
         email: '',
+        email_verified: false,
         town: 'Nantes',
         status: userStatus.ACTIVE,
         role: userModel.ROLE_SPEAKER_AWAITING_VALIDATION,
@@ -86,6 +94,7 @@ export let fakeDatabase = [
         phone: '0102030405',
         email_pro: '',
         email: 'francois.dupont@free.fr',
+        email_verified: false,
         town: 'Paris',
         status: userStatus.INACTIVE,
         role: userModel.ROLE_SPEAKER,
@@ -97,6 +106,7 @@ export let fakeDatabase = [
         phone: '0607080910',
         email_pro: '',
         email: 'michel.petit@etu-univ.fr',
+        email_verified: false,
         town: 'Grenoble',
         status: userStatus.ACTIVE,
         role: userModel.ROLE_PRO_USER,
@@ -108,6 +118,7 @@ export let fakeDatabase = [
         phone: '111122224444',
         email_pro: 'Albert@avocat.fr',
         email: 'albert.dupont@gmail.com',
+        email_verified: false,
         town: 'Marseille',
         status: userStatus.ACTIVE,
         role: userModel.ROLE_STUDENT,
@@ -119,6 +130,7 @@ export let fakeDatabase = [
         phone: '987654321',
         email_pro: 'Camille.Martin@pro.com',
         email: '',
+        email_verified: false,
         town: 'Marseille',
         status: userStatus.ACTIVE,
         role: userModel.ROLE_CITIZEN,
@@ -130,6 +142,7 @@ export let fakeDatabase = [
         phone: '987654321',
         email_pro: 'admin@root.com',
         email: '',
+        email_verified: false,
         town: '@',
         status: userStatus.ACTIVE,
         role: userModel.ROLE_ADMIN,
@@ -141,6 +154,7 @@ export let fakeDatabase = [
         phone: '987654321',
         email_pro: 'albert@lcdd.com',
         email: '',
+        email_verified: false,
         town: 'Toulouse',
         status: userStatus.ACTIVE,
         role: userModel.ROLE_SPEAKER_AWAITING_ANSWER,
@@ -152,6 +166,7 @@ export let fakeDatabase = [
         phone: '987654321',
         email_pro: 'martin@lcdd.com',
         email: '',
+        email_verified: false,
         town: 'Nantes',
         status: userStatus.ACTIVE,
         role: userModel.ROLE_SPEAKER_AWAITING_VALIDATION,
@@ -163,6 +178,7 @@ export let fakeDatabase = [
         phone: '0102030405',
         email_pro: '',
         email: 'francois.dupont@free.fr',
+        email_verified: false,
         town: 'Paris',
         status: userStatus.INACTIVE,
         role: userModel.ROLE_SPEAKER,
@@ -174,6 +190,7 @@ export let fakeDatabase = [
         phone: '0607080910',
         email_pro: '',
         email: 'michel.petit@etu-univ.fr',
+        email_verified: false,
         town: 'Grenoble',
         status: userStatus.ACTIVE,
         role: userModel.ROLE_PRO_USER,
@@ -185,6 +202,7 @@ export let fakeDatabase = [
         phone: '111122224444',
         email_pro: 'Albert@avocat.fr',
         email: 'albert.dupont@gmail.com',
+        email_verified: false,
         town: 'Marseille',
         status: userStatus.ACTIVE,
         role: userModel.ROLE_STUDENT,
@@ -196,6 +214,7 @@ export let fakeDatabase = [
         phone: '987654321',
         email_pro: 'Camille.Martin@pro.com',
         email: '',
+        email_verified: false,
         town: 'Marseille',
         status: userStatus.ACTIVE,
         role: userModel.ROLE_CITIZEN,
@@ -207,6 +226,7 @@ export let fakeDatabase = [
         phone: '987654321',
         email_pro: 'admin@root.com',
         email: '',
+        email_verified: false,
         town: '@',
         status: userStatus.ACTIVE,
         role: userModel.ROLE_ADMIN,
@@ -218,6 +238,7 @@ export let fakeDatabase = [
         phone: '987654321',
         email_pro: 'albert@lcdd.com',
         email: '',
+        email_verified: false,
         town: 'Toulouse',
         status: userStatus.ACTIVE,
         role: userModel.ROLE_SPEAKER_AWAITING_ANSWER,
@@ -229,6 +250,7 @@ export let fakeDatabase = [
         phone: '987654321',
         email_pro: 'martin@lcdd.com',
         email: '',
+        email_verified: false,
         town: 'Nantes',
         status: userStatus.ACTIVE,
         role: userModel.ROLE_SPEAKER_AWAITING_VALIDATION,
@@ -236,16 +258,16 @@ export let fakeDatabase = [
 ];
 const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
-export const fetchUsers = () => () => {
-    return delay(1000).then(() => {
-        if (Math.random() > 0.7) {
-            throw new Error("Pas de panique, c'est une erreur simulée (taux d'occurence 50%).");
-        }
+export const fetchUsers = () => (): Promise<User[]> => {
+    return delay(100).then(() => {
+        // if (Math.random() > 0.7) {
+        //     throw new Error("Pas de panique, c'est une erreur simulée (taux d'occurence 50%).");
+        // }
         return fakeDatabase;
     });
 };
 
-export const updateUser = (id, userUpdate) => () =>
+export const updateUser = (id: number, userUpdate: UserUpdate) => (): Promise<void | User[]> =>
     delay(100).then(() => {
         // if (Math.random() > 0.5) {
         //     throw new Error("Pas de panique, c'est une erreur simulée (taux d'occurence 50%).");
@@ -258,7 +280,7 @@ export const updateUser = (id, userUpdate) => () =>
         fakeDatabase = fakeDatabase.map((user) => (user.user_id !== id ? user : { ...user, ...userUpdate }));
     });
 
-export const deleteUser = (id) => () =>
+export const deleteUser = (id: number) => (): Promise<void | User[]> =>
     delay(100).then(() => {
         // if (Math.random() > 0.5) {
         //     throw new Error("Pas de panique, c'est une erreur simulée (taux d'occurence 50%).");

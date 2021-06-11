@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 
 const Workshops: FC = () => {
-    return <p>Liste d'atliers</p>;
+    return <p>Workshop list</p>;
 };
 
 export default Workshops;

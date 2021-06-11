@@ -6,27 +6,6 @@ $input-place-holder-color: #999999;
 $awaiting-validation-background-color: #f0ad4e;
 
 #lcdd-dashboard-page {
-    .navPill {
-        &-enter {
-            background-color: yellowgreen !important;
-        }
-
-        &-enter-active {
-            background-color: blue !important;
-            transition: background-color 2000ms !important;
-        }
-        &-exit {
-            opacity: 1;
-            background-color: yellow !important;
-            transition: opacity 1000ms;
-        }
-
-        &-exit-active {
-            opacity: 1;
-            background-color: yellow !important;
-            transition: opacity 1000ms;
-        }
-    }
     .table_and_filters_pane {
         background-color: $header-background-color;
         border-top-left-radius: 0.25rem;
@@ -38,6 +17,7 @@ $awaiting-validation-background-color: #f0ad4e;
             padding: 0.5rem;
 
             .nav-link {
+                text-decoration: none;
                 transition: transform 0.2s;
                 padding: 0.5rem;
                 color: var(--primary);
@@ -65,6 +45,7 @@ $awaiting-validation-background-color: #f0ad4e;
                     align-self: top;
                 }
                 input {
+                    width: 100%;
                     padding: 0.5rem 1rem;
                     border: 0;
                     font-size: 1rem;

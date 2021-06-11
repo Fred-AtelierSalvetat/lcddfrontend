@@ -5,8 +5,9 @@ import styled from 'styled-components';
 import { Image } from 'react-bootstrap';
 import Avatar from './../../assets/shared/avatar.jpg';
 import classnames from 'classnames';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { AppState } from '../../state/reducers';
+import { fetchSpeakers } from '../../api/fetchSperkers';
 
 type Params = {
     id: string;
@@ -31,7 +32,21 @@ const BioWrapper = styled.div`
 const Profile: React.FC<{}> = () => {
     const params = useParams() as Params;
 
-    const { name, rool, description } = useSelector((state: AppState) => state.speakers.speakers[Number(params.id)]);
+    //Adding the follow fetchSpeakers to cover the case where user is coming directly from admin dashboard
+    // without going through the Speakers components
+    // Note: This is a quickfix but a clean solution on redux state must be planned
+    const dispatch = useDispatch();
+    const { speakers } = useSelector((state: AppState) => state.speakers);
+    React.useEffect(() => {
+        if (speakers.length === 0) {
+            dispatch(fetchSpeakers());
+        }
+    }, [dispatch, speakers]);
+
+    const profile = useSelector((state: AppState) => state.speakers.speakers[Number(params.id)]);
+
+    if (speakers.length === 0 || !!!profile) return null;
+    const { name, rool, description } = profile;
 
     return (
         <>

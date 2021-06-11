@@ -1,11 +1,14 @@
 import React, { FC, useState } from 'react';
+import PropTypes from 'prop-types';
 
-const Action: FC<{ icon: JSX.Element; label: string; action?: () => void; modalConfirmation?: JSX.Element }> = ({
-    icon,
-    label,
-    action,
-    modalConfirmation,
-}) => {
+const actionPropTypes = {
+    icon: PropTypes.element.isRequired, //ReactComponent
+    label: PropTypes.string.isRequired,
+    action: PropTypes.func,
+    modalConfirmation: PropTypes.node,
+};
+
+const Action: FC<PropTypes.InferProps<typeof actionPropTypes>> = ({ icon, label, action, modalConfirmation }) => {
     const [insertModal, setInsertModal] = useState(false);
     return (
         <div className="actionButton">
@@ -20,5 +23,7 @@ const Action: FC<{ icon: JSX.Element; label: string; action?: () => void; modalC
         </div>
     );
 };
+
+Action.propTypes = actionPropTypes;
 
 export default Action;

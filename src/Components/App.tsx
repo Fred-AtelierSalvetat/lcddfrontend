@@ -21,13 +21,13 @@ import { getUserFromCognitoUser } from '~/state/users/constants/utils/CognitoUse
 
 import './App.scss';
 
-const App: React.FC<{}> = () => {
+const App: React.FC = () => {
     const dispatch = useDispatch();
 
     Auth.currentAuthenticatedUser()
         .then((user) => {
-            let cognitoUser = user.attributes;
-            let currentUser = getUserFromCognitoUser(cognitoUser);
+            const cognitoUser = user.attributes;
+            const currentUser = getUserFromCognitoUser(cognitoUser);
             console.log('current user', currentUser);
             dispatch({ type: userActionTypes.GET_CURRENT_USER_SUCCESS, user: currentUser });
         })

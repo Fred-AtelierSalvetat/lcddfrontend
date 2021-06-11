@@ -1,72 +1,122 @@
 import React from 'react';
 import { expect } from 'chai';
 import { mount } from 'enzyme';
+import { Provider } from 'react-redux';
+import configureMockStore from 'redux-mock-store';
+import thunk from 'redux-thunk';
 
 import { MemoryRouter, Route } from 'react-router-dom';
-import { NavLink } from 'react-bootstrap';
 
 import Dashboard from './Dashboard';
 import UserManagement from './usermanagement/UserManagement';
 
+import { rootReducer, reducersList } from '~/state/reducers';
+
 jest.mock('./usermanagement/UserManagement');
 
 describe('<Dashboard />', () => {
-    it('contains 2 navigation links', () => {
-        const wrapper = mount(
-            <MemoryRouter initialEntries={['/dashboard']}>
-                <Route path="/dashboard" exact={true}>
-                    <Dashboard />
-                </Route>
-            </MemoryRouter>,
-        );
-        expect(wrapper.find(NavLink)).to.have.length(2);
-    });
-    it('contains a link to #/dashboard/newWorkshop', () => {
-        const wrapper = mount(
-            <MemoryRouter initialEntries={['/dashboard']}>
-                <Route path="/dashboard" exact={true}>
-                    <Dashboard />
-                </Route>
-            </MemoryRouter>,
-        );
-        expect(wrapper.find({ href: '#/dashboard/newWorkshop' })).to.exist;
+    let store = undefined;
+    beforeEach(() => {
+        const mockStore = configureMockStore([thunk]);
+        const undefinedGlobalState = {};
+        for (const prop of Object.getOwnPropertyNames(reducersList)) {
+            undefinedGlobalState[prop] = undefined;
+        }
+        store = mockStore(rootReducer(undefinedGlobalState, { type: undefined }));
     });
 
-    it('contains a link to #/dashboard/users', () => {
+    it('contains 3 navigation links', () => {
         const wrapper = mount(
-            <MemoryRouter initialEntries={['/dashboard']}>
-                <Route path="/dashboard" exact={true}>
-                    <Dashboard />
-                </Route>
-            </MemoryRouter>,
+            <Provider store={store}>
+                <MemoryRouter initialEntries={['/dashboard']}>
+                    <Route path="/dashboard" exact={true}>
+                        <Dashboard />
+                    </Route>
+                </MemoryRouter>
+                ,
+            </Provider>,
         );
-        expect(wrapper.find({ href: '#/dashboard/users' })).to.exist;
+        expect(wrapper.find('input')).to.have.length(3);
+    });
+    it('contains a link to /dashboard/newWorkshop', () => {
+        const wrapper = mount(
+            <Provider store={store}>
+                <MemoryRouter initialEntries={['/dashboard']}>
+                    <Route path="/dashboard" exact={true}>
+                        <Dashboard />
+                    </Route>
+                </MemoryRouter>
+                ,
+            </Provider>,
+        );
+        expect(wrapper.find('input').find({ value: '/dashboard/newWorkshop' })).to.exist;
+    });
+    it('contains a link to /dashboard/users', () => {
+        const wrapper = mount(
+            <Provider store={store}>
+                <MemoryRouter initialEntries={['/dashboard']}>
+                    <Route path="/dashboard" exact={true}>
+                        <Dashboard />
+                    </Route>
+                </MemoryRouter>
+            </Provider>,
+        );
+        expect(wrapper.find('input').find({ value: '/dashboard/users' })).to.exist;
+    });
+    it('contains a link to /dashboard/newWorkshop', () => {
+        const wrapper = mount(
+            <Provider store={store}>
+                <MemoryRouter initialEntries={['/dashboard']}>
+                    <Route path="/dashboard" exact={true}>
+                        <Dashboard />
+                    </Route>
+                </MemoryRouter>
+            </Provider>,
+        );
+        expect(wrapper.find('input').find({ value: '/dashboard/newWorkshop' })).to.exist;
+    });
+    it('contains a link to /dashboard/workshops', () => {
+        const wrapper = mount(
+            <Provider store={store}>
+                <MemoryRouter initialEntries={['/dashboard']}>
+                    <Route path="/dashboard" exact={true}>
+                        <Dashboard />
+                    </Route>
+                </MemoryRouter>
+            </Provider>,
+        );
+        expect(wrapper.find('input').find({ value: '/dashboard/workshops' })).to.exist;
     });
 
-    it("shall handle route's params to activate the corresponding NavLink", () => {
+    it("shall handle route's params to activate the corresponding 'input' and display contents", () => {
         const userManagementMockContent = <div>UserManagementTESTPAGE</div>;
         UserManagement.mockImplementation(() => userManagementMockContent);
         const wrapper = mount(
-            <MemoryRouter initialEntries={['/dashboard/users']}>
-                <Route path="/dashboard/:selectedPage" exact={true}>
-                    <Dashboard />
-                </Route>
-            </MemoryRouter>,
+            <Provider store={store}>
+                <MemoryRouter initialEntries={['/dashboard/users']}>
+                    <Route path="/dashboard/:selectedPage" exact={true}>
+                        <Dashboard />
+                    </Route>
+                </MemoryRouter>
+                ,
+            </Provider>,
         );
-        expect(wrapper.find(NavLink).filter({ href: '#/dashboard/users' })).to.have.length(1);
-        expect(wrapper.find(NavLink).filter({ href: '#/dashboard/users' }).at(0).props().active).to.equal(true);
-        expect(wrapper.find('#lcdd-dashboard-page').childAt(0)).to.contain(userManagementMockContent);
+        expect(wrapper.find('input').filter({ value: '/dashboard/users' })).to.have.length(1);
+        expect(wrapper.find('input').filter({ value: '/dashboard/users' }).at(0).props().checked).to.equal(true);
+        expect(wrapper.find('#activePage').childAt(0)).to.contain(userManagementMockContent);
     });
 
     it('should match its reference snapshot', () => {
         const wrapper = mount(
-            <MemoryRouter initialEntries={[{ pathname: '/dashboard', key: 'testKey' }]}>
-                <Route path="/dashboard" exact={true}>
-                    <Dashboard />
-                </Route>
-            </MemoryRouter>,
+            <Provider store={store}>
+                <MemoryRouter initialEntries={[{ pathname: '/dashboard', key: 'testKey' }]}>
+                    <Route path="/dashboard" exact={true}>
+                        <Dashboard />
+                    </Route>
+                </MemoryRouter>
+                ,
+            </Provider>,
         );
-
         expect(wrapper).to.matchSnapshot();
     });
 });

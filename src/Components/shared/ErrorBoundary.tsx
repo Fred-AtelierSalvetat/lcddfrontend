@@ -1,22 +1,27 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 
-class ErrorBoundary extends React.Component<{}, { hasError: boolean }> {
-    constructor(props) {
+type propsType = { children: ReactNode };
+type stateType = { hasError: boolean };
+
+class ErrorBoundary extends React.Component<propsType, stateType> {
+    constructor(props: propsType) {
         super(props);
         this.state = { hasError: false };
     }
 
-    static getDerivedStateFromError(error) {
+    //TODOOFSA Check behavior without Error, bad signature...
+    static getDerivedStateFromError(/*_: Error*/): stateType {
         return { hasError: true };
     }
-    // TODO Add Logger
-    // componentDidCatch(error, errorInfo) {
-    //     //logErrorToMyService(error, errorInfo);
-    // }
 
-    render() {
+    // TODO Add Logger
+    // public componentDidCatch(error: Error, errorInfo: ErrorInfo) {
+    //     console.error("Uncaught error:", error, errorInfo);
+    //   }
+
+    render(): ReactNode {
         if (this.state.hasError) {
-            // Vous pouvez afficher n'importe quelle UI de repli.
+            // UI de repli.
             return (
                 <div
                     style={{

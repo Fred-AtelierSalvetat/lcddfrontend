@@ -1,1 +1,3 @@
-export const getAlerts = (state) => state;
+import { AlertState, Alert } from './model';
+
+export const getAlerts = (state: AlertState): Alert[] => state;

@@ -3,7 +3,7 @@ import { combineReducers } from 'redux';
 import * as types from './constants/ActionTypes';
 import * as userStatus from './constants/Status';
 import * as userModel from './constants/Roles';
-import { User, UIfilters } from './models';
+import { User, UIfilters } from './model';
 
 const users = (state: User[] = [], action) => {
     switch (action.type) {

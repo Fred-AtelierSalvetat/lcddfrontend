@@ -1,5 +1,8 @@
-import React, { FC, useEffect } from 'react';
-import { useParams, Redirect, useLocation } from 'react-router-dom';
+/* eslint-disable react/prop-types */
+// To prevent warning on inline React component
+
+import React, { FC, useState, useEffect } from 'react';
+import { useParams, Redirect, useLocation, useHistory, Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 
 import Nav from 'react-bootstrap/Nav';
@@ -7,24 +10,25 @@ import Tab from 'react-bootstrap/Tab';
 import Table from 'react-bootstrap/Table';
 import Button from 'react-bootstrap/Button';
 
-import { ReactComponent as ToggleOnIcon } from '../../../assets/icons/toggle_on_24px.svg';
-import { ReactComponent as ToggleOffIcon } from '../../../assets/icons/toggle_off_24px.svg';
-import { ReactComponent as DeleteForeverIcon } from '../../../assets/icons/delete_forever_16px.svg';
-import { ReactComponent as AdminIcon } from '../../../assets/icons/admin_24px.svg';
-import { ReactComponent as ValidateIcon } from '../../../assets/icons/validate_24px.svg';
-import { ReactComponent as InviteSpeakerIcon } from '../../../assets/icons/group_add_24px.svg';
+import { ReactComponent as ToggleOnIcon } from '~/assets/icons/toggle_on_24px.svg';
+import { ReactComponent as ToggleOffIcon } from '~/assets/icons/toggle_off_24px.svg';
+import { ReactComponent as DeleteForeverIcon } from '~/assets/icons/delete_forever_16px.svg';
+import { ReactComponent as AdminIcon } from '~/assets/icons/admin_24px.svg';
+import { ReactComponent as ValidateIcon } from '~/assets/icons/validate_24px.svg';
+import { ReactComponent as InviteSpeakerIcon } from '~/assets/icons/group_add_24px.svg';
 
-import * as userRoles from '../../../state/users/constants/Roles';
-import * as userStatus from '../../../state/users/constants/Status';
-import * as actionTypes from '../../../state/users/constants/ActionTypes';
-import * as usersAction from '../../../state/users/actions';
-import { getVisibleUsers, isRequestInProgress } from '../../../state/reducers';
-import ErrorBoundary from '../ErrorBoundary';
+import * as userRoles from '~/state/users/constants/Roles';
+import * as userStatus from '~/state/users/constants/Status';
+import * as actionTypes from '~/state/users/constants/ActionTypes';
+import * as usersAction from '~/state/users/actions';
+import { User as UserType } from '~/state/users/model';
+import { getVisibleUsers, isRequestInProgress } from '~/state/reducers';
+import ErrorBoundary from '~/Components/shared/ErrorBoundary';
 
 import SearchBox from './Searchbox';
 import ActionMenuCell from './ActionMenuCell';
 import Action from './Action';
-import ConfirmDialog from '../../shared/modals/ConfirmDialog';
+import ConfirmDialog from '~/Components/shared/modals/ConfirmDialog';
 
 import './UserManagement.scss';
 
@@ -53,14 +57,22 @@ const UserManagement: FC = () => {
     const { roleFilter } = useParams() as {
         roleFilter?: string;
     };
+    const history = useHistory();
 
+    const [users, setUsers] = useState<UserType[]>([]);
+
+    const visibleUsers = useSelector(getVisibleUsers);
+
+    useEffect(() => {
+        setUsers(visibleUsers);
+    }, [visibleUsers]);
     const dispatch = useDispatch();
 
     useEffect(() => {
         const fetchAction = usersAction.fetchUsers({
             failureAlertMsg: (
                 <div className="JSXalertMsg">
-                    <span>Echec du des données utilisateurs</span>
+                    <span>Echec du chargement des données utilisateurs</span>
                     <Button
                         className="retry"
                         onClick={() => {
@@ -73,14 +85,12 @@ const UserManagement: FC = () => {
             ),
         });
         dispatch(fetchAction);
-    }, [dispatch]); //TODO Define refresh strategy
+    }, []);
 
     let root_path = useLocation().pathname;
     roleFilter && (root_path = root_path.replace(new RegExp('/' + roleFilter + '$'), ''));
 
     const isFetching = useSelector(isRequestInProgress(actionTypes.FETCH_USERS_REQUEST));
-
-    const users = useSelector(getVisibleUsers);
 
     if (!roleFilter) {
         return <Redirect to={root_path + '/admin'} />;
@@ -98,7 +108,7 @@ const UserManagement: FC = () => {
         table_columns: {
             key: string;
             renderHeader: () => JSX.Element;
-            renderCell: any;
+            renderCell: (any) => React.ReactNode;
         }[];
     }[] = [
         {
@@ -108,7 +118,9 @@ const UserManagement: FC = () => {
                 {
                     key: 'lastname',
                     renderHeader: () => <div>Nom</div>,
-                    renderCell: ({ lastname }) => <p>{lastname}</p>,
+                    renderCell: ({ lastname }) => {
+                        return <p>{lastname}</p>;
+                    },
                 },
                 {
                     key: 'firstname',
@@ -175,7 +187,7 @@ const UserManagement: FC = () => {
                 {
                     key: 'profile',
                     renderHeader: () => <div></div>,
-                    renderCell: ({ user_id }) => <a href={'#/profile/' + user_id}>Voir profil</a>,
+                    renderCell: ({ user_id }) => <Link to={'/profile/' + user_id}>Voir profil</Link>,
                 },
             ],
         },
@@ -280,7 +292,7 @@ const UserManagement: FC = () => {
                 {
                     key: 'profile',
                     renderHeader: () => <div></div>,
-                    renderCell: ({ user_id }) => <a href={'#/profile/' + user_id}>Voir profil</a>,
+                    renderCell: ({ user_id }) => <Link to={'/profile/' + user_id}>Voir profil</Link>,
                 },
             ],
         },
@@ -378,8 +390,8 @@ const UserManagement: FC = () => {
                                             classNames="navPill"
                                         > */}
                                         <Nav.Link
-                                            href={`#${root_path}/${tab_desc.uri_filter}`}
                                             active={tab_desc.uri_filter === roleFilter}
+                                            onClick={() => history.push(`${root_path}/${tab_desc.uri_filter}`)}
                                         >
                                             {tab_desc.tab_label}
                                         </Nav.Link>
@@ -397,25 +409,34 @@ const UserManagement: FC = () => {
                                         key={'pane_' + tab_desc.tab_label}
                                         active={tab_desc.uri_filter === roleFilter}
                                     >
-                                        <Table borderless>
-                                            <thead>
-                                                <tr>
+                                        <Table borderless role="table">
+                                            <thead role="rowgroup">
+                                                <tr role="row">
                                                     {tab_desc.table_columns.map((col) => {
                                                         return (
-                                                            <th key={tab_desc.tab_label + col.key}>
+                                                            <th role="heading" key={tab_desc.tab_label + col.key}>
                                                                 {col.renderHeader()}
                                                             </th>
                                                         );
                                                     })}
                                                 </tr>
                                             </thead>
-                                            <tbody>
+                                            <tbody role="rowgroup">
                                                 {users.map((user) => (
-                                                    <tr key={tab_desc.tab_label + user.user_id}>
+                                                    <tr
+                                                        role="row"
+                                                        data-testid={
+                                                            process.env.NODE_ENV === 'test' ? user.user_id : ''
+                                                        }
+                                                        key={tab_desc.tab_label + user.user_id}
+                                                    >
                                                         {tab_desc.table_columns.map((col) => {
                                                             return (
-                                                                <td key={tab_desc.tab_label + user.user_id + col.key}>
-                                                                    {col.renderCell(user)}
+                                                                <td
+                                                                    role="cell"
+                                                                    key={tab_desc.tab_label + user.user_id + col.key}
+                                                                >
+                                                                    {col.renderCell && col.renderCell(user)}
                                                                 </td>
                                                             );
                                                         })}

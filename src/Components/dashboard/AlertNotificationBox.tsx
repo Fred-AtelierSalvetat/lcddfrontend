@@ -3,9 +3,9 @@ import { useSelector, useDispatch } from 'react-redux';
 
 import Alert from 'react-bootstrap/Alert';
 
-import * as alertTypes from '../../state/alerts/constants/AlertTypes';
-import * as alertAction from '../../state/alerts/actions';
-import { getAlerts } from '../../state/reducers';
+import * as alertTypes from '~/state/alerts/constants/AlertTypes';
+import * as alertAction from '~/state/alerts/actions';
+import { getAlerts } from '~/state/reducers';
 
 import './AlertNotificationBox.scss';
 

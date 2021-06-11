@@ -1,207 +1,161 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<Dashboard /> should match its reference snapshot 1`] = `
-<MemoryRouter
-  initialEntries={
-    Array [
-      Object {
-        "key": "testKey",
-        "pathname": "/dashboard",
-      },
-    ]
+<Provider
+  store={
+    Object {
+      "clearActions": [Function],
+      "dispatch": [Function],
+      "getActions": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+    }
   }
 >
-  <Router
-    history={
-      Object {
-        "action": "POP",
-        "block": [Function],
-        "canGo": [Function],
-        "createHref": [Function],
-        "entries": Array [
-          Object {
+  <MemoryRouter
+    initialEntries={
+      Array [
+        Object {
+          "key": "testKey",
+          "pathname": "/dashboard",
+        },
+      ]
+    }
+  >
+    <Router
+      history={
+        Object {
+          "action": "POP",
+          "block": [Function],
+          "canGo": [Function],
+          "createHref": [Function],
+          "entries": Array [
+            Object {
+              "hash": "",
+              "key": "testKey",
+              "pathname": "/dashboard",
+              "search": "",
+            },
+          ],
+          "go": [Function],
+          "goBack": [Function],
+          "goForward": [Function],
+          "index": 0,
+          "length": 1,
+          "listen": [Function],
+          "location": Object {
             "hash": "",
             "key": "testKey",
             "pathname": "/dashboard",
             "search": "",
           },
-        ],
-        "go": [Function],
-        "goBack": [Function],
-        "goForward": [Function],
-        "index": 0,
-        "length": 1,
-        "listen": [Function],
-        "location": Object {
-          "hash": "",
-          "key": "testKey",
-          "pathname": "/dashboard",
-          "search": "",
-        },
-        "push": [Function],
-        "replace": [Function],
+          "push": [Function],
+          "replace": [Function],
+        }
       }
-    }
-  >
-    <Route
-      exact={true}
-      path="/dashboard"
     >
-      <Dashboard>
-        <ErrorBoundary>
-          <div
-            id="lcdd-dashboard"
-          >
-            <Navbar
-              collapseOnSelect={false}
-              expand={true}
-              variant="light"
-            >
-              <nav
-                className="navbar navbar-expand navbar-light"
-              >
-                <Nav
-                  className="flex-column"
-                  fill={false}
-                  justify={false}
-                >
-                  <ForwardRef
-                    as="div"
-                    className="flex-column navbar-nav"
-                    onSelect={[Function]}
-                  >
-                    <div
-                      className="flex-column navbar-nav"
-                      onKeyDown={[Function]}
-                    >
-                      <NavLink
-                        active={false}
-                        as={
-                          Object {
-                            "$$typeof": Symbol(react.forward_ref),
-                            "displayName": "SafeAnchor",
-                            "render": [Function],
-                          }
-                        }
-                        disabled={false}
-                        href="#/dashboard/newWorkshop"
-                        key="#/dashboard/newWorkshop"
-                      >
-                        <ForwardRef
-                          active={false}
-                          as={
-                            Object {
-                              "$$typeof": Symbol(react.forward_ref),
-                              "displayName": "SafeAnchor",
-                              "render": [Function],
-                            }
-                          }
-                          className="nav-link"
-                          disabled={false}
-                          href="#/dashboard/newWorkshop"
-                        >
-                          <SafeAnchor
-                            className="nav-link"
-                            data-rb-event-key="#/dashboard/newWorkshop"
-                            disabled={false}
-                            href="#/dashboard/newWorkshop"
-                            onClick={[Function]}
-                          >
-                            <a
-                              className="nav-link"
-                              data-rb-event-key="#/dashboard/newWorkshop"
-                              href="#/dashboard/newWorkshop"
-                              onClick={[Function]}
-                              onKeyDown={[Function]}
-                            >
-                              <div
-                                className="button-panel"
-                              >
-                                <ForwardRef(SvgAdd24Px)>
-                                  <svg>
-                                    add_24px.svg
-                                  </svg>
-                                </ForwardRef(SvgAdd24Px)>
-                                <p>
-                                  Créer
-                                  <br />
-                                  un atelier
-                                </p>
-                              </div>
-                            </a>
-                          </SafeAnchor>
-                        </ForwardRef>
-                      </NavLink>
-                      <NavLink
-                        active={false}
-                        as={
-                          Object {
-                            "$$typeof": Symbol(react.forward_ref),
-                            "displayName": "SafeAnchor",
-                            "render": [Function],
-                          }
-                        }
-                        disabled={false}
-                        href="#/dashboard/users"
-                        key="#/dashboard/users"
-                      >
-                        <ForwardRef
-                          active={false}
-                          as={
-                            Object {
-                              "$$typeof": Symbol(react.forward_ref),
-                              "displayName": "SafeAnchor",
-                              "render": [Function],
-                            }
-                          }
-                          className="nav-link"
-                          disabled={false}
-                          href="#/dashboard/users"
-                        >
-                          <SafeAnchor
-                            className="nav-link"
-                            data-rb-event-key="#/dashboard/users"
-                            disabled={false}
-                            href="#/dashboard/users"
-                            onClick={[Function]}
-                          >
-                            <a
-                              className="nav-link"
-                              data-rb-event-key="#/dashboard/users"
-                              href="#/dashboard/users"
-                              onClick={[Function]}
-                              onKeyDown={[Function]}
-                            >
-                              <div
-                                className="button-panel"
-                              >
-                                <ForwardRef(SvgUsers24Px)>
-                                  <svg>
-                                    users_24px.svg
-                                  </svg>
-                                </ForwardRef(SvgUsers24Px)>
-                                <p>
-                                  Gestion
-                                  <br />
-                                  utilisateurs
-                                </p>
-                              </div>
-                            </a>
-                          </SafeAnchor>
-                        </ForwardRef>
-                      </NavLink>
-                    </div>
-                  </ForwardRef>
-                </Nav>
-              </nav>
-            </Navbar>
+      <Route
+        exact={true}
+        path="/dashboard"
+      >
+        <Dashboard>
+          <ErrorBoundary>
             <div
-              id="lcdd-dashboard-page"
-            />
-          </div>
-        </ErrorBoundary>
-      </Dashboard>
-    </Route>
-  </Router>
-</MemoryRouter>
+              id="lcdd-dashboard"
+            >
+              <div
+                id="lcdd-dashboard-navbar"
+              >
+                <input
+                  checked={false}
+                  id="/dashboard/workshops"
+                  onChange={[Function]}
+                  type="radio"
+                  value="/dashboard/workshops"
+                />
+                <label
+                  htmlFor="/dashboard/workshops"
+                >
+                  <div>
+                    <ForwardRef(SvgWorkshops24Px)>
+                      <svg>
+                        workshops_24px.svg
+                      </svg>
+                    </ForwardRef(SvgWorkshops24Px)>
+                    <p>
+                      Ateliers
+                    </p>
+                  </div>
+                </label>
+                <input
+                  checked={false}
+                  id="/dashboard/newWorkshop"
+                  onChange={[Function]}
+                  type="radio"
+                  value="/dashboard/newWorkshop"
+                />
+                <label
+                  htmlFor="/dashboard/newWorkshop"
+                >
+                  <div>
+                    <ForwardRef(SvgAdd24Px)>
+                      <svg>
+                        add_24px.svg
+                      </svg>
+                    </ForwardRef(SvgAdd24Px)>
+                    <p>
+                      Créer
+                      <br />
+                      un atelier
+                    </p>
+                  </div>
+                </label>
+                <input
+                  checked={false}
+                  id="/dashboard/users"
+                  onChange={[Function]}
+                  type="radio"
+                  value="/dashboard/users"
+                />
+                <label
+                  htmlFor="/dashboard/users"
+                >
+                  <div>
+                    <ForwardRef(SvgUsers24Px)>
+                      <svg>
+                        users_24px.svg
+                      </svg>
+                    </ForwardRef(SvgUsers24Px)>
+                    <p>
+                      Gestion
+                      <br />
+                      utilisateurs
+                    </p>
+                  </div>
+                </label>
+                <div
+                  className="selection-sliding-background"
+                />
+              </div>
+              <div
+                id="lcdd-dashboard-page"
+              >
+                <AlertNotificationBox>
+                  <div
+                    className="alertBox"
+                  />
+                </AlertNotificationBox>
+                <div
+                  id="activePage"
+                />
+              </div>
+            </div>
+          </ErrorBoundary>
+        </Dashboard>
+      </Route>
+    </Router>
+  </MemoryRouter>
+  ,
+</Provider>
 `;

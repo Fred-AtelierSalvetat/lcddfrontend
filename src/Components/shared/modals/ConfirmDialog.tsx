@@ -1,9 +1,28 @@
-import React from 'react';
+import React, { FC } from 'react';
 import { Modal, Button } from 'react-bootstrap';
+import PropTypes from 'prop-types';
 
 import './ConfirmDialog.scss';
 
-const ConfirmDialog = ({ show, title, body, cancelButton, okButton, handleClose, handleConfirm }) => {
+const confirmDialogPropTypes = {
+    show: PropTypes.bool.isRequired,
+    title: PropTypes.string.isRequired,
+    body: PropTypes.string.isRequired,
+    cancelButton: PropTypes.string.isRequired,
+    okButton: PropTypes.string.isRequired,
+    handleClose: PropTypes.func.isRequired,
+    handleConfirm: PropTypes.func.isRequired,
+};
+
+const ConfirmDialog: FC<PropTypes.InferProps<typeof confirmDialogPropTypes>> = ({
+    show,
+    title,
+    body,
+    cancelButton,
+    okButton,
+    handleClose,
+    handleConfirm,
+}) => {
     return (
         <Modal show={show} onHide={handleClose}>
             <Modal.Header closeButton>
@@ -21,5 +40,7 @@ const ConfirmDialog = ({ show, title, body, cancelButton, okButton, handleClose,
         </Modal>
     );
 };
+
+ConfirmDialog.propTypes = confirmDialogPropTypes;
 
 export default ConfirmDialog;

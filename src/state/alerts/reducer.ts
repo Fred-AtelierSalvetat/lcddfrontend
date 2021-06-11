@@ -1,13 +1,7 @@
 import * as actionTypes from './constants/ActionTypes';
+import { AlertState, Alert, AlertActions } from './model';
 
-type Alert = {
-    id: string;
-    alertType: string;
-    alertSubject: string;
-    message: JSX.Element;
-};
-
-export const alerts = (state: Alert[] = [], action) => {
+export const alerts = (state: Alert[] = [], action: AlertActions): AlertState => {
     switch (action.type) {
         case actionTypes.NEW_ALERT:
             return [...state.filter((alert) => alert.alertSubject !== action.alert.alertSubject), { ...action.alert }];

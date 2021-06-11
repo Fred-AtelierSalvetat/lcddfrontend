@@ -14,3 +14,7 @@ if (process.env.NODE_ENV !== 'production') {
 const middlewareEnhancer = applyMiddleware(...middlewares);
 
 export const store = createStore(rootReducer, composeWithDevTools(middlewareEnhancer));
+
+// Infer the `RootState` and `AppDispatch` types from the store itself
+export type RootStateType = ReturnType<typeof store.getState>;
+export type AppDispatchType = typeof store.dispatch;

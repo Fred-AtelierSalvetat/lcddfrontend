@@ -1,15 +1,13 @@
-// @ts-nocheck
-
-import React, { FC, useState, useEffect } from 'react';
+import React, { Fragment, FC, useState, useEffect } from 'react';
 import { useParams, useHistory, Redirect } from 'react-router-dom';
-import { ReactComponent as WorkShopsIcon } from '../../assets/icons/workshops_24px.svg';
-import { ReactComponent as WorkshopCreationIcon } from '../../assets/icons/add_24px.svg';
-//import { ReactComponent as QuestionsIcon } from '../../assets/icons/questions_24px.svg';
-import { ReactComponent as UsersIcon } from '../../assets/icons/users_24px.svg';
-//import { ReactComponent as AnalyticsIcon } from '../../assets/icons/analytics_24px.svg';
-// import { ReactComponent as NotificationsIcon } from '../../assets/icons/notifications_24px.svg';
-// import { ReactComponent as HelpIcon } from '../../assets/icons/help_24px.svg';
-import ErrorBoundary from './ErrorBoundary';
+import { ReactComponent as WorkShopsIcon } from '~/assets/icons/workshops_24px.svg';
+import { ReactComponent as WorkshopCreationIcon } from '~/assets/icons/add_24px.svg';
+//import { ReactComponent as QuestionsIcon } from '~/assets/icons/questions_24px.svg';
+import { ReactComponent as UsersIcon } from '~/assets/icons/users_24px.svg';
+//import { ReactComponent as AnalyticsIcon } from '~/assets/icons/analytics_24px.svg';
+// import { ReactComponent as NotificationsIcon } from '~/assets/icons/notifications_24px.svg';
+// import { ReactComponent as HelpIcon } from '~/assets/icons/help_24px.svg';
+import ErrorBoundary from '~/Components/shared/ErrorBoundary';
 import UserManagement from './usermanagement/UserManagement';
 import NewWorkshop from './newWorkshop/NewWorkshop';
 import Workshops from './workshops/Workshops';
@@ -109,7 +107,7 @@ const Dashboard: FC = () => {
             <div id="lcdd-dashboard">
                 <div id="lcdd-dashboard-navbar">
                     {pages.map((page_desc) => (
-                        <>
+                        <Fragment key={page_desc.href}>
                             <input
                                 type="radio"
                                 id={page_desc.href}
@@ -126,13 +124,13 @@ const Dashboard: FC = () => {
                                     {page_desc.label}
                                 </div>
                             </label>
-                        </>
+                        </Fragment>
                     ))}
                     <div className="selection-sliding-background"></div>
                 </div>
                 <div id="lcdd-dashboard-page">
                     <AlertNotificationBox />
-                    {activePage}
+                    <div id="activePage">{activePage}</div>
                 </div>
             </div>
         </ErrorBoundary>

@@ -1,2 +1,2 @@
-export const NEW_ALERT = 'NEW_ALERT';
-export const DISMISS_ALERT = 'DISMISS_ALERT';
+export const NEW_ALERT = 'NEW_ALERT' as const;
+export const DISMISS_ALERT = 'DISMISS_ALERT' as const;

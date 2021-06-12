@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React, { FC, useEffect, useState } from 'react';
 import { Button, Form, Row } from 'react-bootstrap';
-import PropTypes from 'prop-types';
 import InterestCard from '../shared/cards/InterestCard';
 import thematiques from '../shared/thematiques';
 import { userActions } from '~/state/user/user.actions';
 import { connect, useDispatch } from 'react-redux';
+import PropTypes from 'prop-types';
 
 const thematiques_mobile_plus = thematiques.slice(0, 6);
 const thematiques_tablet_plus = thematiques.slice(0, 9);
@@ -12,7 +12,14 @@ const MOBILE_VIEW_BREAKPOINT = 402;
 const TABLET_VIEW_BREAKPOINT = 768;
 
 // Step 3 UI
-const Interests = ({ step, setStep, user, setUser }) => {
+
+const interestsPropTypes = {
+    step: PropTypes.number.isRequired,
+    setStep: PropTypes.func.isRequired,
+    user: PropTypes.object.isRequired,
+    setUser: PropTypes.func.isRequired,
+};
+const Interests: FC<PropTypes.InferProps<typeof interestsPropTypes>> = ({ user }) => {
     const [isMobile, setIsMobile] = useState(window.innerWidth < MOBILE_VIEW_BREAKPOINT);
     const [isTablet, setIsTablet] = useState(window.innerWidth < TABLET_VIEW_BREAKPOINT);
     const [isDesktop, setIsDesktop] = useState(!isMobile && !isTablet);
@@ -153,7 +160,7 @@ const Interests = ({ step, setStep, user, setUser }) => {
                 <Form.Group controlId="helloAsso" style={{ marginBottom: '0.6rem' }}>
                     <label className="label-check">
                         <input type="checkbox" name="helloAsso" className="form-check-input" tabIndex={50} />
-                        Je souhaite m'inscrire à&nbsp;
+                        {"Je souhaite m'inscrire à "}
                         <a className="link" target="_blank" rel="noopener noreferrer" href="https://www.helloasso.com/">
                             HelloAsso
                         </a>{' '}
@@ -171,7 +178,7 @@ const Interests = ({ step, setStep, user, setUser }) => {
                             ref={(r) => (checkboxRef = r)}
                             required
                         />
-                        J'ai lu et j'accepte les&nbsp;
+                        {"J'ai lu et j'accepte les "}
                         <a className="link" target="_blank" rel="noopener noreferrer" href="#/mentions-legales">
                             mentions légales
                         </a>
@@ -181,18 +188,12 @@ const Interests = ({ step, setStep, user, setUser }) => {
             </div>
 
             <Button id="submit-btn-final" type="submit" tabIndex={50} style={{ width: '100%' }} onClick={handleSubmit}>
-                Finaliser l'inscription
+                {"Finaliser l'inscription"}
             </Button>
         </Form>
     );
 };
-
-Interests.propsType = {
-    step: PropTypes.number,
-    setStep: PropTypes.func,
-    user: PropTypes.object,
-    setUser: PropTypes.func,
-};
+Interests.propTypes = interestsPropTypes;
 
 const mapState = (state) => {
     const { registering } = state.registration;

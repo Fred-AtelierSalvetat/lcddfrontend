@@ -1,20 +1,52 @@
-import React, { useEffect, useState } from 'react';
+import React, { FC, useEffect, useState } from 'react';
 import { ReactComponent as Selected } from '~/assets/icons/Selected.svg';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 
 const MOBILE_VIEW_BREAKPOINT = 402;
 
-const Card = ({ className, onClick, onKeyDown, isMobile, children }) => (
+const cardPropTypes = {
+    className: PropTypes.string.isRequired,
+    onClick: PropTypes.func.isRequired,
+    isMobile: PropTypes.bool.isRequired,
+    onKeyDown: PropTypes.func.isRequired,
+    children: PropTypes.node.isRequired,
+};
+const Card: FC<PropTypes.InferProps<typeof cardPropTypes>> = ({ className, onClick, onKeyDown, children }) => (
     <div className={className} tabIndex={1} onClick={onClick} onKeyUp={onKeyDown}>
         {children}
     </div>
 );
+Card.propTypes = cardPropTypes;
 
-const CardImage = ({ className, src, alt }) => <img className={className} src={src} alt={alt}></img>;
+const cardImagePropTypes = {
+    className: PropTypes.string.isRequired,
+    src: PropTypes.string.isRequired,
+    alt: PropTypes.string.isRequired,
+};
+const CardImage: FC<PropTypes.InferProps<typeof cardImagePropTypes>> = ({ className, src, alt }) => (
+    <img className={className} src={src} alt={alt}></img>
+);
+CardImage.propTypes = cardImagePropTypes;
 
-const CardText = ({ className, isMobile, children }) => <p className={className}>{children}</p>;
+const cardTextPropTypes = {
+    className: PropTypes.string.isRequired,
+    isMobile: PropTypes.bool.isRequired,
+    children: PropTypes.node.isRequired,
+};
+const CardText: FC<PropTypes.InferProps<typeof cardTextPropTypes>> = ({ className, children }) => (
+    <p className={className}>{children}</p>
+);
+CardText.propTypes = cardTextPropTypes;
 
-const CardBody = ({ className, children }) => <div className={className}>{children}</div>;
+const cardBodyPropTypes = {
+    className: PropTypes.string.isRequired,
+    children: PropTypes.node.isRequired,
+};
+const CardBody: FC<PropTypes.InferProps<typeof cardBodyPropTypes>> = ({ className, children }) => (
+    <div className={className}>{children}</div>
+);
+CardBody.propTypes = cardBodyPropTypes;
 
 const InterestCardStyled = styled(Card)`
     display: flex;
@@ -58,7 +90,11 @@ const CardTextStyled = styled(CardText)`
     vertical-align: bottom;
 `;
 
-const InterestCard = (props) => {
+const interestCardPropTypes = {
+    src: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
+};
+const InterestCard: FC<PropTypes.InferProps<typeof interestCardPropTypes>> = (props) => {
     const [selected, setSelected] = useState(false);
     const [isMobile, setIsMobile] = useState(window.innerWidth < MOBILE_VIEW_BREAKPOINT);
 
@@ -114,5 +150,6 @@ const InterestCard = (props) => {
         </div>
     );
 };
+InterestCard.propTypes = interestCardPropTypes;
 
 export default InterestCard;

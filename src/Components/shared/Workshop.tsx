@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FC, useCallback } from 'react';
 import { Card } from 'react-bootstrap';
 
 export type WorkshopProps = {
@@ -8,8 +8,8 @@ export type WorkshopProps = {
     videoLink: string;
 };
 
-const Workshop: React.FC<WorkshopProps> = ({ id, title, description, videoLink }) => {
-    const onClick = React.useCallback(() => {
+const Workshop: FC<WorkshopProps> = ({ id, title, description, videoLink }) => {
+    const onClick = useCallback(() => {
         console.log('Workshop > URL', videoLink);
     }, [videoLink]);
 

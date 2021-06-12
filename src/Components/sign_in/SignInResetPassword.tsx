@@ -12,14 +12,14 @@ const Header = () => {
             <h4>Remplir votre nouveau mot de passe</h4>
         </div>
     );
-}
+};
 
-const SignInResetPassword: FC<{}> = () => {
+const SignInResetPassword: FC = () => {
     const { register, handleSubmit, errors, watch } = useForm();
     const password = useRef({});
-    password.current = watch("password", "");
+    password.current = watch('password', '');
 
-    const onHandleSummit = async data => {
+    const onHandleSummit = async (data) => {
         alert(JSON.stringify(data));
     };
 
@@ -43,21 +43,21 @@ const SignInResetPassword: FC<{}> = () => {
                                     <FormFeedback field={errors.password}></FormFeedback>
                                 </Form.Group>
 
-                                <Form.Group controlId="loginFormPassword" style={{ marginBottom: "60px" }}>
+                                <Form.Group controlId="loginFormPassword" style={{ marginBottom: '60px' }}>
                                     <Form.Label>Confirmer mot de passe</Form.Label>
                                     <Form.Control
                                         type="password"
                                         name="passwordConfirmed"
                                         ref={register({
-                                            validate: value =>
-                                                value === password.current || "Les mots de passe ne correspondent pas"
+                                            validate: (value) =>
+                                                value === password.current || 'Les mots de passe ne correspondent pas',
                                         })}
                                         isInvalid={errors.passwordConfirmed}
                                     />
                                     <FormFeedback field={errors.passwordConfirmed}></FormFeedback>
                                 </Form.Group>
 
-                                <Button variant="primary" type="submit" style={{ width: "100%" }}>
+                                <Button variant="primary" type="submit" style={{ width: '100%' }}>
                                     Confirmer
                                 </Button>
                             </Form>

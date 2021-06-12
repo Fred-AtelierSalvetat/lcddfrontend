@@ -1,21 +1,22 @@
-import React, { useEffect, useState } from 'react';
+import React, { FC, useEffect, useState } from 'react';
 
-const Expire = (props) => {
+import PropTypes from 'prop-types';
+
+const expirePropsTypes = { delay: PropTypes.number.isRequired, children: PropTypes.node.isRequired };
+
+const Expire: FC<PropTypes.InferProps<typeof expirePropsTypes>> = ({ delay, children }) => {
     const [isVisible, setIsVisible] = useState(true);
 
     useEffect(() => {
-        setTimer(props.delay);
+        setTimer(delay);
     }, []);
 
     const setTimer = (delay) => {
         setTimeout(() => setIsVisible(false), delay);
     };
 
-    return (
-        isVisible
-            ? <div>{props.children}</div>
-            : <span />
-    );
-}
+    return isVisible ? <div>{children}</div> : <span />;
+};
+Expire.propTypes = expirePropsTypes;
 
 export default Expire;

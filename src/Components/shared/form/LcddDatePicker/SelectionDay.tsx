@@ -1,4 +1,5 @@
 import React, { FC, useState } from 'react';
+import type { CSSProperties } from 'react';
 import className from 'classnames';
 import { fr } from 'date-fns/locale';
 import { ReactComponent as RightArrowIcon } from '~/assets/icons/arrow_right.svg';
@@ -80,14 +81,14 @@ const SelectionDay: FC<Proptypes.InferProps<typeof selectionDayProptypes>> = ({
             />
             <div className="tabSelection daySelection">
                 {days.map((day) => (
-                    <div key={day} style={{ '--aspect-ratio': 1 } as React.CSSProperties} className="header">
+                    <div key={day} style={{ '--aspect-ratio': 1 } as CSSProperties} className="header">
                         <p>{day}</p>
                     </div>
                 ))}
                 {choices.map((choice) => (
                     <div
                         key={choice.id}
-                        style={{ '--aspect-ratio': 1 } as React.CSSProperties}
+                        style={{ '--aspect-ratio': 1 } as CSSProperties}
                         className={className({
                             selected: choice.month === month && choice.day === day,
                             hovered: choice.id === hoveredItem,

@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
+import React, { FC, useState } from 'react';
 
 import { Container, Row, Col, Form, Card, CardColumns } from 'react-bootstrap';
 import './Questions.style.css';
 
-const YourQuestions: React.FC<any> = () => {
+const YourQuestions: FC = () => {
     const [active, setActive] = useState({
         linkOne: true,
         linkTwo: false,
@@ -123,8 +123,8 @@ const YourQuestions: React.FC<any> = () => {
                                 <Card.Body>
                                     <Card.Title style={{ fontSize: '18px' }}>Card Title</Card.Title>
                                     <Card.Text style={{ fontSize: '16px' }}>
-                                        Some quick example text to build on the card title and make up the bulk of the
-                                        card's content.
+                                        {'Some quick example text to build on the card title and make up the bulk ' +
+                                            "of the card's content."}
                                     </Card.Text>
                                 </Card.Body>
                             </Card>
@@ -133,8 +133,8 @@ const YourQuestions: React.FC<any> = () => {
                                 <Card.Body>
                                     <Card.Title style={{ fontSize: '18px' }}>Card Title</Card.Title>
                                     <Card.Text style={{ fontSize: '16px' }}>
-                                        Some quick example text to build on the card title and make up the bulk of the
-                                        card's content.
+                                        {'Some quick example text to build on the card title and make up the bulk ' +
+                                            "of the card's content."}
                                     </Card.Text>
                                 </Card.Body>
                             </Card>
@@ -143,8 +143,9 @@ const YourQuestions: React.FC<any> = () => {
                                 <Card.Body>
                                     <Card.Title style={{ fontSize: '18px' }}>Card Title</Card.Title>
                                     <Card.Text style={{ fontSize: '16px' }}>
-                                        Some quick example text to build on the card title and make up the bulk of the
-                                        card's content.
+                                        {'Some quick example text to build on the card title and make up the bulk ' +
+                                            "of the card's content."}
+                                        .
                                     </Card.Text>
                                 </Card.Body>
                             </Card>
@@ -153,8 +154,8 @@ const YourQuestions: React.FC<any> = () => {
                                 <Card.Body>
                                     <Card.Title style={{ fontSize: '18px' }}>Card Title</Card.Title>
                                     <Card.Text style={{ fontSize: '16px' }}>
-                                        Some quick example text to build on the card title and make up the bulk of the
-                                        card's content.
+                                        {'Some quick example text to build on the card title and make up the bulk ' +
+                                            "of the card's content."}
                                     </Card.Text>
                                 </Card.Body>
                             </Card>
@@ -163,8 +164,8 @@ const YourQuestions: React.FC<any> = () => {
                                 <Card.Body>
                                     <Card.Title style={{ fontSize: '18px' }}>Card Title</Card.Title>
                                     <Card.Text style={{ fontSize: '16px' }}>
-                                        Some quick example text to build on the card title and make up the bulk of the
-                                        card's content.
+                                        {'Some quick example text to build on the card title and make up the bulk ' +
+                                            "of the card's content."}
                                     </Card.Text>
                                 </Card.Body>
                             </Card>
@@ -173,8 +174,8 @@ const YourQuestions: React.FC<any> = () => {
                                 <Card.Body>
                                     <Card.Title style={{ fontSize: '18px' }}>Card Title</Card.Title>
                                     <Card.Text style={{ fontSize: '16px' }}>
-                                        Some quick example text to build on the card title and make up the bulk of the
-                                        card's content.
+                                        {'Some quick example text to build on the card title and make up the bulk ' +
+                                            "of the card's content."}
                                     </Card.Text>
                                 </Card.Body>
                             </Card>
@@ -183,8 +184,8 @@ const YourQuestions: React.FC<any> = () => {
                                 <Card.Body>
                                     <Card.Title style={{ fontSize: '18px' }}>Card Title</Card.Title>
                                     <Card.Text style={{ fontSize: '16px' }}>
-                                        Some quick example text to build on the card title and make up the bulk of the
-                                        card's content.
+                                        {'Some quick example text to build on the card title and make up the bulk ' +
+                                            "of the card's content."}
                                     </Card.Text>
                                 </Card.Body>
                             </Card>
@@ -193,8 +194,8 @@ const YourQuestions: React.FC<any> = () => {
                                 <Card.Body>
                                     <Card.Title style={{ fontSize: '18px' }}>Card Title</Card.Title>
                                     <Card.Text style={{ fontSize: '16px' }}>
-                                        Some quick example text to build on the card title and make up the bulk of the
-                                        card's content.
+                                        {'Some quick example text to build on the card title and make up the bulk ' +
+                                            "of the card's content."}
                                     </Card.Text>
                                 </Card.Body>
                             </Card>

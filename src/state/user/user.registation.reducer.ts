@@ -1,4 +1,3 @@
-import { combineReducers } from "redux";
 import { userActionTypes } from './constants/UserActionType';
 
 export const userRegistrationReducer = (state = {}, action) => {
@@ -12,6 +11,7 @@ export const userRegistrationReducer = (state = {}, action) => {
         case userActionTypes.REGISTER_USER_FAILURE: {
             return {};
         }
-        default: return state;
+        default:
+            return state;
     }
-}
+};

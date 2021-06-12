@@ -1,5 +1,3 @@
-import Auth from '@aws-amplify/auth';
-import { useDispatch } from 'react-redux';
 import { userActionTypes } from './constants/UserActionType';
 
 export type AuthenticationState = {

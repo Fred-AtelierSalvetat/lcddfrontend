@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { forwardRef, useState } from 'react';
 import Modal from 'react-bootstrap/Modal';
 import classNames from 'classnames';
 import { ReactComponent as CalendarIcon } from '~/assets/icons/date_range_24px.svg';
@@ -21,7 +21,7 @@ const datePickerPropsTypes = {
 
 type LcddDatePickerProps = PropTypes.InferProps<typeof datePickerPropsTypes>;
 
-const LcddDatePicker = React.forwardRef<HTMLInputElement, LcddDatePickerProps>(
+const LcddDatePicker = forwardRef<HTMLInputElement, LcddDatePickerProps>(
     ({ placeholder, dateFormat, isInvalid, onChange, onBlur, value }, ref) => {
         const [show, setShow] = useState(false);
 

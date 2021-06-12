@@ -1,9 +1,10 @@
-import React, { ReactNode } from 'react';
+import React, { Component } from 'react';
+import type { ReactNode } from 'react';
 
 type propsType = { children: ReactNode };
 type stateType = { hasError: boolean };
 
-class ErrorBoundary extends React.Component<propsType, stateType> {
+class ErrorBoundary extends Component<propsType, stateType> {
     constructor(props: propsType) {
         super(props);
         this.state = { hasError: false };

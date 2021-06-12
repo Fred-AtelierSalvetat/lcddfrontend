@@ -7,7 +7,7 @@ import { store } from './state/store';
 import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.css';
 import './index.css';
-import Amplify, { Auth } from 'aws-amplify';
+import Amplify from 'aws-amplify';
 import awsconfig from './aws-exports';
 
 Amplify.configure(awsconfig);

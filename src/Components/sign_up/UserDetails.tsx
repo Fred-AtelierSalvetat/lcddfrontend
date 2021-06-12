@@ -1,16 +1,28 @@
-import React, { useEffect } from 'react';
+import React, { FC, useEffect } from 'react';
 import { Button, Form } from 'react-bootstrap';
 import { useForm } from 'react-hook-form';
 import { Validator } from '../../util/validator';
 import PropTypes from 'prop-types';
 import { FormFeedback } from '../shared/form/FormFeedBack';
-import Feedback from 'react-bootstrap/esm/Feedback';
 import PasswordFormGroup from '../shared/form/PasswordFormGroup';
 
 // Step 2 UI
-const UserDetails = ({ step, setStep, user, setUser }) => {
+const userDetailsPropTypes = {
+    step: PropTypes.number.isRequired,
+    setStep: PropTypes.func.isRequired,
+    user: PropTypes.shape({
+        role: PropTypes.string.isRequired,
+        firstName: PropTypes.string.isRequired,
+        lastName: PropTypes.string.isRequired,
+        city: PropTypes.string.isRequired,
+        email: PropTypes.string.isRequired,
+        password: PropTypes.string.isRequired,
+    }).isRequired,
+    setUser: PropTypes.func.isRequired,
+};
+const UserDetails: FC<PropTypes.InferProps<typeof userDetailsPropTypes>> = ({ step, setStep, user, setUser }) => {
     const { register, handleSubmit, setValue, trigger, watch, errors } = useForm({
-        criteriaMode: "all",
+        criteriaMode: 'all',
     });
 
     const onHandleChange = ({ target }) => {
@@ -24,7 +36,7 @@ const UserDetails = ({ step, setStep, user, setUser }) => {
         // setTimeout(() => {
         //     console.log("error", errors);
         // }, 100)
-    }
+    };
 
     // useEffect(() => {
     //     trigger("password");
@@ -36,14 +48,14 @@ const UserDetails = ({ step, setStep, user, setUser }) => {
 
     const handleContinue = () => {
         setStep(step + 1);
-    }
+    };
 
     useEffect(() => {
-        setValue("firstName", user.firstName);
-        setValue("lastName", user.lastName);
-        setValue("city", user.city);
-        setValue("email", user.email);
-        setValue("password", user.password);
+        setValue('firstName', user.firstName);
+        setValue('lastName', user.lastName);
+        setValue('city', user.city);
+        setValue('email', user.email);
+        setValue('password', user.password);
     }, [user]);
 
     return (
@@ -111,28 +123,19 @@ const UserDetails = ({ step, setStep, user, setUser }) => {
                 name="password"
                 errors={errors}
                 onChange={onHandleChange}
-                _ref={register(Validator.password)}
+                ref={register(Validator.password)}
                 isInvalid={errors.password}
                 isValid={!errors.password && !!watch('password')}
                 errorColumns={2}
             />
 
-            <Button
-                id="submit-btn"
-                type="submit"
-                tabIndex={1}
-                style={{ width: "100%" }}>
+            <Button id="submit-btn" type="submit" tabIndex={1} style={{ width: '100%' }}>
                 Soumettre
             </Button>
-        </Form >
-    )
-}
+        </Form>
+    );
+};
 
-UserDetails.propTypes = {
-    step: PropTypes.number,
-    setStep: PropTypes.func,
-    user: PropTypes.object,
-    setUser: PropTypes.func,
-}
+UserDetails.propTypes = userDetailsPropTypes;
 
 export default UserDetails;

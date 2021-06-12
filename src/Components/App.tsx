@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FC } from 'react';
 import { Switch, Route, BrowserRouter } from 'react-router-dom';
 import Header from './header';
 import Footer from './footer';
@@ -21,7 +21,7 @@ import { getUserFromCognitoUser } from '~/state/users/constants/utils/CognitoUse
 
 import './App.scss';
 
-const App: React.FC = () => {
+const App: FC = () => {
     const dispatch = useDispatch();
 
     Auth.currentAuthenticatedUser()

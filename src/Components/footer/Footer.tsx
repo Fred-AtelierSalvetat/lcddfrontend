@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FC } from 'react';
 import { Navbar, Row } from 'react-bootstrap';
 import { ReactComponent as Social0 } from '~/assets/icons/Social-0.svg';
 import { ReactComponent as Social1 } from '~/assets/icons/Social-1.svg';
@@ -6,7 +6,7 @@ import { ReactComponent as Social2 } from '~/assets/icons/Social-2.svg';
 import { ReactComponent as Social3 } from '~/assets/icons/Social-3.svg';
 import './Footer.scss';
 
-const Footer: React.FC = () => {
+const Footer: FC = () => {
     return (
         <div id="lcdd-footer">
             <Navbar bg="lcdd-primary" expand="sm">

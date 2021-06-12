@@ -1,4 +1,6 @@
 import React, { FC, useState } from 'react';
+import type { CSSProperties } from 'react';
+
 import { fr } from 'date-fns/locale';
 import className from 'classnames';
 
@@ -26,7 +28,7 @@ const SelectionMonth: FC<Proptypes.InferProps<typeof selectionMonthProptypes>> =
             {months.map(({ value, label }) => (
                 <div
                     key={value}
-                    style={{ '--aspect-ratio': 1 } as React.CSSProperties}
+                    style={{ '--aspect-ratio': 1 } as CSSProperties}
                     className={className({ selected: value === month, hovered: value === hoveredItem })}
                     onClick={() => setMonth(value)}
                     onMouseEnter={() => setHoveredItem(value)}

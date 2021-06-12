@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { forwardRef } from 'react';
 import PropTypes from 'prop-types';
 import { default as ReactSelect } from 'react-select';
 import makeAnimated from 'react-select/animated';
@@ -23,7 +23,7 @@ const selectPropTypes = {
     ).isRequired,
 };
 
-const Select = React.forwardRef<HTMLInputElement, PropTypes.InferProps<typeof selectPropTypes>>(
+const Select = forwardRef<HTMLInputElement, PropTypes.InferProps<typeof selectPropTypes>>(
     ({ isInvalid, onChange, onBlur, isSearchable, isMulti, closeMenuOnSelect, placeholder, options }, ref) => (
         <ReactSelect
             className={`select ${isInvalid ? 'is-invalid' : ''}`}

@@ -162,7 +162,7 @@ const ContactUs: FC = () => {
                     <div>
                         {message !== '' ? (
                             !messageSuccessfullySent ? (
-                                <Expire delay="5000">
+                                <Expire delay={5000}>
                                     <AlertError
                                         show={showAlertMessage}
                                         message={message}
@@ -170,7 +170,7 @@ const ContactUs: FC = () => {
                                     />
                                 </Expire>
                             ) : (
-                                <Expire delay="5000">
+                                <Expire delay={5000}>
                                     <AlertSuccess
                                         show={showAlertMessage}
                                         message={message}

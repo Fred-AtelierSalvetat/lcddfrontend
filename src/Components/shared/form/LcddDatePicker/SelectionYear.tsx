@@ -1,4 +1,5 @@
 import React, { FC, useState } from 'react';
+import type { CSSProperties } from 'react';
 import className from 'classnames';
 
 import { width, height } from './clockConstants';
@@ -30,7 +31,7 @@ const SelectionYear: FC<Proptypes.InferProps<typeof selectionYearProptypes>> = (
                 {choices.list.map((yearChoice) => (
                     <div
                         key={yearChoice}
-                        style={{ '--aspect-ratio': 1 } as React.CSSProperties}
+                        style={{ '--aspect-ratio': 1 } as CSSProperties}
                         className={className({
                             selected: yearChoice === year,
                             hovered: yearChoice === hoveredItem,

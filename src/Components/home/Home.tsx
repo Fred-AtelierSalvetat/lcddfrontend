@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FC } from 'react';
 import ConceptComponent from './concept/Concept';
 import VosQuestionsComponent from './vos_questions/VosQuestions';
 import AteliersComponent from './ateliers/Ateliers';
@@ -7,10 +7,7 @@ import DomainesExpertiseComponent from './domaines_expertise/DomainesExpertise';
 import ProchainAtelierComponent from './prochain_atelier/ProchainAtelier';
 import QuestionsVideoComponent from './questions_video/QuestionsVideo';
 
-
-
-// eslint-disable-next-line @typescript-eslint/ban-types
-const Home: React.FC<{}> = () => {
+const Home: FC = () => {
     return (
         <div>
             <ConceptComponent />

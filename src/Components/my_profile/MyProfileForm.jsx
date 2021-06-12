@@ -1,19 +1,18 @@
 import React, { useState } from 'react';
-import { Button, Form, InputGroup } from 'react-bootstrap';
+import { Button, Form } from 'react-bootstrap';
 import { useForm } from 'react-hook-form';
 import { connect } from 'react-redux';
 import { Validator } from '~/util/validator';
 import { FormFeedback } from '../shared/form/FormFeedBack';
 
 const MyProfileForm = (props) => {
-
     const currentUser = props.user;
     const { register, handleSubmit, trigger, errors } = useForm();
     const [newUser, setNewUser] = useState(currentUser || {});
 
     const onSubmit = () => {
         return false;
-    }
+    };
 
     const onHandleChange = ({ target }) => {
         const { name, value } = target;
@@ -24,23 +23,24 @@ const MyProfileForm = (props) => {
             [name]: validValue,
         });
         trigger(name);
-    }
+    };
 
     const handleModifyClick = (e) => {
         const parentElement = e.currentTarget.parentNode;
         const inputElement = parentElement.querySelector('input');
         inputElement.readOnly = false;
         inputElement.focus();
-    }
+    };
 
-    if (props.loggedIn) return (
-        <>
-            <div className="form-title">
-                <h3>Mon profil</h3>
-            </div>
-            <Form className="lcdd-form" onSubmit={handleSubmit(onSubmit)}>
-                <Form.Group controlId="myProfileLastName">
-                    <Form.Label>Nom</Form.Label>
+    if (props.loggedIn)
+        return (
+            <>
+                <div className="form-title">
+                    <h3>Mon profil</h3>
+                </div>
+                <Form className="lcdd-form" onSubmit={handleSubmit(onSubmit)}>
+                    <Form.Group controlId="myProfileLastName">
+                        <Form.Label>Nom</Form.Label>
                         <Form.Control
                             type="text"
                             name="lastName"
@@ -51,10 +51,10 @@ const MyProfileForm = (props) => {
                             isInvalid={errors.lastName}
                             readOnly
                         />
-                    <FormFeedback field={errors.lastName}></FormFeedback>
-                </Form.Group>
-                <Form.Group controlId="myProfileFirstName">
-                    <Form.Label>Prénom</Form.Label>
+                        <FormFeedback field={errors.lastName}></FormFeedback>
+                    </Form.Group>
+                    <Form.Group controlId="myProfileFirstName">
+                        <Form.Label>Prénom</Form.Label>
                         <Form.Control
                             type="text"
                             name="firstName"
@@ -65,10 +65,10 @@ const MyProfileForm = (props) => {
                             isInvalid={errors.firstName}
                             readOnly
                         ></Form.Control>
-                    <FormFeedback field={errors.firstName}></FormFeedback>
-                </Form.Group>
-                <Form.Group controlId="myProfileEmail">
-                    <Form.Label>Adresse e-mail</Form.Label>
+                        <FormFeedback field={errors.firstName}></FormFeedback>
+                    </Form.Group>
+                    <Form.Group controlId="myProfileEmail">
+                        <Form.Label>Adresse e-mail</Form.Label>
                         <Form.Control
                             type="email"
                             name="email"
@@ -79,10 +79,10 @@ const MyProfileForm = (props) => {
                             isInvalid={errors.email}
                             readOnly
                         />
-                    <FormFeedback field={errors.email}></FormFeedback>
-                </Form.Group>
-                <Form.Group controlId="myProfileCity">
-                    <Form.Label>Ville</Form.Label>
+                        <FormFeedback field={errors.email}></FormFeedback>
+                    </Form.Group>
+                    <Form.Group controlId="myProfileCity">
+                        <Form.Label>Ville</Form.Label>
                         <Form.Control
                             type="text"
                             name="city"
@@ -91,22 +91,22 @@ const MyProfileForm = (props) => {
                             onChange={onHandleChange}
                             isInvalid={errors.city}
                         />
-                    <FormFeedback field={errors.city}></FormFeedback>
-                </Form.Group>
-                <Form.Group className="submit-group">
-                    <Button type="submit" className="submit-btn">
-                        Modifier
-                    </Button>
-                </Form.Group>
-            </Form>
-        </>
-    )
+                        <FormFeedback field={errors.city}></FormFeedback>
+                    </Form.Group>
+                    <Form.Group className="submit-group">
+                        <Button type="submit" className="submit-btn">
+                            Modifier
+                        </Button>
+                    </Form.Group>
+                </Form>
+            </>
+        );
     else return null;
-}
+};
 
 const mapStateToProps = (state) => {
     const { loggedIn, user } = state.authentication;
     return { loggedIn, user };
-}
+};
 
-export default connect(mapStateToProps)(MyProfileForm)
+export default connect(mapStateToProps)(MyProfileForm);

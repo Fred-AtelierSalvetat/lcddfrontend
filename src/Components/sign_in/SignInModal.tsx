@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FC } from 'react';
 import { Redirect } from 'react-router-dom';
 import { Button, Form } from 'react-bootstrap';
 import { useForm } from 'react-hook-form';
@@ -11,39 +11,60 @@ import OverlayModal from '../shared/modals/OverlayModal';
 import RoundSpinner from '../shared/RoundSpinner';
 import { isCurrentUserLoggedIn } from '~/state/reducers';
 
-const FranceConnectLoginButton = ({ text }) => {
+import PropTypes from 'prop-types';
+
+const franceConnectLoginButtonPropTypes = { text: PropTypes.string.isRequired };
+const FranceConnectLoginButton: FC<PropTypes.InferProps<typeof franceConnectLoginButtonPropTypes>> = ({ text }) => {
     return <FranceConnectButton text={text} style={{ width: '100%' }} />;
 };
+FranceConnectLoginButton.propTypes = franceConnectLoginButtonPropTypes;
 
 const LoginOptions = () => {
     return (
         <div className="login-options">
             <FranceConnectLoginButton text="S'identifier avec"></FranceConnectLoginButton>
             <h4 style={{ backgroundColor: 'white', maxWidth: '100%', margin: '24px 0', textAlign: 'center' }}>
-                ––&nbsp;Ou s'identifier avec votre compte&nbsp;––
+                {"–– Ou s'identifier avec votre compte ––"}
             </h4>
         </div>
     );
 };
+const signInModalPropTypes = {
+    show: PropTypes.bool.isRequired,
+    onHandleClose: PropTypes.func.isRequired,
+    onSignUpLinkClick: PropTypes.func.isRequired,
+    onLostPasswordClick: PropTypes.func.isRequired,
+    loggingIn: PropTypes.bool.isRequired,
+};
 
-const SignInModal = ({ show, onHandleClose, onSignUpLinkClick, onLostPasswordClick, ...props }) => {
-    const { register, handleSubmit, errors } = useForm();
+type SignInFormData = {
+    email: string;
+    password: string;
+};
+const SignInModal: FC<PropTypes.InferProps<typeof signInModalPropTypes>> = ({
+    show,
+    onHandleClose,
+    onSignUpLinkClick,
+    onLostPasswordClick,
+    loggingIn,
+}) => {
+    const { register, handleSubmit, errors } = useForm<SignInFormData>();
 
     const dispatch = useDispatch();
 
     const isLoggedIn = useSelector(isCurrentUserLoggedIn);
 
-    const onHandleSummit = (data: any) => {
+    const onHandleSummit: (data: SignInFormData) => void = (data) => {
         dispatch(userActions.login(data.email, data.password));
         return false;
     };
 
     const header = (
         <div className="login-header">
-            <h1>S'identifier</h1>
-            <div className="lead">Vous n'êtes pas encore inscrit ?</div>
+            <h1>{"S'identifier"}</h1>
+            <div className="lead">{"Vous n'êtes pas encore inscrit ?"}</div>
             <div className="lead">
-                Inscrivez-vous{' '}
+                {'Inscrivez-vous '}
                 <a href="/sign-up" className="link" onClick={onSignUpLinkClick}>
                     ici
                 </a>
@@ -63,7 +84,7 @@ const SignInModal = ({ show, onHandleClose, onSignUpLinkClick, onLostPasswordCli
                             type="text"
                             name="email"
                             ref={register(Validator.email)}
-                            isInvalid={errors.email}
+                            isInvalid={!!errors.email}
                         />
                         <FormFeedback field={errors.email}></FormFeedback>
                     </Form.Group>
@@ -74,13 +95,13 @@ const SignInModal = ({ show, onHandleClose, onSignUpLinkClick, onLostPasswordCli
                             type="password"
                             name="password"
                             ref={register(Validator.loginPassword)}
-                            isInvalid={errors.password}
+                            isInvalid={!!errors.password}
                         />
                         <FormFeedback field={errors.password}></FormFeedback>
                     </Form.Group>
 
                     <div style={{ textAlign: 'right' }} className="link" onClick={onLostPasswordClick}>
-                        J'ai oublié mon mot de passe
+                        {"J'ai oublié mon mot de passe"}
                     </div>
 
                     <Form.Group controlId="loginFormCheckbox">
@@ -88,8 +109,8 @@ const SignInModal = ({ show, onHandleClose, onSignUpLinkClick, onLostPasswordCli
                     </Form.Group>
 
                     <Button variant="primary" type="submit" style={{ width: '100%', marginTop: '1rem' }}>
-                        S'identifier
-                        {props.loggingIn && (
+                        {"S'identifier"}
+                        {loggingIn && (
                             <span style={{ marginLeft: '5px' }}>
                                 <RoundSpinner size="sm" />
                             </span>
@@ -106,6 +127,7 @@ const SignInModal = ({ show, onHandleClose, onSignUpLinkClick, onLostPasswordCli
         <OverlayModal show={show} onHide={onHandleClose} header={header} body={body} />
     );
 };
+SignInModal.propTypes = signInModalPropTypes;
 
 const mapState = (state) => {
     const { loggingIn } = state.authentication;

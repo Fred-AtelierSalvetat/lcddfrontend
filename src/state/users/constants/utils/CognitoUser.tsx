@@ -1,11 +1,11 @@
 export type CognitoUser = {
-    email: string,
-    email_verified: boolean,
-    family_name: string,
-    given_name: string,
-    locale?: string,
-    sub: string
-}
+    email: string;
+    email_verified: boolean;
+    family_name: string;
+    given_name: string;
+    locale?: string;
+    sub: string;
+};
 
 export const getUserFromCognitoUser = (cognitoUser: CognitoUser) => {
     const user = {
@@ -18,4 +18,4 @@ export const getUserFromCognitoUser = (cognitoUser: CognitoUser) => {
     };
 
     return user;
-}
+};

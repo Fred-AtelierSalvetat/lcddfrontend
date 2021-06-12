@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FC, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
 
@@ -28,8 +28,7 @@ const BioWrapper = styled.div`
     margin: 100px;
 `;
 
-// eslint-disable-next-line @typescript-eslint/ban-types
-const Profile: React.FC<{}> = () => {
+const Profile: FC = () => {
     const params = useParams() as Params;
 
     //Adding the follow fetchSpeakers to cover the case where user is coming directly from admin dashboard
@@ -37,7 +36,7 @@ const Profile: React.FC<{}> = () => {
     // Note: This is a quickfix but a clean solution on redux state must be planned
     const dispatch = useDispatch();
     const { speakers } = useSelector((state: AppState) => state.speakers);
-    React.useEffect(() => {
+    useEffect(() => {
         if (speakers.length === 0) {
             dispatch(fetchSpeakers());
         }

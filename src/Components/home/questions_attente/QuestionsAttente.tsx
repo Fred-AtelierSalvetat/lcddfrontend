@@ -1,8 +1,6 @@
-import React from 'react';
+import React, { FC } from 'react';
 import { Row, Col, Card } from 'react-bootstrap';
 import { BiLike } from 'react-icons/bi';
-
-
 
 const backgroundTransparency = {
     backgroundColor: '#FFFFFF',
@@ -18,7 +16,7 @@ const textContainer = {
     marginLeft: '185px',
     marginBottom: '30px',
     marginTop: '20px',
-    font: 'Segoe UI'
+    font: 'Segoe UI',
 };
 
 const styledCard = {
@@ -28,8 +26,7 @@ const styledCard = {
     marginBottom: '50px',
     border: '2px solid #BDBDBD',
     borderRadius: '3px',
-    backgroundColor: '#FFFFFF'
-
+    backgroundColor: '#FFFFFF',
 };
 
 const likes = {
@@ -42,8 +39,7 @@ const likes = {
     color: '#113F59',
     backgroundColor: '#113F59',
     borderRadius: '0px 1px 1px 0px',
-    flex: '0 0 7.1%'
-
+    flex: '0 0 7.1%',
 };
 
 const questions = {
@@ -52,12 +48,12 @@ const questions = {
     font: 'Segoe UI',
     style: 'normal',
     size: '16px',
-    margin: '10px'
-}
+    margin: '10px',
+};
 
 const icon = {
-    color: 'black'
-}
+    color: 'black',
+};
 
 const numberLikes = {
     margin: '10px',
@@ -67,14 +63,10 @@ const numberLikes = {
     fontStyle: 'normal',
     fontFamily: 'Roboto',
     size: '16px',
-    Weight: 'bold'
+    Weight: 'bold',
+};
 
-}
-
-
-
-// eslint-disable-next-line @typescript-eslint/ban-types
-const QuestionsAttenteComponent: React.FC<{}> = () => {
+const QuestionsAttenteComponent: FC = () => {
     return (
         <div>
             <Card>
@@ -87,7 +79,10 @@ const QuestionsAttenteComponent: React.FC<{}> = () => {
                             <div>
                                 <Row>
                                     <Col xs="11">
-                                        <Row style={questions}>Question 1  Question 2  Question 3  Question 4  Question 5  Question 6  Question 7  Question 8  Question 9</Row>
+                                        <Row style={questions}>
+                                            Question 1 Question 2 Question 3 Question 4 Question 5 Question 6 Question 7
+                                            Question 8 Question 9
+                                        </Row>
                                     </Col>
                                     <Col xs="1" style={likes}>
                                         <p style={numberLikes}>9</p>
@@ -102,7 +97,5 @@ const QuestionsAttenteComponent: React.FC<{}> = () => {
         </div>
     );
 };
-
-
 
 export default QuestionsAttenteComponent;

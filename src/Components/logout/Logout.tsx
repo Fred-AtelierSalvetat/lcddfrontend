@@ -1,15 +1,16 @@
-import React, { useEffect } from 'react';
+import React, { FC, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
-import { connect } from 'react-redux';
+import { connect, useDispatch } from 'react-redux';
 import { userActions } from '~/state/user/user.actions';
 
 import RoundSpinner from '../shared/RoundSpinner';
 
-const LogoutPage = (props) => {
+const LogoutPage: FC = () => {
     const history = useHistory();
+    const dispatch = useDispatch();
 
     useEffect(() => {
-        props.dispatch(userActions.logout());
+        dispatch(userActions.logout());
         history.push('/');
     });
 

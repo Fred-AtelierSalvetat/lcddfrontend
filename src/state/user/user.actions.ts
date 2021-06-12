@@ -14,8 +14,7 @@ function login(username, password) {
         userServices.login(username, password).then(
             (response) => {
                 console.log('response', response);
-                let user;
-                user = {
+                const user = {
                     username: username,
                     email: username,
                     emailVerified: response.attributes.email_verified,
@@ -44,7 +43,7 @@ function login(username, password) {
 }
 
 function register(user) {
-    return (dispatch, getState) => {
+    return (dispatch) => {
         dispatch(request(user));
 
         userServices.register(user).then(
@@ -77,7 +76,7 @@ function logout() {
 }
 
 function confirmRegister(username, code) {
-    return (dispatch, getState) => {
+    return (dispatch) => {
         dispatch(request({ username }));
 
         userServices.confirmRegister(username, code).then(

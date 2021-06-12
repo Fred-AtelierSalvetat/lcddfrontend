@@ -10,5 +10,5 @@ export const SideBarData = [
     {
         title: 'Modifier vos intérêts',
         path: '/my-profile/modify-interests',
-    }
+    },
 ];

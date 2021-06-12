@@ -20,7 +20,7 @@ module.exports = {
     ],
     rules: {
         // note you must disable the base rule as it can report incorrect errors
-        'no-unused-vars': 'off',
+        'no-unused-vars': 0,
         '@typescript-eslint/no-unused-vars': [1, { varsIgnorePattern: '^_' }],
         '@typescript-eslint/no-empty-function': 0,
         '@typescript-eslint/ban-types': 1,

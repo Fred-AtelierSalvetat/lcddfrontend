@@ -1,4 +1,6 @@
 import React, { FC, createElement, forwardRef } from 'react';
+import type { HTMLProps, Ref } from 'react';
+
 import { default as ReactDatePicker, registerLocale } from 'react-datepicker';
 import { fr, enUS } from 'date-fns/locale';
 import { ReactComponent as CalendarIcon } from '~/assets/icons/date_range_24px.svg';
@@ -31,7 +33,7 @@ const DatePicker: FC<PropTypes.InferProps<typeof datePickerPropsTypes>> = ({
     value,
     ref,
 }) => {
-    const DatePickerCustomInput = (props: React.HTMLProps<HTMLInputElement>, ref: React.Ref<HTMLInputElement>) => (
+    const DatePickerCustomInput = (props: HTMLProps<HTMLInputElement>, ref: Ref<HTMLInputElement>) => (
         <div className={`datepicker-custom-input-container ${props.className}`}>
             <input
                 {...props}

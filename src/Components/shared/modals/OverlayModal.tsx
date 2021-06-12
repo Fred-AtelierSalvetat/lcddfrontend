@@ -1,27 +1,25 @@
-import React from 'react';
+import React, { FC } from 'react';
 import { Modal } from 'react-bootstrap';
 
-const OverlayModal = (props) => {
+import PropTypes from 'prop-types';
 
+const overlayModal = {
+    show: PropTypes.bool.isRequired,
+    onHide: PropTypes.func.isRequired,
+    header: PropTypes.node,
+    body: PropTypes.node.isRequired,
+    footer: PropTypes.node,
+};
+
+const OverlayModal: FC<PropTypes.InferType<typeof overlayModal>> = (props) => {
     return (
         <Modal show={props.show} onHide={props.onHide}>
-            {props.header &&
-                <Modal.Header closeButton>
-                    {props.header}
-                </Modal.Header>
-            }
-            {props.body &&
-                <Modal.Body>
-                    {props.body}
-                </Modal.Body>
-            }
-            {props.footer &&
-                <Modal.Footer>
-                    {props.footer}
-                </Modal.Footer>
-            }
+            {props.header && <Modal.Header closeButton>{props.header}</Modal.Header>}
+            {props.body && <Modal.Body>{props.body}</Modal.Body>}
+            {props.footer && <Modal.Footer>{props.footer}</Modal.Footer>}
         </Modal>
-    )
-}
+    );
+};
+OverlayModal.propTypes = overlayModal;
 
 export default OverlayModal;

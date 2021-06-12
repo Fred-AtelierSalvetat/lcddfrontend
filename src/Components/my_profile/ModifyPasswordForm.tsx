@@ -1,23 +1,21 @@
-import React, { useState } from 'react'
-import { Button, Form, InputGroup } from 'react-bootstrap';
+import React, { FC } from 'react';
+import { Button, Form } from 'react-bootstrap';
 import { useForm } from 'react-hook-form';
 import { Validator } from '~/util/validator';
-import { FormFeedback } from '../shared/form/FormFeedBack';
 import PasswordFormGroup from '../shared/form/PasswordFormGroup';
 
-const ModifyPasswordForm = () => {
-
+const ModifyPasswordForm: FC = () => {
     const { register, handleSubmit, errors, trigger } = useForm({
-        criteriaMode: "all",
+        criteriaMode: 'all',
     });
 
     const onSubmit = () => {
         return false;
-    }
+    };
 
     const onHandleChange = (e) => {
         trigger(e.target.name);
-    }
+    };
 
     return (
         <>
@@ -25,11 +23,7 @@ const ModifyPasswordForm = () => {
                 <h3>Modifier votre mot de passe</h3>
             </div>
             <Form className="lcdd-form" onSubmit={handleSubmit(onSubmit)}>
-
-                <PasswordFormGroup
-                    controlId="myProfileCurrentPassword"
-                    label="Mot de passe actuel"
-                />
+                <PasswordFormGroup controlId="myProfileCurrentPassword" label="Mot de passe actuel" />
 
                 <PasswordFormGroup
                     id="newPasswordGroup"
@@ -37,7 +31,7 @@ const ModifyPasswordForm = () => {
                     label="Nouveau mot de passe"
                     name="password"
                     onChange={onHandleChange}
-                    _ref={register(Validator.password)}
+                    ref={register(Validator.password)}
                     isInvalid={errors.password}
                     errors={errors}
                     errorColumns={2}
@@ -64,7 +58,7 @@ const ModifyPasswordForm = () => {
                 </Form.Group>
             </Form>
         </>
-    )
-}
+    );
+};
 
-export default ModifyPasswordForm
+export default ModifyPasswordForm;

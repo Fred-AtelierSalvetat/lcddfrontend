@@ -2,6 +2,7 @@
 // To prevent warning on inline React component
 
 import React, { FC, useState, useEffect } from 'react';
+import type { ReactNode } from 'react';
 import { useParams, Redirect, useLocation, useHistory, Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 
@@ -108,7 +109,7 @@ const UserManagement: FC = () => {
         table_columns: {
             key: string;
             renderHeader: () => JSX.Element;
-            renderCell: (any) => React.ReactNode;
+            renderCell: (any) => ReactNode;
         }[];
     }[] = [
         {

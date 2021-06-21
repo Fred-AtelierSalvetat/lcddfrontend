@@ -16,8 +16,7 @@ const SITE_KEY = process.env.REACT_APP_GOOGLE_CAPTCHA_SITE_KEY || '';
 const MESSAGE_SENT_SUCCESS = 'Votre message a été bien envoyé';
 const MESSAGE_SENT_ERROR_NETWORK = 'Mauvaise réponse du réseau';
 const MESSAGE_SENT_FAILED = "Votre message n'a pas été bien envoyé";
-//const SEND_EMAIL_URL = 'http://lcdddevtestapp-env.eba-d22aejrz.eu-west-3.elasticbeanstalk.com/api/v1/sendMail';
-const SEND_EMAIL_URL = 'https://apa6ceyocj.execute-api.eu-west-3.amazonaws.com/dev/mail'; //API TEST
+const SEND_EMAIL_URL = 'https://y5lwlij6yh.execute-api.eu-west-3.amazonaws.com/prod//mail';
 
 const alertPropsTypes = {
     show: PropTypes.bool.isRequired,

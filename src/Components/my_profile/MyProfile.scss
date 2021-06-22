@@ -1,68 +1,386 @@
-.containerX {
-    display: flex;
-    text-align: left;
-
-    .container {
-        padding-top: 3rem;
-        padding-bottom: 3rem;
-        margin-right: unset;
-        margin-left: 5rem;
-        width: auto;
+/* mobile */
+@media (max-width: 767px) {
+    .containerX {
+        display: flex;
+        text-align: left;
 
         .container-title {
-            height: 4em;
+            position: absolute;
+            width: 296px;
+            height: 33px;
+            left: 15px;
+            top: 142px;
+
         }
 
-        .form-title {
-            height: 2em;
-            margin-bottom: 2rem;
-        }
+        .sidebar-wrapper {
 
-        .lcdd-form {
+            position: absolute;
+            width: 100%;
+            height: 176px;
+            left: 0px;
+            top: 211px;
 
-            .form-group {
-                margin-bottom: 44px;
+            display: flex;
+            background: #FFF6EF;
+            box-shadow: 0px 1px 3px rgba(17, 63, 89, 0.25);
 
-                label {
-                    line-height: 2;
-                    text-align: left;
-                    display: block !important;
-                    margin-bottom: 13px !important;
+            .sidebar-menu {
+                display: flex;
+                flex-direction: column;
+                padding-left: 0;
+                text-align: left;
+                list-style: none;
+                margin: auto;
+
+                .sidebar-item {
+                    text-decoration: none;
                     margin-top: 20px;
-                }
+                    margin-bottom: 10px;
+                    padding-left: 1px;
 
-                #lastNameInputGroup,
-                #firstNameInputGroup,
-                #myProfileLastName,
-                #myProfileFirstName {
-                    width: 293px;
-                }
 
-                #emailInputGroup,
-                #myProfileEmail {
-                    width: 457px;
-                }
 
-                #cityInputGroup,
-                #myProfileCity {
-                    width: 360px;
-                }
+                    a {
+                        color: var(--primary);
 
-                .passwordInputGroup,
-                #myProfilePassword {
-                    width: 458px;
-                }
+                        &:hover {
+                            text-decoration: none;
+                        }
+                    }
 
-                &.submit-group {
-                    text-align: right;
                 }
             }
+        }
 
-            #newPasswordGroup {
-                margin-bottom: 5rem;
+        .container {
+            width: auto;
+            padding-top: 360px;
+            padding-bottom: 3rem;
+            margin-right: unset;
+            margin-left: 10px;
+
+            .form-title {
+                height: 2em;
+                margin-bottom: 2rem;
+            }
+
+            .lcdd-form {
+
+                .form-group {
+                    margin-bottom: 44px;
+
+                    label {
+                        line-height: 2;
+                        text-align: left;
+                        display: block !important;
+                        margin-bottom: 13px !important;
+                        margin-top: 20px;
+                    }
+
+                    #lastNameInputGroup,
+                    #firstNameInputGroup,
+                    #myProfileLastName,
+                    #myProfileFirstName {
+                        width: 293px;
+                    }
+
+                    #emailInputGroup,
+                    #myProfileEmail,
+                    #myProfileProfession,
+                    #myProfileNumeroTelephone {
+                        width: 330px;
+                    }
+
+                    #cityInputGroup,
+                    #myProfileCity,
+                    #myIntenvenantProfileLastName,
+                    #myIntenvenantProfileFirstName {
+                        width: 330px;
+                    }
+
+                    .passwordInputGroup,
+                    #myProfilePassword {
+                        width: 330x;
+                    }
+
+                    &.submit-group {
+                        text-align: center;
+                        width: 100%;
+
+                        .submit-btn {
+                            width: 100%;
+                        }
+                    }
+                }
+
+                #newPasswordGroup {
+                    margin-bottom: 5rem;
+                }
+
             }
 
         }
+
+    }
+}
+
+/* tablet */
+@media (min-width: 768px) {
+    .containerX {
+        display: flex;
+        text-align: left;
+
+        .container-title {
+            position: absolute;
+            width: 296px;
+            height: 33px;
+            left: 25px;
+            top: 146px;
+
+        }
+
+
+        .sidebar-wrapper {
+
+            position: absolute;
+            width: 100%;
+            height: 176px;
+            left: 0px;
+            top: 211px;
+
+            display: flex;
+            background: #FFF6EF;
+            box-shadow: 0px 1px 3px rgba(17, 63, 89, 0.25);
+
+            .sidebar-menu {
+                display: flex;
+                flex-direction: column;
+                padding-left: 0;
+                text-align: left;
+                list-style: none;
+                margin: auto;
+
+                .sidebar-item {
+                    text-decoration: none;
+                    margin-top: 20px;
+                    margin-bottom: 10px;
+                    padding-left: 1px;
+
+                    a {
+                        color: var(--primary);
+
+                        &:hover {
+                            text-decoration: none;
+                        }
+                    }
+
+                }
+            }
+        }
+
+        .container {
+            width: auto;
+            padding-top: 360px;
+            padding-bottom: 3rem;
+            margin-right: unset;
+            margin-left: 25px;
+
+            .form-title {
+                height: 2em;
+                margin-bottom: 2rem;
+            }
+
+            .lcdd-form {
+
+                .form-group {
+                    margin-bottom: 44px;
+
+                    label {
+                        line-height: 2;
+                        text-align: left;
+                        display: block !important;
+                        margin-bottom: 13px !important;
+                        margin-top: 20px;
+                    }
+
+                    #lastNameInputGroup,
+                    #firstNameInputGroup,
+                    #myProfileLastName,
+                    #myProfileFirstName,
+                    #myProfileProfession {
+                        width: 293px;
+                    }
+
+
+                    #myProfileNumeroTelephone {
+                        width: 250px;
+                    }
+
+                    #emailInputGroup,
+                    #myProfileEmail {
+                        width: 457px;
+                    }
+
+                    #cityInputGroup,
+                    #myProfileCity,
+                    #myIntenvenantProfileLastName,
+                    #myIntenvenantProfileFirstName {
+                        width: 360px;
+                    }
+
+                    .passwordInputGroup,
+                    #myProfilePassword {
+                        width: 458px;
+                    }
+
+                    &.submit-group {
+                        text-align: right;
+                    }
+                }
+
+                #newPasswordGroup {
+                    margin-bottom: 5rem;
+                }
+
+            }
+
+        }
+
     }
 
+}
+
+/* desktop */
+@media (min-width: 1190px) {
+    .containerX {
+        display: flex;
+        text-align: left;
+
+        .container-title {
+            position: absolute;
+            width: 296px;
+            height: 33px;
+            left: 345px;
+            top: 145px;
+        }
+
+        .sidebar-wrapper {
+            width: 214px;
+            height: 100%;
+            top: 0px;
+            display: flex;
+            flex-direction: column;
+            padding-top: 152px;
+            padding-bottom: 32px;
+            background: #FFF6EF;
+            box-shadow: 0px 1px 3px rgba(17, 63, 89, 0.25);
+
+            .sidebar-menu {
+                display: flex;
+                flex-direction: column;
+                padding-left: 0;
+                padding-top: 80px;
+                text-align: left;
+                list-style: none;
+                margin: initial;
+
+                .sidebar-item {
+                    text-decoration: none;
+                    margin-top: 20px;
+                    margin-bottom: 10px;
+                    padding-left: 25px;
+
+                    a {
+                        color: var(--primary);
+
+                        &:hover {
+                            text-decoration: none;
+                        }
+                    }
+
+                }
+            }
+        }
+
+        .container {
+            padding-top: 165px;
+            padding-bottom: 3rem;
+            margin-right: unset;
+            margin-left: 332px;
+            width: auto;
+
+            .form-title {
+                height: 2em;
+                margin-bottom: 2rem;
+            }
+
+            .lcdd-form {
+
+                .form-group {
+                    margin-bottom: 44px;
+
+                    label {
+                        line-height: 2;
+                        text-align: left;
+                        display: block !important;
+                        margin-bottom: 13px !important;
+                        margin-top: 20px;
+                    }
+
+                    #lastNameInputGroup,
+                    #firstNameInputGroup,
+                    #myProfileLastName,
+                    #myProfileFirstName,
+                    #myProfileProfession,
+                    #myProfileNumeroTelephone {
+                        width: 293px;
+                    }
+
+                    #emailInputGroup,
+                    #myProfileEmail {
+                        width: 457px;
+                    }
+
+                    #cityInputGroup,
+                    #myProfileCity,
+                    #myIntenvenantProfileLastName,
+                    #myIntenvenantProfileFirstName {
+                        width: 360px;
+                    }
+
+                    .passwordInputGroup,
+                    #myProfilePassword {
+                        width: 458px;
+                    }
+
+                    &.submit-group {
+                        text-align: right;
+                    }
+                }
+
+                #newPasswordGroup {
+                    margin-bottom: 5rem;
+                }
+
+            }
+
+        }
+
+    }
+}
+
+
+
+.text-image-link {
+    text-align: center;
+    width: 270px;
+}
+
+.intervenant-image {
+    border: 2px solid #0B2534;
+    box-sizing: border-box;
+    border-radius: 50%;
+    width: 263px;
+    height: 263px;
 }

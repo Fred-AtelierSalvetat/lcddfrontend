@@ -1,6 +1,6 @@
 import React, { FC, useState } from 'react';
+import { Jumbotron, Container, Row, Col, Spinner, InputGroup } from 'react-bootstrap';
 import { useLocation, useHistory } from 'react-router-dom';
-import { Jumbotron, Container, Row, Col, Spinner } from 'react-bootstrap';
 import Icon1 from '~/assets/home/2.jpg';
 import Icon5 from '~/assets/home/a.png';
 import Concept from '~/assets/home/question.jpg';
@@ -232,8 +232,12 @@ const DevenirintervenantComponent: FC = () => {
                             <div className="bg-white mb-5">
                                 {location.pathname === '/devenirintervenant' ? (
                                     <div className="py-4 px-3 py-md-5 px-md-4">
-                                        <h2 className="text-left font-weight-normal">Je souhaiterai intervenir</h2>
-                                        <h5 className="text-left font-weight-normal">Nous vous contacterons</h5>
+                                        <h2 className="text-left font-weight-normal" style={{ lineHeight: '150%' }}>
+                                            Je souhaiterai intervenir
+                                        </h2>
+                                        <h5 className="text-left font-weight-normal" style={{ lineHeight: '300%' }}>
+                                            Nous vous contacterons
+                                        </h5>
                                         <Form noValidate onSubmit={handleSubmit(onSubmit)}>
                                             <div>
                                                 {message !== '' ? (
@@ -265,18 +269,29 @@ const DevenirintervenantComponent: FC = () => {
                                                     tabIndex={1}
                                                 />
                                                 <FormFeedback field={errors.email}></FormFeedback>
+                                                <Form.Text className="text-muted">
+                                                    {"We'll never share your email with anyone else."}
+                                                </Form.Text>
                                             </Form.Group>
                                             <Form.Group controlId="Numero de télephone">
                                                 <Form.Label>Numéro de téléphone</Form.Label>
-                                                <Form.Control
-                                                    type="text"
-                                                    name="phone_number"
-                                                    placeholder="Entrer votre numéro de téléphone"
-                                                    ref={register(Validator.phone_number)}
-                                                    isInvalid={!!errors.phone_number}
-                                                    tabIndex={1}
-                                                />
-                                                <FormFeedback field={errors.phone_number}></FormFeedback>
+                                                <InputGroup>
+                                                    <InputGroup.Prepend>
+                                                        <InputGroup.Text>+33</InputGroup.Text>
+                                                    </InputGroup.Prepend>
+                                                    <Form.Control
+                                                        type="text"
+                                                        name="phone_number"
+                                                        placeholder="Entrer votre numéro de téléphone"
+                                                        ref={register(Validator.phone_number)}
+                                                        isInvalid={errors.phone_number}
+                                                        tabIndex={1}
+                                                    />
+                                                    <FormFeedback field={errors.phone_number}></FormFeedback>
+                                                    <Form.Text className="text-muted">
+                                                        {"We'll never share your phone number with anyone else."}
+                                                    </Form.Text>
+                                                </InputGroup>
                                             </Form.Group>
                                             <Form.Group>
                                                 <div className="text-right">

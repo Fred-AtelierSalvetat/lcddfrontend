@@ -63,22 +63,13 @@
 
 	.invalid-feedback {
 		// display: block !important;
-		position: absolute;
-		width: auto;
+		//position: absolute;
+		//width: auto;
 		color: var(--red) !important;
 	}
 
 	.input-group {
 		position: relative;
-
-		.input-group-text {
-			position: absolute;
-			height: 95%;
-			right: 0px;
-			z-index: 10;
-			border: none;
-			margin-top: 1px;
-		}
 
 		.form-control {
 			padding-right: 42px;
@@ -127,39 +118,5 @@
 		padding: 0px !important;
 	}
 
-	.sidebar-wrapper {
-		width: 214px;
-		min-height: calc(100vh - var(--min-height-header) - var(--min-height-footer));
-		display: flex;
-		flex-direction: column;
-		padding-top: 152px;
-		padding-bottom: 32px;
-		background: #FFF6EF;
-		box-shadow: 0px 1px 3px rgba(17, 63, 89, 0.25);
-
-		.sidebar-menu {
-			display: flex;
-			flex-direction: column;
-			padding-left: 0;
-			text-align: left;
-			list-style: none;
-
-			.sidebar-item {
-				text-decoration: none;
-				margin-top: 20px;
-				margin-bottom: 10px;
-				padding-left: 25px;
-
-				a {
-					color: var(--primary);
-
-					&:hover {
-						text-decoration: none;
-					}
-				}
-
-			}
-		}
-	}
 
 }

@@ -15,14 +15,14 @@ const Profile = (props) => {
     if (props.loggedIn)
         return (
             <div className="containerX">
+                <div className="container-title">
+                    <h1>Paramètres de profil</h1>
+                </div>
                 <SideBarWrapper>
                     <SideBar />
                 </SideBarWrapper>
 
                 <Container>
-                    <div className="container-title">
-                        <h1>Paramètres de profil</h1>
-                    </div>
                     <Switch>
                         <Route exact path={match.url} component={MyProfileForm} />
                         <Route path={`${match.url}/modify-password`} component={ModifyPasswordForm} />

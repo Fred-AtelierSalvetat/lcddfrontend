@@ -16,7 +16,10 @@ export type User = {
     password: string;
 };
 
-export const UserReducer: (user: User, action: { type: string; payload: User }) => User = (User, { type, payload }) => {
+export const UserReducer: (user: User, action: { type: string; payload: User }) => User = (
+    user = {},
+    { type, payload },
+) => {
     switch (type) {
         case 'UPDATE_PERSONAL_INFO':
             return {

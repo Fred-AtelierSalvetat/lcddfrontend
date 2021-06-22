@@ -255,6 +255,17 @@ export let fakeDatabase: User[] = [
         status: userStatus.ACTIVE,
         role: userModel.ROLE_SPEAKER_AWAITING_VALIDATION,
     },
+    {
+        user_id: 37,
+        firstname: 'Irina',
+        lastname: 'Seoutkine',
+        phone: '987654321',
+        email_pro: '',
+        email: 'iseoutkina@gmail.com',
+        town: 'Antibes',
+        status: userStatus.ACTIVE,
+        role: userModel.ROLE_SPEAKER_AWAITING_ANSWER,
+    },
 ];
 const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
@@ -291,3 +302,11 @@ export const deleteUser = (id: number) => (): Promise<void | User[]> =>
         }
         fakeDatabase = fakeDatabase.filter((user) => user.user_id !== id);
     });
+
+export function findUserByEmail(email: User.email): User.role | undefined {
+    const user = fakeDatabase.find((user) => user.email === email);
+    if (user !== undefined) {
+        return user.role;
+    }
+    return undefined;
+}

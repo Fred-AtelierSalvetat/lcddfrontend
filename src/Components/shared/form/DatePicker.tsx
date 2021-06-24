@@ -42,7 +42,12 @@ const DatePicker: FC<PropTypes.InferProps<typeof datePickerPropsTypes>> = ({
                 id="datepicker-custom-input"
                 type="text"
             />
-            <CalendarIcon />
+            <CalendarIcon
+            // TODO
+            // onClick={() => {
+            //     ref && ref.current && ref.current.click();
+            // }}
+            />
         </div>
     );
 

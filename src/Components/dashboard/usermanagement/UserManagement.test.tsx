@@ -10,7 +10,7 @@ import { rootReducer, reducersList } from '~/state/reducers';
 
 import UserManagement from './UserManagement';
 
-import * as userRoles from '~/state/users/constants/Roles';
+import * as userRoles from '~/state/users/constants/roles';
 import { fakeDatabase } from '~/api/fetchUsers';
 
 describe('<UserManagement /> ', () => {

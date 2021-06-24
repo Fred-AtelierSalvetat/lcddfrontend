@@ -1,4 +1,4 @@
-import React, { FC, useState } from 'react';
+import React, { FC, useState, useRef } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 
@@ -13,11 +13,16 @@ const keywordsPropTypes = {
 
 const Keywords: FC<PropTypes.InferProps<typeof keywordsPropTypes>> = ({ value, setValue }) => {
     const [inputKeyword, setInputKeyword] = useState('');
+    const refKeywordInput = useRef<HTMLInputElement>(null);
 
     const addKeyword = () => {
-        if (!inputKeyword) return;
+        if (!inputKeyword) {
+            refKeywordInput && refKeywordInput.current && refKeywordInput.current.focus();
+            return;
+        }
         setValue([...value, inputKeyword]);
         setInputKeyword('');
+        refKeywordInput && refKeywordInput.current && refKeywordInput.current.focus();
     };
     const deleteKeyword = (toDelete) => {
         setValue(value.filter((keyword) => keyword !== toDelete));
@@ -39,6 +44,7 @@ const Keywords: FC<PropTypes.InferProps<typeof keywordsPropTypes>> = ({ value, s
                 placeholder="Ajouter un mot-clé"
                 onChange={(event) => setInputKeyword(event.target.value)}
                 onKeyDown={(event) => handleKeyDown(event)}
+                ref={refKeywordInput}
                 value={inputKeyword}
             />
             <Button variant="outline-primary" onClick={() => addKeyword()}>

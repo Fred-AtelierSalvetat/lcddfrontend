@@ -14,21 +14,21 @@ import Button from 'react-bootstrap/Button';
 import { ReactComponent as ToggleOnIcon } from '~/assets/icons/toggle_on_24px.svg';
 import { ReactComponent as ToggleOffIcon } from '~/assets/icons/toggle_off_24px.svg';
 import { ReactComponent as DeleteForeverIcon } from '~/assets/icons/delete_forever_16px.svg';
-import { ReactComponent as AdminIcon } from '~/assets/icons/admin_24px.svg';
+import { ReactComponent as SettingsIcon } from '~/assets/icons/settings_backup_restore_24px.svg';
 import { ReactComponent as ValidateIcon } from '~/assets/icons/validate_24px.svg';
 import { ReactComponent as InviteSpeakerIcon } from '~/assets/icons/group_add_24px.svg';
+import { ReactComponent as DotsIcon } from '~/assets/icons/more_horiz_24px.svg';
 
-import * as userRoles from '~/state/users/constants/Roles';
-import * as userStatus from '~/state/users/constants/Status';
-import * as actionTypes from '~/state/users/constants/ActionTypes';
+import * as userRoles from '~/state/users/constants/roles';
+import * as userStatus from '~/state/users/constants/status';
+import * as actionTypes from '~/state/users/constants/actionTypes';
 import * as usersAction from '~/state/users/actions';
 import { User as UserType } from '~/state/users/model';
-import { getVisibleUsers, isRequestInProgress } from '~/state/reducers';
+import { getVisibleUsers, isRequestInProgress, searchFilterSelector } from '~/state/reducers';
 import ErrorBoundary from '~/Components/shared/ErrorBoundary';
-
-import SearchBox from './Searchbox';
-import ActionMenuCell from './ActionMenuCell';
-import Action from './Action';
+import SearchBox from '~/Components/shared/SearchBox/SearchBox';
+import ActionMenuPopover from '~/Components/shared/actionMenuPopover/ActionMenuPopover';
+import Action from '~/Components/shared/actionMenuPopover/Action';
 import ConfirmDialog from '~/Components/shared/modals/ConfirmDialog';
 
 import './UserManagement.scss';
@@ -67,8 +67,8 @@ const UserManagement: FC = () => {
     useEffect(() => {
         setUsers(visibleUsers);
     }, [visibleUsers]);
-    const dispatch = useDispatch();
 
+    const dispatch = useDispatch();
     useEffect(() => {
         const fetchAction = usersAction.fetchUsers({
             failureAlertMsg: (
@@ -92,6 +92,7 @@ const UserManagement: FC = () => {
     roleFilter && (root_path = root_path.replace(new RegExp('/' + roleFilter + '$'), ''));
 
     const isFetching = useSelector(isRequestInProgress(actionTypes.FETCH_USERS_REQUEST));
+    const searchBoxValue = useSelector(searchFilterSelector);
 
     if (!roleFilter) {
         return <Redirect to={root_path + '/admin'} />;
@@ -102,7 +103,6 @@ const UserManagement: FC = () => {
     }
 
     dispatch(usersAction.setUsersRoleFilter(roleFilterMap[roleFilter]));
-
     const tabs_desc: {
         tab_label: string;
         uri_filter: string;
@@ -160,9 +160,9 @@ const UserManagement: FC = () => {
                     renderHeader: () => <div className="CenteredHeader">Actions</div>,
                     renderCell: ({ user_id }) => {
                         return (
-                            <ActionMenuCell>
+                            <ActionMenuPopover icon={<DotsIcon title="openUserActionMenu" />} placement="bottom-end">
                                 <Action
-                                    icon={<AdminIcon />}
+                                    icon={<SettingsIcon />}
                                     label="Revenir intervenant"
                                     action={() => dispatch(usersAction.revokeUserAdminRight(user_id))}
                                 />
@@ -181,7 +181,7 @@ const UserManagement: FC = () => {
                                         />
                                     }
                                 />
-                            </ActionMenuCell>
+                            </ActionMenuPopover>
                         );
                     },
                 },
@@ -257,10 +257,10 @@ const UserManagement: FC = () => {
                     key: 'actions',
                     renderHeader: () => <div className="CenteredHeader">Actions</div>,
                     renderCell: ({ role, user_id }) => (
-                        <ActionMenuCell>
+                        <ActionMenuPopover>
                             {role === userRoles.ROLE_SPEAKER && (
                                 <Action
-                                    icon={<AdminIcon />}
+                                    icon={<SettingsIcon />}
                                     label="Promouvoir admin"
                                     action={() => dispatch(usersAction.promoteUserToAdmin(user_id))}
                                 />
@@ -287,7 +287,7 @@ const UserManagement: FC = () => {
                                     />
                                 }
                             />
-                        </ActionMenuCell>
+                        </ActionMenuPopover>
                     ),
                 },
                 {
@@ -344,7 +344,7 @@ const UserManagement: FC = () => {
                     key: 'actions',
                     renderHeader: () => <div className="CenteredHeader">Actions</div>,
                     renderCell: ({ role, user_id }) => (
-                        <ActionMenuCell>
+                        <ActionMenuPopover>
                             {role === userRoles.ROLE_PRO_USER && (
                                 <Action
                                     icon={<InviteSpeakerIcon />}
@@ -367,7 +367,7 @@ const UserManagement: FC = () => {
                                     />
                                 }
                             />
-                        </ActionMenuCell>
+                        </ActionMenuPopover>
                     ),
                 },
             ],
@@ -385,11 +385,6 @@ const UserManagement: FC = () => {
                             {tabs_desc.map((tab_desc) => {
                                 return (
                                     <Nav.Item key={'tab_' + tab_desc.tab_label}>
-                                        {/* <CSSTransition
-                                            in={tab_desc.uri_filter === roleFilter}
-                                            timeout={{ enter: 3000, exit: 3000 }}
-                                            classNames="navPill"
-                                        > */}
                                         <Nav.Link
                                             active={tab_desc.uri_filter === roleFilter}
                                             onClick={() => history.push(`${root_path}/${tab_desc.uri_filter}`)}
@@ -400,7 +395,13 @@ const UserManagement: FC = () => {
                                     </Nav.Item>
                                 );
                             })}
-                            <SearchBox />
+                            <div className="searchbox-container">
+                                <SearchBox
+                                    placeholder="Rechercher un utilisateur"
+                                    value={searchBoxValue}
+                                    setValue={(value) => dispatch(usersAction.setUsersSearchFilter(value))}
+                                />
+                            </div>
                         </Nav>
 
                         <Tab.Content>

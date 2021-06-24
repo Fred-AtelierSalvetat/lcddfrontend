@@ -17,7 +17,7 @@ const Action: FC<PropTypes.InferProps<typeof actionPropTypes>> = ({ icon, label,
                 onClick={() => (modalConfirmation ? setInsertModal(true) : action ? action() : null)}
             >
                 {insertModal ? modalConfirmation : null}
-                {icon}
+                <div className="iconContainer">{icon}</div>
                 <span>{label}</span>
             </div>
         </div>

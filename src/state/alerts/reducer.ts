@@ -1,4 +1,4 @@
-import * as actionTypes from './constants/ActionTypes';
+import * as actionTypes from './constants/actionTypes';
 import { AlertState, Alert, AlertActions } from './model';
 
 export const alerts = (state: Alert[] = [], action: AlertActions): AlertState => {

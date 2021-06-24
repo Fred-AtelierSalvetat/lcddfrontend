@@ -3,7 +3,11 @@
 $col-spacing: 1.875rem;
 $row-input-spacing: 2rem;
 
-#lcdd-dashboard-page {
+#newWorkshopPage {
+    .new-workshop-form {
+        margin: 0 calc(-1 * #{$col-spacing} / 2);
+    }
+
     label,
     span,
     p,
@@ -68,9 +72,6 @@ $row-input-spacing: 2rem;
     }
     .wrap-anywhere {
         overflow-wrap: anywhere;
-    }
-    .new-workshop-form {
-        margin: 0 calc(-1 * #{$col-spacing} / 2);
     }
     .right-floating-buttonbox {
         float: right;

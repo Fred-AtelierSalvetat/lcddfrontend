@@ -3,10 +3,10 @@ import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
 
 import * as actions from './actions';
-import * as userRoles from './constants/Roles';
-import * as usersActionTypes from './constants/ActionTypes';
-import * as alertTypes from '../alerts/constants/AlertTypes';
-import * as alertsActionTypes from '../alerts/constants/ActionTypes';
+import * as userRoles from './constants/roles';
+import * as usersActionTypes from './constants/actionTypes';
+import * as alertTypes from '../alerts/constants/alertTypes';
+import * as alertsActionTypes from '../alerts/constants/actionTypes';
 import { fakeDatabase } from '~/api/fetchUsers';
 
 describe("Users'action ", () => {

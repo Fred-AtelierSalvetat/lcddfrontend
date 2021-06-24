@@ -1,5 +1,5 @@
-import * as actionTypes from './constants/ActionTypes';
-import { AlertsType } from './constants/AlertTypes';
+import * as actionTypes from './constants/actionTypes';
+import { AlertsType } from './constants/alertTypes';
 
 export type Alert = {
     id: string;

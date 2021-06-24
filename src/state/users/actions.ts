@@ -1,6 +1,6 @@
-import * as types from './constants/ActionTypes';
-import * as userRoles from './constants/Roles';
-import * as status from './constants/Status';
+import * as types from './constants/actionTypes';
+import * as userRoles from './constants/roles';
+import * as status from './constants/status';
 import * as api from '../../api/fetchUsers';
 import { isRequestInProgress, rolesFilterSelector } from '../reducers';
 import * as alertActions from '../alerts/actions';

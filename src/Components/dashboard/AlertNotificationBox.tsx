@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 
 import Alert from 'react-bootstrap/Alert';
 
-import * as alertTypes from '~/state/alerts/constants/AlertTypes';
+import * as alertTypes from '~/state/alerts/constants/alertTypes';
 import * as alertAction from '~/state/alerts/actions';
 import { getAlerts } from '~/state/reducers';
 

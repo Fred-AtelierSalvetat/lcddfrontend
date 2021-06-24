@@ -1,5 +1,5 @@
-import * as userModel from '../state/users/constants/Roles';
-import * as userStatus from '../state/users/constants/Status';
+import * as userModel from '../state/users/constants/roles';
+import * as userStatus from '../state/users/constants/status';
 import { User, UserUpdate } from '../state/users/model';
 
 export let fakeDatabase: User[] = [

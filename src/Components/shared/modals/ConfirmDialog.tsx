@@ -24,7 +24,7 @@ const ConfirmDialog: FC<PropTypes.InferProps<typeof confirmDialogPropTypes>> = (
     handleConfirm,
 }) => {
     return (
-        <Modal show={show} onHide={handleClose}>
+        <Modal className="modalOverPopover" show={show} onHide={handleClose}>
             <Modal.Header closeButton>
                 <Modal.Title>{title}</Modal.Title>
             </Modal.Header>

@@ -1,6 +1,6 @@
 import { createSelector } from 'reselect';
 import { UsersState, User, UIfiltersRoles, UIfiltersSearch } from './model';
-import { UsersActionType } from './constants/ActionTypes';
+import { UsersActionType } from './constants/actionTypes';
 
 const allUsersSelector = (state: UsersState): User[] => state.users;
 export const rolesFilterSelector = (state: UsersState): UIfiltersRoles => state.uiFilters.roles;

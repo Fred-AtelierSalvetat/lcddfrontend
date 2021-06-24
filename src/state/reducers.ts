@@ -3,23 +3,28 @@ import { combineReducers } from 'redux';
 import { SpeakerReducer } from './speaker/speaker.reducer';
 import users from './users/reducer';
 import alerts from './alerts/reducer';
-import { Alert } from './alerts/model';
+import type { Alert } from './alerts/model';
 
 import * as fromUsers from './users/selectors';
 import * as fromAlerts from './alerts/selectors';
 import * as fromUser from './user/selectors';
 
+import workshops from './workshops/reducer';
+import type { WorkshopsState, Workshop, SearchFilter } from './workshops/model';
+import * as fromWorkshops from './workshops/selectors';
+
 import { userRegistrationReducer } from './user/user.registation.reducer';
 import { userAuthenticationReducer } from './user/user.authentication.reducer';
 
-import { RootStateType } from './store';
-import { UsersActionType } from './users/constants/ActionTypes';
-import { User, UIfiltersRoles, UIfiltersSearch } from './users/model';
+import type { RootStateType } from './store';
+import type { UsersActionType } from './users/constants/actionTypes';
+import type { User, UIfiltersRoles, UIfiltersSearch } from './users/model';
 
 export const reducersList = {
     home: homeReducer,
     speakers: SpeakerReducer,
     users,
+    workshops,
     alerts,
     registration: userRegistrationReducer,
     authentication: userAuthenticationReducer,
@@ -38,3 +43,7 @@ export const isRequestInProgress = (request_type: UsersActionType) => (state: Ro
 export const getAlerts = (state: RootStateType): Alert[] => fromAlerts.getAlerts(state.alerts);
 export const isCurrentUserLoggedIn = (state: RootStateType): boolean =>
     fromUser.isCurrentUserLoggedIn(state.authentication);
+export const getVisibleWorkshops = (state: WorkshopsState): Workshop[] =>
+    fromWorkshops.getVisibleWorkshops(state.workshops);
+export const workshopSearchFilterSelector = (state: WorkshopsState): SearchFilter =>
+    fromWorkshops.searchFilterSelector(state.workshops);

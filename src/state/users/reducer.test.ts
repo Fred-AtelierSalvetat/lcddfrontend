@@ -1,9 +1,9 @@
 import { expect } from 'chai';
 import reducer from './reducer';
 import deepFreeze from 'deep-freeze';
-import * as actionType from './constants/ActionTypes';
-import * as userRole from './constants/Roles';
-import * as userStatus from './constants/Status';
+import * as actionType from './constants/actionTypes';
+import * as userRole from './constants/roles';
+import * as userStatus from './constants/status';
 
 const emptyStore = {
     users: [],

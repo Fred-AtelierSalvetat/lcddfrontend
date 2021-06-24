@@ -2,8 +2,8 @@ import { expect } from 'chai';
 import reducer from './reducer';
 import deepFreeze from 'deep-freeze';
 
-import * as actionTypes from './constants/ActionTypes';
-import * as alertTypes from './constants/AlertTypes';
+import * as actionTypes from './constants/actionTypes';
+import * as alertTypes from './constants/alertTypes';
 
 describe('alerts reducer', () => {
     it('should return the initial state', () => {

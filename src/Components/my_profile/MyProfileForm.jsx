@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import { Validator } from '~/util/validator';
 import { FormFeedback } from '../shared/form/FormFeedBack';
 import * as api from '../../api/fetchUsers';
-import * as userRoles from '../../state/users/constants/Roles';
+import * as userRoles from '../../state/users/constants/roles';
 import metiers from '../shared/metiers';
 import chroma from 'chroma-js';
 import Select from 'react-select';

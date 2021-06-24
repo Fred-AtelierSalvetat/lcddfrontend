@@ -12,6 +12,8 @@ const selectPropTypes = {
     onBlur: PropTypes.func.isRequired,
     value: PropTypes.arrayOf(PropTypes.object.isRequired).isRequired,
     isSearchable: PropTypes.bool.isRequired,
+    isClearable: PropTypes.bool.isRequired,
+    isDisabled: PropTypes.bool.isRequired,
     isMulti: PropTypes.bool.isRequired,
     closeMenuOnSelect: PropTypes.bool.isRequired,
     placeholder: PropTypes.string.isRequired,
@@ -21,10 +23,26 @@ const selectPropTypes = {
             label: PropTypes.string.isRequired,
         }),
     ).isRequired,
+    defaultValue: PropTypes.string.isRequired,
 };
 
 const Select = forwardRef<HTMLInputElement, PropTypes.InferProps<typeof selectPropTypes>>(
-    ({ isInvalid, onChange, onBlur, isSearchable, isMulti, closeMenuOnSelect, placeholder, options }, ref) => (
+    (
+        {
+            isInvalid,
+            onChange,
+            onBlur,
+            isSearchable,
+            isClearable,
+            isDisabled,
+            isMulti,
+            closeMenuOnSelect,
+            placeholder,
+            options,
+            defaultValue,
+        },
+        ref,
+    ) => (
         <ReactSelect
             className={`select ${isInvalid ? 'is-invalid' : ''}`}
             classNamePrefix={isInvalid ? 'select-invalid' : 'select'}
@@ -34,9 +52,12 @@ const Select = forwardRef<HTMLInputElement, PropTypes.InferProps<typeof selectPr
             ref={ref}
             placeholder={placeholder}
             isMulti={isMulti}
+            isDisabled={isDisabled}
             closeMenuOnSelect={closeMenuOnSelect}
+            isClearable={isClearable}
             isSearchable={isSearchable}
             options={options}
+            defaultValue={defaultValue}
         />
     ),
 );

@@ -1,7 +1,7 @@
 import { v4 as uuidv4 } from 'uuid';
 
-import * as types from './constants/ActionTypes';
-import * as alertTypes from './constants/AlertTypes';
+import * as types from './constants/actionTypes';
+import * as alertTypes from './constants/alertTypes';
 
 import { DismissAlert } from './model';
 import { AppDispatchType } from '../store';

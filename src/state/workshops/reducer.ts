@@ -10,6 +10,9 @@ const workshops = (state: Workshop[] = [], action) => {
             return [...action.workshops];
         case actionType.CREATE_WORKSHOP:
             return [...state, action.workshop];
+        case actionType.UPDATE_WORKSHOP:
+            console.log('UPDATE_WORKSHOP =', action.workshop);
+            return state.map((workshop) => (workshop.id !== action.workshop.id ? workshop : action.workshop));
         case actionType.CANCEL_WORKSHOP:
         case actionType.DELETE_WORKSHOP:
             return state.filter((workshop) => workshop.id !== action.id);
@@ -39,9 +42,20 @@ const searchFilter = (state: SearchFilter = '', action) => {
     }
 };
 
+//TODO refactor init val
+const orderBy = (state: OrderBy = 'status', action) => {
+    switch (action.type) {
+        case actionType.SET_ORDER_BY:
+            return action.orderBy;
+        default:
+            return state;
+    }
+};
+
 const workshopsReducer = combineReducers({
     workshops,
     searchFilter,
+    orderBy,
 });
 
 export default workshopsReducer;

@@ -1,13 +1,15 @@
 import * as action from './constants/actionTypes';
-import type { WorkshopsActionType } from './constants/actionTypes';
 import * as status from './constants/status';
 import * as api from '~/api/fetchWorkshops';
-
 import type { Speaker, Topic, RefLegiFrance, KeyWord, File, Link, Workshop, SearchFilter } from './model';
+import type { AppDispatchType } from '../store';
 
-export const fetchWorkshops: { type: WorkshopsActionType; workshops: Workshop[] } = {
-    type: action.FETCH_WORKSHOPS,
-    workshops: api.fetchWorkshops(),
+export const fetchWorkshops: (dispatch: AppDispatchType) => void = (dispatch) => {
+    const workshops = api.fetchWorkshops();
+    dispatch({
+        type: action.FETCH_WORKSHOPS,
+        workshops,
+    });
 };
 
 export const newWorkshop: (newWorkshop: {
@@ -21,7 +23,7 @@ export const newWorkshop: (newWorkshop: {
     keywords: KeyWord[];
     files: File[];
     links: Link[];
-}) => { type: WorkshopsActionType; workshop: Workshop } = ({
+}) => void = ({
     title,
     startingdate,
     endingdate,
@@ -52,6 +54,14 @@ export const newWorkshop: (newWorkshop: {
     });
 };
 
+export const updateWorkshop: (workshop: Workshop) => void = (workshop) => (dispatch) => {
+    api.updateWorkshop(workshop);
+    dispatch({
+        type: action.UPDATE_WORKSHOP,
+        workshop,
+    });
+};
+
 export const setWorkshopSearchFilter = (
     search_filter: SearchFilter,
 ): { type: typeof action.SET_WORKSHOP_SEARCH_FILTER; search_filter: SearchFilter } => ({
@@ -59,15 +69,27 @@ export const setWorkshopSearchFilter = (
     search_filter,
 });
 
-export const cancelWorkshop = (id: Workshop.id): { type: typeof action.CANCEL_WORKSHOP; id: Workshop.id } => ({
-    type: action.CANCEL_WORKSHOP,
-    id,
+export const setOrderBy = (orderBy: OrderBy): { type: typeof action.SET_ORDER_BY; search_filter: OrderBy } => ({
+    type: action.SET_ORDER_BY,
+    orderBy,
 });
 
-export const deleteWorkshop = (id: Workshop.id): { type: typeof action.DELETE_WORKSHOP; id: Workshop.id } => ({
-    type: action.DELETE_WORKSHOP,
-    id,
-});
+export const cancelWorkshop = (id: Workshop.id): void => (dispatch) => {
+    api.deleteWorkshop(id);
+    dispatch({
+        type: action.CANCEL_WORKSHOP,
+        id,
+    });
+};
+
+export const deleteWorkshop = (id: Workshop.id): void => (dispatch) => {
+    api.deleteWorkshop(id);
+    dispatch({
+        type: action.DELETE_WORKSHOP,
+        id,
+    });
+};
+
 export const archiveWorkshop = (id: Workshop.id): { type: typeof action.ARCHIVE_WORKSHOP; id: Workshop.id } => ({
     type: action.ARCHIVE_WORKSHOP,
     id,

@@ -43,11 +43,11 @@ export const isRequestInProgress = (request_type: UsersActionType) => (state: Ro
 export const getAlerts = (state: RootStateType): Alert[] => fromAlerts.getAlerts(state.alerts);
 export const isCurrentUserLoggedIn = (state: RootStateType): boolean =>
     fromUser.isCurrentUserLoggedIn(state.authentication);
-export const getVisibleWorkshops = (state: WorkshopsState): Workshop[] =>
-    fromWorkshops.getVisibleWorkshops(state.workshops);
+export const getWorkshops = (state: WorkshopsState): Workshop[] => fromWorkshops.getWorkshops(state.workshops);
 export const workshopSearchFilterSelector = (state: WorkshopsState): SearchFilter =>
     fromWorkshops.searchFilterSelector(state.workshops);
 export const getWorkshopById = (id: Workshop.id) => (state: RootStateType): Workshop =>
     fromWorkshops.getWorkshopById(state.workshops, id);
 export const idWorkshopStoreInialized = (state: RootStateType): boolean =>
     fromWorkshops.idWorkshopStoreInialized(state.workshops);
+export const getOrderBy = (state: RootStateType): Workshop.orderBy => fromWorkshops.getOrderBy(state.workshops);

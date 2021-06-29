@@ -8,7 +8,7 @@ import './actionMenuPopover.scss';
 const propTypes = {
     icon: PropTypes.object.isRequired,
     placement: PropTypes.string.isRequired,
-    children: PropTypes.object.isRequired,
+    children: PropTypes.node.isRequired,
 };
 
 const ActionMenuPopover: FC<PropTypes.InferProps<typeof propTypes>> = ({ icon, placement, children = [] }) => {

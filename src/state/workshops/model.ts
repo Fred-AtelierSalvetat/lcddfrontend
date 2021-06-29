@@ -24,6 +24,7 @@ export type Status = {
 export type KeyWord = string;
 
 export type SearchFilter = string;
+export type OrderBy = string;
 
 export type Workshop = {
     id: string;
@@ -45,4 +46,5 @@ export type Workshop = {
 export type WorkshopsState = {
     workshops: Workshop[];
     searchFilter: SearchFilter;
+    orderBy: OrderBy;
 };

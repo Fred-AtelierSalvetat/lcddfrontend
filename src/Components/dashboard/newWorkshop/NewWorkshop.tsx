@@ -7,7 +7,7 @@ import Form from 'react-bootstrap/Form';
 
 import ErrorBoundary from '~/Components/shared/ErrorBoundary';
 import WkspFormBody from '../shared/WkspFormBody';
-import defaultValues from './defaultValues';
+import defaultValues from '../shared/defaultValues';
 import './NewWorkshop.scss';
 
 import { useDispatch } from 'react-redux';
@@ -32,7 +32,7 @@ const NewWorkshop: FC = () => {
                 topics: data.topics.map((obj) => obj.value),
                 refsLegifrance: data.refsLegifrance.map((obj) => obj.value),
                 description: data.description,
-                keywords: data.keywords.map((obj) => obj.value),
+                keywords: data.keywords,
                 files: data.files,
                 links: data.links,
             }),

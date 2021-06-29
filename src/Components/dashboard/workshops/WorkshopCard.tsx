@@ -1,5 +1,6 @@
 import React, { FC } from 'react';
 import { useDispatch } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 import Card from 'react-bootstrap/Card';
 import className from 'classnames';
 import PropTypes from 'prop-types';
@@ -28,7 +29,7 @@ const propTypes = {
         title: PropTypes.string.isRequired,
         startingdate: PropTypes.object.isRequired,
         //duration: PropTypes.object,
-        topics: PropTypes.arrayOf(PropTypes.object).isRequired,
+        topics: PropTypes.arrayOf(PropTypes.string).isRequired,
         description: PropTypes.string.isRequired,
     }),
 };
@@ -37,6 +38,7 @@ const WorkshopCard: FC<PropTypes.InferProps<typeof propTypes>> = ({
     workshop: { id, status, thumbnail, title, startingdate, topics, description },
 }) => {
     const dispatch = useDispatch();
+    const history = useHistory();
 
     return (
         <Card className="card">
@@ -113,7 +115,7 @@ const WorkshopCard: FC<PropTypes.InferProps<typeof propTypes>> = ({
                             </ActionMenuPopover>
                         </div>
                     )}
-                    <EditIcon className="editIcon" />
+                    <EditIcon className="editIcon" onClick={() => history.push(`/dashboard/editWorkshop/${id}`)} />
                     {status === statusConst.INCOMING ? (
                         <div className="startingdate">{format(startingdate, 'd MMMM yyyy HH:mm', { locale: fr })}</div>
                     ) : (

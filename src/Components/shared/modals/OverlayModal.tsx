@@ -7,7 +7,7 @@ const overlayModal = {
     show: PropTypes.bool.isRequired,
     onHide: PropTypes.func.isRequired,
     header: PropTypes.node,
-    body: PropTypes.node.isRequired,
+    body: PropTypes.node,
     footer: PropTypes.node,
 };
 

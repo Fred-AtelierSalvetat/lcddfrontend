@@ -257,7 +257,7 @@ const UserManagement: FC = () => {
                     key: 'actions',
                     renderHeader: () => <div className="CenteredHeader">Actions</div>,
                     renderCell: ({ role, user_id }) => (
-                        <ActionMenuPopover>
+                        <ActionMenuPopover icon={<DotsIcon title="openUserActionMenu" />} placement="bottom-end">
                             {role === userRoles.ROLE_SPEAKER && (
                                 <Action
                                     icon={<SettingsIcon />}
@@ -344,7 +344,7 @@ const UserManagement: FC = () => {
                     key: 'actions',
                     renderHeader: () => <div className="CenteredHeader">Actions</div>,
                     renderCell: ({ role, user_id }) => (
-                        <ActionMenuPopover>
+                        <ActionMenuPopover icon={<DotsIcon title="openUserActionMenu" />} placement="bottom-end">
                             {role === userRoles.ROLE_PRO_USER && (
                                 <Action
                                     icon={<InviteSpeakerIcon />}

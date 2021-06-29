@@ -27,6 +27,17 @@ const propTypes = {
     control: PropTypes.object.isRequired,
 };
 
+//TODO get real data from redux when backend// MDD ready
+export const refLegifrance = [
+    { value: 'Ref 1', label: 'Ref 1' },
+    { value: 'Ref 2', label: 'Ref 2' },
+    { value: 'Ref 3', label: 'Ref 3' },
+];
+export const intervenants = [
+    { value: 'Ambroise ARMAND', label: 'Ambroise ARMAND' },
+    { value: 'Julien GENOVA', label: 'Julien GENOVA' },
+];
+
 const WkspFormBody: FC<PropsTypes.InferProps<typeof propTypes>> = ({
     register,
     watch,
@@ -39,16 +50,6 @@ const WkspFormBody: FC<PropsTypes.InferProps<typeof propTypes>> = ({
     register('files');
     register('links');
 
-    //TODO get real data from redux when backend// MDD ready
-    const intervenants = [
-        { value: 'Ambroise ARMAND', label: 'Ambroise ARMAND' },
-        { value: 'Julien GENOVA', label: 'Julien GENOVA' },
-    ];
-    const refLegifrance = [
-        { value: 'Ref 1', label: 'Ref 1' },
-        { value: 'Ref 2', label: 'Ref 2' },
-        { value: 'Ref 3', label: 'Ref 3' },
-    ];
     const topicsList = topics.map((topic) => {
         return {
             value: topic.title,
@@ -68,6 +69,7 @@ const WkspFormBody: FC<PropsTypes.InferProps<typeof propTypes>> = ({
                             placeholder="Ajouter un titre"
                             ref={register(validator.workshopTitle)}
                             isInvalid={!!errors.title}
+                            value={watch('title')}
                             onChange={({ target }) => trigger(target.name)}
                         />
                         <FormFeedback field={errors.title}></FormFeedback>
@@ -131,6 +133,7 @@ const WkspFormBody: FC<PropsTypes.InferProps<typeof propTypes>> = ({
                                         {...field}
                                         isMulti
                                         options={topicsList}
+                                        value={watch('topics')}
                                         isSearchable
                                         closeMenuOnSelect={false}
                                         placeholder="Sélectionner les thématiques"
@@ -173,6 +176,7 @@ const WkspFormBody: FC<PropsTypes.InferProps<typeof propTypes>> = ({
                                 placeholder="Ajouter une description"
                                 ref={register(validator.workshopDescription)}
                                 isInvalid={!!errors.description}
+                                value={watch('description')}
                                 onChange={({ target }) => trigger(target.name)}
                             />
                             <FormFeedback field={errors.description}></FormFeedback>

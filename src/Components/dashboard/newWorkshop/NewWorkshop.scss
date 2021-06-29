@@ -6,6 +6,14 @@ $row-input-spacing: 2rem;
 #newWorkshopPage {
     .new-workshop-form {
         margin: 0 calc(-1 * #{$col-spacing} / 2);
+        h1 {
+            text-align: left;
+            color: var(--primary);
+            font-style: normal;
+            font-weight: 350;
+            font-size: 32px;
+            line-height: 33px;
+        }
     }
 
     label,
@@ -38,6 +46,9 @@ $row-input-spacing: 2rem;
         letter-spacing: 0;
         text-decoration: underline;
         color: var(--link);
+        svg {
+            margin-right: 0.42rem;
+        }
     }
     .workshopUploads {
         .form-row {
@@ -80,6 +91,10 @@ $row-input-spacing: 2rem;
         button {
             margin: 0 0.5rem;
         }
+    }
+    .left-floating-box {
+        float: left;
+        margin: 1rem 0;
     }
 
     [class*='col'] {

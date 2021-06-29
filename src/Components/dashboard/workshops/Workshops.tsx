@@ -1,46 +1,31 @@
-import React, { FC, useState, useEffect } from 'react';
+import React, { FC, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-//import { useParams } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 
-import { fetchWorkshops, setWorkshopSearchFilter } from '~/state/workshops/actions';
-import { getVisibleWorkshops, workshopSearchFilterSelector } from '~/state/reducers';
+import { fetchWorkshops, setWorkshopSearchFilter, setOrderBy } from '~/state/workshops/actions';
+import { getWorkshops, workshopSearchFilterSelector, getOrderBy } from '~/state/reducers';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Select from '~/Components/shared/form/Select';
 import SearchBox from '~/Components/shared/SearchBox/SearchBox';
 import WorkshopCard from './WorkshopCard';
-import { statusOrder } from '~/state/workshops/constants/status';
+import { sortFct } from '~/state/workshops/selectors';
 
 import './Workshops.scss';
 
 const Workshops: FC = () => {
-    // const { sortBy = 'status' } = useParams() as {
-    //     sortBy?: string;
-    // };
+    const UrlQueryParam = new URLSearchParams(useLocation().search);
+    console.log('orderBy =', UrlQueryParam.get('orderBy'));
 
     const dispatch = useDispatch();
-
     useEffect(() => {
         dispatch(fetchWorkshops);
     }, []);
 
-    const sortFct = {
-        title: (a, b) => a.title.localeCompare(b.title),
-        status: (a, b) => statusOrder.indexOf(a.status) - statusOrder.indexOf(b.status),
-    };
+    const orderBy = useSelector(getOrderBy); //TODO Get it /set it to/from url query params
 
-    const orderByOptions = [
-        { label: 'titre', value: 'title' },
-        { label: 'statuts', value: 'status' },
-    ];
-    const orderBy = orderByOptions[1]; //TODO Get it from url query params
-    const [orderedWorkshop, setOrderedWorkshop] = useState<Workshop[]>([]);
-
-    const visibleWorkshops = useSelector(getVisibleWorkshops);
-    useEffect(() => {
-        setOrderedWorkshop(visibleWorkshops.sort(sortFct[orderBy.value]));
-    }, [visibleWorkshops]);
+    const workshops = useSelector(getWorkshops);
     const searchBoxValue = useSelector(workshopSearchFilterSelector);
 
     return (
@@ -58,15 +43,15 @@ const Workshops: FC = () => {
                     <p>Trier par</p>
                     <Select
                         isSearchable={true}
-                        options={orderByOptions}
-                        defaultValue={orderBy}
-                        onChange={(option) => setOrderedWorkshop([...orderedWorkshop.sort(sortFct[option.value])])}
+                        options={Object.keys(sortFct).map((key) => ({ label: key, value: key }))}
+                        value={{ label: orderBy, value: orderBy }}
+                        onChange={(option) => dispatch(setOrderBy(option.value))}
                     ></Select>
                 </Col>
             </Row>
             <Row className="workshopList">
-                {orderedWorkshop &&
-                    orderedWorkshop.map((workshop) => (
+                {workshops &&
+                    workshops.map((workshop) => (
                         <Col key={workshop.id} className="workshopCard" xs={12} md={6} lg={3}>
                             <WorkshopCard workshop={workshop} />
                         </Col>

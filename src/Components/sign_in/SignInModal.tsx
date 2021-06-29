@@ -34,7 +34,7 @@ const signInModalPropTypes = {
     onHandleClose: PropTypes.func.isRequired,
     onSignUpLinkClick: PropTypes.func.isRequired,
     onLostPasswordClick: PropTypes.func.isRequired,
-    loggingIn: PropTypes.bool.isRequired,
+    loggingIn: PropTypes.bool,
 };
 
 type SignInFormData = {

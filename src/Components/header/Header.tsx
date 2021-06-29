@@ -12,7 +12,7 @@ import './Header.scss';
 import PropTypes from 'prop-types';
 
 const headerPropsTypes = {
-    loggedIn: PropTypes.bool.isRequired,
+    loggedIn: PropTypes.bool,
 };
 
 const Header: FC<PropTypes.InferProps<typeof headerPropsTypes>> = (props) => {

@@ -11,6 +11,7 @@ import ErrorBoundary from '~/Components/shared/ErrorBoundary';
 import UserManagement from './usermanagement/UserManagement';
 import NewWorkshop from './newWorkshop/NewWorkshop';
 import Workshops from './workshops/Workshops';
+import EditWorkshop from './editWorkshop/EditWorkshop';
 import AlertNotificationBox from './AlertNotificationBox';
 import './Dashboard.scss';
 
@@ -66,6 +67,10 @@ const Dashboard: FC = () => {
             href: '/dashboard/users',
             page: <UserManagement />,
         },
+        {
+            href: '/dashboard/editWorkshop',
+            page: <EditWorkshop />,
+        },
         // {
         //     icon: <AnalyticsIcon />,
         //     label: <p>Analytics</p>,
@@ -106,26 +111,28 @@ const Dashboard: FC = () => {
         <ErrorBoundary>
             <div id="lcdd-dashboard">
                 <div id="lcdd-dashboard-navbar">
-                    {pages.map((page_desc) => (
-                        <Fragment key={page_desc.href}>
-                            <input
-                                type="radio"
-                                id={page_desc.href}
-                                value={page_desc.href}
-                                checked={isSelectedPage(page_desc)}
-                                onChange={(changeEvent) => {
-                                    history.push(changeEvent.target.value);
-                                    setSelectedPageParam(page_desc.href.split('/').slice(-1)[0]);
-                                }}
-                            />
-                            <label htmlFor={page_desc.href}>
-                                <div>
-                                    {page_desc.icon}
-                                    {page_desc.label}
-                                </div>
-                            </label>
-                        </Fragment>
-                    ))}
+                    {pages
+                        .filter((page) => !!page.icon)
+                        .map((page_desc) => (
+                            <Fragment key={page_desc.href}>
+                                <input
+                                    type="radio"
+                                    id={page_desc.href}
+                                    value={page_desc.href}
+                                    checked={isSelectedPage(page_desc)}
+                                    onChange={(changeEvent) => {
+                                        history.push(changeEvent.target.value);
+                                        setSelectedPageParam(page_desc.href.split('/').slice(-1)[0]);
+                                    }}
+                                />
+                                <label htmlFor={page_desc.href}>
+                                    <div>
+                                        {page_desc.icon}
+                                        {page_desc.label}
+                                    </div>
+                                </label>
+                            </Fragment>
+                        ))}
                     <div className="selection-sliding-background"></div>
                 </div>
                 <div id="lcdd-dashboard-page">

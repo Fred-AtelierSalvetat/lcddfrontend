@@ -6,10 +6,9 @@ import { Wrapper } from '../shared/wrapper';
 import Expire from '../shared/utils/Expire';
 import { FormFeedback } from '../shared/form/FormFeedBack';
 import RoundSpinner from '../shared/RoundSpinner';
-import { Validator } from '~/util/validator';
+import { validator } from '~/util/validator';
 import scrollToTopSmoothly from '~/util/scrollToTopSmoothly';
 import './ContactUs.scss';
-
 import PropTypes from 'prop-types';
 
 const SITE_KEY = process.env.REACT_APP_GOOGLE_CAPTCHA_SITE_KEY || '';
@@ -189,7 +188,7 @@ const ContactUs: FC = () => {
                             type="text"
                             name="firstName"
                             placeholder="Entrer votre prénom"
-                            ref={register(Validator.firstName)}
+                            ref={register(validator.firstName)}
                             onChange={onHandleChange}
                             isInvalid={!!errors.firstName}
                         />
@@ -202,7 +201,7 @@ const ContactUs: FC = () => {
                             type="text"
                             name="lastName"
                             placeholder="Entrer votre nom"
-                            ref={register(Validator.lastName)}
+                            ref={register(validator.lastName)}
                             onChange={onHandleChange}
                             isInvalid={!!errors.lastName}
                         />
@@ -215,7 +214,7 @@ const ContactUs: FC = () => {
                             type="email"
                             name="email"
                             placeholder="Entrer votre adresse e-mail"
-                            ref={register(Validator.email)}
+                            ref={register(validator.email)}
                             onChange={onHandleChange}
                             isInvalid={!!errors.email}
                         />
@@ -228,7 +227,7 @@ const ContactUs: FC = () => {
                             type="text"
                             name="subject"
                             placeholder="Entrer un sujet"
-                            ref={register(Validator.contactSubject)}
+                            ref={register(validator.contactSubject)}
                             onChange={onHandleChange}
                             isInvalid={!!errors.subject}
                         />
@@ -242,7 +241,7 @@ const ContactUs: FC = () => {
                             name="message"
                             rows={5}
                             placeholder="Entrer votre message"
-                            ref={register(Validator.contactMessage)}
+                            ref={register(validator.contactMessage)}
                             onChange={onHandleChange}
                             isInvalid={!!errors.message}
                         />

@@ -11,7 +11,7 @@ const keywordsPropTypes = {
     setValue: PropTypes.func.isRequired,
 };
 
-const Keywords: FC<PropTypes.InferProps<typeof keywordsPropTypes>> = ({ value, setValue }) => {
+const Keywords: FC<PropTypes.InferProps<typeof keywordsPropTypes>> = ({ value = [], setValue }) => {
     const [inputKeyword, setInputKeyword] = useState('');
     const refKeywordInput = useRef<HTMLInputElement>(null);
 
@@ -51,12 +51,13 @@ const Keywords: FC<PropTypes.InferProps<typeof keywordsPropTypes>> = ({ value, s
                 Ajouter
             </Button>
             <div className="list">
-                {value.map((keyword) => (
-                    <div key={keyword} className="item flex-shrink-1">
-                        <div className="flex-shrink-1 wrap-anywhere">{keyword}</div>
-                        <DeleteIcon className="action-icon" onClick={() => deleteKeyword(keyword)} />
-                    </div>
-                ))}
+                {!!value &&
+                    value.map((keyword) => (
+                        <div key={keyword} className="item flex-shrink-1">
+                            <div className="flex-shrink-1 wrap-anywhere">{keyword}</div>
+                            <DeleteIcon className="action-icon" onClick={() => deleteKeyword(keyword)} />
+                        </div>
+                    ))}
             </div>
         </>
     );

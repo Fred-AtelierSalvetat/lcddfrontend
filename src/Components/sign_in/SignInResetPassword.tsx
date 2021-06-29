@@ -1,7 +1,7 @@
 import React, { FC, useRef } from 'react';
 import { useForm } from 'react-hook-form';
 import { Container, Button, Form } from 'react-bootstrap';
-import { Validator } from '~/util/validator';
+import { validator } from '~/util/validator';
 import { FormFeedback } from '../shared/form/FormFeedBack';
 import './SignIn.scss';
 
@@ -37,7 +37,7 @@ const SignInResetPassword: FC = () => {
                                         autoFocus
                                         type="password"
                                         name="password"
-                                        ref={register(Validator.password)}
+                                        ref={register(validator.password)}
                                         isInvalid={errors.password}
                                     />
                                     <FormFeedback field={errors.password}></FormFeedback>

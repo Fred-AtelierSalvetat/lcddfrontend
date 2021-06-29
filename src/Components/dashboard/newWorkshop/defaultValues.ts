@@ -1,13 +1,13 @@
 const defaultValues = {
-    workshopTitle: '',
-    workshopTimestamp: null, //null or Date obj
-    workshopSpeakers: [],
-    workshopTopics: [],
-    workshopRefsLegifrance: [],
-    workshopDescription: '',
-    workshopKeywords: [],
-    workshopUploads: [],
-    workshopLinks: [],
+    title: '',
+    startingdate: null, //null or Date obj
+    speakers: [],
+    topics: [],
+    refsLegifrance: [],
+    description: '',
+    keywords: [],
+    files: [],
+    links: [],
 };
 
 export default defaultValues;

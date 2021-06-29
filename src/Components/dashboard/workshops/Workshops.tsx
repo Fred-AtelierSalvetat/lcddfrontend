@@ -22,7 +22,6 @@ const Workshops: FC = () => {
     const dispatch = useDispatch();
 
     useEffect(() => {
-        console.log('Just before dispatch(fetchWorkshops)');
         dispatch(fetchWorkshops);
     }, []);
 
@@ -40,7 +39,6 @@ const Workshops: FC = () => {
 
     const visibleWorkshops = useSelector(getVisibleWorkshops);
     useEffect(() => {
-        console.log('visibleWorkshops =', visibleWorkshops);
         setOrderedWorkshop(visibleWorkshops.sort(sortFct[orderBy.value]));
     }, [visibleWorkshops]);
     const searchBoxValue = useSelector(workshopSearchFilterSelector);

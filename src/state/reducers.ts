@@ -47,3 +47,7 @@ export const getVisibleWorkshops = (state: WorkshopsState): Workshop[] =>
     fromWorkshops.getVisibleWorkshops(state.workshops);
 export const workshopSearchFilterSelector = (state: WorkshopsState): SearchFilter =>
     fromWorkshops.searchFilterSelector(state.workshops);
+export const getWorkshopById = (id: Workshop.id) => (state: RootStateType): Workshop =>
+    fromWorkshops.getWorkshopById(state.workshops, id);
+export const idWorkshopStoreInialized = (state: RootStateType): boolean =>
+    fromWorkshops.idWorkshopStoreInialized(state.workshops);

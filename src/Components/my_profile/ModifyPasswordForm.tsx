@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import { Button, Form } from 'react-bootstrap';
 import { useForm } from 'react-hook-form';
-import { Validator } from '~/util/validator';
+import { validator } from '~/util/validator';
 import PasswordFormGroup from '../shared/form/PasswordFormGroup';
 
 const ModifyPasswordForm: FC = () => {
@@ -31,7 +31,7 @@ const ModifyPasswordForm: FC = () => {
                     label="Nouveau mot de passe"
                     name="password"
                     onChange={onHandleChange}
-                    ref={register(Validator.password)}
+                    ref={register(validator.password)}
                     isInvalid={errors.password}
                     errors={errors}
                     errorColumns={2}
@@ -43,7 +43,7 @@ const ModifyPasswordForm: FC = () => {
                         <Form.Control
                             type={showNewPassword ? "text" : "password"}
                             name="password"
-                            ref={register(Validator.password)}
+                            ref={register(validator.password)}
                             onChange={onHandleChange}
                             isInvalid={errors.password}
                         />

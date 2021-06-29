@@ -1,7 +1,7 @@
 import React, { FC, useEffect } from 'react';
 import { Button, Form } from 'react-bootstrap';
 import { useForm } from 'react-hook-form';
-import { Validator } from '../../util/validator';
+import { validator } from '../../util/validator';
 import PropTypes from 'prop-types';
 import { FormFeedback } from '../shared/form/FormFeedBack';
 import PasswordFormGroup from '../shared/form/PasswordFormGroup';
@@ -66,7 +66,7 @@ const UserDetails: FC<PropTypes.InferProps<typeof userDetailsPropTypes>> = ({ st
                     type="text"
                     name="lastName"
                     onChange={onHandleChange}
-                    ref={register(Validator.lastName)}
+                    ref={register(validator.lastName)}
                     isInvalid={errors.lastName}
                     isValid={!errors.lastName && !!watch('lastName')}
                     tabIndex={1}
@@ -80,7 +80,7 @@ const UserDetails: FC<PropTypes.InferProps<typeof userDetailsPropTypes>> = ({ st
                     type="text"
                     name="firstName"
                     onChange={onHandleChange}
-                    ref={register(Validator.firstName)}
+                    ref={register(validator.firstName)}
                     isInvalid={errors.firstName}
                     isValid={!errors.firstName && !!watch('firstName')}
                     tabIndex={1}
@@ -108,7 +108,7 @@ const UserDetails: FC<PropTypes.InferProps<typeof userDetailsPropTypes>> = ({ st
                     type="email"
                     name="email"
                     onChange={onHandleChange}
-                    ref={register(Validator.email)}
+                    ref={register(validator.email)}
                     isInvalid={errors.email}
                     isValid={!errors.email && watch('email')}
                     tabIndex={1}
@@ -123,7 +123,7 @@ const UserDetails: FC<PropTypes.InferProps<typeof userDetailsPropTypes>> = ({ st
                 name="password"
                 errors={errors}
                 onChange={onHandleChange}
-                ref={register(Validator.password)}
+                ref={register(validator.password)}
                 isInvalid={errors.password}
                 isValid={!errors.password && !!watch('password')}
                 errorColumns={2}

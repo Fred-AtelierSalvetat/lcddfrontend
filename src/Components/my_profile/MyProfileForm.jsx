@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Button, Form, InputGroup } from 'react-bootstrap';
 import { useForm, Controller } from 'react-hook-form';
 import { connect } from 'react-redux';
-import { Validator } from '~/util/validator';
+import { validator } from '~/util/validator';
 import { FormFeedback } from '../shared/form/FormFeedBack';
 import * as api from '../../api/fetchUsers';
 import * as userRoles from '../../state/users/constants/roles';
@@ -93,7 +93,7 @@ const MyProfileForm = (props) => {
                                 <Form.Control
                                     type="text"
                                     name="lastName"
-                                    ref={register(Validator.lastName)}
+                                    ref={register(validator.lastName)}
                                     value={newUser.lastName}
                                     onChange={onHandleChange}
                                     onClick={handleModifyClick}
@@ -107,7 +107,7 @@ const MyProfileForm = (props) => {
                                 <Form.Control
                                     type="text"
                                     name="firstName"
-                                    ref={register(Validator.firstName)}
+                                    ref={register(validator.firstName)}
                                     value={newUser.firstName}
                                     onChange={onHandleChange}
                                     onClick={handleModifyClick}
@@ -121,8 +121,8 @@ const MyProfileForm = (props) => {
                                 <Controller
                                     name="metiers"
                                     control={control}
-                                    ref={register(Validator.metiers)}
-                                    rules={Validator.metiers}
+                                    ref={register(validator.metiers)}
+                                    rules={validator.metiers}
                                     render={(field) => (
                                         <Select
                                             className={`select ${
@@ -148,7 +148,7 @@ const MyProfileForm = (props) => {
                                     <Form.Control
                                         type="text"
                                         name="phone_number"
-                                        ref={register(Validator.phone_number)}
+                                        ref={register(validator.phone_number)}
                                         isInvalid={errors.phone_number}
                                     />
                                     <FormFeedback field={errors.phone_number}></FormFeedback>
@@ -171,7 +171,7 @@ const MyProfileForm = (props) => {
                         <Form.Control
                             type="email"
                             name="email"
-                            ref={register(Validator.email)}
+                            ref={register(validator.email)}
                             value={newUser.email}
                             onChange={onHandleChange}
                             onClick={handleModifyClick}
@@ -185,7 +185,7 @@ const MyProfileForm = (props) => {
                         <Form.Control
                             type="text"
                             name="city"
-                            ref={register(Validator.city)}
+                            ref={register(validator.city)}
                             value={newUser.city}
                             onChange={onHandleChange}
                             isInvalid={errors.city}
@@ -199,7 +199,7 @@ const MyProfileForm = (props) => {
                             rows={3}
                             name="bio"
                             placeholder="Ajouter une biographie"
-                            ref={register(Validator.bio)}
+                            ref={register(validator.bio)}
                             isInvalid={errors.bio}
                             onChange={(e) => setValue(e.target.value)}
                         />
@@ -229,7 +229,7 @@ const MyProfileForm = (props) => {
                         <Form.Control
                             type="text"
                             name="lastName"
-                            ref={register(Validator.lastName)}
+                            ref={register(validator.lastName)}
                             value={newUser.lastName}
                             onChange={onHandleChange}
                             onClick={handleModifyClick}
@@ -243,7 +243,7 @@ const MyProfileForm = (props) => {
                         <Form.Control
                             type="text"
                             name="firstName"
-                            ref={register(Validator.firstName)}
+                            ref={register(validator.firstName)}
                             value={newUser.firstName}
                             onChange={onHandleChange}
                             onClick={handleModifyClick}
@@ -257,7 +257,7 @@ const MyProfileForm = (props) => {
                         <Form.Control
                             type="email"
                             name="email"
-                            ref={register(Validator.email)}
+                            ref={register(validator.email)}
                             value={newUser.email}
                             onChange={onHandleChange}
                             onClick={handleModifyClick}
@@ -271,7 +271,7 @@ const MyProfileForm = (props) => {
                         <Form.Control
                             type="text"
                             name="city"
-                            ref={register(Validator.city)}
+                            ref={register(validator.city)}
                             value={newUser.city}
                             onChange={onHandleChange}
                             isInvalid={errors.city}

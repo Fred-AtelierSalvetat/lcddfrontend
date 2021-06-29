@@ -4,7 +4,7 @@ import { Button, Form } from 'react-bootstrap';
 import { useForm } from 'react-hook-form';
 import { connect, useDispatch, useSelector } from 'react-redux';
 import { userActions } from '~/state/user/user.actions';
-import { Validator } from '~/util/validator';
+import { validator } from '~/util/validator';
 import { FranceConnectButton } from '../shared/buttons/FranceConnectButton';
 import { FormFeedback } from '../shared/form/FormFeedBack';
 import OverlayModal from '../shared/modals/OverlayModal';
@@ -83,7 +83,7 @@ const SignInModal: FC<PropTypes.InferProps<typeof signInModalPropTypes>> = ({
                             autoFocus
                             type="text"
                             name="email"
-                            ref={register(Validator.email)}
+                            ref={register(validator.email)}
                             isInvalid={!!errors.email}
                         />
                         <FormFeedback field={errors.email}></FormFeedback>
@@ -94,7 +94,7 @@ const SignInModal: FC<PropTypes.InferProps<typeof signInModalPropTypes>> = ({
                         <Form.Control
                             type="password"
                             name="password"
-                            ref={register(Validator.loginPassword)}
+                            ref={register(validator.loginPassword)}
                             isInvalid={!!errors.password}
                         />
                         <FormFeedback field={errors.password}></FormFeedback>

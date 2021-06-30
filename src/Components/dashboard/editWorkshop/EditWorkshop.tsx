@@ -1,6 +1,6 @@
 import React, { FC, useState, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
-import { useHistory, Link } from 'react-router-dom';
+import { useHistory, useParams, Link } from 'react-router-dom';
 import Col from 'react-bootstrap/Col';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
@@ -25,14 +25,15 @@ const topicsList = topics.map((topic) => {
         label: topic.title,
     };
 });
-import { useLocation } from 'react-router-dom';
+
 const EditWorkshop: FC = () => {
-    console.log('Location = ', useLocation());
+    const { id } = useParams() as {
+        id?: Workshop.id;
+    };
     const dispatch = useDispatch();
     const history = useHistory();
 
-    const worshopId = '0'; //TODO
-    const workshop = useSelector(getWorkshopById(worshopId));
+    const workshop = useSelector(getWorkshopById(id));
     const needFetching = !useSelector(idWorkshopStoreInialized); //Allow direct call to page
 
     //Covering the case of direct access to edit page
@@ -95,7 +96,7 @@ const EditWorkshop: FC = () => {
                 links: data.links,
             }),
         );
-        history.push('/dashboard/workshops'); //TODO Add sort by status
+        history.push('/dashboard/workshops');
     };
 
     const onSubmitError = (errors) => console.error('onSubmitError :', errors);
@@ -104,9 +105,10 @@ const EditWorkshop: FC = () => {
 
     //TODO REfactor scss of page
     if (!workshop) return null;
+    //workshop.status === status.INCOMING
     return (
         <div id="newWorkshopPage">
-            {workshop.status === status.INCOMING ? (
+            {true ? (
                 <ErrorBoundary>
                     <ConfirmDialog
                         show={showCancelDialog}

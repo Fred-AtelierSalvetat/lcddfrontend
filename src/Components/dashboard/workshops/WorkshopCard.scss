@@ -125,6 +125,7 @@
                     margin-bottom: 0.5rem;
                 }
                 .description.card-text {
+                    white-space: pre-wrap;
                     $lines-to-show: 4;
                     $font-size: 1; //in rem
                     $line-height: 1.5; //in rem

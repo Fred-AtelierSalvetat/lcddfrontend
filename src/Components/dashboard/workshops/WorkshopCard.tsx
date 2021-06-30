@@ -34,16 +34,13 @@ const propTypes = {
     }),
 };
 
-import { useLocation } from 'react-router-dom';
-
 const WorkshopCard: FC<PropTypes.InferProps<typeof propTypes>> = ({
     workshop: { id, status, thumbnail, title, startingdate, topics, description },
 }) => {
     const dispatch = useDispatch();
     const history = useHistory();
 
-    console.log('Location = ', useLocation());
-
+    console.log('description =', description);
     return (
         <Card className="card">
             <div className="image-container">

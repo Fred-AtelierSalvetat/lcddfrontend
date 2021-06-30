@@ -55,8 +55,7 @@ const App: FC = () => {
                         <Route path="/my-profile" component={MyProfile} />
                         <Route path="/devenirintervenant" component={DevenirIntervenant} />
                         <Route path="/devenirintervenantenvoyee" component={DevenirIntervenant} />
-                        <Route path="/dashboard" exact={true} component={Dashboard} />
-                        <Route path="/dashboard/:selectedPage/:roleFilter?" component={Dashboard} />
+                        <Route path="/dashboard" component={Dashboard} />
                         <Route path="/error" component={ErrorForm} />
                         <Route path="*">
                             <p>No Match</p>

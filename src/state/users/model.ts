@@ -25,11 +25,11 @@ export type UserUpdate = {
     role?: string;
 };
 
-export type UIfiltersRoles = string[];
+export type UIfiltersRole = string;
 export type UIfiltersSearch = string;
 
 export type UIfilters = {
-    roles: UIfiltersRoles;
+    roles: UIfiltersRole;
     search: UIfiltersSearch;
 };
 

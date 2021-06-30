@@ -2,7 +2,7 @@ import * as types from './constants/actionTypes';
 import * as userRoles from './constants/roles';
 import * as status from './constants/status';
 import * as api from '../../api/fetchUsers';
-import { isRequestInProgress, rolesFilterSelector } from '../reducers';
+import { isRequestInProgress, roleFilterSelector } from '../reducers';
 import * as alertActions from '../alerts/actions';
 import { UserId, UIfiltersRoles, UIfiltersSearch } from './model';
 import { RootStateType, AppDispatchType } from '../store';
@@ -135,16 +135,16 @@ export const revokeUserAdminRight = (user_id: UserId): ApiCallWrapperType =>
         failureAlertMsg: 'Erreur lors de la suppression des droits administrateurs',
     });
 
-export const setUsersRoleFilter = (roles_filter: UIfiltersRoles) => (
+export const setUsersRoleFilter = (role_filter: UIfiltersRoles) => (
     dispatch: AppDispatchType,
     getstate: () => RootStateType,
-): (() => void) | { type: typeof types.SET_USER_ROLE_FILTER; roles_filter: UIfiltersRoles } => {
-    if (rolesFilterSelector(getstate()) === roles_filter) {
+): (() => void) | { type: typeof types.SET_USER_ROLE_FILTER; role_filter: UIfiltersRole } => {
+    if (roleFilterSelector(getstate()) === role_filter) {
         return () => {};
     }
     return dispatch({
         type: types.SET_USER_ROLE_FILTER,
-        roles_filter,
+        role_filter,
     });
 };
 

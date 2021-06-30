@@ -1,6 +1,6 @@
 import React, { FC, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useHistory, Redirect } from 'react-router-dom';
 
 import { fetchWorkshops, setWorkshopSearchFilter, setOrderBy } from '~/state/workshops/actions';
 import { getWorkshops, workshopSearchFilterSelector, getOrderBy } from '~/state/reducers';
@@ -15,18 +15,27 @@ import { sortFct } from '~/state/workshops/selectors';
 import './Workshops.scss';
 
 const Workshops: FC = () => {
-    const UrlQueryParam = new URLSearchParams(useLocation().search);
-    console.log('orderBy =', UrlQueryParam.get('orderBy'));
+    const history = useHistory();
+
+    const location = useLocation();
+    const UrlQueryParam = new URLSearchParams(location.search);
+    const orderByParam = UrlQueryParam.get('orderBy');
+
+    const orderBy = useSelector(getOrderBy);
+    const workshops = useSelector(getWorkshops);
+    const searchBoxValue = useSelector(workshopSearchFilterSelector);
 
     const dispatch = useDispatch();
     useEffect(() => {
         dispatch(fetchWorkshops);
     }, []);
 
-    const orderBy = useSelector(getOrderBy); //TODO Get it /set it to/from url query params
+    const getURLwithQueryParam = (value) => `${location.pathname}?orderBy=${value}`;
 
-    const workshops = useSelector(getWorkshops);
-    const searchBoxValue = useSelector(workshopSearchFilterSelector);
+    if (!orderByParam || !Object.keys(sortFct).includes(orderByParam)) {
+        return <Redirect to={`${getURLwithQueryParam(orderBy)}`} />;
+    }
+    if (orderBy !== orderByParam) dispatch(setOrderBy(orderByParam));
 
     return (
         <Container fluid id="workshopsPage">
@@ -45,7 +54,7 @@ const Workshops: FC = () => {
                         isSearchable={true}
                         options={Object.keys(sortFct).map((key) => ({ label: key, value: key }))}
                         value={{ label: orderBy, value: orderBy }}
-                        onChange={(option) => dispatch(setOrderBy(option.value))}
+                        onChange={(option) => history.push(`${getURLwithQueryParam(option.value)}`)}
                     ></Select>
                 </Col>
             </Row>

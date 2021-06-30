@@ -34,11 +34,15 @@ const propTypes = {
     }),
 };
 
+import { useLocation } from 'react-router-dom';
+
 const WorkshopCard: FC<PropTypes.InferProps<typeof propTypes>> = ({
     workshop: { id, status, thumbnail, title, startingdate, topics, description },
 }) => {
     const dispatch = useDispatch();
     const history = useHistory();
+
+    console.log('Location = ', useLocation());
 
     return (
         <Card className="card">
@@ -115,7 +119,12 @@ const WorkshopCard: FC<PropTypes.InferProps<typeof propTypes>> = ({
                             </ActionMenuPopover>
                         </div>
                     )}
-                    <EditIcon className="editIcon" onClick={() => history.push(`/dashboard/editWorkshop/${id}`)} />
+                    <EditIcon
+                        className="editIcon"
+                        onClick={() => {
+                            history.push(`/dashboard/editWorkshop/${id}`); //TODO FIX THIS DAMNED THING
+                        }}
+                    />
                     {status === statusConst.INCOMING ? (
                         <div className="startingdate">{format(startingdate, 'd MMMM yyyy HH:mm', { locale: fr })}</div>
                     ) : (

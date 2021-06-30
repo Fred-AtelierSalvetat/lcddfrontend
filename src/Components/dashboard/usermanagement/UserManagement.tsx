@@ -3,7 +3,7 @@
 
 import React, { FC, useState, useEffect } from 'react';
 import type { ReactNode } from 'react';
-import { useParams, Redirect, useLocation, useHistory, Link } from 'react-router-dom';
+import { Redirect, useLocation, useHistory, Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 
 import Nav from 'react-bootstrap/Nav';
@@ -19,12 +19,18 @@ import { ReactComponent as ValidateIcon } from '~/assets/icons/validate_24px.svg
 import { ReactComponent as InviteSpeakerIcon } from '~/assets/icons/group_add_24px.svg';
 import { ReactComponent as DotsIcon } from '~/assets/icons/more_horiz_24px.svg';
 
-import * as userRoles from '~/state/users/constants/roles';
 import * as userStatus from '~/state/users/constants/status';
+import * as userRoles from '~/state/users/constants/roles';
 import * as actionTypes from '~/state/users/constants/actionTypes';
 import * as usersAction from '~/state/users/actions';
 import { User as UserType } from '~/state/users/model';
-import { getVisibleUsers, isRequestInProgress, searchFilterSelector } from '~/state/reducers';
+import {
+    getVisibleUsers,
+    isRequestInProgress,
+    roleFilterSelector,
+    getRoles,
+    searchFilterSelector,
+} from '~/state/reducers';
 import ErrorBoundary from '~/Components/shared/ErrorBoundary';
 import SearchBox from '~/Components/shared/SearchBox/SearchBox';
 import ActionMenuPopover from '~/Components/shared/actionMenuPopover/ActionMenuPopover';
@@ -33,42 +39,24 @@ import ConfirmDialog from '~/Components/shared/modals/ConfirmDialog';
 
 import './UserManagement.scss';
 
-const ADMIN_TAB_ROLE_FILTER = [userRoles.ROLE_ADMIN];
-const SPEAKER_TAB_ROLE_FILTER = [
-    userRoles.ROLE_SPEAKER_AWAITING_ANSWER,
-    userRoles.ROLE_SPEAKER_AWAITING_VALIDATION,
-    userRoles.ROLE_SPEAKER,
-];
-const USERS_TAB_ROLE_FILTER = [
-    userRoles.ROLE_PRO_USER,
-    userRoles.ROLE_STUDENT,
-    userRoles.ROLE_CITIZEN,
-    userRoles.ROLE_SPEAKER_AWAITING_ANSWER,
-    userRoles.ROLE_SPEAKER_AWAITING_VALIDATION,
-    userRoles.ROLE_SPEAKER,
-];
-
-const roleFilterMap = {
-    admin: ADMIN_TAB_ROLE_FILTER,
-    speaker: SPEAKER_TAB_ROLE_FILTER,
-    user: USERS_TAB_ROLE_FILTER,
-};
-
 const UserManagement: FC = () => {
-    const { roleFilter } = useParams() as {
-        roleFilter?: string;
-    };
-    const history = useHistory();
+    const location = useLocation();
+    const UrlQueryParam = new URLSearchParams(location.search);
+    const roleParam = UrlQueryParam.get('tab');
 
+    const history = useHistory();
+    const dispatch = useDispatch();
     const [users, setUsers] = useState<UserType[]>([]);
 
+    const role = useSelector(roleFilterSelector);
     const visibleUsers = useSelector(getVisibleUsers);
+    const isFetching = useSelector(isRequestInProgress(actionTypes.FETCH_USERS_REQUEST));
+    const searchBoxValue = useSelector(searchFilterSelector);
 
     useEffect(() => {
         setUsers(visibleUsers);
     }, [visibleUsers]);
 
-    const dispatch = useDispatch();
     useEffect(() => {
         const fetchAction = usersAction.fetchUsers({
             failureAlertMsg: (
@@ -88,21 +76,13 @@ const UserManagement: FC = () => {
         dispatch(fetchAction);
     }, []);
 
-    let root_path = useLocation().pathname;
-    roleFilter && (root_path = root_path.replace(new RegExp('/' + roleFilter + '$'), ''));
+    const getURLwithQueryParam = (value) => `${location.pathname}?tab=${value}`;
 
-    const isFetching = useSelector(isRequestInProgress(actionTypes.FETCH_USERS_REQUEST));
-    const searchBoxValue = useSelector(searchFilterSelector);
-
-    if (!roleFilter) {
-        return <Redirect to={root_path + '/admin'} />;
+    if (!roleParam || !getRoles().includes(roleParam)) {
+        return <Redirect to={`${getURLwithQueryParam(role)}`} />;
     }
+    if (role !== roleParam) dispatch(usersAction.setUsersRoleFilter(roleParam));
 
-    if (!Object.keys(roleFilterMap).includes(roleFilter)) {
-        return <Redirect to="/no-match" />;
-    }
-
-    dispatch(usersAction.setUsersRoleFilter(roleFilterMap[roleFilter]));
     const tabs_desc: {
         tab_label: string;
         uri_filter: string;
@@ -114,7 +94,7 @@ const UserManagement: FC = () => {
     }[] = [
         {
             tab_label: 'Admins',
-            uri_filter: 'admin',
+            uri_filter: userRoles.ADMIN_ROLE_KEY,
             table_columns: [
                 {
                     key: 'lastname',
@@ -194,7 +174,7 @@ const UserManagement: FC = () => {
         },
         {
             tab_label: 'Intervenants',
-            uri_filter: 'speaker',
+            uri_filter: userRoles.SPEAKER_ROLE_KEY,
             table_columns: [
                 {
                     key: 'lastname',
@@ -299,7 +279,7 @@ const UserManagement: FC = () => {
         },
         {
             tab_label: 'Utilisateurs',
-            uri_filter: 'user',
+            uri_filter: userRoles.USER_ROLE_KEY,
             table_columns: [
                 {
                     key: 'lastname',
@@ -386,12 +366,11 @@ const UserManagement: FC = () => {
                                 return (
                                     <Nav.Item key={'tab_' + tab_desc.tab_label}>
                                         <Nav.Link
-                                            active={tab_desc.uri_filter === roleFilter}
-                                            onClick={() => history.push(`${root_path}/${tab_desc.uri_filter}`)}
+                                            active={tab_desc.uri_filter === role}
+                                            onClick={() => history.push(`${getURLwithQueryParam(tab_desc.uri_filter)}`)}
                                         >
                                             {tab_desc.tab_label}
                                         </Nav.Link>
-                                        {/* </CSSTransition> */}
                                     </Nav.Item>
                                 );
                             })}
@@ -407,10 +386,7 @@ const UserManagement: FC = () => {
                         <Tab.Content>
                             {tabs_desc.map((tab_desc) => {
                                 return (
-                                    <Tab.Pane
-                                        key={'pane_' + tab_desc.tab_label}
-                                        active={tab_desc.uri_filter === roleFilter}
-                                    >
+                                    <Tab.Pane key={'pane_' + tab_desc.tab_label} active={tab_desc.uri_filter === role}>
                                         <Table borderless role="table">
                                             <thead role="rowgroup">
                                                 <tr role="row">

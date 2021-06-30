@@ -8,6 +8,7 @@ import type { Alert } from './alerts/model';
 import * as fromUsers from './users/selectors';
 import * as fromAlerts from './alerts/selectors';
 import * as fromUser from './user/selectors';
+import { roleFilterMap } from './users/constants/roles';
 
 import workshops from './workshops/reducer';
 import type { WorkshopsState, Workshop, SearchFilter } from './workshops/model';
@@ -18,7 +19,7 @@ import { userAuthenticationReducer } from './user/user.authentication.reducer';
 
 import type { RootStateType } from './store';
 import type { UsersActionType } from './users/constants/actionTypes';
-import type { User, UIfiltersRoles, UIfiltersSearch } from './users/model';
+import type { User, UIfiltersRole, UIfiltersSearch } from './users/model';
 
 export const reducersList = {
     home: homeReducer,
@@ -34,7 +35,8 @@ export const rootReducer = combineReducers(reducersList);
 
 export type AppState = ReturnType<typeof rootReducer>;
 
-export const rolesFilterSelector = (state: RootStateType): UIfiltersRoles => fromUsers.rolesFilterSelector(state.users);
+export const getRoles: () => UIfiltersRole[] = () => Object.keys(roleFilterMap);
+export const roleFilterSelector = (state: RootStateType): UIfiltersRoles => fromUsers.roleFilterSelector(state.users);
 export const searchFilterSelector = (state: RootStateType): UIfiltersSearch =>
     fromUsers.searchFilterSelector(state.users);
 export const getVisibleUsers = (state: RootStateType): User[] => fromUsers.getVisibleUsers(state.users);

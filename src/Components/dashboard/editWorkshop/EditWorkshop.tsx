@@ -25,8 +25,9 @@ const topicsList = topics.map((topic) => {
         label: topic.title,
     };
 });
-
+import { useLocation } from 'react-router-dom';
 const EditWorkshop: FC = () => {
+    console.log('Location = ', useLocation());
     const dispatch = useDispatch();
     const history = useHistory();
 

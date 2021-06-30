@@ -41,7 +41,7 @@ const users = (state: User[] = [], action) => {
 
 const uiFilters = (
     state: UIfilters = {
-        roles: [],
+        role: userModel.ADMIN_ROLE_KEY,
         search: '',
     },
     action,
@@ -58,12 +58,12 @@ const uiFilters = (
             }
 
         case types.SET_USER_ROLE_FILTER:
-            if (state.roles === action.roles_filter) {
+            if (state.role === action.role_filter) {
                 return state;
             } else {
                 return {
                     ...state,
-                    roles: action.roles_filter,
+                    role: action.role_filter,
                 };
             }
         default:

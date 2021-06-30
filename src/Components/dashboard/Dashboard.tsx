@@ -1,5 +1,5 @@
-import React, { Fragment, FC, useState, useEffect } from 'react';
-import { useParams, useHistory, Redirect } from 'react-router-dom';
+import React, { Fragment, FC } from 'react';
+import { useLocation, useHistory, matchPath, Redirect, Switch, Route } from 'react-router-dom';
 import { ReactComponent as WorkShopsIcon } from '~/assets/icons/workshops_24px.svg';
 import { ReactComponent as WorkshopCreationIcon } from '~/assets/icons/add_24px.svg';
 //import { ReactComponent as QuestionsIcon } from '~/assets/icons/questions_24px.svg';
@@ -13,15 +13,11 @@ import NewWorkshop from './newWorkshop/NewWorkshop';
 import Workshops from './workshops/Workshops';
 import EditWorkshop from './editWorkshop/EditWorkshop';
 import AlertNotificationBox from './AlertNotificationBox';
+
 import './Dashboard.scss';
 
 const Dashboard: FC = () => {
-    const [selectedPageParam, setSelectedPageParam] = useState('');
-    const { selectedPage } = useParams() as {
-        selectedPage: string;
-    };
-    useEffect(() => setSelectedPageParam(selectedPage), [selectedPage]);
-
+    const location = useLocation();
     const history = useHistory();
 
     interface PageDesc {
@@ -68,7 +64,7 @@ const Dashboard: FC = () => {
             page: <UserManagement />,
         },
         {
-            href: '/dashboard/editWorkshop',
+            href: '/dashboard/editWorkshop/:id',
             page: <EditWorkshop />,
         },
         // {
@@ -94,19 +90,6 @@ const Dashboard: FC = () => {
         // },
     ];
 
-    const isSelectedPage = (page_desc: PageDesc) => page_desc.href.split('/').slice(-1)[0] === selectedPageParam;
-
-    const get_active_page = () => {
-        const active_page_desc = pages.find((page_desc) => isSelectedPage(page_desc));
-        return active_page_desc ? active_page_desc.page : null;
-    };
-
-    const activePage: JSX.Element | null = get_active_page();
-
-    if (selectedPageParam && !activePage) {
-        return <Redirect to="/no-match" />;
-    }
-
     return (
         <ErrorBoundary>
             <div id="lcdd-dashboard">
@@ -119,11 +102,14 @@ const Dashboard: FC = () => {
                                     type="radio"
                                     id={page_desc.href}
                                     value={page_desc.href}
-                                    checked={isSelectedPage(page_desc)}
-                                    onChange={(changeEvent) => {
-                                        history.push(changeEvent.target.value);
-                                        setSelectedPageParam(page_desc.href.split('/').slice(-1)[0]);
-                                    }}
+                                    checked={
+                                        !!matchPath(location.pathname, {
+                                            path: page_desc.href,
+                                            exact: true,
+                                            strict: true,
+                                        })
+                                    }
+                                    onChange={(changeEvent) => history.push(changeEvent.target.value)}
                                 />
                                 <label htmlFor={page_desc.href}>
                                     <div>
@@ -137,7 +123,16 @@ const Dashboard: FC = () => {
                 </div>
                 <div id="lcdd-dashboard-page">
                     <AlertNotificationBox />
-                    <div id="activePage">{activePage}</div>
+                    <Switch>
+                        {pages.map((page_desc) => (
+                            <Route exact strict key={page_desc.href} path={page_desc.href}>
+                                {page_desc.page}
+                            </Route>
+                        ))}
+                        <Route path="*">
+                            <Redirect to="/no-match" />;
+                        </Route>
+                    </Switch>
                 </div>
             </div>
         </ErrorBoundary>

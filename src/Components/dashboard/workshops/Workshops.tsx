@@ -10,7 +10,7 @@ import Col from 'react-bootstrap/Col';
 import Select from '~/Components/shared/form/Select';
 import SearchBox from '~/Components/shared/SearchBox/SearchBox';
 import WorkshopCard from './WorkshopCard';
-import { sortFct } from '~/state/workshops/selectors';
+import { sortOptions } from '~/state/workshops/constants/orderBy';
 
 import './Workshops.scss';
 
@@ -32,7 +32,7 @@ const Workshops: FC = () => {
 
     const getURLwithQueryParam = (value) => `${location.pathname}?orderBy=${value}`;
 
-    if (!orderByParam || !Object.keys(sortFct).includes(orderByParam)) {
+    if (!orderByParam || !sortOptions.includes(orderByParam)) {
         return <Redirect to={`${getURLwithQueryParam(orderBy)}`} />;
     }
     if (orderBy !== orderByParam) dispatch(setOrderBy(orderByParam));
@@ -52,7 +52,7 @@ const Workshops: FC = () => {
                     <p>Trier par</p>
                     <Select
                         isSearchable={true}
-                        options={Object.keys(sortFct).map((key) => ({ label: key, value: key }))}
+                        options={sortOptions.map((key) => ({ label: key, value: key }))}
                         value={{ label: orderBy, value: orderBy }}
                         onChange={(option) => history.push(`${getURLwithQueryParam(option.value)}`)}
                     ></Select>

@@ -41,7 +41,7 @@ const LcddDatePickerModal: FC<PropTypes.InferProps<typeof lcddDatePickerModalPro
         hours?: number;
         minutes?: number;
     };
-    //TODO Check why inline typedef syntax does not work
+
     const setNewDate: (newDateType) => void = ({ year, month, day, hours, minutes }) => {
         const newDate = new Date(date);
         typeof year !== 'undefined' && newDate.setFullYear(year);

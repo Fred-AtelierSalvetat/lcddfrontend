@@ -2,6 +2,7 @@ import { combineReducers } from 'redux';
 
 import * as actionType from './constants/actionTypes';
 import * as status from './constants/status';
+import { SORT_DEFAULT_VALUE } from './constants/orderBy';
 import type { Workshop, SearchFilter } from './model';
 
 const workshops = (state: Workshop[] = [], action) => {
@@ -42,8 +43,7 @@ const searchFilter = (state: SearchFilter = '', action) => {
     }
 };
 
-//TODO refactor init val
-const orderBy = (state: OrderBy = 'status', action) => {
+const orderBy = (state: OrderBy = SORT_DEFAULT_VALUE, action) => {
     switch (action.type) {
         case actionType.SET_ORDER_BY:
             return action.orderBy;

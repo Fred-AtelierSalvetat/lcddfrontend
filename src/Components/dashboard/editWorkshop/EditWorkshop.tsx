@@ -46,8 +46,7 @@ const EditWorkshop: FC = () => {
         defaultValues: workshop || defaultValues,
     });
 
-    //TODO Relocate below fcts in dedicated facilities mng
-    // OR (BETTER) update selector once backend will be ready to return option instead of value.
+    //TODO once backend will be ready: update workshop selector to return option instead of value.
     const refLegifranceMapValueToOptions: (
         listOfValues: Workshop.refLegifrance,
     ) => { value: string; label: string }[] = (listOfValues) =>
@@ -105,10 +104,10 @@ const EditWorkshop: FC = () => {
 
     //TODO REfactor scss of page
     if (!workshop) return null;
-    //workshop.status === status.INCOMING
+
     return (
         <div id="newWorkshopPage">
-            {true ? (
+            {workshop.status === status.INCOMING ? (
                 <ErrorBoundary>
                     <ConfirmDialog
                         show={showCancelDialog}

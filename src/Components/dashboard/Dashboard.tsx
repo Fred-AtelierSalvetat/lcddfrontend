@@ -12,6 +12,7 @@ import UserManagement from './usermanagement/UserManagement';
 import NewWorkshop from './newWorkshop/NewWorkshop';
 import Workshops from './workshops/Workshops';
 import EditWorkshop from './editWorkshop/EditWorkshop';
+import GoLive from './goLive/GoLive';
 import AlertNotificationBox from './AlertNotificationBox';
 
 import './Dashboard.scss';
@@ -66,6 +67,10 @@ const Dashboard: FC = () => {
         {
             href: '/dashboard/editWorkshop/:id',
             page: <EditWorkshop />,
+        },
+        {
+            href: '/dashboard/goLive/:id',
+            page: <GoLive />,
         },
         // {
         //     icon: <AnalyticsIcon />,
@@ -129,6 +134,7 @@ const Dashboard: FC = () => {
                                 {page_desc.page}
                             </Route>
                         ))}
+                        <Route exact strict path="/dashboard" />
                         <Route path="*">
                             <Redirect to="/no-match" />;
                         </Route>

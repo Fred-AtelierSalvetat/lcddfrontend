@@ -50,6 +50,6 @@ export const workshopSearchFilterSelector = (state: WorkshopsState): SearchFilte
     fromWorkshops.searchFilterSelector(state.workshops);
 export const getWorkshopById = (id: Workshop.id) => (state: RootStateType): Workshop =>
     fromWorkshops.getWorkshopById(state.workshops, id);
-export const idWorkshopStoreInialized = (state: RootStateType): boolean =>
-    fromWorkshops.idWorkshopStoreInialized(state.workshops);
+export const isWorkshopStoreInialized = (state: RootStateType): boolean =>
+    fromWorkshops.isWorkshopStoreInialized(state.workshops);
 export const getOrderBy = (state: RootStateType): Workshop.orderBy => fromWorkshops.getOrderBy(state.workshops);

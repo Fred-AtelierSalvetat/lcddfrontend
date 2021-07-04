@@ -13,7 +13,7 @@ const propTypes = {
 
 const ActionMenuPopover: FC<PropTypes.InferProps<typeof propTypes>> = ({ icon, placement, children = [] }) => {
     const popover = (
-        <Popover id="ActionMenu">
+        <Popover id="ActionMenuPopover">
             <Popover.Content>{Children.map(children, (child) => child)}</Popover.Content>
         </Popover>
     );

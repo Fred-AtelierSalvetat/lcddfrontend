@@ -3,17 +3,18 @@
 $col-spacing: 1.875rem;
 $row-input-spacing: 2rem;
 
-#newWorkshopPage {
-    .new-workshop-form {
+#workshop-form {
+    form {
         margin: 0 calc(-1 * #{$col-spacing} / 2);
-        h1 {
-            text-align: left;
-            color: var(--primary);
-            font-style: normal;
-            font-weight: 350;
-            font-size: 32px;
-            line-height: 33px;
-        }
+    }
+
+    h1 {
+        text-align: left;
+        color: var(--primary);
+        font-style: normal;
+        font-weight: 350;
+        font-size: 32px;
+        line-height: 33px;
     }
 
     label,
@@ -28,7 +29,6 @@ $row-input-spacing: 2rem;
     .select-valid__input,
     [class*='placeholder'] {
         //p police
-        font-family: Segoe UI;
         font-size: 1rem;
         font-style: normal;
         font-weight: 400;

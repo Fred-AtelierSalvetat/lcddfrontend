@@ -11,7 +11,7 @@ import WkspFormBody from '../shared/WkspFormBody';
 import { ReactComponent as ArrowBackIcon } from '~/assets/icons/arrow_back_24px.svg';
 
 import { useDispatch, useSelector } from 'react-redux';
-import { getWorkshopById, idWorkshopStoreInialized } from '~/state/reducers';
+import { getWorkshopById, isWorkshopStoreInialized } from '~/state/reducers';
 import { fetchWorkshops, updateWorkshop, cancelWorkshop } from '~/state/workshops/actions';
 import ConfirmDialog from '~/Components/shared/modals/ConfirmDialog';
 import { refLegifrance, intervenants } from '~/Components/dashboard/shared/WkspFormBody';
@@ -34,9 +34,9 @@ const EditWorkshop: FC = () => {
     const history = useHistory();
 
     const workshop = useSelector(getWorkshopById(id));
-    const needFetching = !useSelector(idWorkshopStoreInialized); //Allow direct call to page
 
-    //Covering the case of direct access to edit page
+    //Allow direct call to page
+    const needFetching = !useSelector(isWorkshopStoreInialized);
     useEffect(() => {
         if (needFetching) dispatch(fetchWorkshops);
     }, []);
@@ -106,7 +106,7 @@ const EditWorkshop: FC = () => {
     if (!workshop) return null;
 
     return (
-        <div id="newWorkshopPage">
+        <div id="editWorkshopPage">
             {workshop.status === status.INCOMING ? (
                 <ErrorBoundary>
                     <ConfirmDialog
@@ -121,46 +121,51 @@ const EditWorkshop: FC = () => {
                             history.push('/dashboard/workshops'); //TODO Add sort by status
                         }}
                     />
-                    <Form className="new-workshop-form" onSubmit={handleSubmit(onSubmit, onSubmitError)}>
-                        <h1>Modifier atelier</h1>
-                        <Form.Row>
-                            <Col>
-                                <Link to="/dashboard/workshops" className="left-floating-box">
-                                    <ArrowBackIcon />
-                                    {'Retourner aux ateliers'}
-                                </Link>
-                            </Col>
-                            <Col>
-                                <div className="right-floating-buttonbox">
-                                    <Button variant="danger" onClick={() => setShowCancelDialog(true)}>
-                                        {"Annuler l'atelier"}
-                                    </Button>
-                                    <Button type="submit" variant="primary">
-                                        {"Modifier l'atelier"}
-                                    </Button>
-                                </div>
-                            </Col>
-                        </Form.Row>
-                        <WkspFormBody {...othersFormProp} />
-                        <Form.Row>
-                            <Col>
-                                <div className="right-floating-buttonbox">
-                                    <Button
-                                        type="reset"
-                                        variant="outline-primary"
-                                        onClick={() => {
-                                            setReset(true);
-                                        }}
-                                    >
-                                        Annuler
-                                    </Button>
-                                    <Button type="submit" variant="primary">
-                                        {"Modifier l'atelier"}
-                                    </Button>
-                                </div>
-                            </Col>
-                        </Form.Row>
-                    </Form>
+                    <WkspFormBody
+                        title="Modifier atelier"
+                        headerButtonLine={
+                            <Form.Row>
+                                <Col>
+                                    <Link to="/dashboard/workshops" className="left-floating-box">
+                                        <ArrowBackIcon />
+                                        {'Retourner aux ateliers'}
+                                    </Link>
+                                </Col>
+                                <Col>
+                                    <div className="right-floating-buttonbox">
+                                        <Button variant="danger" onClick={() => setShowCancelDialog(true)}>
+                                            {"Annuler l'atelier"}
+                                        </Button>
+                                        <Button type="submit" variant="primary">
+                                            {"Modifier l'atelier"}
+                                        </Button>
+                                    </div>
+                                </Col>
+                            </Form.Row>
+                        }
+                        {...othersFormProp}
+                        footerButtonLine={
+                            <Form.Row>
+                                <Col>
+                                    <div className="right-floating-buttonbox">
+                                        <Button
+                                            type="reset"
+                                            variant="outline-primary"
+                                            onClick={() => {
+                                                setReset(true);
+                                            }}
+                                        >
+                                            Annuler
+                                        </Button>
+                                        <Button type="submit" variant="primary">
+                                            {"Modifier l'atelier"}
+                                        </Button>
+                                    </div>
+                                </Col>
+                            </Form.Row>
+                        }
+                        handleSubmit={handleSubmit(onSubmit, onSubmitError)}
+                    />
                 </ErrorBoundary>
             ) : (
                 'Not yet implemented'

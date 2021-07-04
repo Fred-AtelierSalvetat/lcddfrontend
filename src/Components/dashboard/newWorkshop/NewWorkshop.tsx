@@ -8,7 +8,6 @@ import Form from 'react-bootstrap/Form';
 import ErrorBoundary from '~/Components/shared/ErrorBoundary';
 import WkspFormBody from '../shared/WkspFormBody';
 import defaultValues from '../shared/defaultValues';
-import './NewWorkshop.scss';
 
 import { useDispatch } from 'react-redux';
 import { newWorkshop } from '~/state/workshops/actions';
@@ -23,6 +22,7 @@ const NewWorkshop: FC = () => {
     const history = useHistory();
 
     const onSubmit = (data) => {
+        console.log('Submit');
         dispatch(
             newWorkshop({
                 title: data.title,
@@ -43,9 +43,9 @@ const NewWorkshop: FC = () => {
     const onSubmitError = (errors) => console.error('onSubmitError :', errors);
 
     return (
-        <div id="newWorkshopPage">
-            <ErrorBoundary>
-                <Form className="new-workshop-form" onSubmit={handleSubmit(onSubmit, onSubmitError)}>
+        <ErrorBoundary>
+            <WkspFormBody
+                headerButtonLine={
                     <Form.Row>
                         <Col>
                             <div className="right-floating-buttonbox">
@@ -55,7 +55,9 @@ const NewWorkshop: FC = () => {
                             </div>
                         </Col>
                     </Form.Row>
-                    <WkspFormBody {...othersFormProp} />
+                }
+                {...othersFormProp}
+                footerButtonLine={
                     <Form.Row>
                         <Col>
                             <div className="right-floating-buttonbox">
@@ -74,9 +76,10 @@ const NewWorkshop: FC = () => {
                             </div>
                         </Col>
                     </Form.Row>
-                </Form>
-            </ErrorBoundary>
-        </div>
+                }
+                handleSubmit={handleSubmit(onSubmit, onSubmitError)}
+            />
+        </ErrorBoundary>
     );
 };
 

@@ -12,6 +12,7 @@ import { ReactComponent as MoreVertIcon } from '~/assets/icons/more_vert_24px.sv
 import { ReactComponent as DeleteForeverIcon } from '~/assets/icons/delete_forever_16px.svg';
 import { ReactComponent as CancelIcon } from '~/assets/icons/cancel_24px.svg';
 import { ReactComponent as BackupRestoreIcon } from '~/assets/icons/settings_backup_restore_24px.svg';
+import { ReactComponent as VideoCamIcon } from '~/assets/icons/videocam_24px.svg';
 
 import ActionMenuPopover from '~/Components/shared/actionMenuPopover/ActionMenuPopover';
 import Action from '~/Components/shared/actionMenuPopover/Action';
@@ -40,7 +41,6 @@ const WorkshopCard: FC<PropTypes.InferProps<typeof propTypes>> = ({
     const dispatch = useDispatch();
     const history = useHistory();
 
-    console.log('description =', description);
     return (
         <Card className="card">
             <div className="image-container">
@@ -64,21 +64,28 @@ const WorkshopCard: FC<PropTypes.InferProps<typeof propTypes>> = ({
                                 placement="bottom-end"
                             >
                                 {status === statusConst.INCOMING && (
-                                    <Action
-                                        icon={<CancelIcon />}
-                                        label="Annuler"
-                                        modalConfirmation={
-                                            <ConfirmDialog
-                                                show={true}
-                                                title="Annuler cet atelier"
-                                                body="Cette action n’est pas réversible."
-                                                cancelButton="Annuler"
-                                                okButton="Annuler l'atelier"
-                                                handleClose={() => {}}
-                                                handleConfirm={() => dispatch(action.cancelWorkshop(id))}
-                                            />
-                                        }
-                                    />
+                                    <>
+                                        <Action
+                                            icon={<CancelIcon />}
+                                            label="Annuler"
+                                            modalConfirmation={
+                                                <ConfirmDialog
+                                                    show={true}
+                                                    title="Annuler cet atelier"
+                                                    body="Cette action n’est pas réversible."
+                                                    cancelButton="Annuler"
+                                                    okButton="Annuler l'atelier"
+                                                    handleClose={() => {}}
+                                                    handleConfirm={() => dispatch(action.cancelWorkshop(id))}
+                                                />
+                                            }
+                                        />
+                                        <Action
+                                            icon={<VideoCamIcon />}
+                                            label="GO LIVE"
+                                            action={() => history.push(`/dashboard/goLive/${id}`)}
+                                        />
+                                    </>
                                 )}
                                 {status === statusConst.PUBLISHED && (
                                     <Action
@@ -119,7 +126,7 @@ const WorkshopCard: FC<PropTypes.InferProps<typeof propTypes>> = ({
                     <EditIcon
                         className="editIcon"
                         onClick={() => {
-                            history.push(`/dashboard/editWorkshop/${id}`); //TODO FIX THIS DAMNED THING
+                            history.push(`/dashboard/editWorkshop/${id}`);
                         }}
                     />
                     {status === statusConst.INCOMING ? (

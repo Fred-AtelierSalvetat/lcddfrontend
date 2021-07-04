@@ -98,3 +98,13 @@ export const restoreWorkshop = (id: Workshop.id): { type: typeof action.RESTORE_
     type: action.RESTORE_WORKSHOP,
     id,
 });
+
+export const goLive = (id: Workshop.id): { type: typeof action.GO_LIVE_WORKSHOP; id: Workshop.id } => ({
+    type: action.GO_LIVE_WORKSHOP,
+    id,
+});
+
+export const endLive = (id: Workshop.id): { type: typeof action.END_LIVE_WORKSHOP; id: Workshop.id } => ({
+    type: action.END_LIVE_WORKSHOP,
+    id,
+});

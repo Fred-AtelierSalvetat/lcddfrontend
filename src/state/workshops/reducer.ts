@@ -17,6 +17,14 @@ const workshops = (state: Workshop[] = [], action) => {
         case actionType.CANCEL_WORKSHOP:
         case actionType.DELETE_WORKSHOP:
             return state.filter((workshop) => workshop.id !== action.id);
+        case actionType.GO_LIVE_WORKSHOP:
+            return state.map((workshop) =>
+                workshop.id !== action.id ? workshop : { ...workshop, status: status.LIVE },
+            );
+        case actionType.END_LIVE_WORKSHOP:
+            return state.map((workshop) =>
+                workshop.id !== action.id ? workshop : { ...workshop, status: status.UNPUBLISHED },
+            );
         case actionType.ARCHIVE_WORKSHOP:
             return state.map((workshop) =>
                 workshop.id !== action.id ? workshop : { ...workshop, status: status.ARCHIVED },
@@ -25,10 +33,6 @@ const workshops = (state: Workshop[] = [], action) => {
             return state.map((workshop) =>
                 workshop.id !== action.id ? workshop : { ...workshop, status: status.PUBLISHED },
             );
-
-        // GO_LIVE_WORKSHOP
-        // END_LIVE_WORKSHOP
-
         default:
             return state;
     }

@@ -6,7 +6,7 @@ const allWorkshopsSelector = (state: WorkshopsState): Workshop[] => state.worksh
 export const searchFilterSelector = (state: WorkshopsState): SearchFilter => state.searchFilter;
 export const getWorkshopById = (state: WorkshopsState, id: Workshop.id): Workshop =>
     state.workshops.filter((workshop) => workshop.id === id)[0];
-export const idWorkshopStoreInialized = (state: WorkshopsState): boolean => !!state.workshops.length;
+export const isWorkshopStoreInialized = (state: WorkshopsState): boolean => !!state.workshops.length;
 export const getOrderBy = (state: WorkshopsState): OrderBy => state.orderBy;
 
 export const getWorkshops = createSelector(

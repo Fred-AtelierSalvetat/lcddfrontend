@@ -2,7 +2,7 @@ import { ThunkAction } from 'redux-thunk';
 import { LcddActions } from '../state/actions';
 import { AppState } from '../state/reducers';
 import { speakersRequested, speakersReceived } from '../state/speaker/speaker.action';
-import { Speakers } from '../state/speaker/speaker.model';
+import { Speakers, Speaker } from '../state/speaker/speaker.model';
 
 export const fetchSpeakers = (): ThunkAction<void, AppState, unknown, LcddActions> => async (dispatch) => {
     dispatch(speakersRequested());
@@ -39,3 +39,11 @@ export const fakeData: Speakers = [
         description: 'Président Fondateur de La Chaine du Droit',
     },
 ];
+
+export function findSpeakerById(id: Speaker.id): Speaker | undefined {
+    const speaker = fakeData.find((speaker) => speaker.id === id);
+    if (speaker !== undefined) {
+        return speaker;
+    }
+    return undefined;
+}

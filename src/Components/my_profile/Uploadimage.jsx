@@ -11,7 +11,6 @@ class Uploadimage extends React.Component {
 
     _handleSubmit(e: React.SyntheticEvent): void {
         e.preventDefault();
-        // TODO: do something with -> this.state.file
         console.log('handle uploading-', this.state.file);
     }
 

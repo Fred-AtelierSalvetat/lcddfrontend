@@ -16,7 +16,7 @@ const linksPropTypes = {
     setValue: PropTypes.func.isRequired,
 };
 
-const Links: FC<PropTypes.InferProps<typeof linksPropTypes>> = ({ value, setValue }) => {
+const Links: FC<PropTypes.InferProps<typeof linksPropTypes>> = ({ value = [], setValue }) => {
     const [inputLinkURL, setInputLinkURL] = useState('');
     const [inputLinkTitle, setInputLinkTitle] = useState('');
     const refUrlInput = useRef<HTMLInputElement>(null);
@@ -86,25 +86,26 @@ const Links: FC<PropTypes.InferProps<typeof linksPropTypes>> = ({ value, setValu
             </Button>
 
             <div className="list">
-                {value.map(
-                    (link) =>
-                        link && (
-                            <div key={link.title + link.url} className="item flex-shrink-1">
-                                <div className="no-margin flex-shrink-1">
-                                    <div className="flex-shrink-1 wrap-anywhere">{link.title}</div>
-                                    <a
-                                        className="flex-shrink-1 wrap-anywhere"
-                                        href={link.url}
-                                        target="_blank"
-                                        rel="noreferrer"
-                                    >
-                                        {link.url}
-                                    </a>
+                {!!value &&
+                    value.map(
+                        (link) =>
+                            link && (
+                                <div key={link.title + link.url} className="item flex-shrink-1">
+                                    <div className="no-margin flex-shrink-1">
+                                        <div className="flex-shrink-1 wrap-anywhere">{link.title}</div>
+                                        <a
+                                            className="flex-shrink-1 wrap-anywhere"
+                                            href={link.url}
+                                            target="_blank"
+                                            rel="noreferrer"
+                                        >
+                                            {link.url}
+                                        </a>
+                                    </div>
+                                    <DeleteIcon className="action-icon" onClick={() => deleteLink(link)} />
                                 </div>
-                                <DeleteIcon className="action-icon" onClick={() => deleteLink(link)} />
-                            </div>
-                        ),
-                )}
+                            ),
+                    )}
             </div>
         </>
     );

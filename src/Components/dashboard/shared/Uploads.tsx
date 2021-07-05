@@ -15,7 +15,7 @@ const uploadsPropTypes = {
     setValue: PropTypes.func.isRequired,
 };
 
-const Uploads: FC<PropTypes.InferProps<typeof uploadsPropTypes>> = ({ value, setValue }) => {
+const Uploads: FC<PropTypes.InferProps<typeof uploadsPropTypes>> = ({ value = [], setValue }) => {
     const onDrop = (acceptedFiles) => {
         setValue([...value, ...acceptedFiles]);
     };
@@ -38,18 +38,19 @@ const Uploads: FC<PropTypes.InferProps<typeof uploadsPropTypes>> = ({ value, set
             </Col>
             <Col xs={8} sm={6}>
                 <div className="list">
-                    {value.map(
-                        (file) =>
-                            file && (
-                                <div key={file.name} className="item">
-                                    <div className="upload-item-header flex-shrink-1">
-                                        <FileIcon />
-                                        <div className="flex-shrink-1 wrap-anywhere">{file.name}</div>
+                    {!!value &&
+                        value.map(
+                            (file) =>
+                                file && (
+                                    <div key={file.name} className="item">
+                                        <div className="upload-item-header flex-shrink-1">
+                                            <FileIcon />
+                                            <div className="flex-shrink-1 wrap-anywhere">{file.name}</div>
+                                        </div>
+                                        <DeleteIcon className="action-icon" onClick={() => deleteUpload(file)} />
                                     </div>
-                                    <DeleteIcon className="action-icon" onClick={() => deleteUpload(file)} />
-                                </div>
-                            ),
-                    )}
+                                ),
+                        )}
                 </div>
             </Col>
         </Form.Row>

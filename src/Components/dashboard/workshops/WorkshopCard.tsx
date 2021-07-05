@@ -1,5 +1,6 @@
 import React, { FC } from 'react';
 import { useDispatch } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 import Card from 'react-bootstrap/Card';
 import className from 'classnames';
 import PropTypes from 'prop-types';
@@ -11,6 +12,7 @@ import { ReactComponent as MoreVertIcon } from '~/assets/icons/more_vert_24px.sv
 import { ReactComponent as DeleteForeverIcon } from '~/assets/icons/delete_forever_16px.svg';
 import { ReactComponent as CancelIcon } from '~/assets/icons/cancel_24px.svg';
 import { ReactComponent as BackupRestoreIcon } from '~/assets/icons/settings_backup_restore_24px.svg';
+import { ReactComponent as VideoCamIcon } from '~/assets/icons/videocam_24px.svg';
 
 import ActionMenuPopover from '~/Components/shared/actionMenuPopover/ActionMenuPopover';
 import Action from '~/Components/shared/actionMenuPopover/Action';
@@ -28,7 +30,7 @@ const propTypes = {
         title: PropTypes.string.isRequired,
         startingdate: PropTypes.object.isRequired,
         //duration: PropTypes.object,
-        topics: PropTypes.arrayOf(PropTypes.object).isRequired,
+        topics: PropTypes.arrayOf(PropTypes.string).isRequired,
         description: PropTypes.string.isRequired,
     }),
 };
@@ -37,6 +39,7 @@ const WorkshopCard: FC<PropTypes.InferProps<typeof propTypes>> = ({
     workshop: { id, status, thumbnail, title, startingdate, topics, description },
 }) => {
     const dispatch = useDispatch();
+    const history = useHistory();
 
     return (
         <Card className="card">
@@ -61,21 +64,28 @@ const WorkshopCard: FC<PropTypes.InferProps<typeof propTypes>> = ({
                                 placement="bottom-end"
                             >
                                 {status === statusConst.INCOMING && (
-                                    <Action
-                                        icon={<CancelIcon />}
-                                        label="Annuler"
-                                        modalConfirmation={
-                                            <ConfirmDialog
-                                                show={true}
-                                                title="Annuler cet atelier"
-                                                body="Cette action n’est pas réversible."
-                                                cancelButton="Annuler"
-                                                okButton="Annuler l'atelier"
-                                                handleClose={() => {}}
-                                                handleConfirm={() => dispatch(action.cancelWorkshop(id))}
-                                            />
-                                        }
-                                    />
+                                    <>
+                                        <Action
+                                            icon={<CancelIcon />}
+                                            label="Annuler"
+                                            modalConfirmation={
+                                                <ConfirmDialog
+                                                    show={true}
+                                                    title="Annuler cet atelier"
+                                                    body="Cette action n’est pas réversible."
+                                                    cancelButton="Annuler"
+                                                    okButton="Annuler l'atelier"
+                                                    handleClose={() => {}}
+                                                    handleConfirm={() => dispatch(action.cancelWorkshop(id))}
+                                                />
+                                            }
+                                        />
+                                        <Action
+                                            icon={<VideoCamIcon />}
+                                            label="GO LIVE"
+                                            action={() => history.push(`/dashboard/goLive/${id}`)}
+                                        />
+                                    </>
                                 )}
                                 {status === statusConst.PUBLISHED && (
                                     <Action
@@ -113,7 +123,12 @@ const WorkshopCard: FC<PropTypes.InferProps<typeof propTypes>> = ({
                             </ActionMenuPopover>
                         </div>
                     )}
-                    <EditIcon className="editIcon" />
+                    <EditIcon
+                        className="editIcon"
+                        onClick={() => {
+                            history.push(`/dashboard/editWorkshop/${id}`);
+                        }}
+                    />
                     {status === statusConst.INCOMING ? (
                         <div className="startingdate">{format(startingdate, 'd MMMM yyyy HH:mm', { locale: fr })}</div>
                     ) : (

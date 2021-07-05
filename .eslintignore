@@ -1,8 +1,0 @@
-src/state/speaker/speaker.action.ts
-src/state/user/user.actions.ts
-src/state/user/user.authentication.reducer.ts
-src/state/speaker/speaker.action.ts
-src/state/user/user.actions.ts
-src/state/user/user.authentication.reducer.ts
-src/state/user/user.registation.reducer.ts
-src/state/users/constants/utils/CognitoUser.tsx

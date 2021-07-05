@@ -19,9 +19,7 @@ const datePickerPropsTypes = {
     isInvalid: PropTypes.bool.isRequired,
     onChange: PropTypes.func.isRequired,
     onBlur: PropTypes.func.isRequired,
-    value: PropTypes.string.isRequired,
-    ref: PropTypes.oneOfType([PropTypes.func, PropTypes.shape({ current: PropTypes.instanceOf(HTMLInputElement) })])
-        .isRequired,
+    value: PropTypes.string,
 };
 
 const DatePicker: FC<PropTypes.InferProps<typeof datePickerPropsTypes>> = ({
@@ -31,7 +29,6 @@ const DatePicker: FC<PropTypes.InferProps<typeof datePickerPropsTypes>> = ({
     onChange,
     onBlur,
     value,
-    ref,
 }) => {
     const DatePickerCustomInput = (props: HTMLProps<HTMLInputElement>, ref: Ref<HTMLInputElement>) => (
         <div className={`datepicker-custom-input-container ${props.className}`}>
@@ -42,12 +39,8 @@ const DatePicker: FC<PropTypes.InferProps<typeof datePickerPropsTypes>> = ({
                 id="datepicker-custom-input"
                 type="text"
             />
-            <CalendarIcon
-            // TODO
-            // onClick={() => {
-            //     ref && ref.current && ref.current.click();
-            // }}
-            />
+            <CalendarIcon />
+            {/* //TODO Enhancement focus on date field and open popup on click */}
         </div>
     );
 
@@ -55,7 +48,6 @@ const DatePicker: FC<PropTypes.InferProps<typeof datePickerPropsTypes>> = ({
         <ReactDatePicker
             onChange={onChange}
             onBlur={onBlur}
-            ref={ref}
             wrapperClassName={`form-control ${isInvalid ? 'is-invalid' : ''}`}
             className={`${isInvalid ? 'is-invalid' : ''}`}
             selected={value}

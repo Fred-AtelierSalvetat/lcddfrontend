@@ -21,7 +21,7 @@ Card.propTypes = cardPropTypes;
 
 const cardImagePropTypes = {
     className: PropTypes.string.isRequired,
-    src: PropTypes.string.isRequired,
+    src: PropTypes.object.isRequired,
     alt: PropTypes.string.isRequired,
 };
 const CardImage: FC<PropTypes.InferProps<typeof cardImagePropTypes>> = ({ className, src, alt }) => (

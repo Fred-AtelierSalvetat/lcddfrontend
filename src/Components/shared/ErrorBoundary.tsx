@@ -10,7 +10,6 @@ class ErrorBoundary extends Component<propsType, stateType> {
         this.state = { hasError: false };
     }
 
-    //TODOOFSA Check behavior without Error, bad signature...
     static getDerivedStateFromError(/*_: Error*/): stateType {
         return { hasError: true };
     }

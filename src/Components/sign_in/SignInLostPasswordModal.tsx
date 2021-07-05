@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import { useForm } from 'react-hook-form';
 import { Button, Form } from 'react-bootstrap';
-import { Validator } from '~/util/validator';
+import { validator } from '~/util/validator';
 import { FormFeedback } from '../shared/form/FormFeedBack';
 import OverlayModal from '../shared/modals/OverlayModal';
 
@@ -43,7 +43,7 @@ const SignInLostPasswordModal: FC<PropTypes.InferProps<typeof propTypes>> = ({
                             autoFocus
                             type="text"
                             name="email"
-                            ref={register(Validator.email)}
+                            ref={register(validator.email)}
                             isInvalid={errors.email}
                             placeholder="Adresse e-mail"
                         />

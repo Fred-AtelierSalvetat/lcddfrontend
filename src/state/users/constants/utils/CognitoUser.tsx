@@ -7,7 +7,16 @@ export type CognitoUser = {
     sub: string;
 };
 
-export const getUserFromCognitoUser = (cognitoUser: CognitoUser) => {
+export type CurrentUser = {
+    userId: UserId;
+    email: string;
+    emailVerified: string;
+    lastName: string;
+    firstName: string;
+    city: string;
+};
+
+export const getUserFromCognitoUser: (cognitoUser: CognitoUser) => CurrentUser = (cognitoUser) => {
     const user = {
         userId: cognitoUser.sub,
         email: cognitoUser.email,

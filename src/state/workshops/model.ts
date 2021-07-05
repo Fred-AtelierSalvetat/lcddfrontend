@@ -1,10 +1,10 @@
 import type { WorkshopStatusType } from './constants/status.ts';
 
-export type Speaker = string; //TODO
+export type Speaker = string;
 
-export type Topic = string; //TODO
+export type Topic = string;
 
-export type RefLegiFrance = string; //TODO
+export type RefLegiFrance = string;
 
 export type File = {
     name: string;
@@ -24,12 +24,13 @@ export type Status = {
 export type KeyWord = string;
 
 export type SearchFilter = string;
+export type OrderBy = string;
 
 export type Workshop = {
     id: string;
     status: Status;
-    thumbnail: string; //TODO
-    video: string; //TODO
+    thumbnail: string;
+    video: string;
     title: string;
     startingdate: date;
     endingdate: date;
@@ -45,4 +46,5 @@ export type Workshop = {
 export type WorkshopsState = {
     workshops: Workshop[];
     searchFilter: SearchFilter;
+    orderBy: OrderBy;
 };

@@ -6,7 +6,7 @@ import Icon5 from '~/assets/home/a.png';
 import Concept from '~/assets/home/question.jpg';
 import { Button, Form } from 'react-bootstrap';
 import { useForm } from 'react-hook-form';
-import { Validator } from '../../util/validator';
+import { validator } from '../../util/validator';
 
 import PropTypes from 'prop-types';
 
@@ -264,7 +264,7 @@ const DevenirintervenantComponent: FC = () => {
                                                     type="email"
                                                     name="email"
                                                     placeholder="Entrer votre adresse e-mail"
-                                                    ref={register(Validator.email)}
+                                                    ref={register(validator.email)}
                                                     isInvalid={!!errors.email}
                                                     tabIndex={1}
                                                 />
@@ -283,7 +283,7 @@ const DevenirintervenantComponent: FC = () => {
                                                         type="text"
                                                         name="phone_number"
                                                         placeholder="Entrer votre numéro de téléphone"
-                                                        ref={register(Validator.phone_number)}
+                                                        ref={register(validator.phone_number)}
                                                         isInvalid={errors.phone_number}
                                                         tabIndex={1}
                                                     />

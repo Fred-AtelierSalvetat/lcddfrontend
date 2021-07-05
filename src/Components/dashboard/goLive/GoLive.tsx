@@ -41,7 +41,8 @@ const GoLive: FC = () => {
                 </Button>
             ),
             [status.UNPUBLISHED]: (
-                <Link to="TODO">
+                //TODO Update url once implemented
+                <Link to="/dashboard/workshops">
                     Publier atelier
                     <ArrowBackIcon />
                 </Link>
@@ -112,26 +113,36 @@ const GoLive: FC = () => {
                     </div>
                 </Row>
                 <Row>
-                    <Col md={6}>
-                        <p>video frame</p>
+                    <Col xs={12} lg={8}>
+                        <div className="videoFrameContainer">
+                            <div className="videoFrame" />
+                        </div>
                     </Col>
-                    <Col md={6}>
-                        <p>chat frame</p>
+                    <Col xs={12} lg={4}>
+                        <div className="chatFrame" />
                     </Col>
                 </Row>
                 <Row>
-                    <Col md={8}>
-                        <p>A propos</p>
+                    <Col lg={8} xs={12}>
+                        <h3>A propos</h3>
+                        <div className="aboutBox">
+                            <div className="desc">
+                                <p>{workshop.description}</p>
+                                <p className="topics">{workshop.topics.join(', ')}</p>
+                            </div>
+                            <div className="speakers">
+                                {workshop.speakers.map((speaker) => (
+                                    <p key={speaker}>{speaker}</p>
+                                ))}
+                            </div>
+                        </div>
                     </Col>
-                    <Col md={4}>
-                        <p>{'Telechargements & Liens'}</p>
-                    </Col>
-                    <Col md={4}>{workshop.description}</Col>
-                    <Col md={4}>{workshop.speakers}</Col>
-
-                    <Col md={4}>
-                        <p>Files list + download icon</p>
-                        <p>Link list + link</p>
+                    <Col lg={4} xs={12}>
+                        <h3>{'Téléchargements & liens'}</h3>
+                        <div className="linksBox">
+                            <p>Files list + download icon</p>
+                            <p>Link list + link</p>
+                        </div>
                     </Col>
                 </Row>
             </Container>

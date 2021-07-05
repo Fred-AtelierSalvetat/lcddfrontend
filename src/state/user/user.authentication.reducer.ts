@@ -5,7 +5,10 @@ export type AuthenticationState = {
     user?: string;
 };
 
-export const userAuthenticationReducer = (state: AuthenticationState = {}, action) => {
+export const userAuthenticationReducer: (state: AuthenticationState, action) => AuthenticationState = (
+    state = {},
+    action,
+) => {
     switch (action.type) {
         case userActionTypes.GET_CURRENT_USER_REQUEST: {
             return { loggingIn: true };

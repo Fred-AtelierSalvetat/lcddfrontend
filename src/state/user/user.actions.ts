@@ -1,5 +1,6 @@
 import { userServices } from '~/services/user.services';
 import { userActionTypes } from './constants/UserActionType';
+import type { User } from './Components/sign_up/user-reducers';
 
 export const userActions = {
     register,
@@ -8,8 +9,8 @@ export const userActions = {
     logout,
 };
 
-function login(username, password) {
-    return (dispatch, getState) => {
+function login(username: string, password: string): void {
+    return (dispatch) => {
         dispatch(request({ username }));
         userServices.login(username, password).then(
             (response) => {
@@ -42,7 +43,7 @@ function login(username, password) {
     }
 }
 
-function register(user) {
+function register(user: User): void {
     return (dispatch) => {
         dispatch(request(user));
 
@@ -70,12 +71,12 @@ function register(user) {
     }
 }
 
-function logout() {
+function logout(): { type: typeof userActionTypes.LOGOUT_USER_REQUEST } {
     userServices.logout();
     return { type: userActionTypes.LOGOUT_USER_REQUEST };
 }
 
-function confirmRegister(username, code) {
+function confirmRegister(username: string, code: string): void {
     return (dispatch) => {
         dispatch(request({ username }));
 

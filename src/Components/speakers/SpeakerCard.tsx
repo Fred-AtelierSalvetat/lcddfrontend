@@ -71,7 +71,7 @@ const SpeakerCard: FC<PropTypes.InferProps<typeof propTypes>> = ({
                                                 body="Cette action n’est pas réversible."
                                                 cancelButton="Annuler"
                                                 okButton="Annuler l'atelier"
-                                                handleClose={() => { }}
+                                                handleClose={() => {}}
                                                 handleConfirm={() => dispatch(action.cancelWorkshop(id))}
                                             />
                                         }
@@ -94,22 +94,22 @@ const SpeakerCard: FC<PropTypes.InferProps<typeof propTypes>> = ({
                                 {[statusConst.PUBLISHED, statusConst.UNPUBLISHED, statusConst.ARCHIVED].includes(
                                     status,
                                 ) && (
-                                        <Action
-                                            icon={<DeleteForeverIcon />}
-                                            label="Supprimer"
-                                            modalConfirmation={
-                                                <ConfirmDialog
-                                                    show={true}
-                                                    title="Supprimer cet atelier et toutes les videos associées"
-                                                    body="Cette action n’est pas réversible."
-                                                    cancelButton="Annuler"
-                                                    okButton="Supprimer"
-                                                    handleClose={() => { }}
-                                                    handleConfirm={() => dispatch(action.deleteWorkshop(id))}
-                                                />
-                                            }
-                                        />
-                                    )}
+                                    <Action
+                                        icon={<DeleteForeverIcon />}
+                                        label="Supprimer"
+                                        modalConfirmation={
+                                            <ConfirmDialog
+                                                show={true}
+                                                title="Supprimer cet atelier et toutes les videos associées"
+                                                body="Cette action n’est pas réversible."
+                                                cancelButton="Annuler"
+                                                okButton="Supprimer"
+                                                handleClose={() => {}}
+                                                handleConfirm={() => dispatch(action.deleteWorkshop(id))}
+                                            />
+                                        }
+                                    />
+                                )}
                             </ActionMenuPopover>
                         </div>
                     )}
@@ -117,8 +117,8 @@ const SpeakerCard: FC<PropTypes.InferProps<typeof propTypes>> = ({
                     {status === statusConst.INCOMING ? (
                         <div className="startingdate">{format(startingdate, 'd MMMM yyyy HH:mm', { locale: fr })}</div>
                     ) : (
-                            <div className="duration">14:00:45</div> //TODO duration
-                        )}
+                        <div className="duration">14:00:45</div> //TODO duration
+                    )}
                 </Card.ImgOverlay>
             </div>
 

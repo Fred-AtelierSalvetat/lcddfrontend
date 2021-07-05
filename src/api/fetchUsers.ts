@@ -266,6 +266,17 @@ export let fakeDatabase: User[] = [
         status: userStatus.ACTIVE,
         role: userModel.ROLE_SPEAKER_AWAITING_ANSWER,
     },
+    {
+        user_id: 38,
+        firstname: 'MAY',
+        lastname: 'MAY',
+        phone: '987654321',
+        email_pro: '',
+        email: 'mthuaung@groupeastek.fr',
+        town: 'Antibes',
+        status: userStatus.ACTIVE,
+        role: userModel.ROLE_SPEAKER_AWAITING_ANSWER,
+    },
 ];
 const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 

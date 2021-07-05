@@ -2,7 +2,7 @@ const NAME_PATTERN = /^[A-Za-zÀ-ÖØ-öø-ÿ\s]+(?:(\s|\.|-|\.\s)[A-Za-zÀ-ÖØ
 const EMAIL_PATTERN = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i;
 // const PASSWORD_PATTERN = /^(?=.*[0-9])(?=.*[!#$%&'()*+,-./:;<=>?@[\]^_`{|}~"])(?=.*[A-Z])(?=.*[a-z]).{8,}$/;
 // const PASSWORD_PATTERN_ONE_NUMBER = /^(?=.*[0-9])$/;
-const PHONE_NUMBER_PATTERN = /^[0-9]*$/;
+const PHONE_NUMBER_PATTERN = /^\d{9}$/;
 
 export const validator = {
     firstName: {
@@ -75,7 +75,7 @@ export const validator = {
     phone_number: {
         required: {
             value: true,
-            message: 'Numéro de téléphone',
+            message: 'Entrer le numéro de téléphone',
         },
         pattern: {
             value: PHONE_NUMBER_PATTERN,
@@ -114,6 +114,28 @@ export const validator = {
         required: {
             value: true,
             message: 'Le mot de passe est requis',
+        },
+    },
+    city: {
+        required: {
+            value: true,
+            message: 'Ville est requis',
+        },
+    },
+    metiers: {
+        required: {
+            value: true,
+            message: 'Le metier est requis',
+        },
+    },
+    bio: {
+        required: {
+            value: true,
+            message: 'La biographie est requis',
+        },
+        maxLength: {
+            value: 200,
+            message: 'Le message ne doit pas dépasser 200 caractères',
         },
     },
     workshopTitle: {

@@ -12,7 +12,6 @@ const workshops = (state: Workshop[] = [], action) => {
         case actionType.CREATE_WORKSHOP:
             return [...state, action.workshop];
         case actionType.UPDATE_WORKSHOP:
-            console.log('UPDATE_WORKSHOP =', action.workshop);
             return state.map((workshop) => (workshop.id !== action.workshop.id ? workshop : action.workshop));
         case actionType.CANCEL_WORKSHOP:
         case actionType.DELETE_WORKSHOP:

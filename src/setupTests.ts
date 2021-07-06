@@ -1,5 +1,6 @@
 import Adapter from 'enzyme-adapter-react-16';
 import chai from 'chai';
+import chaiExclude from 'chai-exclude';
 import { configure as configureEnzyme } from 'enzyme';
 import createChaiEnzyme from 'chai-enzyme';
 import createChaiJestDiff from 'chai-jest-diff';
@@ -9,7 +10,12 @@ import sinonChai from 'sinon-chai';
 import enzymeToJSON from 'enzyme-to-json/serializer';
 import '@testing-library/jest-dom';
 
-chai.use(dirtyChai).use(createChaiJestDiff()).use(chaiJestSnapshot).use(createChaiEnzyme()).use(sinonChai);
+chai.use(chaiExclude)
+    .use(dirtyChai)
+    .use(createChaiJestDiff())
+    .use(chaiJestSnapshot)
+    .use(createChaiEnzyme())
+    .use(sinonChai);
 
 expect.addSnapshotSerializer(enzymeToJSON);
 

@@ -23,7 +23,7 @@ describe('<NewWorkshop /> ', () => {
 
     it.todo('should contain a field "Références Légifrance"');
     it.todo('\'s field "Références Légifrance" should be a multiselect field');
-    q;
+
     it.todo('\'s field "Références Légifrance" should not be mandatory');
 
     it.todo('should contain a field "Description"');

@@ -93,6 +93,7 @@ const CardTextStyled = styled(CardText)`
 const interestCardPropTypes = {
     src: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
+    readOnly: PropTypes.bool,
 };
 const InterestCard: FC<PropTypes.InferProps<typeof interestCardPropTypes>> = (props) => {
     const [selected, setSelected] = useState(false);
@@ -107,8 +108,12 @@ const InterestCard: FC<PropTypes.InferProps<typeof interestCardPropTypes>> = (pr
     };
 
     const handleClick = () => {
-        if (selected) setSelected(false);
-        else setSelected(true);
+        if (props.readOnly) {
+            return;
+        } else {
+            if (selected) setSelected(false);
+            else setSelected(true);
+        }
     };
 
     const handleOnKeyDown = (e) => {

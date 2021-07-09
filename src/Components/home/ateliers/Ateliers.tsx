@@ -1,14 +1,19 @@
-import React, { FC } from 'react';
+import React, { FC, useEffect } from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
 import Icon1 from '~/assets/home/atelier/1.svg';
 import Icon2 from '~/assets/home/atelier/2.svg';
 import Icon3 from '~/assets/home/atelier/3.svg';
 import Icon4 from '~/assets/home/atelier/4.svg';
 import './Ateliers.css';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 const AteliersComponent: FC = () => {
+    useEffect(() => {
+        AOS.init({ duration: 1000 });
+    }, []);
     return (
-        <div className="container-atelier">
+        <div data-aos="slide-up" className="container-atelier">
             <div className="row">
                 <div className="col-6 background-transparency-atelier">
                     <div style={{ marginBottom: '50px' }}>
@@ -16,7 +21,7 @@ const AteliersComponent: FC = () => {
                             <Col xs="6" className="display-4 mt-4" style={{ color: '#F2F2F2' }}>
                                 Les Ateliers
                             </Col>
-                            <Col xs="3" className="mt-5 ml-5">
+                            <Col xs="3" className="mt-5 ml-5" style={{ textDecoration: 'underline' }}>
                                 <a href="/" className="link">
                                     Voir plus
                                 </a>

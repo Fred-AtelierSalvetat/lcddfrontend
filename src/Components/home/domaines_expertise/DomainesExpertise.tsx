@@ -1,11 +1,16 @@
-import React, { FC } from 'react';
+import React, { FC, useEffect } from 'react';
 import thematiques from '../../shared/thematiques';
 import InterestCard from '../../shared/cards/InterestCard';
 import './DomainesExpertise.css';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 const DomainesExpertiseComponent: FC = () => {
+    useEffect(() => {
+        AOS.init({ duration: 1000 });
+    }, []);
     return (
-        <div>
+        <div data-aos="slide-up">
             <div>
                 <div className="display-4 mb-2" style={{ color: '#113F59', textAlign: 'center' }}>
                     {"Nos domaines d'expertise"}
@@ -22,7 +27,7 @@ const DomainesExpertiseComponent: FC = () => {
                 style={{ justifyContent: 'center' }}
             >
                 {thematiques.map((thematique) => (
-                    <InterestCard key={thematique.id} src={thematique.src} title={thematique.title} />
+                    <InterestCard key={thematique.id} src={thematique.src} title={thematique.title} readOnly />
                 ))}
             </div>
         </div>

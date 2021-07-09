@@ -1,14 +1,19 @@
-import React, { FC } from 'react';
+import React, { FC, useEffect } from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
 import Icon1 from '~/assets/home/question/1.svg';
 import Icon2 from '~/assets/home/question/2.svg';
 import Icon3 from '~/assets/home/question/3.svg';
 import Icon4 from '~/assets/home/question/4.svg';
 import './VosQuestions.css';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 const VosQuestionsComponent: FC = () => {
+    useEffect(() => {
+        AOS.init({ duration: 1000 });
+    }, []);
     return (
-        <div className="container-question">
+        <div data-aos="slide-up" className="container-question">
             <div className="row">
                 <div className="col-6"></div>
                 <div className="col-6 background-transparency-question">
@@ -17,7 +22,7 @@ const VosQuestionsComponent: FC = () => {
                             <Col xs="6" className="display-4 mt-4" style={{ color: '#113F59' }}>
                                 Vos questions
                             </Col>
-                            <Col xs="3" className="mt-5 ml-5">
+                            <Col xs="3" className="mt-5 ml-5" style={{ textDecoration: 'underline' }}>
                                 <a href="/" className="link">
                                     Voir plus
                                 </a>

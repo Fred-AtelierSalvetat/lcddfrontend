@@ -4,6 +4,8 @@ import { useSelector, useDispatch } from 'react-redux';
 import { AppState } from '../../../state/reducers';
 import { fetchSpeakers } from '../../../api/fetchSperkers';
 import './Intervenants.css';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 const IntervenantsComponent: FC = () => {
     const [isHome, _setIsHome] = useState(false); //TODO search intended purpose and implement
@@ -12,15 +14,24 @@ const IntervenantsComponent: FC = () => {
     const { speakers } = useSelector((state: AppState) => state.speakers);
 
     useEffect(() => {
+        AOS.init({ duration: 2000 });
         if (speakers.length === 0) {
             dispatch(fetchSpeakers());
         }
     }, [dispatch, speakers]);
+    console.log(speakers);
     return (
-        <div style={{ marginTop: '50px' }}>
+        <div data-aos="slide-up" style={{ marginTop: '50px' }}>
             <div>
-                <div className="display-4 mb-3" style={{ color: '#113F59', textAlign: 'center' }}>
-                    Nos intervenants
+                <div className="intervenantHeader">
+                    <div className="display-4 mb-3" style={{ color: '#113F59', margin: '0px 290px' }}>
+                        Nos intervenants
+                    </div>
+                    <div style={{ textDecoration: 'underline' }}>
+                        <a href="/" className="link">
+                            Voir plus
+                        </a>
+                    </div>
                 </div>
                 <div>
                     <h3 className="mb-4" style={{ color: '#333333', opacity: '0.8' }}>

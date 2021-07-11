@@ -5,8 +5,8 @@ import * as action from './constants/actionTypes';
 import * as status from './constants/status';
 
 import topics from '~/Components/shared/thematiques';
-import { intervenants } from '~/Components/dashboard/shared/WkspFormBody';
-import { refLegifrance } from '~/Components/dashboard/shared/WkspFormBody';
+import { intervenants } from '~/Components/dashboard/shared/WkspForm';
+import { refLegifrance } from '~/Components/dashboard/shared/WkspForm';
 import { SORT_DEFAULT_VALUE } from './constants/orderBy';
 
 const emptyStore = {

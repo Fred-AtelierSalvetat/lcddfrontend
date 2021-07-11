@@ -6,7 +6,7 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 
 import ErrorBoundary from '~/Components/shared/ErrorBoundary';
-import WkspFormBody from '../shared/WkspFormBody';
+import WkspForm from '../shared/WkspForm';
 import defaultValues from '../shared/defaultValues';
 
 import { useDispatch } from 'react-redux';
@@ -22,7 +22,6 @@ const NewWorkshop: FC = () => {
     const history = useHistory();
 
     const onSubmit = (data) => {
-        console.log('Submit');
         dispatch(
             newWorkshop({
                 title: data.title,
@@ -40,11 +39,11 @@ const NewWorkshop: FC = () => {
         history.push('/dashboard/workshops'); //TODO Add sort by status
     };
 
-    const onSubmitError = (errors) => console.error('onSubmitError :', errors);
+    const onSubmitError = () => {};
 
     return (
         <ErrorBoundary>
-            <WkspFormBody
+            <WkspForm
                 headerButtonLine={
                     <Form.Row>
                         <Col>

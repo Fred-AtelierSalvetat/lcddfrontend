@@ -191,6 +191,7 @@ const ContactUs: FC = () => {
                             ref={register(validator.firstName)}
                             onChange={onHandleChange}
                             isInvalid={!!errors.firstName}
+                            aria-invalid={!!errors.firstName}
                         />
                         <FormFeedback field={errors.firstName}></FormFeedback>
                     </Form.Group>
@@ -204,6 +205,7 @@ const ContactUs: FC = () => {
                             ref={register(validator.lastName)}
                             onChange={onHandleChange}
                             isInvalid={!!errors.lastName}
+                            aria-invalid={!!errors.lastName}
                         />
                         <FormFeedback field={errors.lastName}></FormFeedback>
                     </Form.Group>
@@ -217,6 +219,7 @@ const ContactUs: FC = () => {
                             ref={register(validator.email)}
                             onChange={onHandleChange}
                             isInvalid={!!errors.email}
+                            aria-invalid={!!errors.email}
                         />
                         <FormFeedback field={errors.email}></FormFeedback>
                     </Form.Group>
@@ -230,6 +233,7 @@ const ContactUs: FC = () => {
                             ref={register(validator.contactSubject)}
                             onChange={onHandleChange}
                             isInvalid={!!errors.subject}
+                            aria-invalid={!!errors.subject}
                         />
                         <FormFeedback field={errors.subject}></FormFeedback>
                     </Form.Group>
@@ -244,6 +248,7 @@ const ContactUs: FC = () => {
                             ref={register(validator.contactMessage)}
                             onChange={onHandleChange}
                             isInvalid={!!errors.message}
+                            aria-invalid={!!errors.message}
                         />
                         <FormFeedback field={errors.message}></FormFeedback>
                     </Form.Group>

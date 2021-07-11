@@ -7,14 +7,14 @@ import Form from 'react-bootstrap/Form';
 import defaultValues from '../shared/defaultValues';
 
 import ErrorBoundary from '~/Components/shared/ErrorBoundary';
-import WkspFormBody from '../shared/WkspFormBody';
+import WkspForm from '../shared/WkspForm';
 import { ReactComponent as ArrowBackIcon } from '~/assets/icons/arrow_back_24px.svg';
 
 import { useDispatch, useSelector } from 'react-redux';
 import { getWorkshopById, isWorkshopStoreInialized } from '~/state/reducers';
 import { fetchWorkshops, updateWorkshop, cancelWorkshop } from '~/state/workshops/actions';
 import ConfirmDialog from '~/Components/shared/modals/ConfirmDialog';
-import { refLegifrance, intervenants } from '~/Components/dashboard/shared/WkspFormBody';
+import { refLegifrance, intervenants } from '~/Components/dashboard/shared/WkspForm';
 import topics from '~/Components/shared/thematiques';
 import type { Workshop } from '~/state/workshops/model';
 import * as status from '~/state/workshops/constants/status';
@@ -121,7 +121,7 @@ const EditWorkshop: FC = () => {
                             history.push('/dashboard/workshops'); //TODO Add sort by status
                         }}
                     />
-                    <WkspFormBody
+                    <WkspForm
                         title="Modifier atelier"
                         headerButtonLine={
                             <Form.Row>

@@ -155,8 +155,9 @@ const PasswordFormGroup = forwardRef<HTMLInputElement, PasswordFormGroupType>(({
                     name={!!props.name ? props.name : undefined}
                     onChange={(e) => handleChange(e)}
                     ref={ref}
-                    isInvalid={!!props.isInvalid ? props.isInvalid : undefined}
-                    isValid={!!props.isValid ? props.isValid : undefined}
+                    isInvalid={props.isInvalid}
+                    aria-invalid={props.isInvalid}
+                    isValid={props.isValid}
                     autoComplete="new-password"
                     tabIndex={1}
                 />

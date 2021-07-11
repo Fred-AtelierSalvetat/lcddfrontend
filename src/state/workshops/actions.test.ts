@@ -8,8 +8,8 @@ import * as types from './constants/actionTypes';
 import * as status from './constants/status';
 import * as api from '~/api/fetchWorkshops'; //Temp dependency, fakeDB should belong top tests after implementation
 import topics from '~/Components/shared/thematiques'; //Temp dependency, same as upper
-import { intervenants } from '~/Components/dashboard/shared/WkspFormBody'; //Temp dependency, same as upper
-import { refLegifrance } from '~/Components/dashboard/shared/WkspFormBody'; //Temp dependency, same as upper
+import { intervenants } from '~/Components/dashboard/shared/WkspForm'; //Temp dependency, same as upper
+import { refLegifrance } from '~/Components/dashboard/shared/WkspForm'; //Temp dependency, same as upper
 import { SORT_DEFAULT_VALUE } from './constants/orderBy';
 
 describe("Workshops' action ", () => {

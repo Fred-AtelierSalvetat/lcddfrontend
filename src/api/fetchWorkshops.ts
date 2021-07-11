@@ -3,8 +3,8 @@ import { v4 as uuidv4 } from 'uuid';
 
 import * as status from '~/state/workshops/constants/status';
 import topics from '~/Components/shared/thematiques';
-import { intervenants } from '~/Components/dashboard/shared/WkspFormBody';
-import { refLegifrance } from '~/Components/dashboard/shared/WkspFormBody';
+import { intervenants } from '~/Components/dashboard/shared/WkspForm';
+import { refLegifrance } from '~/Components/dashboard/shared/WkspForm';
 
 export let fakeDatabase: Workshop[] = [
     {

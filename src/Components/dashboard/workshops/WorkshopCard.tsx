@@ -59,10 +59,7 @@ const WorkshopCard: FC<PropTypes.InferProps<typeof propTypes>> = ({
                     </div>
                     {status !== statusConst.LIVE && (
                         <div className="actionMenuContainer">
-                            <ActionMenuPopover
-                                icon={<MoreVertIcon title="openWorkshopActionMenu" />}
-                                placement="bottom-end"
-                            >
+                            <ActionMenuPopover icon={<MoreVertIcon title="Actions" />} placement="bottom-end">
                                 {status === statusConst.INCOMING && (
                                     <>
                                         <Action
@@ -124,6 +121,7 @@ const WorkshopCard: FC<PropTypes.InferProps<typeof propTypes>> = ({
                         </div>
                     )}
                     <EditIcon
+                        title="Modifier"
                         className="editIcon"
                         onClick={() => {
                             history.push(`/dashboard/editWorkshop/${id}`);

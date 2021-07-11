@@ -53,7 +53,7 @@ const Workshops: FC = () => {
                     <Select
                         isSearchable={true}
                         options={sortOptions.map((key) => ({ label: key, value: key }))}
-                        value={{ label: orderBy, value: orderBy }}
+                        value={[{ label: orderBy, value: orderBy }]}
                         onChange={(option) => history.push(`${getURLwithQueryParam(option.value)}`)}
                     ></Select>
                 </Col>

@@ -17,6 +17,7 @@ describe('<UserManagement /> ', () => {
     let store = undefined;
     const globalStateWithUsers = {};
     const mockStore = configureMockStore([thunk]);
+
     beforeEach(() => {
         const mockStore = configureMockStore([thunk]);
         for (const prop of Object.getOwnPropertyNames(reducersList)) {
@@ -317,7 +318,7 @@ describe('<UserManagement /> ', () => {
     it('should match its reference snapshot', () => {
         const wrapper = mount(
             <Provider store={store}>
-                <MemoryRouter initialEntries={[{ pathname: '/users?tab=admin', key: 'invariableKeyForSnapshot' }]}>
+                <MemoryRouter keyLength={0} initialEntries={['/users']}>
                     <Route path={['/users']}>
                         <UserManagement />
                     </Route>

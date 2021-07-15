@@ -22,11 +22,12 @@ const NewWorkshop: FC = () => {
     const history = useHistory();
 
     const onSubmit = (data) => {
+        console.log('Submit OK data=', data);
         dispatch(
             newWorkshop({
                 title: data.title,
                 startingdate: data.startingdate,
-                // endingdate, //TODO
+                endingdate: data.startingdate, //TODO
                 speakers: data.speakers.map((obj) => obj.value),
                 topics: data.topics.map((obj) => obj.value),
                 refsLegifrance: data.refsLegifrance.map((obj) => obj.value),
@@ -36,10 +37,12 @@ const NewWorkshop: FC = () => {
                 links: data.links,
             }),
         );
-        history.push('/dashboard/workshops'); //TODO Add sort by status
+        history.push('/dashboard/workshops');
     };
 
-    const onSubmitError = () => {};
+    const onSubmitError = (errors) => {
+        console.log('ERRORS =', errors);
+    };
 
     return (
         <ErrorBoundary>

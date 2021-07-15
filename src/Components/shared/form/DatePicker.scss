@@ -9,11 +9,11 @@
     max-width: unset;
     min-width: unset;
     .react-datepicker__input-container {
-        .datepicker-custom-input-container {
+        #datepicker-custom-input-container {
             display: flex;
             align-items: center;
             padding: 0;
-            #datepicker-custom-input {
+            .datepicker-custom-input {
                 padding: 0 2.25rem 0 0.75rem;
                 height: fit-content;
                 width: 100%;

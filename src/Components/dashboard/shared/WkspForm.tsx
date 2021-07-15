@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FC } from 'react';
 import { Controller } from 'react-hook-form';
 
 import DatePicker from '~/Components/shared/form/DatePicker';
@@ -44,7 +44,7 @@ export const intervenants = [
     { value: 'Julien GENOVA', label: 'Julien GENOVA' },
 ];
 
-const WkspForm: FC<PropsTypes.InferProps<typeof propTypes>> = ({
+const WkspForm: FC<PropTypes.InferProps<typeof propTypes>> = ({
     title,
     headerButtonLine,
     footerButtonLine,
@@ -69,7 +69,7 @@ const WkspForm: FC<PropsTypes.InferProps<typeof propTypes>> = ({
 
     return (
         <div id="workshop-form">
-            <Form role="form" id="workshop-form" onSubmit={handleSubmit}>
+            <Form role="form" onSubmit={handleSubmit}>
                 {title && <h1>{title}</h1>}
                 {headerButtonLine}
                 <Form.Row>
@@ -83,22 +83,23 @@ const WkspForm: FC<PropsTypes.InferProps<typeof propTypes>> = ({
                                 ref={register(validator.workshopTitle)}
                                 isInvalid={!!errors.title}
                                 aria-invalid={!!errors.title}
-                                value={watch('title')}
-                                onChange={({ target }) => trigger(target.name)}
+                                defaultValue={watch('title')}
+                                onChange={async ({ target }) => await trigger(target.name)}
                             />
                             <FormFeedback field={errors.title}></FormFeedback>
                         </Form.Group>
                     </Col>
                     <Col xs={12} md={5} lg={3}>
                         <Form.Group controlId="workshopStartingDate">
-                            <Form.Label>Date & Heure (obligatoire)</Form.Label>
+                            <Form.Label>{'Date & Heure (obligatoire)'}</Form.Label>
                             <Controller
                                 name="startingdate"
                                 control={control}
                                 rules={validator.workshopTimestamp}
-                                render={(field) => (
+                                render={({ ref, ...othersField }) => (
                                     <DatePicker
-                                        {...field}
+                                        {...othersField}
+                                        inputId="workshopStartingDate"
                                         isInvalid={!!errors.startingdate}
                                         placeholder="DD/MM/YYYY HH:mm"
                                         dateFormat="dd/MM/yyyy HH:mm"
@@ -117,9 +118,11 @@ const WkspForm: FC<PropsTypes.InferProps<typeof propTypes>> = ({
                                 name="speakers"
                                 control={control}
                                 rules={validator.workshopSpeakers}
-                                render={(field) => (
+                                render={({ ref, ...othersField }) => (
                                     <Select
-                                        {...field}
+                                        {...othersField} //TODO replicate
+                                        inputId="workshopSpeakers"
+                                        inputRef={ref}
                                         isMulti
                                         options={intervenants}
                                         isSearchable
@@ -145,6 +148,7 @@ const WkspForm: FC<PropsTypes.InferProps<typeof propTypes>> = ({
                                     render={(field) => (
                                         <Select
                                             {...field}
+                                            inputId="workshopTopics"
                                             isMulti
                                             options={topicsList}
                                             value={watch('topics')}
@@ -167,6 +171,7 @@ const WkspForm: FC<PropsTypes.InferProps<typeof propTypes>> = ({
                                     rules={validator.workshopRefsLegifrance}
                                     render={(field) => (
                                         <Select
+                                            inputId="workshopRefs"
                                             {...field}
                                             isMulti
                                             options={refLegifrance}
@@ -191,8 +196,8 @@ const WkspForm: FC<PropsTypes.InferProps<typeof propTypes>> = ({
                                     ref={register(validator.workshopDescription)}
                                     isInvalid={!!errors.description}
                                     aria-invalid={!!errors.description}
-                                    value={watch('description')}
-                                    onChange={({ target }) => trigger(target.name)}
+                                    defaultValue={watch('description')}
+                                    onChange={async ({ target }) => await trigger(target.name)}
                                 />
                                 <FormFeedback field={errors.description}></FormFeedback>
                             </Form.Group>
@@ -233,7 +238,7 @@ const WkspForm: FC<PropsTypes.InferProps<typeof propTypes>> = ({
                         </Form.Group>
                     </Col>
                     <Col className="fullheight-flex-col" xs={12} md={4}>
-                        <Form.Group controlId="workshopLinks">
+                        <Form.Group>
                             <Form.Label>Liens</Form.Label>
                             <fieldset>
                                 <Links

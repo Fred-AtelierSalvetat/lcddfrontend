@@ -1,7 +1,7 @@
 import * as action from './constants/actionTypes';
 import * as status from './constants/status';
 import * as api from '~/api/fetchWorkshops';
-import type { Speaker, Topic, RefLegiFrance, KeyWord, File, Link, Workshop, SearchFilter } from './model';
+import type { Speaker, Topic, RefLegiFrance, KeyWord, File, Link, Workshop, SearchFilter, OrderBy } from './model';
 import type { AppDispatchType } from '../store';
 
 export const fetchWorkshops: (dispatch: AppDispatchType) => void = (dispatch) => {

@@ -62,25 +62,28 @@ const Links: FC<PropTypes.InferProps<typeof linksPropTypes>> = ({ value = [], se
 
     return (
         <>
-            <Form.Label>Lien URL</Form.Label>
-            <Form.Control
-                type="text"
-                placeholder="Ajouter un URL"
-                onChange={(event) => setInputLinkURL(event.target.value)}
-                onKeyDown={(event) => handleKeyDownURL(event)}
-                value={inputLinkURL}
-                ref={refUrlInput}
-            />
-            <Form.Label>Lien titre</Form.Label>
-            <Form.Control
-                type="text"
-                placeholder="Ajouter un titre"
-                onChange={(event) => setInputLinkTitle(event.target.value)}
-                onKeyDown={(event) => handleKeyDownTitle(event)}
-                value={inputLinkTitle}
-                ref={refTitleInput}
-            />
-
+            <Form.Group controlId="workshopLinksURL">
+                <Form.Label>Lien URL</Form.Label>
+                <Form.Control
+                    type="text"
+                    placeholder="Ajouter un URL"
+                    onChange={(event) => setInputLinkURL(event.target.value)}
+                    onKeyDown={(event) => handleKeyDownURL(event)}
+                    value={inputLinkURL}
+                    ref={refUrlInput}
+                />
+            </Form.Group>
+            <Form.Group controlId="workshopLinksTitle">
+                <Form.Label>Lien titre</Form.Label>
+                <Form.Control
+                    type="text"
+                    placeholder="Ajouter un titre"
+                    onChange={(event) => setInputLinkTitle(event.target.value)}
+                    onKeyDown={(event) => handleKeyDownTitle(event)}
+                    value={inputLinkTitle}
+                    ref={refTitleInput}
+                />
+            </Form.Group>
             <Button variant="outline-primary" onClick={() => addLink()}>
                 Ajouter
             </Button>

@@ -3,7 +3,8 @@ import { Switch, Route, BrowserRouter } from 'react-router-dom';
 
 import Header from './header';
 import Footer from './footer';
-const Home = React.lazy(() => import('./home'));
+import Home from './home';
+
 const LegalNotice = React.lazy(() => import('./legal_notice'));
 const SignUp = React.lazy(() => import('./sign_up'));
 const SignInResetPassword = React.lazy(() => import('./sign_in/SignInResetPassword'));

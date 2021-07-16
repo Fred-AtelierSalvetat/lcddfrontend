@@ -1,20 +1,13 @@
 .speaker-image {
-    border: 2px solid #0B2534; 
+    border: 2px solid #0b2534;
     box-sizing: border-box;
-     border-radius: 50%;
-     filter: grayscale();
-
+    border-radius: 50%;
+    filter: grayscale();
 }
 
 .speaker-image:hover {
     cursor: pointer;
-    border: 3px solid #0B2534;
+    border: 3px solid #0b2534;
     zoom: 115%;
     filter: none;
 }
-
-
-
-
-
-

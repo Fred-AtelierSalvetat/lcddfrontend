@@ -44,7 +44,10 @@ const WorkshopCard: FC<PropTypes.InferProps<typeof propTypes>> = ({
     return (
         <Card className="card">
             <div className="image-container">
-                <Card.Img variant="top" alt={!!thumbnail ? title : ''} src={thumbnail} />
+                {!!thumbnail && (
+                    //&& <Card.Img variant="top" alt="Workshop's thumbnail" src={thumbnail} />}
+                    <Card.Img variant="top" alt="Workshop's thumbnail" data-src={thumbnail} className="lazyload" />
+                )}
                 <Card.ImgOverlay>
                     <div
                         className={className('status', {

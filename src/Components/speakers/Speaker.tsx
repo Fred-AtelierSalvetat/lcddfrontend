@@ -24,7 +24,14 @@ export const Speaker: FC<PropTypes.InferProps<typeof speakerPropTypes>> = ({ id,
     return (
         <Card className="border-0 m-3 ">
             <div className="justify-content-center d-flex flex-column">
-                <img src={Avatar} className="mb-4 speaker-image" width="263" height="263" onClick={Redirection} />
+                <img
+                    src={Avatar}
+                    alt="Speaker's avatar"
+                    className="mb-4 speaker-image"
+                    width="263"
+                    height="263"
+                    onClick={Redirection}
+                />
                 <Container>
                     <h3 style={{ textAlign: 'center', color: '#333333' }}>{name}</h3>
                     <p style={{ textAlign: 'center', color: '#4F4F4F' }}>{rool}</p>

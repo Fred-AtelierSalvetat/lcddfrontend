@@ -22,12 +22,11 @@ const NewWorkshop: FC = () => {
     const history = useHistory();
 
     const onSubmit = (data) => {
-        console.log('Submit OK data=', data);
         dispatch(
             newWorkshop({
                 title: data.title,
                 startingdate: data.startingdate,
-                endingdate: data.startingdate, //TODO
+                endingdate: data.startingdate, //TODO implement, how -> backend implementation??
                 speakers: data.speakers.map((obj) => obj.value),
                 topics: data.topics.map((obj) => obj.value),
                 refsLegifrance: data.refsLegifrance.map((obj) => obj.value),
@@ -40,9 +39,7 @@ const NewWorkshop: FC = () => {
         history.push('/dashboard/workshops');
     };
 
-    const onSubmitError = (errors) => {
-        console.log('ERRORS =', errors);
-    };
+    const onSubmitError = () => {};
 
     return (
         <ErrorBoundary>

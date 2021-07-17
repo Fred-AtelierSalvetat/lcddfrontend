@@ -30,7 +30,6 @@ describe('<WkspForm /> ', () => {
 
     it.todo('should contain a field "Mots-clés" section');
     it.todo('\'s field "Mots-clés" should not be mandatory');
-
     //Téléchargements
     //Liens
 });

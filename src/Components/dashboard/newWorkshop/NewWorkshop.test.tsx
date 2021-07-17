@@ -1,8 +1,7 @@
 import React from 'react';
 import { mount } from 'enzyme';
-import { fireEvent, screen, render } from '@testing-library/react';
+import { screen, render, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { act, waitFor } from 'react-dom/test-utils';
 import '@testing-library/jest-dom';
 import configureMockStore from 'redux-mock-store';
 import { Provider } from 'react-redux';
@@ -13,10 +12,21 @@ import selectEvent from 'react-select-event';
 //2 below lines of imports should be part of test once connexion to backend will be done
 import { intervenants, refLegifrance } from '~/Components/dashboard/shared/WkspForm';
 import topics from '~/Components/shared/thematiques';
+import * as actionTypes from '../../../state/workshops/constants/actionTypes';
 
 import NewWorkshop from './NewWorkshop';
+
+import DatePicker from '../../shared/form/DatePicker.tsx';
+jest.mock('../../shared/form/DatePicker.tsx');
+
 describe('<NewWorkshop /> ', () => {
     const store = configureMockStore([thunk])({});
+
+    beforeEach(() =>
+        DatePicker.mockImplementation(({ onChange, onBlur, value, inputId }) => {
+            return <input name="startingdate" id={inputId} value={value || ''} onChange={onChange} onBlur={onBlur} />;
+        }),
+    );
 
     it('renders without crashing', () => {
         render(
@@ -40,18 +50,19 @@ describe('<NewWorkshop /> ', () => {
                 <NewWorkshop />
             </Provider>,
         );
-        expect(screen.getAllByText('Créer atelier')).to.have.lengthOf(2);
+        expect(screen.getAllByRole('button', { name: 'Créer atelier' })).to.have.lengthOf(2);
     });
 
     it("'s button 'Créer atelier', shall dispatch a CREATE_WORKSHOP action", async () => {
         const newWorkshop = {
             title: 'Test*title$',
             startingdate: '20/4/2001 12:34',
-            speakers: [intervenants[1].value],
+            speakers: [intervenants[1].value, intervenants[0].value],
             topics: [topics[3].title, topics[8].title],
-            refs: [refLegifrance[2].value, refLegifrance[0].value],
+            refsLegifrance: [refLegifrance[2].value, refLegifrance[0].value],
             description: 'A workshop desc',
         };
+
         render(
             <Provider store={store}>
                 <MemoryRouter initialEntries={['/newWorkshop']}>
@@ -65,21 +76,27 @@ describe('<NewWorkshop /> ', () => {
             </Provider>,
         );
 
-        // userEvent.type(screen.getByLabelText("Titre d'atelier (obligatoire)"), newWorkshop.title);
-        // await userEvent.type(screen.getByLabelText('Date & Heure (obligatoire)'), '20/4/2001 12:34');
-        // await selectEvent.select(screen.getByLabelText('Intervenants (obligatoire)'), newWorkshop.speakers);
-        // await selectEvent.select(screen.getByLabelText('Thématiques (obligatoire)'), newWorkshop.topics);
-        // await selectEvent.select(screen.getByLabelText('Références Légifrance'), newWorkshop.refs);
-        // userEvent.type(screen.getByLabelText('Description'), newWorkshop.description);
-        // userEvent.click(screen.getAllByText('Créer atelier')[0], { skipHover: true });
+        const titleInput = screen.getByLabelText("Titre d'atelier (obligatoire)");
+        const dateInput = screen.getByLabelText('Date & Heure (obligatoire)');
+        const speakersInput = screen.getByLabelText('Intervenants (obligatoire)');
+        const topicsInput = screen.getByLabelText('Thématiques (obligatoire)');
+        const refsInput = screen.getByLabelText('Références Légifrance');
+        const descInput = screen.getByLabelText('Description');
 
-        //console.log('screen =', screen.debug());
-        //await screen.findByText('WORKSHOPS-PAGE');
-        const actionStoreArray = store.getActions();
-        // expect(actionStoreArray[0]).to.nested.include('toto');
-        //console.log('Screen', screen.debug());
+        userEvent.type(titleInput, newWorkshop.title);
+        userEvent.type(dateInput, newWorkshop.startingdate);
+        await selectEvent.select(speakersInput, newWorkshop.speakers);
+        await selectEvent.select(topicsInput, newWorkshop.topics);
+        await selectEvent.select(refsInput, newWorkshop.refsLegifrance);
+        userEvent.type(descInput, newWorkshop.description);
 
-        // await waitFor(() => expect(mockAPI).toHaveBeenCalledTimes(1))
+        userEvent.click(screen.getAllByRole('button', { name: 'Créer atelier' })[0]);
+
+        await screen.findByText('WORKSHOPS-PAGE');
+        expect(store.getActions()[0]).containSubset({
+            type: actionTypes.CREATE_WORKSHOP,
+            workshop: { ...newWorkshop },
+        });
     });
 
     it("shall contain one button 'Annuler'", () => {
@@ -88,16 +105,72 @@ describe('<NewWorkshop /> ', () => {
                 <NewWorkshop />
             </Provider>,
         );
-        expect(screen.getByText('Annuler')).toBeInTheDocument();
+        expect(screen.getByRole('button', { name: 'Annuler' })).toBeInTheDocument();
     });
 
-    it.todo("'s button 'Annuler', shall empty all fields");
-    // it('should match its reference snapshot', () => {
-    //     const wrapper = mount(
-    //         <Provider store={store}>
-    //             <NewWorkshop />
-    //         </Provider>,
-    //     );
-    //     expect(wrapper).to.matchSnapshot();
-    // });
+    it("'s button 'Annuler', shall empty all fields", async () => {
+        const newWorkshop = {
+            title: 'Test*title$',
+            startingdate: '20/4/2001 12:34',
+            speakers: [intervenants[1].value, intervenants[0].value],
+            topics: [topics[3].title, topics[8].title],
+            refsLegifrance: [refLegifrance[2].value, refLegifrance[0].value],
+            description: 'A workshop desc',
+        };
+
+        render(
+            <Provider store={store}>
+                <MemoryRouter initialEntries={['/newWorkshop']}>
+                    <Route path="/newWorkshop">
+                        <NewWorkshop />
+                    </Route>
+                </MemoryRouter>
+            </Provider>,
+        );
+
+        const titleInput = screen.getByLabelText("Titre d'atelier (obligatoire)");
+        const dateInput = screen.getByLabelText('Date & Heure (obligatoire)');
+        const speakersInput = screen.getByLabelText('Intervenants (obligatoire)');
+        const topicsInput = screen.getByLabelText('Thématiques (obligatoire)');
+        const refsInput = screen.getByLabelText('Références Légifrance');
+        const descInput = screen.getByLabelText('Description');
+
+        userEvent.type(titleInput, newWorkshop.title);
+        userEvent.type(dateInput, newWorkshop.startingdate);
+        await selectEvent.select(speakersInput, newWorkshop.speakers);
+        await selectEvent.select(topicsInput, newWorkshop.topics);
+        await selectEvent.select(refsInput, newWorkshop.refsLegifrance);
+        userEvent.type(descInput, newWorkshop.description);
+
+        await waitFor(() =>
+            expect(screen.getByRole('form')).toHaveFormValues({
+                title: newWorkshop.title,
+                startingdate: newWorkshop.startingdate,
+                speakers: newWorkshop.speakers,
+                topics: newWorkshop.topics,
+                refsLegifrance: newWorkshop.refsLegifrance,
+                description: newWorkshop.description,
+            }),
+        );
+
+        await userEvent.click(screen.getByRole('button', { name: 'Annuler' }));
+        await waitFor(() =>
+            expect(screen.getByRole('form')).toHaveFormValues({
+                title: '',
+                startingdate: '',
+                speakers: '',
+                topics: '',
+                refsLegifrance: '',
+                description: '',
+            }),
+        );
+    });
+    it('should match its reference snapshot', () => {
+        const wrapper = mount(
+            <Provider store={store}>
+                <NewWorkshop />
+            </Provider>,
+        );
+        expect(wrapper).to.matchSnapshot();
+    });
 });

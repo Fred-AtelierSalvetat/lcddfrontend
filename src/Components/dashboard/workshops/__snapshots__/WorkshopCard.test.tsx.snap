@@ -45,17 +45,6 @@ exports[`<WorkshopChard />  should match its reference snapshot 1`] = `
         <div
           className="image-container"
         >
-          <CardImg
-            alt=""
-            src=""
-            variant="top"
-          >
-            <img
-              alt=""
-              className="card-img-top"
-              src=""
-            />
-          </CardImg>
           <CardImgOverlay>
             <div
               className="card-img-overlay"
@@ -147,7 +136,6 @@ exports[`<WorkshopChard />  should match its reference snapshot 1`] = `
                             "timeout": 300,
                             "unmountOnExit": false,
                           },
-                          "displayName": "Fade",
                           "render": [Function],
                         }
                       }
@@ -190,7 +178,6 @@ exports[`<WorkshopChard />  should match its reference snapshot 1`] = `
                               "timeout": 300,
                               "unmountOnExit": false,
                             },
-                            "displayName": "Fade",
                             "render": [Function],
                           }
                         }

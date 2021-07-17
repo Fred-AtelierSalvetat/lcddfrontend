@@ -42,7 +42,6 @@ const DatePicker: FC<PropTypes.InferProps<typeof datePickerPropsTypes>> = ({
                 type="text"
             />
             <CalendarIcon />
-            {/* //TODO Enhancement focus on date field and open popup on click */}
         </div>
     );
 

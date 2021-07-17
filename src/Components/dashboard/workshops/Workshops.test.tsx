@@ -41,10 +41,6 @@ describe('<Workshops /> ', () => {
         ));
     });
 
-    afterEach(() => {
-        WorkshopCard.mockRestore();
-    });
-
     it('renders without crashing', () => {
         render(
             <Provider store={store}>

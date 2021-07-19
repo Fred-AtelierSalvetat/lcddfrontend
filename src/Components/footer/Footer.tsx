@@ -1,9 +1,9 @@
 import React, { FC } from 'react';
 import { Navbar, Row } from 'react-bootstrap';
-import { ReactComponent as Social0 } from '~/assets/icons/Social-0.svg';
-import { ReactComponent as Social1 } from '~/assets/icons/Social-1.svg';
-import { ReactComponent as Social2 } from '~/assets/icons/Social-2.svg';
-import { ReactComponent as Social3 } from '~/assets/icons/Social-3.svg';
+import { ReactComponent as Facebook } from '~/assets/icons/Facebook.svg';
+import { ReactComponent as LinkedIn } from '~/assets/icons/LinkedIn.svg';
+import { ReactComponent as Twitter } from '~/assets/icons/Twitter.svg';
+import { ReactComponent as Instagram } from '~/assets/icons/Instagram.svg';
 import './Footer.scss';
 
 const Footer: FC = () => {
@@ -20,22 +20,22 @@ const Footer: FC = () => {
                     <Row id="footer-social" style={{ flexWrap: 'nowrap' }}>
                         <div>
                             <a href="https://facebook.com/lachainedudroit">
-                                <Social0 />
+                                <Facebook />
                             </a>
                         </div>
                         <div>
                             <a href="https://www.linkedin.com/company/la-cha%C3%AEne-du-droit">
-                                <Social1 />
+                                <LinkedIn />
                             </a>
                         </div>
                         <div>
                             <a href="https://twitter.com/lachainedudroit">
-                                <Social2 />
+                                <Twitter />
                             </a>
                         </div>
                         <div>
                             <a href="https://www.instagram.com/lachainedudroit/">
-                                <Social3 />
+                                <Instagram />
                             </a>
                         </div>
                     </Row>

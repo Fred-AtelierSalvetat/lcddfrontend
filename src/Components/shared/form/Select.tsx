@@ -30,41 +30,18 @@ const selectPropTypes = {
             label: PropTypes.string.isRequired,
         }),
     ),
+    inputId: PropTypes.string,
 };
 
 const Select = forwardRef<HTMLInputElement, PropTypes.InferProps<typeof selectPropTypes>>(
-    (
-        {
-            isInvalid,
-            onChange,
-            onBlur,
-            isSearchable,
-            isClearable,
-            isDisabled,
-            isMulti,
-            closeMenuOnSelect,
-            placeholder,
-            options,
-            value,
-        },
-        ref,
-    ) => {
+    ({ isInvalid, ...others }, ref) => {
         return (
             <ReactSelect
                 className={`select ${isInvalid ? 'is-invalid' : ''}`}
                 classNamePrefix={isInvalid ? 'select-invalid' : 'select'}
                 components={animatedComponents}
-                onChange={onChange}
-                onBlur={onBlur}
                 ref={ref}
-                placeholder={placeholder}
-                isMulti={isMulti}
-                isDisabled={!!isDisabled}
-                closeMenuOnSelect={closeMenuOnSelect}
-                isClearable={!!isClearable}
-                isSearchable={isSearchable}
-                options={options}
-                value={value}
+                {...others}
             />
         );
     },

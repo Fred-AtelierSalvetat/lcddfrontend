@@ -85,6 +85,7 @@ const SignInModal: FC<PropTypes.InferProps<typeof signInModalPropTypes>> = ({
                             name="email"
                             ref={register(validator.email)}
                             isInvalid={!!errors.email}
+                            aria-invalid={!!errors.email}
                         />
                         <FormFeedback field={errors.email}></FormFeedback>
                     </Form.Group>
@@ -96,6 +97,7 @@ const SignInModal: FC<PropTypes.InferProps<typeof signInModalPropTypes>> = ({
                             name="password"
                             ref={register(validator.loginPassword)}
                             isInvalid={!!errors.password}
+                            aria-invalid={!!errors.password}
                         />
                         <FormFeedback field={errors.password}></FormFeedback>
                     </Form.Group>

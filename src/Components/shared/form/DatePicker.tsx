@@ -19,7 +19,8 @@ const datePickerPropsTypes = {
     isInvalid: PropTypes.bool.isRequired,
     onChange: PropTypes.func.isRequired,
     onBlur: PropTypes.func.isRequired,
-    value: PropTypes.string,
+    value: PropTypes.instanceOf(Date),
+    inputId: PropTypes.string,
 };
 
 const DatePicker: FC<PropTypes.InferProps<typeof datePickerPropsTypes>> = ({
@@ -29,18 +30,18 @@ const DatePicker: FC<PropTypes.InferProps<typeof datePickerPropsTypes>> = ({
     onChange,
     onBlur,
     value,
+    inputId,
 }) => {
     const DatePickerCustomInput = (props: HTMLProps<HTMLInputElement>, ref: Ref<HTMLInputElement>) => (
-        <div className={`datepicker-custom-input-container ${props.className}`}>
+        <div id="datepicker-custom-input-container" className={props.className}>
             <input
                 {...props}
                 ref={ref}
-                className={`form-control  ${props.className}`}
-                id="datepicker-custom-input"
+                className={`datepicker-custom-input form-control ${props.className}`}
+                id={inputId}
                 type="text"
             />
             <CalendarIcon />
-            {/* //TODO Enhancement focus on date field and open popup on click */}
         </div>
     );
 

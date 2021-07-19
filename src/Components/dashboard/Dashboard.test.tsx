@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import { expect } from 'chai';
 import { mount } from 'enzyme';
 import { Provider } from 'react-redux';
@@ -23,6 +23,8 @@ describe('<Dashboard />', () => {
             undefinedGlobalState[prop] = undefined;
         }
         store = mockStore(rootReducer(undefinedGlobalState, { type: undefined }));
+
+        UserManagement.mockImplementation(() => <div id="TEST-TARGET">{testPage}</div>);
     });
 
     it('contains 3 navigation links', () => {
@@ -88,22 +90,25 @@ describe('<Dashboard />', () => {
         expect(wrapper.find('input').find({ value: '/dashboard/workshops' })).to.exist;
     });
 
-    it("shall handle route's params to activate the corresponding 'input' and display contents", () => {
-        const userManagementMockContent = <div>UserManagementTESTPAGE</div>;
-        UserManagement.mockImplementation(() => userManagementMockContent);
+    it("shall use route's location to activate the corresponding 'input' and display contents", () => {
+        const testPage = 'UserManagementTESTPAGE';
         const wrapper = mount(
             <Provider store={store}>
                 <MemoryRouter initialEntries={['/dashboard/users']}>
-                    <Route path="/dashboard/:selectedPage" exact={true}>
-                        <Dashboard />
+                    <Route path="/dashboard/users" exact={true}>
+                        <Suspense fallback={<p>"Loading"</p>}>
+                            <Dashboard />
+                        </Suspense>
                     </Route>
                 </MemoryRouter>
                 ,
             </Provider>,
         );
+        console.log('WRAPPER =', wrapper.debug());
         expect(wrapper.find('input').filter({ value: '/dashboard/users' })).to.have.length(1);
         expect(wrapper.find('input').filter({ value: '/dashboard/users' }).at(0).props().checked).to.equal(true);
-        expect(wrapper.find('#activePage').childAt(0)).to.contain(userManagementMockContent);
+
+        expect(wrapper.find('#TEST-TARGET').childAt(0)).to.contain(testPage);
     });
 
     it('should match its reference snapshot', () => {

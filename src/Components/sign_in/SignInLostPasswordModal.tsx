@@ -44,7 +44,8 @@ const SignInLostPasswordModal: FC<PropTypes.InferProps<typeof propTypes>> = ({
                             type="text"
                             name="email"
                             ref={register(validator.email)}
-                            isInvalid={errors.email}
+                            isInvalid={!!errors.email}
+                            aria-invalid={!!errors.email}
                             placeholder="Adresse e-mail"
                         />
                         <FormFeedback field={errors.email}></FormFeedback>

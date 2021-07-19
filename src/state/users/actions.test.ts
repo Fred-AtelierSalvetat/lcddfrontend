@@ -3,7 +3,6 @@ import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
 
 import * as actions from './actions';
-import * as userRoles from './constants/roles';
 import * as usersActionTypes from './constants/actionTypes';
 import * as alertTypes from '../alerts/constants/alertTypes';
 import * as alertsActionTypes from '../alerts/constants/actionTypes';
@@ -36,23 +35,23 @@ describe("Users'action ", () => {
     });
 
     it('setUsersRoleFilter should create an action to set the roleFilter value', () => {
-        const roles_filter = [userRoles.ADMIN, userRoles.SPEAKER];
+        const role_filter = 'user';
         const mockStore = configureMockStore([thunk]);
         const store = mockStore({
             users: {
                 users: fakeDatabase,
                 inProgressRequests: [],
                 uiFilters: {
-                    roles: [],
+                    role: 'admin',
                     search: '',
                 },
             },
         });
-        store.dispatch(actions.setUsersRoleFilter(roles_filter));
+        store.dispatch(actions.setUsersRoleFilter(role_filter));
         const actionStoreArray = store.getActions();
         expect(actionStoreArray[0]).to.nested.include({
             type: usersActionTypes.SET_USER_ROLE_FILTER,
-            roles_filter,
+            role_filter,
         });
     });
     it('setUsersSearchFilter should create an action to set the searchFilter value', () => {

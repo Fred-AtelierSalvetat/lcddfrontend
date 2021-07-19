@@ -3,9 +3,11 @@ import { Container } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import { Redirect, Route, Switch, useRouteMatch } from 'react-router';
 import { SideBarWrapper } from '../shared/wrapper';
-import ModifyInterestsForm from './ModifyInterestsForm';
-import ModifyPasswordForm from './ModifyPasswordForm';
-import MyProfileForm from './MyProfileForm';
+
+const ModifyInterestsForm = React.lazy(() => import('./ModifyInterestsForm'));
+const ModifyPasswordForm = React.lazy(() => import('./ModifyPasswordForm'));
+const MyProfileForm = React.lazy(() => import('./MyProfileForm'));
+
 import SideBar from './SideBarNav';
 import './MyProfile.scss';
 

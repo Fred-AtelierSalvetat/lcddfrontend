@@ -38,7 +38,8 @@ const SignInResetPassword: FC = () => {
                                         type="password"
                                         name="password"
                                         ref={register(validator.password)}
-                                        isInvalid={errors.password}
+                                        isInvalid={!!errors.password}
+                                        aria-invalid={!!errors.password}
                                     />
                                     <FormFeedback field={errors.password}></FormFeedback>
                                 </Form.Group>
@@ -52,7 +53,8 @@ const SignInResetPassword: FC = () => {
                                             validate: (value) =>
                                                 value === password.current || 'Les mots de passe ne correspondent pas',
                                         })}
-                                        isInvalid={errors.passwordConfirmed}
+                                        isInvalid={!!errors.passwordConfirmed}
+                                        aria-invalid={!!errors.passwordConfirmed}
                                     />
                                     <FormFeedback field={errors.passwordConfirmed}></FormFeedback>
                                 </Form.Group>

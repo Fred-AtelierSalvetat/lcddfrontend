@@ -1,14 +1,14 @@
 import * as action from './constants/actionTypes';
 import * as status from './constants/status';
 import * as api from '~/api/fetchWorkshops';
-import type { Speaker, Topic, RefLegiFrance, KeyWord, File, Link, Workshop, SearchFilter } from './model';
+import type { Speaker, Topic, RefLegiFrance, KeyWord, File, Link, Workshop, SearchFilter, OrderBy } from './model';
 import type { AppDispatchType } from '../store';
 
 export const fetchWorkshops: (dispatch: AppDispatchType) => void = (dispatch) => {
     const workshops = api.fetchWorkshops();
-    dispatch({
+    return dispatch({
         type: action.FETCH_WORKSHOPS,
-        workshops,
+        workshops: workshops,
     });
 };
 
@@ -69,7 +69,7 @@ export const setWorkshopSearchFilter = (
     search_filter,
 });
 
-export const setOrderBy = (orderBy: OrderBy): { type: typeof action.SET_ORDER_BY; search_filter: OrderBy } => ({
+export const setOrderBy = (orderBy: OrderBy): { type: typeof action.SET_ORDER_BY; orderBy: OrderBy } => ({
     type: action.SET_ORDER_BY,
     orderBy,
 });
@@ -90,6 +90,7 @@ export const deleteWorkshop = (id: Workshop.id): void => (dispatch) => {
     });
 };
 
+//TODOFSA Update status on API
 export const archiveWorkshop = (id: Workshop.id): { type: typeof action.ARCHIVE_WORKSHOP; id: Workshop.id } => ({
     type: action.ARCHIVE_WORKSHOP,
     id,

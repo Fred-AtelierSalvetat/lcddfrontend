@@ -120,9 +120,9 @@ const WkspForm: FC<PropTypes.InferProps<typeof propTypes>> = ({
                                 rules={validator.workshopSpeakers}
                                 render={({ ref, ...othersField }) => (
                                     <Select
-                                        {...othersField} //TODO replicate
                                         inputId="workshopSpeakers"
                                         inputRef={ref}
+                                        {...othersField}
                                         isMulti
                                         options={intervenants}
                                         isSearchable
@@ -145,10 +145,11 @@ const WkspForm: FC<PropTypes.InferProps<typeof propTypes>> = ({
                                     name="topics"
                                     control={control}
                                     rules={validator.workshopTopics}
-                                    render={(field) => (
+                                    render={({ ref, ...othersField }) => (
                                         <Select
-                                            {...field}
                                             inputId="workshopTopics"
+                                            inputRef={ref}
+                                            {...othersField}
                                             isMulti
                                             options={topicsList}
                                             value={watch('topics')}
@@ -169,10 +170,11 @@ const WkspForm: FC<PropTypes.InferProps<typeof propTypes>> = ({
                                     name="refsLegifrance"
                                     control={control}
                                     rules={validator.workshopRefsLegifrance}
-                                    render={(field) => (
+                                    render={({ ref, ...othersField }) => (
                                         <Select
                                             inputId="workshopRefs"
-                                            {...field}
+                                            inputRef={ref}
+                                            {...othersField}
                                             isMulti
                                             options={refLegifrance}
                                             isSearchable

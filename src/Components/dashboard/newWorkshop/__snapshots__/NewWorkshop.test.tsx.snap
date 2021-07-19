@@ -3753,6 +3753,13 @@ exports[`<NewWorkshop />  should match its reference snapshot 1`] = `
                                 <ForwardRef
                                   closeMenuOnSelect={false}
                                   inputId="workshopTopics"
+                                  inputRef={
+                                    Object {
+                                      "current": Object {
+                                        "focus": [Function],
+                                      },
+                                    }
+                                  }
                                   isInvalid={false}
                                   isMulti={true}
                                   isSearchable={true}
@@ -3911,6 +3918,13 @@ exports[`<NewWorkshop />  should match its reference snapshot 1`] = `
                                     defaultMenuIsOpen={false}
                                     defaultValue={null}
                                     inputId="workshopTopics"
+                                    inputRef={
+                                      Object {
+                                        "current": Object {
+                                          "focus": [Function],
+                                        },
+                                      }
+                                    }
                                     isMulti={true}
                                     isSearchable={true}
                                     name="topics"
@@ -4076,6 +4090,13 @@ exports[`<NewWorkshop />  should match its reference snapshot 1`] = `
                                       getOptionLabel={[Function]}
                                       getOptionValue={[Function]}
                                       inputId="workshopTopics"
+                                      inputRef={
+                                        Object {
+                                          "current": Object {
+                                            "focus": [Function],
+                                          },
+                                        }
+                                      }
                                       inputValue=""
                                       isDisabled={false}
                                       isLoading={false}
@@ -4394,6 +4415,11 @@ exports[`<NewWorkshop />  should match its reference snapshot 1`] = `
                                             "getOptionLabel": [Function],
                                             "getOptionValue": [Function],
                                             "inputId": "workshopTopics",
+                                            "inputRef": Object {
+                                              "current": Object {
+                                                "focus": [Function],
+                                              },
+                                            },
                                             "inputValue": "",
                                             "isDisabled": false,
                                             "isLoading": false,
@@ -4757,6 +4783,11 @@ exports[`<NewWorkshop />  should match its reference snapshot 1`] = `
                                                   "getOptionLabel": [Function],
                                                   "getOptionValue": [Function],
                                                   "inputId": "workshopTopics",
+                                                  "inputRef": Object {
+                                                    "current": Object {
+                                                      "focus": [Function],
+                                                    },
+                                                  },
                                                   "inputValue": "",
                                                   "isDisabled": false,
                                                   "isLoading": false,
@@ -5136,6 +5167,11 @@ exports[`<NewWorkshop />  should match its reference snapshot 1`] = `
                                                   "getOptionLabel": [Function],
                                                   "getOptionValue": [Function],
                                                   "inputId": "workshopTopics",
+                                                  "inputRef": Object {
+                                                    "current": Object {
+                                                      "focus": [Function],
+                                                    },
+                                                  },
                                                   "inputValue": "",
                                                   "isDisabled": false,
                                                   "isLoading": false,
@@ -5512,6 +5548,11 @@ exports[`<NewWorkshop />  should match its reference snapshot 1`] = `
                                                         "getOptionLabel": [Function],
                                                         "getOptionValue": [Function],
                                                         "inputId": "workshopTopics",
+                                                        "inputRef": Object {
+                                                          "current": Object {
+                                                            "focus": [Function],
+                                                          },
+                                                        },
                                                         "inputValue": "",
                                                         "isDisabled": false,
                                                         "isLoading": false,
@@ -5854,6 +5895,11 @@ exports[`<NewWorkshop />  should match its reference snapshot 1`] = `
                                                           "getOptionLabel": [Function],
                                                           "getOptionValue": [Function],
                                                           "inputId": "workshopTopics",
+                                                          "inputRef": Object {
+                                                            "current": Object {
+                                                              "focus": [Function],
+                                                            },
+                                                          },
                                                           "inputValue": "",
                                                           "isDisabled": false,
                                                           "isLoading": false,
@@ -6194,6 +6240,11 @@ exports[`<NewWorkshop />  should match its reference snapshot 1`] = `
                                                             "getOptionLabel": [Function],
                                                             "getOptionValue": [Function],
                                                             "inputId": "workshopTopics",
+                                                            "inputRef": Object {
+                                                              "current": Object {
+                                                                "focus": [Function],
+                                                              },
+                                                            },
                                                             "inputValue": "",
                                                             "isDisabled": false,
                                                             "isLoading": false,
@@ -6559,6 +6610,11 @@ exports[`<NewWorkshop />  should match its reference snapshot 1`] = `
                                                                   "getOptionLabel": [Function],
                                                                   "getOptionValue": [Function],
                                                                   "inputId": "workshopTopics",
+                                                                  "inputRef": Object {
+                                                                    "current": Object {
+                                                                      "focus": [Function],
+                                                                    },
+                                                                  },
                                                                   "inputValue": "",
                                                                   "isDisabled": false,
                                                                   "isLoading": false,
@@ -6904,6 +6960,11 @@ exports[`<NewWorkshop />  should match its reference snapshot 1`] = `
                                                                     "getOptionLabel": [Function],
                                                                     "getOptionValue": [Function],
                                                                     "inputId": "workshopTopics",
+                                                                    "inputRef": Object {
+                                                                      "current": Object {
+                                                                        "focus": [Function],
+                                                                      },
+                                                                    },
                                                                     "inputValue": "",
                                                                     "isDisabled": false,
                                                                     "isLoading": false,
@@ -7268,6 +7329,11 @@ exports[`<NewWorkshop />  should match its reference snapshot 1`] = `
                                                                         "getOptionLabel": [Function],
                                                                         "getOptionValue": [Function],
                                                                         "inputId": "workshopTopics",
+                                                                        "inputRef": Object {
+                                                                          "current": Object {
+                                                                            "focus": [Function],
+                                                                          },
+                                                                        },
                                                                         "inputValue": "",
                                                                         "isDisabled": false,
                                                                         "isLoading": false,
@@ -7660,6 +7726,11 @@ exports[`<NewWorkshop />  should match its reference snapshot 1`] = `
                                                                   "getOptionLabel": [Function],
                                                                   "getOptionValue": [Function],
                                                                   "inputId": "workshopTopics",
+                                                                  "inputRef": Object {
+                                                                    "current": Object {
+                                                                      "focus": [Function],
+                                                                    },
+                                                                  },
                                                                   "inputValue": "",
                                                                   "isDisabled": false,
                                                                   "isLoading": false,
@@ -8014,6 +8085,11 @@ exports[`<NewWorkshop />  should match its reference snapshot 1`] = `
                                                                     "getOptionLabel": [Function],
                                                                     "getOptionValue": [Function],
                                                                     "inputId": "workshopTopics",
+                                                                    "inputRef": Object {
+                                                                      "current": Object {
+                                                                        "focus": [Function],
+                                                                      },
+                                                                    },
                                                                     "inputValue": "",
                                                                     "isDisabled": false,
                                                                     "isLoading": false,
@@ -8467,6 +8543,11 @@ exports[`<NewWorkshop />  should match its reference snapshot 1`] = `
                                                         "getOptionLabel": [Function],
                                                         "getOptionValue": [Function],
                                                         "inputId": "workshopTopics",
+                                                        "inputRef": Object {
+                                                          "current": Object {
+                                                            "focus": [Function],
+                                                          },
+                                                        },
                                                         "inputValue": "",
                                                         "isDisabled": false,
                                                         "isLoading": false,
@@ -8825,6 +8906,11 @@ exports[`<NewWorkshop />  should match its reference snapshot 1`] = `
                                                               "getOptionLabel": [Function],
                                                               "getOptionValue": [Function],
                                                               "inputId": "workshopTopics",
+                                                              "inputRef": Object {
+                                                                "current": Object {
+                                                                  "focus": [Function],
+                                                                },
+                                                              },
                                                               "inputValue": "",
                                                               "isDisabled": false,
                                                               "isLoading": false,
@@ -9194,6 +9280,11 @@ exports[`<NewWorkshop />  should match its reference snapshot 1`] = `
                                                               "getOptionLabel": [Function],
                                                               "getOptionValue": [Function],
                                                               "inputId": "workshopTopics",
+                                                              "inputRef": Object {
+                                                                "current": Object {
+                                                                  "focus": [Function],
+                                                                },
+                                                              },
                                                               "inputValue": "",
                                                               "isDisabled": false,
                                                               "isLoading": false,
@@ -9677,6 +9768,13 @@ exports[`<NewWorkshop />  should match its reference snapshot 1`] = `
                                 <ForwardRef
                                   closeMenuOnSelect={false}
                                   inputId="workshopRefs"
+                                  inputRef={
+                                    Object {
+                                      "current": Object {
+                                        "focus": [Function],
+                                      },
+                                    }
+                                  }
                                   isInvalid={false}
                                   isMulti={true}
                                   isSearchable={true}
@@ -9739,6 +9837,13 @@ exports[`<NewWorkshop />  should match its reference snapshot 1`] = `
                                     defaultMenuIsOpen={false}
                                     defaultValue={null}
                                     inputId="workshopRefs"
+                                    inputRef={
+                                      Object {
+                                        "current": Object {
+                                          "focus": [Function],
+                                        },
+                                      }
+                                    }
                                     isMulti={true}
                                     isSearchable={true}
                                     name="refsLegifrance"
@@ -9808,6 +9913,13 @@ exports[`<NewWorkshop />  should match its reference snapshot 1`] = `
                                       getOptionLabel={[Function]}
                                       getOptionValue={[Function]}
                                       inputId="workshopRefs"
+                                      inputRef={
+                                        Object {
+                                          "current": Object {
+                                            "focus": [Function],
+                                          },
+                                        }
+                                      }
                                       inputValue=""
                                       isDisabled={false}
                                       isLoading={false}
@@ -9934,6 +10046,11 @@ exports[`<NewWorkshop />  should match its reference snapshot 1`] = `
                                             "getOptionLabel": [Function],
                                             "getOptionValue": [Function],
                                             "inputId": "workshopRefs",
+                                            "inputRef": Object {
+                                              "current": Object {
+                                                "focus": [Function],
+                                              },
+                                            },
                                             "inputValue": "",
                                             "isDisabled": false,
                                             "isLoading": false,
@@ -10105,6 +10222,11 @@ exports[`<NewWorkshop />  should match its reference snapshot 1`] = `
                                                   "getOptionLabel": [Function],
                                                   "getOptionValue": [Function],
                                                   "inputId": "workshopRefs",
+                                                  "inputRef": Object {
+                                                    "current": Object {
+                                                      "focus": [Function],
+                                                    },
+                                                  },
                                                   "inputValue": "",
                                                   "isDisabled": false,
                                                   "isLoading": false,
@@ -10292,6 +10414,11 @@ exports[`<NewWorkshop />  should match its reference snapshot 1`] = `
                                                   "getOptionLabel": [Function],
                                                   "getOptionValue": [Function],
                                                   "inputId": "workshopRefs",
+                                                  "inputRef": Object {
+                                                    "current": Object {
+                                                      "focus": [Function],
+                                                    },
+                                                  },
                                                   "inputValue": "",
                                                   "isDisabled": false,
                                                   "isLoading": false,
@@ -10476,6 +10603,11 @@ exports[`<NewWorkshop />  should match its reference snapshot 1`] = `
                                                         "getOptionLabel": [Function],
                                                         "getOptionValue": [Function],
                                                         "inputId": "workshopRefs",
+                                                        "inputRef": Object {
+                                                          "current": Object {
+                                                            "focus": [Function],
+                                                          },
+                                                        },
                                                         "inputValue": "",
                                                         "isDisabled": false,
                                                         "isLoading": false,
@@ -10626,6 +10758,11 @@ exports[`<NewWorkshop />  should match its reference snapshot 1`] = `
                                                           "getOptionLabel": [Function],
                                                           "getOptionValue": [Function],
                                                           "inputId": "workshopRefs",
+                                                          "inputRef": Object {
+                                                            "current": Object {
+                                                              "focus": [Function],
+                                                            },
+                                                          },
                                                           "inputValue": "",
                                                           "isDisabled": false,
                                                           "isLoading": false,
@@ -10774,6 +10911,11 @@ exports[`<NewWorkshop />  should match its reference snapshot 1`] = `
                                                             "getOptionLabel": [Function],
                                                             "getOptionValue": [Function],
                                                             "inputId": "workshopRefs",
+                                                            "inputRef": Object {
+                                                              "current": Object {
+                                                                "focus": [Function],
+                                                              },
+                                                            },
                                                             "inputValue": "",
                                                             "isDisabled": false,
                                                             "isLoading": false,
@@ -10947,6 +11089,11 @@ exports[`<NewWorkshop />  should match its reference snapshot 1`] = `
                                                                   "getOptionLabel": [Function],
                                                                   "getOptionValue": [Function],
                                                                   "inputId": "workshopRefs",
+                                                                  "inputRef": Object {
+                                                                    "current": Object {
+                                                                      "focus": [Function],
+                                                                    },
+                                                                  },
                                                                   "inputValue": "",
                                                                   "isDisabled": false,
                                                                   "isLoading": false,
@@ -11100,6 +11247,11 @@ exports[`<NewWorkshop />  should match its reference snapshot 1`] = `
                                                                     "getOptionLabel": [Function],
                                                                     "getOptionValue": [Function],
                                                                     "inputId": "workshopRefs",
+                                                                    "inputRef": Object {
+                                                                      "current": Object {
+                                                                        "focus": [Function],
+                                                                      },
+                                                                    },
                                                                     "inputValue": "",
                                                                     "isDisabled": false,
                                                                     "isLoading": false,
@@ -11272,6 +11424,11 @@ exports[`<NewWorkshop />  should match its reference snapshot 1`] = `
                                                                         "getOptionLabel": [Function],
                                                                         "getOptionValue": [Function],
                                                                         "inputId": "workshopRefs",
+                                                                        "inputRef": Object {
+                                                                          "current": Object {
+                                                                            "focus": [Function],
+                                                                          },
+                                                                        },
                                                                         "inputValue": "",
                                                                         "isDisabled": false,
                                                                         "isLoading": false,
@@ -11472,6 +11629,11 @@ exports[`<NewWorkshop />  should match its reference snapshot 1`] = `
                                                                   "getOptionLabel": [Function],
                                                                   "getOptionValue": [Function],
                                                                   "inputId": "workshopRefs",
+                                                                  "inputRef": Object {
+                                                                    "current": Object {
+                                                                      "focus": [Function],
+                                                                    },
+                                                                  },
                                                                   "inputValue": "",
                                                                   "isDisabled": false,
                                                                   "isLoading": false,
@@ -11634,6 +11796,11 @@ exports[`<NewWorkshop />  should match its reference snapshot 1`] = `
                                                                     "getOptionLabel": [Function],
                                                                     "getOptionValue": [Function],
                                                                     "inputId": "workshopRefs",
+                                                                    "inputRef": Object {
+                                                                      "current": Object {
+                                                                        "focus": [Function],
+                                                                      },
+                                                                    },
                                                                     "inputValue": "",
                                                                     "isDisabled": false,
                                                                     "isLoading": false,
@@ -11895,6 +12062,11 @@ exports[`<NewWorkshop />  should match its reference snapshot 1`] = `
                                                         "getOptionLabel": [Function],
                                                         "getOptionValue": [Function],
                                                         "inputId": "workshopRefs",
+                                                        "inputRef": Object {
+                                                          "current": Object {
+                                                            "focus": [Function],
+                                                          },
+                                                        },
                                                         "inputValue": "",
                                                         "isDisabled": false,
                                                         "isLoading": false,
@@ -12061,6 +12233,11 @@ exports[`<NewWorkshop />  should match its reference snapshot 1`] = `
                                                               "getOptionLabel": [Function],
                                                               "getOptionValue": [Function],
                                                               "inputId": "workshopRefs",
+                                                              "inputRef": Object {
+                                                                "current": Object {
+                                                                  "focus": [Function],
+                                                                },
+                                                              },
                                                               "inputValue": "",
                                                               "isDisabled": false,
                                                               "isLoading": false,
@@ -12238,6 +12415,11 @@ exports[`<NewWorkshop />  should match its reference snapshot 1`] = `
                                                               "getOptionLabel": [Function],
                                                               "getOptionValue": [Function],
                                                               "inputId": "workshopRefs",
+                                                              "inputRef": Object {
+                                                                "current": Object {
+                                                                  "focus": [Function],
+                                                                },
+                                                              },
                                                               "inputValue": "",
                                                               "isDisabled": false,
                                                               "isLoading": false,

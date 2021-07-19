@@ -102,7 +102,6 @@ const EditWorkshop: FC = () => {
 
     const [showCancelDialog, setShowCancelDialog] = useState(false);
 
-    //TODO REfactor scss of page
     if (!workshop) return null;
 
     return (

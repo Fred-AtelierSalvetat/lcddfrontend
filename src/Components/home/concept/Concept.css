@@ -1,37 +1,38 @@
-
-
 .text-shadow {
-    color: #FFFFFF;
+    color: #ffffff;
     text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    margin-top: 50px;
+    margin-bottom: -20px;
 }
-
 
 #overlay {
     height: 602px;
     left: 0px;
     top: 0px;
-    background: linear-gradient(185.5deg, rgba(51, 51, 51, 0.04) 8.87%, 
-    rgba(51, 51, 51, 0.42) 31.46%, 
-    rgba(51, 51, 51, 0.74) 69.43%, 
-    rgba(51, 51, 51, 0) 95.61%), 
-    url(./../../../assets/home/concept.jpg);
+    background: linear-gradient(
+            185.5deg,
+            rgba(51, 51, 51, 0.04) 8.87%,
+            rgba(51, 51, 51, 0.42) 31.46%,
+            rgba(51, 51, 51, 0.74) 69.43%,
+            rgba(51, 51, 51, 0) 95.61%
+        ),
+        url(./../../../assets/home/concept.jpg);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: top;
 }
 
-
 .search-form-concept {
     position: relative;
 }
 
-.form-label-concept  {
+.form-label-concept {
     position: absolute;
     right: 10px;
     bottom: 0;
     top: 0;
     margin: 0;
-    padding: 10px;  
+    padding: 10px;
 }
 
 .search-icon {
@@ -53,3 +54,30 @@
     color: #999999;
 }
 
+@media only screen and (min-width: 992px) {
+    .concept__input {
+        margin-left: 10px !important;
+        margin-right: 10px !important;
+    }
+}
+
+@media only screen and (max-width: 991px) {
+    #overlay {
+        height: 341px;
+    }
+    .concept__input {
+        margin-left: 15px !important;
+        margin-right: 15px !important;
+    }
+    #concept__form {
+        margin-bottom: 200px;
+    }
+    #concept__header {
+        margin-top: 200px;
+    }
+}
+@media only screen and (max-width: 767px) {
+    #overlay {
+        height: 320px;
+    }
+}

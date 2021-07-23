@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC, Fragment } from 'react';
 import { Container, Row, Col, Form } from 'react-bootstrap';
 import './Concept.css';
 
@@ -6,15 +6,17 @@ const ConceptComponent: FC = () => {
     return (
         <div id="overlay" className=" d-flex flex-column justify-content-center">
             <Container className="mb-5">
-                <div className="display-1 text-shadow">Le Droit en Questions</div>
+                <div id="concept__header" className="display-1 text-shadow">
+                    Le Droit en Questions
+                </div>
                 <h3 className="text-shadow" style={{ textAlign: 'center' }}>
                     Des réponses simples à vos questions de droit les plus compliquées
                 </h3>
             </Container>
-            <Row style={{ width: '100%' }}>
-                <Col md={{ span: 8, offset: 2 }}>
+            <Row className="concept__input">
+                <Col>
                     <Form className="search-form-concept">
-                        <Form.Group controlId="formGroupSearch">
+                        <Form.Group id="concept__form" controlId="formGroupSearch">
                             <Form.Label className="form-label-concept">
                                 <img className="search-icon" src="./search.svg" alt="" />
                             </Form.Label>

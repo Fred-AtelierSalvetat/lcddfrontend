@@ -4,7 +4,6 @@ import { useSelector, useDispatch } from 'react-redux';
 import { AppState } from '../../../state/reducers';
 import { fetchSpeakers } from '../../../api/fetchSperkers';
 import './Intervenants.css';
-import AOS from 'aos';
 import 'aos/dist/aos.css';
 
 const IntervenantsComponent: FC = () => {
@@ -14,20 +13,19 @@ const IntervenantsComponent: FC = () => {
     const { speakers } = useSelector((state: AppState) => state.speakers);
 
     useEffect(() => {
-        AOS.init({ duration: 2000 });
         if (speakers.length === 0) {
             dispatch(fetchSpeakers());
         }
     }, [dispatch, speakers]);
     console.log(speakers);
     return (
-        <div data-aos="slide-up" style={{ marginTop: '50px' }}>
+        <div className="intervenant__container" data-aos="slide-up">
             <div>
                 <div className="intervenantHeader">
-                    <div className="display-4 mb-3" style={{ color: '#113F59', margin: '0px 290px' }}>
+                    <div className="display-4 mb-3" style={{ color: '#113F59', flex: 1 }}>
                         Nos intervenants
                     </div>
-                    <div style={{ textDecoration: 'underline' }}>
+                    <div className="voirplus">
                         <a href="/" className="link">
                             Voir plus
                         </a>
@@ -40,7 +38,7 @@ const IntervenantsComponent: FC = () => {
                     </h3>
                 </div>
             </div>
-            <div className="d-flex justify-content-center flex-wrap mx-5 mt-2 mb-5">
+            <div className="speaker">
                 {speakers &&
                     !isHome &&
                     speakers.map((speaker, key: number) => (

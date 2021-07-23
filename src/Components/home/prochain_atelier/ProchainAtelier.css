@@ -1,4 +1,6 @@
 #prochain-atelier-container {
+    display: flex;
+    flex-direction: column;
     height: 244px;
     background: linear-gradient(
             185.5deg,
@@ -14,7 +16,7 @@
 }
 
 .styled-card {
-    width: 1140px;
+    width: auto;
     height: 87px;
     display: flex;
     margin-bottom: 50px;
@@ -61,4 +63,44 @@
 
 .info {
     justify-content: space-between;
+}
+@media only screen and (max-width: 991px) {
+    #questionvideo {
+        visibility: hidden;
+    }
+    .background-transparency {
+        background-color: #ffffff;
+    }
+
+    .styled-card-questions {
+        width: 1140px;
+        height: 0px;
+        margin-bottom: 0px;
+    }
+
+    .likes-container {
+        height: 0px;
+        background-color: #113f59;
+    }
+
+    .number-likes {
+        height: 0px;
+    }
+
+    .like-icon {
+        color: #ffffff;
+        font-weight: bold;
+        font-size: 25px;
+    }
+    .styled-card {
+        width: auto;
+        height: 87px;
+        display: flex;
+        margin-bottom: 50px;
+        flex-direction: row;
+        justify-content: space-between;
+        border: 2px solid #113f59;
+        background-color: #ffffff;
+        align-items: center;
+    }
 }

@@ -8,3 +8,12 @@
     padding-left: 200px;
     padding-right: 200px;
 }
+.domaineexpretise__container {
+    margin-top: 50px;
+}
+@media only screen and (max-width: 767px) {
+    .domaineexpretise__container {
+        display: none;
+        margin-right: 15px;
+    }
+}

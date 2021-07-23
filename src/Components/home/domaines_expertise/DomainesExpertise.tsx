@@ -1,16 +1,12 @@
-import React, { FC, useEffect } from 'react';
+import React, { FC } from 'react';
 import thematiques from '../../shared/thematiques';
 import InterestCard from '../../shared/cards/InterestCard';
 import './DomainesExpertise.css';
-import AOS from 'aos';
 import 'aos/dist/aos.css';
 
 const DomainesExpertiseComponent: FC = () => {
-    useEffect(() => {
-        AOS.init({ duration: 1000 });
-    }, []);
     return (
-        <div data-aos="slide-up">
+        <div data-aos="slide-up" className="domaineexpretise__container">
             <div>
                 <div className="display-4 mb-2" style={{ color: '#113F59', textAlign: 'center' }}>
                     {"Nos domaines d'expertise"}

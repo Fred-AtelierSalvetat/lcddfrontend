@@ -51,13 +51,11 @@ body::after {
     }
 }
 
-
 /* Tablet viewport */
 @media screen and (max-width: 786px) {
     #lcdd-footer {
         .navbar {
             align-items: flex-start;
-            padding-top: 1.5em;
             padding-bottom: 1.5em;
         }
 
@@ -81,7 +79,6 @@ body::after {
             margin-top: 1em;
         }
     }
-
 }
 
 /* Mobile viewport */

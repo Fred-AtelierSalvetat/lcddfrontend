@@ -3,7 +3,7 @@ import { ReactComponent as Selected } from '~/assets/icons/Selected.svg';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
-const MOBILE_VIEW_BREAKPOINT = 402;
+const MOBILE_VIEW_BREAKPOINT = 991;
 
 const cardPropTypes = {
     className: PropTypes.string.isRequired,
@@ -53,8 +53,8 @@ const InterestCardStyled = styled(Card)`
     flex-flow: column wrap;
     justify-content: space-between;
     align-items: center;
-    height: ${(props) => (props.isMobile ? '165px' : '170px')};
-    width: ${(props) => (props.isMobile ? '165px' : '170px')};
+    height: ${(props) => (props.isMobile ? '180px' : '165px')};
+    width: ${(props) => (props.isMobile ? '180px' : '165px')};
     border: 1px solid #113f59;
     border-radius: 2px;
     background-color: white;
@@ -132,6 +132,7 @@ const InterestCard: FC<PropTypes.InferProps<typeof interestCardPropTypes>> = (pr
                 paddingRight: isMobile ? '1px' : '',
                 display: 'flex',
                 justifyContent: 'center',
+                marginRight: '10px',
             }}
         >
             <InterestCardStyled

@@ -1,44 +1,40 @@
-.container-atelier  {
+.container-atelier {
     height: 800px;
     right: 735px;
     background-repeat: no-repeat;
     background-size: cover;
     background-position: top;
     background-image: url(./../../../assets/home/ateliers.jpg);
-    border: 1px solid #FFFFFF;
+    border: 1px solid #ffffff;
     box-sizing: border-box;
 }
 
-.background-transparency-atelier  {
-   background-color: rgba(17,63,89,0.9);
-   width: 705px;
-   height: 723px;
-   border: 1px solid #FFFFFF;
-   box-sizing: border-box;
-   height: 800px;
-
+.background-transparency-atelier {
+    background-color: rgba(17, 63, 89, 0.9);
+    width: 705px;
+    height: 723px;
+    border: 1px solid #ffffff;
+    box-sizing: border-box;
+    height: 800px;
 }
 
-
-.icon-questions  {
-   width: 90px;
-   height: 80px;
+.icon-questions {
+    width: 90px;
+    height: 80px;
 }
 
-.enumeration-atelier  {
-   color: #F2F2F2;
-   width: 42px;
-   height: 79px;
-   font-family: 'Segoe UI';
-   font-weight: 300;
-   font-size: 71px;
-   line-height: 79px;
+.enumeration-atelier {
+    color: #f2f2f2;
+    width: 42px;
+    height: 79px;
+    font-family: 'Segoe UI';
+    font-weight: 300;
+    font-size: 71px;
+    line-height: 79px;
 }
 
-.text-atelier  {
-   color: #FFFFFF;
-   text-align: left;
-   width: 350px;
-
+.text-atelier {
+    color: #ffffff;
+    text-align: left;
+    width: 350px;
 }
-

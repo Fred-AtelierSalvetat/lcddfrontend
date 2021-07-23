@@ -1,16 +1,12 @@
-import React, { FC, useEffect } from 'react';
+import React, { FC } from 'react';
 import { Container } from 'react-bootstrap';
 import Calendar from './../../../assets/icons/calendar.png';
 import './ProchainAtelier.css';
-import AOS from 'aos';
 import 'aos/dist/aos.css';
 
 const ProchainAtelierComponent: FC = () => {
-    useEffect(() => {
-        AOS.init({ duration: 1000 });
-    }, []);
     return (
-        <div data-aos="slide-up" id="prochain-atelier-container" className="d-flex justify-content-center flex-wrap">
+        <div data-aos="slide-up" id="prochain-atelier-container">
             <Container className="atelier">
                 <h1 className=" mb-4 mt-3" style={{ color: '#FFFFFF', textAlign: 'left' }}>
                     Prochain Atelier
@@ -34,9 +30,7 @@ const ProchainAtelierComponent: FC = () => {
                             <img className="icon-reserve" src={Calendar} alt="calendar" />
                         </a>
                         <div className="reserver">
-                            <a className="link-to-reserve ml-3" href="/">
-                                Reserver
-                            </a>
+                            <h5 className="link-to-reserve ml-3">Reserver</h5>
                         </div>
                     </div>
                 </div>

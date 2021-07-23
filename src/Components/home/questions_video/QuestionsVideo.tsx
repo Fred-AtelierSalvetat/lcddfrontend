@@ -1,18 +1,14 @@
-import React, { FC, useEffect } from 'react';
+import React, { FC } from 'react';
 import { Row, Container } from 'react-bootstrap';
 import './QuestionsVideo.css';
 import { AiOutlineLike } from 'react-icons/ai';
-import AOS from 'aos';
 import 'aos/dist/aos.css';
 
 const QuestionsVideoComponent: FC = () => {
-    useEffect(() => {
-        AOS.init({ duration: 1000 });
-    }, []);
     return (
-        <div data-aos="slide-up" className="d-flex justify-content-center flex-wrap  mt-2">
-            <Container>
-                <h1 className=" mb-4 mt-3" style={{ color: ' #113F59', textAlign: 'left' }}>
+        <div id="questionvideo" data-aos="slide-up" className="d-flex justify-content-center flex-wrap  mt-2">
+            <Container className="container">
+                <h1 id="header" className=" mb-4 mt-3" style={{ color: ' #113F59', textAlign: 'left' }}>
                     Questions en attente
                 </h1>
             </Container>

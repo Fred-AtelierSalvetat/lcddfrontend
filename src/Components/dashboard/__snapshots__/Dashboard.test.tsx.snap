@@ -146,9 +146,29 @@ exports[`<Dashboard /> should match its reference snapshot 1`] = `
                     className="alertBox"
                   />
                 </AlertNotificationBox>
-                <div
-                  id="activePage"
-                />
+                <Switch>
+                  <Route
+                    computedMatch={
+                      Object {
+                        "isExact": true,
+                        "params": Object {},
+                        "path": "/dashboard",
+                        "url": "/dashboard",
+                      }
+                    }
+                    exact={true}
+                    location={
+                      Object {
+                        "hash": "",
+                        "key": "testKey",
+                        "pathname": "/dashboard",
+                        "search": "",
+                      }
+                    }
+                    path="/dashboard"
+                    strict={true}
+                  />
+                </Switch>
               </div>
             </div>
           </ErrorBoundary>

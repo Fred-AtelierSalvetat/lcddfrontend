@@ -44,7 +44,10 @@ const WorkshopCard: FC<PropTypes.InferProps<typeof propTypes>> = ({
     return (
         <Card className="card">
             <div className="image-container">
-                <Card.Img variant="top" alt={!!thumbnail ? title : ''} src={thumbnail} />
+                {!!thumbnail && (
+                    //&& <Card.Img variant="top" alt="Workshop's thumbnail" src={thumbnail} />}
+                    <Card.Img variant="top" alt="Workshop's thumbnail" data-src={thumbnail} className="lazyload" />
+                )}
                 <Card.ImgOverlay>
                     <div
                         className={className('status', {
@@ -59,10 +62,7 @@ const WorkshopCard: FC<PropTypes.InferProps<typeof propTypes>> = ({
                     </div>
                     {status !== statusConst.LIVE && (
                         <div className="actionMenuContainer">
-                            <ActionMenuPopover
-                                icon={<MoreVertIcon title="openWorkshopActionMenu" />}
-                                placement="bottom-end"
-                            >
+                            <ActionMenuPopover icon={<MoreVertIcon title="Actions" />} placement="bottom-end">
                                 {status === statusConst.INCOMING && (
                                     <>
                                         <Action
@@ -124,6 +124,7 @@ const WorkshopCard: FC<PropTypes.InferProps<typeof propTypes>> = ({
                         </div>
                     )}
                     <EditIcon
+                        title="Modifier"
                         className="editIcon"
                         onClick={() => {
                             history.push(`/dashboard/editWorkshop/${id}`);

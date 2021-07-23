@@ -29,7 +29,7 @@ export type UIfiltersRole = string;
 export type UIfiltersSearch = string;
 
 export type UIfilters = {
-    roles: UIfiltersRole;
+    role: UIfiltersRole;
     search: UIfiltersSearch;
 };
 

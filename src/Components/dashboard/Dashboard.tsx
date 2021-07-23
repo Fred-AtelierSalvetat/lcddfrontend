@@ -8,11 +8,13 @@ import { ReactComponent as UsersIcon } from '~/assets/icons/users_24px.svg';
 // import { ReactComponent as NotificationsIcon } from '~/assets/icons/notifications_24px.svg';
 // import { ReactComponent as HelpIcon } from '~/assets/icons/help_24px.svg';
 import ErrorBoundary from '~/Components/shared/ErrorBoundary';
-import UserManagement from './usermanagement/UserManagement';
-import NewWorkshop from './newWorkshop/NewWorkshop';
-import Workshops from './workshops/Workshops';
-import EditWorkshop from './editWorkshop/EditWorkshop';
-import GoLive from './goLive/GoLive';
+
+const UserManagement = React.lazy(() => import('./usermanagement/UserManagement'));
+const NewWorkshop = React.lazy(() => import('./newWorkshop/NewWorkshop'));
+const Workshops = React.lazy(() => import('./workshops/Workshops'));
+const EditWorkshop = React.lazy(() => import('./editWorkshop/EditWorkshop'));
+const GoLive = React.lazy(() => import('./goLive/GoLive'));
+
 import AlertNotificationBox from './AlertNotificationBox';
 
 import './Dashboard.scss';

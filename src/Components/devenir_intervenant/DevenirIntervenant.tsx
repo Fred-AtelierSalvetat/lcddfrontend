@@ -266,6 +266,7 @@ const DevenirintervenantComponent: FC = () => {
                                                     placeholder="Entrer votre adresse e-mail"
                                                     ref={register(validator.email)}
                                                     isInvalid={!!errors.email}
+                                                    aria-invalid={!!errors.email}
                                                     tabIndex={1}
                                                 />
                                                 <FormFeedback field={errors.email}></FormFeedback>
@@ -285,6 +286,7 @@ const DevenirintervenantComponent: FC = () => {
                                                         placeholder="Entrer votre numéro de téléphone"
                                                         ref={register(validator.phone_number)}
                                                         isInvalid={errors.phone_number}
+                                                        aria-invalid={!!errors.phone_number}
                                                         tabIndex={1}
                                                     />
                                                     <FormFeedback field={errors.phone_number}></FormFeedback>

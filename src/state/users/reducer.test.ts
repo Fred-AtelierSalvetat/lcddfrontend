@@ -9,7 +9,7 @@ const emptyStore = {
     users: [],
     inProgressRequests: [],
     uiFilters: {
-        roles: [],
+        role: 'admin',
         search: '',
     },
 };
@@ -171,9 +171,9 @@ describe('users reducer', () => {
                     ...emptyStore,
                     users: testDB,
                 }),
-                { type: actionType.SET_USER_ROLE_FILTER, roles_filter: ['RoleA', 'RoleB'] },
+                { type: actionType.SET_USER_ROLE_FILTER, role_filter: 'user' },
             )['uiFilters'],
-        ).to.deep.include({ roles: ['RoleA', 'RoleB'] });
+        ).to.deep.include({ role: 'user' });
     });
     it('should add new api request to the "requests in progress" list', () => {
         expect(

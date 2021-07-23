@@ -25,13 +25,19 @@ const Header: FC<PropTypes.InferProps<typeof headerPropsTypes>> = (props) => {
         <div id="lcdd-header">
             <Navbar bg="lcdd-primary" expand="lg" variant="dark">
                 <Navbar.Brand href="/">
-                    <img alt="" src={Logo} width="154" className="d-inline-block align-top" />
+                    <img
+                        alt="La chaine du droit"
+                        src={Logo}
+                        width="154"
+                        height="46"
+                        className="d-inline-block align-top"
+                    />
                 </Navbar.Brand>
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                 <Navbar.Collapse id="responsive-navbar-nav">
                     <Nav activeKey={window.location.pathname}>
                         <div id="navbar-main" className="navbar-nav">
-                            <li className="nav-item dropdown">
+                            <div className="nav-item dropdown">
                                 <Nav.Link href="/questions/" data-toggle="dropdown">
                                     Vos questions
                                     <DropdownIcon style={{ marginLeft: '8px' }}></DropdownIcon>
@@ -53,7 +59,7 @@ const Header: FC<PropTypes.InferProps<typeof headerPropsTypes>> = (props) => {
                                         </a>
                                     </li>
                                 </ul>
-                            </li>
+                            </div>
                             <Nav.Link className="nav-item" href="/webTV">
                                 WebTV
                             </Nav.Link>

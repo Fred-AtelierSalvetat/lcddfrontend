@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FC } from 'react';
 import { Controller } from 'react-hook-form';
 
 import DatePicker from '~/Components/shared/form/DatePicker';
@@ -18,7 +18,7 @@ import topics from '~/Components/shared/thematiques';
 
 import PropTypes from 'prop-types';
 
-import './WkspFormBody.scss';
+import './WkspForm.scss';
 
 const propTypes = {
     title: PropTypes.string,
@@ -44,7 +44,7 @@ export const intervenants = [
     { value: 'Julien GENOVA', label: 'Julien GENOVA' },
 ];
 
-const WkspFormBody: FC<PropsTypes.InferProps<typeof propTypes>> = ({
+const WkspForm: FC<PropTypes.InferProps<typeof propTypes>> = ({
     title,
     headerButtonLine,
     footerButtonLine,
@@ -69,12 +69,12 @@ const WkspFormBody: FC<PropsTypes.InferProps<typeof propTypes>> = ({
 
     return (
         <div id="workshop-form">
-            <Form id="workshop-form" onSubmit={handleSubmit}>
+            <Form role="form" onSubmit={handleSubmit}>
                 {title && <h1>{title}</h1>}
                 {headerButtonLine}
                 <Form.Row>
                     <Col xs={12} md={7} lg={9}>
-                        <Form.Group>
+                        <Form.Group controlId="workshopTitle">
                             <Form.Label>{"Titre d'atelier (obligatoire)"}</Form.Label>
                             <Form.Control
                                 type="text"
@@ -82,22 +82,24 @@ const WkspFormBody: FC<PropsTypes.InferProps<typeof propTypes>> = ({
                                 placeholder="Ajouter un titre"
                                 ref={register(validator.workshopTitle)}
                                 isInvalid={!!errors.title}
-                                value={watch('title')}
-                                onChange={({ target }) => trigger(target.name)}
+                                aria-invalid={!!errors.title}
+                                defaultValue={watch('title')}
+                                onChange={async ({ target }) => await trigger(target.name)}
                             />
                             <FormFeedback field={errors.title}></FormFeedback>
                         </Form.Group>
                     </Col>
                     <Col xs={12} md={5} lg={3}>
-                        <Form.Group>
-                            <Form.Label>Date & Heure (obligatoire)</Form.Label>
+                        <Form.Group controlId="workshopStartingDate">
+                            <Form.Label>{'Date & Heure (obligatoire)'}</Form.Label>
                             <Controller
                                 name="startingdate"
                                 control={control}
                                 rules={validator.workshopTimestamp}
-                                render={(field) => (
+                                render={({ ref, ...othersField }) => (
                                     <DatePicker
-                                        {...field}
+                                        {...othersField}
+                                        inputId="workshopStartingDate"
                                         isInvalid={!!errors.startingdate}
                                         placeholder="DD/MM/YYYY HH:mm"
                                         dateFormat="dd/MM/yyyy HH:mm"
@@ -110,15 +112,17 @@ const WkspFormBody: FC<PropsTypes.InferProps<typeof propTypes>> = ({
                 </Form.Row>
                 <Form.Row>
                     <Col>
-                        <Form.Group>
+                        <Form.Group controlId="workshopSpeakers">
                             <Form.Label>Intervenants (obligatoire)</Form.Label>
                             <Controller
                                 name="speakers"
                                 control={control}
                                 rules={validator.workshopSpeakers}
-                                render={(field) => (
+                                render={({ ref, ...othersField }) => (
                                     <Select
-                                        {...field}
+                                        inputId="workshopSpeakers"
+                                        inputRef={ref}
+                                        {...othersField}
                                         isMulti
                                         options={intervenants}
                                         isSearchable
@@ -135,15 +139,17 @@ const WkspFormBody: FC<PropsTypes.InferProps<typeof propTypes>> = ({
                 <Form.Row>
                     <Col className="fullheight-flex-col" xs={12} md={8}>
                         <Form.Row>
-                            <Form.Group>
+                            <Form.Group controlId="workshopTopics">
                                 <Form.Label>Thématiques (obligatoire)</Form.Label>
                                 <Controller
                                     name="topics"
                                     control={control}
                                     rules={validator.workshopTopics}
-                                    render={(field) => (
+                                    render={({ ref, ...othersField }) => (
                                         <Select
-                                            {...field}
+                                            inputId="workshopTopics"
+                                            inputRef={ref}
+                                            {...othersField}
                                             isMulti
                                             options={topicsList}
                                             value={watch('topics')}
@@ -158,15 +164,17 @@ const WkspFormBody: FC<PropsTypes.InferProps<typeof propTypes>> = ({
                             </Form.Group>
                         </Form.Row>
                         <Form.Row>
-                            <Form.Group>
+                            <Form.Group controlId="workshopRefs">
                                 <Form.Label>Références Légifrance</Form.Label>
                                 <Controller
                                     name="refsLegifrance"
                                     control={control}
                                     rules={validator.workshopRefsLegifrance}
-                                    render={(field) => (
+                                    render={({ ref, ...othersField }) => (
                                         <Select
-                                            {...field}
+                                            inputId="workshopRefs"
+                                            inputRef={ref}
+                                            {...othersField}
                                             isMulti
                                             options={refLegifrance}
                                             isSearchable
@@ -180,7 +188,7 @@ const WkspFormBody: FC<PropsTypes.InferProps<typeof propTypes>> = ({
                             </Form.Group>
                         </Form.Row>
                         <Form.Row className="no-margin">
-                            <Form.Group>
+                            <Form.Group controlId="workshopDescription">
                                 <Form.Label>Description</Form.Label>
                                 <Form.Control
                                     as="textarea"
@@ -189,15 +197,16 @@ const WkspFormBody: FC<PropsTypes.InferProps<typeof propTypes>> = ({
                                     placeholder="Ajouter une description"
                                     ref={register(validator.workshopDescription)}
                                     isInvalid={!!errors.description}
-                                    value={watch('description')}
-                                    onChange={({ target }) => trigger(target.name)}
+                                    aria-invalid={!!errors.description}
+                                    defaultValue={watch('description')}
+                                    onChange={async ({ target }) => await trigger(target.name)}
                                 />
                                 <FormFeedback field={errors.description}></FormFeedback>
                             </Form.Group>
                         </Form.Row>
                     </Col>
                     <Col className="fullheight-flex-col" xs={12} md={4}>
-                        <Form.Group>
+                        <Form.Group controlId="workshopKeywords">
                             <Form.Label>Mots-clés</Form.Label>
                             <fieldset>
                                 <Keywords
@@ -215,7 +224,7 @@ const WkspFormBody: FC<PropsTypes.InferProps<typeof propTypes>> = ({
                 </Form.Row>
                 <Form.Row>
                     <Col className="fullheight-flex-col" xs={12} md={8}>
-                        <Form.Group>
+                        <Form.Group controlId="workshopFiles">
                             <Form.Label>Téléchargements</Form.Label>
                             <fieldset className="workshopUploads">
                                 <Uploads
@@ -253,6 +262,6 @@ const WkspFormBody: FC<PropsTypes.InferProps<typeof propTypes>> = ({
     );
 };
 
-WkspFormBody.propTypes = propTypes;
+WkspForm.propTypes = propTypes;
 
-export default WkspFormBody;
+export default WkspForm;

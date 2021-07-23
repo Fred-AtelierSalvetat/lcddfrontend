@@ -10,13 +10,14 @@ import { rootReducer, reducersList } from '~/state/reducers';
 
 import UserManagement from './UserManagement';
 
-import * as userRoles from '~/state/users/constants/roles';
+import * as roles from '~/state/users/constants/roles';
 import { fakeDatabase } from '~/api/fetchUsers';
 
 describe('<UserManagement /> ', () => {
     let store = undefined;
     const globalStateWithUsers = {};
     const mockStore = configureMockStore([thunk]);
+
     beforeEach(() => {
         const mockStore = configureMockStore([thunk]);
         for (const prop of Object.getOwnPropertyNames(reducersList)) {
@@ -25,16 +26,7 @@ describe('<UserManagement /> ', () => {
         globalStateWithUsers.users = {
             users: fakeDatabase,
             uiFilters: {
-                roles: [
-                    //All users displayed
-                    userRoles.ROLE_ADMIN,
-                    userRoles.ROLE_SPEAKER_AWAITING_ANSWER,
-                    userRoles.ROLE_SPEAKER_AWAITING_VALIDATION,
-                    userRoles.ROLE_SPEAKER,
-                    userRoles.ROLE_PRO_USER,
-                    userRoles.ROLE_STUDENT,
-                    userRoles.ROLE_CITIZEN,
-                ],
+                role: 'admin',
                 search: '',
             },
         };
@@ -45,7 +37,7 @@ describe('<UserManagement /> ', () => {
         render(
             <Provider store={store}>
                 <MemoryRouter initialEntries={['/users']}>
-                    <Route path={['/users/:roleFilter', '/users']}>
+                    <Route path="/users">
                         <UserManagement />
                     </Route>
                 </MemoryRouter>
@@ -54,10 +46,12 @@ describe('<UserManagement /> ', () => {
     });
 
     it('proposes 3 tabs : "Admins", "Intervants" and "Utilisateurs"', () => {
+        // Call URL with query param to avoid redirection on URL + query param
+        // Set role value in store, that's the one used
         render(
             <Provider store={store}>
-                <MemoryRouter initialEntries={['/users']}>
-                    <Route path={['/users/:roleFilter', '/users']}>
+                <MemoryRouter initialEntries={['/users?tab=admin']}>
+                    <Route path="/users">
                         <UserManagement />
                     </Route>
                 </MemoryRouter>
@@ -73,8 +67,8 @@ describe('<UserManagement /> ', () => {
     it("'s 'Admins' tab selection should display the admin table with the specified columns", () => {
         render(
             <Provider store={store}>
-                <MemoryRouter initialEntries={['/users/admin']}>
-                    <Route path={['/users/:roleFilter']}>
+                <MemoryRouter initialEntries={['/users?tab=admin']}>
+                    <Route path="/users">
                         <UserManagement />
                     </Route>
                 </MemoryRouter>
@@ -91,6 +85,7 @@ describe('<UserManagement /> ', () => {
             'Actions',
             '',
         ];
+
         const renderedHeaders = within(screen.getByRole('tabpanel')).getAllByRole('heading');
         expect(renderedHeaders).to.have.lengthOf(awaitedHeaders.length);
         awaitedHeaders.forEach((label, index) => expect(renderedHeaders[index]).toHaveTextContent(label));
@@ -100,8 +95,8 @@ describe('<UserManagement /> ', () => {
         const targetActionLabel = 'Revenir intervenant';
         render(
             <Provider store={store}>
-                <MemoryRouter initialEntries={['/users/admin']}>
-                    <Route path={['/users/:roleFilter']}>
+                <MemoryRouter initialEntries={['/users?tab=admin']}>
+                    <Route path="/users">
                         <UserManagement />
                     </Route>
                 </MemoryRouter>
@@ -116,8 +111,8 @@ describe('<UserManagement /> ', () => {
         const targetActionLabel = 'Supprimer';
         render(
             <Provider store={store}>
-                <MemoryRouter initialEntries={['/users/admin']}>
-                    <Route path={['/users/:roleFilter']}>
+                <MemoryRouter initialEntries={['/users?tab=admin']}>
+                    <Route path="/users">
                         <UserManagement />
                     </Route>
                 </MemoryRouter>
@@ -129,10 +124,12 @@ describe('<UserManagement /> ', () => {
     });
 
     it("'s 'Intervenants' tab selection should display the speakers table with the specified columns", () => {
+        globalStateWithUsers.users.uiFilters.role = roles.SPEAKER_ROLE_KEY;
+        store = mockStore(rootReducer(globalStateWithUsers, { type: undefined }));
         render(
             <Provider store={store}>
-                <MemoryRouter initialEntries={['/users/speaker']}>
-                    <Route path={['/users/:roleFilter']}>
+                <MemoryRouter initialEntries={['/users']}>
+                    <Route path="/users">
                         <UserManagement />
                     </Route>
                 </MemoryRouter>
@@ -155,12 +152,14 @@ describe('<UserManagement /> ', () => {
     });
 
     it("'s 'Intervenants' tab's table should allow 'Promouvoir admin' action on validated speakers", async () => {
+        globalStateWithUsers.users.uiFilters.role = roles.SPEAKER_ROLE_KEY;
+        store = mockStore(rootReducer(globalStateWithUsers, { type: undefined }));
         const targetActionLabel = 'Promouvoir admin';
-        const targetUser = store.getState().users.users.filter((user) => user.role === userRoles.ROLE_SPEAKER)[0];
+        const targetUser = store.getState().users.users.filter((user) => user.role === roles.ROLE_SPEAKER)[0];
         render(
             <Provider store={store}>
-                <MemoryRouter initialEntries={['/users/speaker']}>
-                    <Route path={['/users/:roleFilter']}>
+                <MemoryRouter initialEntries={['/users']}>
+                    <Route path="/users">
                         <UserManagement />
                     </Route>
                 </MemoryRouter>
@@ -176,14 +175,16 @@ describe('<UserManagement /> ', () => {
     });
 
     it("'s 'Intervenants' tab's table should allow 'Valider candidat' action on speakers awaiting validation", async () => {
+        globalStateWithUsers.users.uiFilters.role = roles.SPEAKER_ROLE_KEY;
+        store = mockStore(rootReducer(globalStateWithUsers, { type: undefined }));
         const targetActionLabel = 'Valider candidat';
         const targetUser = store
             .getState()
-            .users.users.filter((user) => user.role === userRoles.ROLE_SPEAKER_AWAITING_VALIDATION)[0];
+            .users.users.filter((user) => user.role === roles.ROLE_SPEAKER_AWAITING_VALIDATION)[0];
         render(
             <Provider store={store}>
-                <MemoryRouter initialEntries={['/users/speaker']}>
-                    <Route path={['/users/:roleFilter']}>
+                <MemoryRouter initialEntries={['/users']}>
+                    <Route path="/users">
                         <UserManagement />
                     </Route>
                 </MemoryRouter>
@@ -199,10 +200,12 @@ describe('<UserManagement /> ', () => {
     });
 
     it("'s 'Utilisateurs' tab selection should display the users table with the specified columns", () => {
+        globalStateWithUsers.users.uiFilters.role = roles.USER_ROLE_KEY;
+        store = mockStore(rootReducer(globalStateWithUsers, { type: undefined }));
         render(
             <Provider store={store}>
-                <MemoryRouter initialEntries={['/users/user']}>
-                    <Route path={['/users/:roleFilter']}>
+                <MemoryRouter initialEntries={['/users']}>
+                    <Route path="/users">
                         <UserManagement />
                     </Route>
                 </MemoryRouter>
@@ -214,12 +217,14 @@ describe('<UserManagement /> ', () => {
         awaitedHeaders.forEach((label, index) => expect(renderedHeaders[index]).toHaveTextContent(label));
     });
     it("'s 'Utilisateurs' tab's table should allow 'Inviter à intervenir' action on legal professional users", async () => {
+        globalStateWithUsers.users.uiFilters.role = roles.USER_ROLE_KEY;
+        store = mockStore(rootReducer(globalStateWithUsers, { type: undefined }));
         const targetActionLabel = 'Inviter à intervenir';
-        const targetUser = store.getState().users.users.filter((user) => user.role === userRoles.ROLE_PRO_USER)[0];
+        const targetUser = store.getState().users.users.filter((user) => user.role === roles.ROLE_PRO_USER)[0];
         render(
             <Provider store={store}>
-                <MemoryRouter initialEntries={['/users/user']}>
-                    <Route path={['/users/:roleFilter']}>
+                <MemoryRouter initialEntries={['/users']}>
+                    <Route path="/users">
                         <UserManagement />
                     </Route>
                 </MemoryRouter>
@@ -233,12 +238,15 @@ describe('<UserManagement /> ', () => {
         );
         await screen.findByText(targetActionLabel);
     });
+
     it("'s 'Utilisateurs' tab's table should allow 'Supprimer' action", async () => {
+        globalStateWithUsers.users.uiFilters.role = roles.USER_ROLE_KEY;
+        store = mockStore(rootReducer(globalStateWithUsers, { type: undefined }));
         const targetActionLabel = 'Supprimer';
         render(
             <Provider store={store}>
-                <MemoryRouter initialEntries={['/users/user']}>
-                    <Route path={['/users/:roleFilter']}>
+                <MemoryRouter initialEntries={['/users']}>
+                    <Route path="/users">
                         <UserManagement />
                     </Route>
                 </MemoryRouter>
@@ -250,11 +258,13 @@ describe('<UserManagement /> ', () => {
     });
 
     it('should filter users according to role', () => {
-        const targetUser = store.getState().users.users.filter((user) => user.role === userRoles.ROLE_CITIZEN)[0];
+        globalStateWithUsers.users.uiFilters.role = roles.USER_ROLE_KEY;
+        store = mockStore(rootReducer(globalStateWithUsers, { type: undefined }));
+        const targetUser = store.getState().users.users.filter((user) => user.role === roles.ROLE_CITIZEN)[0];
         render(
             <Provider store={store}>
-                <MemoryRouter initialEntries={['/users/admin']}>
-                    <Route path={['/users/:roleFilter']}>
+                <MemoryRouter initialEntries={['/users']}>
+                    <Route path="/users">
                         <UserManagement />
                     </Route>
                 </MemoryRouter>
@@ -262,7 +272,22 @@ describe('<UserManagement /> ', () => {
         );
         expect(within(screen.getByRole('tabpanel')).queryByTestId(targetUser.user_id)).toBeInTheDocument();
         cleanup();
-        globalStateWithUsers.users.uiFilters.roles = [userRoles.ROLE_ADMIN];
+        globalStateWithUsers.users.uiFilters.role = roles.ADMIN_ROLE_KEY;
+        store = mockStore(rootReducer(globalStateWithUsers, { type: undefined }));
+        render(
+            <Provider store={store}>
+                <MemoryRouter initialEntries={['/users']}>
+                    <Route path="/users">
+                        <UserManagement />
+                    </Route>
+                </MemoryRouter>
+            </Provider>,
+        );
+        expect(within(screen.getByRole('tabpanel')).queryByTestId(targetUser.user_id)).not.toBeInTheDocument();
+    });
+
+    it('should filter users firstname and lastname according to searchbox content', () => {
+        globalStateWithUsers.users.uiFilters.role = roles.USER_ROLE_KEY;
         store = mockStore(rootReducer(globalStateWithUsers, { type: undefined }));
         render(
             <Provider store={store}>
@@ -273,23 +298,10 @@ describe('<UserManagement /> ', () => {
                 </MemoryRouter>
             </Provider>,
         );
-        expect(within(screen.getByRole('tabpanel')).queryByTestId(targetUser.user_id)).not.toBeInTheDocument();
-    });
-    it('should filter users firstname and lastname according to searchbox content', () => {
-        render(
-            <Provider store={store}>
-                <MemoryRouter initialEntries={['/users/admin']}>
-                    <Route path={['/users/:roleFilter']}>
-                        <UserManagement />
-                    </Route>
-                </MemoryRouter>
-            </Provider>,
-        );
         //Note: Add the header row to the count
-        expect(within(screen.getByRole('tabpanel')).getAllByRole('row')).to.have.length(22);
+        expect(within(screen.getByRole('tabpanel')).getAllByRole('row')).to.have.length(21);
         cleanup();
         globalStateWithUsers.users.uiFilters.search = 'Martin'; //Should return 6 users + 1 header row
-
         store = mockStore(rootReducer(globalStateWithUsers, { type: undefined }));
         render(
             <Provider store={store}>
@@ -302,11 +314,12 @@ describe('<UserManagement /> ', () => {
         );
         expect(within(screen.getByRole('tabpanel')).getAllByRole('row')).to.have.length(7);
     });
+
     it('should match its reference snapshot', () => {
         const wrapper = mount(
             <Provider store={store}>
-                <MemoryRouter initialEntries={[{ pathname: '/users/admin', key: 'invariableKeyForSnapshot' }]}>
-                    <Route path={['/users/:roleFilter']}>
+                <MemoryRouter keyLength={0} initialEntries={['/users']}>
+                    <Route path={['/users']}>
                         <UserManagement />
                     </Route>
                 </MemoryRouter>

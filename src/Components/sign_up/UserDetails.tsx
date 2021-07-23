@@ -67,8 +67,9 @@ const UserDetails: FC<PropTypes.InferProps<typeof userDetailsPropTypes>> = ({ st
                     name="lastName"
                     onChange={onHandleChange}
                     ref={register(validator.lastName)}
-                    isInvalid={errors.lastName}
-                    isValid={!errors.lastName && !!watch('lastName')}
+                    isInvalid={!!errors.lastName}
+                    aria-invalid={!!errors.lastName}
+                    isValid={!errors.lastName && !!watch('lastName')} //TODO strange, it seems dev wa,t to ensure field is not empty => missing validation rule(same below)
                     tabIndex={1}
                 />
                 <FormFeedback field={errors.lastName}></FormFeedback>
@@ -81,7 +82,8 @@ const UserDetails: FC<PropTypes.InferProps<typeof userDetailsPropTypes>> = ({ st
                     name="firstName"
                     onChange={onHandleChange}
                     ref={register(validator.firstName)}
-                    isInvalid={errors.firstName}
+                    isInvalid={!!errors.firstName}
+                    aria-invalid={!!errors.firstName}
                     isValid={!errors.firstName && !!watch('firstName')}
                     tabIndex={1}
                 />
@@ -95,7 +97,8 @@ const UserDetails: FC<PropTypes.InferProps<typeof userDetailsPropTypes>> = ({ st
                     name="city"
                     onChange={onHandleChange}
                     ref={register}
-                    isInvalid={errors.city}
+                    isInvalid={!!errors.city}
+                    aria-invalid={!!errors.city}
                     isValid={!errors.city && !!watch('city')}
                     tabIndex={1}
                 />
@@ -109,7 +112,8 @@ const UserDetails: FC<PropTypes.InferProps<typeof userDetailsPropTypes>> = ({ st
                     name="email"
                     onChange={onHandleChange}
                     ref={register(validator.email)}
-                    isInvalid={errors.email}
+                    isInvalid={!!errors.email}
+                    aria-invalid={!!errors.email}
                     isValid={!errors.email && watch('email')}
                     tabIndex={1}
                 />
@@ -124,7 +128,8 @@ const UserDetails: FC<PropTypes.InferProps<typeof userDetailsPropTypes>> = ({ st
                 errors={errors}
                 onChange={onHandleChange}
                 ref={register(validator.password)}
-                isInvalid={errors.password}
+                isInvalid={!!errors.password}
+                aria-invalid={!!errors.password}
                 isValid={!errors.password && !!watch('password')}
                 errorColumns={2}
             />

@@ -97,7 +97,8 @@ const MyProfileForm = (props) => {
                                     value={newUser.lastName}
                                     onChange={onHandleChange}
                                     onClick={handleModifyClick}
-                                    isInvalid={errors.lastName}
+                                    isInvalid={!!errors.lastName}
+                                    aria-invalid={!!errors.lastName}
                                     readOnly
                                 />
                                 <FormFeedback field={errors.lastName}></FormFeedback>
@@ -111,7 +112,8 @@ const MyProfileForm = (props) => {
                                     value={newUser.firstName}
                                     onChange={onHandleChange}
                                     onClick={handleModifyClick}
-                                    isInvalid={errors.firstName}
+                                    isInvalid={!!errors.firstName}
+                                    aria-invalid={!!errors.firstName}
                                     readOnly
                                 ></Form.Control>
                                 <FormFeedback field={errors.firstName}></FormFeedback>
@@ -149,7 +151,8 @@ const MyProfileForm = (props) => {
                                         type="text"
                                         name="phone_number"
                                         ref={register(validator.phone_number)}
-                                        isInvalid={errors.phone_number}
+                                        isInvalid={!!errors.phone_number}
+                                        aria-invalid={!!errors.phone_number}
                                     />
                                     <FormFeedback field={errors.phone_number}></FormFeedback>
                                     <Form.Text className="text-muted">
@@ -175,7 +178,8 @@ const MyProfileForm = (props) => {
                             value={newUser.email}
                             onChange={onHandleChange}
                             onClick={handleModifyClick}
-                            isInvalid={errors.email}
+                            isInvalid={!!errors.email}
+                            aria-invalid={!!errors.email}
                         />
                         <FormFeedback field={errors.email}></FormFeedback>
                         <Form.Text className="text-muted">{"We'll never share your email with anyone else."}</Form.Text>
@@ -188,7 +192,8 @@ const MyProfileForm = (props) => {
                             ref={register(validator.city)}
                             value={newUser.city}
                             onChange={onHandleChange}
-                            isInvalid={errors.city}
+                            isInvalid={!!errors.city}
+                            aria-invalid={!!errors.city}
                         />
                         <FormFeedback field={errors.city}></FormFeedback>
                     </Form.Group>
@@ -200,7 +205,8 @@ const MyProfileForm = (props) => {
                             name="bio"
                             placeholder="Ajouter une biographie"
                             ref={register(validator.bio)}
-                            isInvalid={errors.bio}
+                            isInvalid={!!errors.bio}
+                            aria-invalid={!!errors.bio}
                             onChange={(e) => setValue(e.target.value)}
                         />
                         <FormFeedback field={errors.bio}></FormFeedback>
@@ -233,7 +239,8 @@ const MyProfileForm = (props) => {
                             value={newUser.lastName}
                             onChange={onHandleChange}
                             onClick={handleModifyClick}
-                            isInvalid={errors.lastName}
+                            isInvalid={!!errors.lastName}
+                            aria-invalid={!!errors.lastName}
                             readOnly
                         />
                         <FormFeedback field={errors.lastName}></FormFeedback>
@@ -247,7 +254,8 @@ const MyProfileForm = (props) => {
                             value={newUser.firstName}
                             onChange={onHandleChange}
                             onClick={handleModifyClick}
-                            isInvalid={errors.firstName}
+                            isInvalid={!!errors.firstName}
+                            aria-invalid={!!errors.firstName}
                             readOnly
                         ></Form.Control>
                         <FormFeedback field={errors.firstName}></FormFeedback>
@@ -261,7 +269,8 @@ const MyProfileForm = (props) => {
                             value={newUser.email}
                             onChange={onHandleChange}
                             onClick={handleModifyClick}
-                            isInvalid={errors.email}
+                            isInvalid={!!errors.email}
+                            aria-invalid={!!errors.email}
                             readOnly
                         />
                         <FormFeedback field={errors.email}></FormFeedback>
@@ -274,7 +283,8 @@ const MyProfileForm = (props) => {
                             ref={register(validator.city)}
                             value={newUser.city}
                             onChange={onHandleChange}
-                            isInvalid={errors.city}
+                            isInvalid={!!errors.city}
+                            aria-invalid={!!errors.city}
                         />
                         <FormFeedback field={errors.city}></FormFeedback>
                     </Form.Group>

@@ -1,47 +1,106 @@
-#prochain-atelier-container  {
+#prochain-atelier-container {
+    display: flex;
+    flex-direction: column;
     height: 244px;
-    background: linear-gradient(185.5deg, rgba(17,63,89,0.9) 8.87%, 
-    rgba(17,63,89,0.9) 31.46%, 
-    rgba(17,63,89,0.9) 69.43%, 
-    rgba(17,63,89,0.9) 95.61%), 
-    url(./../../../assets/home/pro-atelier.jpg);
+    background: linear-gradient(
+            185.5deg,
+            rgba(17, 63, 89, 0.9) 8.87%,
+            rgba(17, 63, 89, 0.9) 31.46%,
+            rgba(17, 63, 89, 0.9) 69.43%,
+            rgba(17, 63, 89, 0.9) 95.61%
+        ),
+        url(./../../../assets/home/pro-atelier.jpg);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: top;
-    }
-
-.styled-card  {
-    width: 1140px;
-    height: 87px;
-    margin-bottom: 50px;
-    border: 2px solid #979797;
-    background-color: #FFFFFF;
 }
 
+.styled-card {
+    width: auto;
+    height: 87px;
+    display: flex;
+    margin-bottom: 50px;
+    flex-direction: row;
+    justify-content: space-between;
+    border: 2px solid #113f59;
+    background-color: #ffffff;
+    align-items: center;
+}
+.atelier {
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+    justify-content: space-between;
+}
+.titreAtelier {
+    color: #113f59;
+    text-align: left;
+    font-weight: bold;
+    padding: 15px 15px 0px 5px;
+}
 .date {
     width: 192px;
     height: 24px;
     font-size: 16px;
-    font-weight: 600;
-    font-style: normal;  
+    font-style: normal;
     font-family: 'Segoe UI';
-    color: #113F59;
+    color: #113f59;
 }
 
 .link-to-reserve {
     width: 82px;
     height: 24px;
-    left: 1190px;
-    top: 142px; 
+    top: 142px;
     font-family: Segoe UI;
     font-style: normal;
-    font-weight: 600;
     font-size: 21px;
     line-height: 24px;
-    color: #113F59;
+    color: #113f59;
+}
+.reserver {
+    padding: 10px 15px 0px 5px;
 }
 
-
 .info {
-   justify-content: space-between;
+    justify-content: space-between;
+}
+@media only screen and (max-width: 991px) {
+    #questionvideo {
+        visibility: hidden;
+    }
+    .background-transparency {
+        background-color: #ffffff;
+    }
+
+    .styled-card-questions {
+        width: 1140px;
+        height: 0px;
+        margin-bottom: 0px;
+    }
+
+    .likes-container {
+        height: 0px;
+        background-color: #113f59;
+    }
+
+    .number-likes {
+        height: 0px;
+    }
+
+    .like-icon {
+        color: #ffffff;
+        font-weight: bold;
+        font-size: 25px;
+    }
+    .styled-card {
+        width: auto;
+        height: 87px;
+        display: flex;
+        margin-bottom: 50px;
+        flex-direction: row;
+        justify-content: space-between;
+        border: 2px solid #113f59;
+        background-color: #ffffff;
+        align-items: center;
+    }
 }

@@ -2,10 +2,11 @@ import React, { FC } from 'react';
 import thematiques from '../../shared/thematiques';
 import InterestCard from '../../shared/cards/InterestCard';
 import './DomainesExpertise.css';
+import 'aos/dist/aos.css';
 
 const DomainesExpertiseComponent: FC = () => {
     return (
-        <div>
+        <div data-aos="slide-up" className="domaineexpretise__container">
             <div>
                 <div className="display-4 mb-2" style={{ color: '#113F59', textAlign: 'center' }}>
                     {"Nos domaines d'expertise"}
@@ -22,7 +23,7 @@ const DomainesExpertiseComponent: FC = () => {
                 style={{ justifyContent: 'center' }}
             >
                 {thematiques.map((thematique) => (
-                    <InterestCard key={thematique.id} src={thematique.src} title={thematique.title} />
+                    <InterestCard key={thematique.id} src={thematique.src} title={thematique.title} readOnly />
                 ))}
             </div>
         </div>

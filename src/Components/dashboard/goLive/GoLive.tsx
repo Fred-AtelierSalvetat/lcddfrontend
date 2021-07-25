@@ -2,7 +2,7 @@ import React, { FC, useState, useEffect, useRef } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link, useParams } from 'react-router-dom';
 import { Button, Container, Row, Col, Overlay, Tooltip } from 'react-bootstrap';
-import copy from 'copy-to-clipboard';
+// import copy from 'copy-to-clipboard';
 
 import { getWorkshopById, isWorkshopStoreInialized } from '~/state/reducers';
 import { fetchWorkshops, goLive, endLive } from '~/state/workshops/actions';

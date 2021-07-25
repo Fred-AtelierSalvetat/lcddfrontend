@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { AppState } from '../../../state/reducers';
 import { fetchSpeakers } from '../../../api/fetchSperkers';
 import './Intervenants.css';
+import 'aos/dist/aos.css';
 
 const IntervenantsComponent: FC = () => {
     const [isHome, _setIsHome] = useState(false); //TODO search intended purpose and implement
@@ -16,11 +17,19 @@ const IntervenantsComponent: FC = () => {
             dispatch(fetchSpeakers());
         }
     }, [dispatch, speakers]);
+    console.log(speakers);
     return (
-        <div style={{ marginTop: '50px' }}>
+        <div className="intervenant__container" data-aos="slide-up">
             <div>
-                <div className="display-4 mb-3" style={{ color: '#113F59', textAlign: 'center' }}>
-                    Nos intervenants
+                <div className="intervenantHeader">
+                    <div className="display-4 mb-3" style={{ color: '#113F59', flex: 1 }}>
+                        Nos intervenants
+                    </div>
+                    <div className="voirplus">
+                        <a href="/" className="link">
+                            Voir plus
+                        </a>
+                    </div>
                 </div>
                 <div>
                     <h3 className="mb-4" style={{ color: '#333333', opacity: '0.8' }}>
@@ -29,7 +38,7 @@ const IntervenantsComponent: FC = () => {
                     </h3>
                 </div>
             </div>
-            <div className="d-flex justify-content-center flex-wrap mx-5 mt-2 mb-5">
+            <div className="speaker">
                 {speakers &&
                     !isHome &&
                     speakers.map((speaker, key: number) => (

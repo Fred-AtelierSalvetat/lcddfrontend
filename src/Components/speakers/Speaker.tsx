@@ -1,5 +1,4 @@
 import React, { FC, useCallback } from 'react';
-import { Card, Container } from 'react-bootstrap';
 import { useHistory } from 'react-router-dom';
 import Avatar from './../../assets/shared/avatar.jpg';
 import './Speaker.css';
@@ -20,25 +19,18 @@ export const Speaker: FC<PropTypes.InferProps<typeof speakerPropTypes>> = ({ id,
     const Redirection = useCallback(() => {
         return history.push(`/profile/${id}`);
     }, [id, history]);
-
+    console.log(Avatar);
     return (
-        <Card className="border-0 m-3 ">
-            <div className="justify-content-center d-flex flex-column">
-                <img
-                    src={Avatar}
-                    alt="Speaker's avatar"
-                    className="mb-4 speaker-image"
-                    width="263"
-                    height="263"
-                    onClick={Redirection}
-                />
-                <Container>
+        <div className="flex">
+            <div>
+                <img src={Avatar} className="speaker-image" onClick={Redirection} />
+                <div>
                     <h3 style={{ textAlign: 'center', color: '#333333' }}>{name}</h3>
                     <p style={{ textAlign: 'center', color: '#4F4F4F' }}>{rool}</p>
                     <em style={{ textAlign: 'center', color: '#4F4F4F' }}>{description}</em>
-                </Container>
+                </div>
             </div>
-        </Card>
+        </div>
     );
 };
 Speaker.propTypes = speakerPropTypes;

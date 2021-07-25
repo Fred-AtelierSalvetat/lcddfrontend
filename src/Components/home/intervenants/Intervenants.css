@@ -1,1 +1,43 @@
-
+.intervenant__container {
+    margin-top: 50px;
+}
+.intervenantHeader {
+    display: flex;
+    align-items: baseline;
+    margin-left: 100px;
+}
+.voirplus {
+    text-decoration: underline;
+}
+.speaker {
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+}
+@media only screen and (max-width: 991px) {
+    .intervenantHeader {
+        display: flex;
+        align-items: baseline;
+        margin-left: 0px;
+    }
+    .voirplus {
+        display: none;
+    }
+    .speaker {
+        display: flex;
+        overflow-x: auto;
+        justify-content: flex-start;
+        margin-bottom: 20px;
+    }
+    .speaker img {
+        margin-right: 15px;
+    }
+    .speaker::-webkit-scrollbar {
+        display: none;
+    }
+}
+@media only screen and (max-width: 767px) {
+    .intervenant__container {
+        margin-bottom: 200px;
+    }
+}

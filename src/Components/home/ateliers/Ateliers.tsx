@@ -5,18 +5,19 @@ import Icon2 from '~/assets/home/atelier/2.svg';
 import Icon3 from '~/assets/home/atelier/3.svg';
 import Icon4 from '~/assets/home/atelier/4.svg';
 import './Ateliers.css';
+import 'aos/dist/aos.css';
 
 const AteliersComponent: FC = () => {
     return (
-        <div className="container-atelier">
+        <div data-aos="slide-up" className="container-atelier">
             <div className="row">
-                <div className="col-6 background-transparency-atelier">
-                    <div style={{ marginBottom: '50px' }}>
+                <div className="col-lg-6 col-sm-12 col-xs-12  background-transparency-atelier">
+                    <div>
                         <Row>
                             <Col xs="6" className="display-4 mt-4" style={{ color: '#F2F2F2' }}>
                                 Les Ateliers
                             </Col>
-                            <Col xs="3" className="mt-5 ml-5">
+                            <Col xs="3" className="mt-5 ml-5" style={{ textDecoration: 'underline' }}>
                                 <a href="/" className="link">
                                     Voir plus
                                 </a>
@@ -26,7 +27,7 @@ const AteliersComponent: FC = () => {
                             En direct
                         </h2>
                     </div>
-                    <Container fluid style={{ marginLeft: '130px' }}>
+                    <Container>
                         <Row className="mb-4">
                             <img className="icon-questions mr-5 mt-3" src={Icon1} alt="icon1" />
                             <div className="display-1 mr-3" style={{ color: '#F2F2F2' }}>
@@ -57,7 +58,7 @@ const AteliersComponent: FC = () => {
                                 écrites.
                             </h4>
                         </Row>
-                        <Row>
+                        <Row className="mb-4">
                             <div className="display-1 mr-5" style={{ color: '#F2F2F2' }}>
                                 4.
                             </div>
@@ -68,7 +69,6 @@ const AteliersComponent: FC = () => {
                         </Row>
                     </Container>
                 </div>
-                <div className="col-6"></div>
             </div>
         </div>
     );

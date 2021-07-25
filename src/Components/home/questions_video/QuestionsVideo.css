@@ -1,43 +1,39 @@
-.background-transparency  {
-    background-color:#FFFFFF;
+.background-transparency {
+    background-color: #ffffff;
 }
 
-
-.styled-card-questions  {
-   width: 1140px;
-   height: 53px;
-   margin-bottom: 50px;
-   border: 2px solid #BDBDBD;
-   border-radius: 3px;
-   background-color: #FFFFFF;
-   box-sizing: border-box;
+.styled-card-questions {
+    width: 1140px;
+    height: 53px;
+    margin-bottom: 50px;
+    border: 2px solid #bdbdbd;
+    border-radius: 3px;
+    background-color: #ffffff;
+    box-sizing: border-box;
+    justify-content: space-between;
 }
 
-.likes-container  {
+.likes-container {
     width: 83px;
-    height: 49px;  
-    background-color: #113F59;
-    border-radius: 0px 1px 1px 0px;
+    height: 50px;
+    background-color: #113f59;
 }
 
-.number-likes  {
-    color: #FFFFFF;
+.number-likes {
+    color: #ffffff;
     width: 14px;
     height: 20.3px;
     font-style: normal;
-    font-family:  Roboto;
+    font-family: Roboto;
     font-size: 20px;
     font-weight: 700;
     margin-left: 20px;
     margin-top: 10px;
     margin-right: 15px;
-
 }
 
 .like-icon {
-    width: 12px;
-    height: 15.32px;
-    color: #FFFFFF;
+    color: #ffffff;
     font-weight: bold;
     font-size: 25px;
 }
@@ -46,3 +42,68 @@
     justify-content: space-between;
 }
 
+@media only screen and (max-width: 991px) {
+    #questionvideo {
+        visibility: hidden;
+    }
+    .background-transparency {
+        background-color: #ffffff;
+    }
+
+    .styled-card-questions {
+        width: 1140px;
+        height: 0px;
+        margin-bottom: 0px;
+    }
+
+    .likes-container {
+        height: 0px;
+        background-color: #113f59;
+    }
+
+    .number-likes {
+        height: 0px;
+    }
+
+    .like-icon {
+        color: #ffffff;
+        font-weight: bold;
+        font-size: 25px;
+    }
+    #header {
+        display: none;
+    }
+}
+@media only screen and (max-width: 767px) {
+    #questionvideo {
+        visibility: hidden;
+        height: 0px;
+    }
+    .background-transparency {
+        background-color: #ffffff;
+    }
+
+    .styled-card-questions {
+        width: 1140px;
+        height: 0px;
+        margin-bottom: 0px;
+    }
+
+    .likes-container {
+        height: 0px;
+        background-color: #113f59;
+    }
+
+    .number-likes {
+        height: 0px;
+    }
+
+    .like-icon {
+        color: #ffffff;
+        font-weight: bold;
+        font-size: 25px;
+    }
+    #header {
+        display: none;
+    }
+}

@@ -84,7 +84,7 @@ const Header: FC<PropTypes.InferProps<typeof headerPropsTypes>> = (props) => {
                                     <Nav.Link
                                         href="/sign-up"
                                         className="nav-item btn-link"
-                                        style={{ marginRight: '1.2em' }}
+                                        style={{ marginRight: '1.2em', textDecoration: 'underline' }}
                                     >
                                         {"S'inscrire"}
                                     </Nav.Link>

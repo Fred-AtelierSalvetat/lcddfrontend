@@ -1,4 +1,4 @@
-import { createSelector } from 'reselect';
+import { createSelector } from '@reduxjs/toolkit';
 import { UsersState, User, UIfiltersRoles, UIfiltersSearch } from './model';
 import { UsersActionType } from './constants/actionTypes';
 import { roleFilterMap } from './constants/roles';

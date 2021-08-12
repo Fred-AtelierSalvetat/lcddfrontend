@@ -1,8 +1,7 @@
 import type { WorkshopStatusType } from './constants/status.ts';
+import type { Topic } from '../topics/model';
 
 export type Speaker = string;
-
-export type Topic = string;
 
 export type RefLegiFrance = string;
 

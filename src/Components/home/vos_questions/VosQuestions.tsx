@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import { Container, Row, Col } from 'react-bootstrap';
+import { Container, Row } from 'react-bootstrap';
 import Icon1 from '~/assets/home/question/1.svg';
 import Icon2 from '~/assets/home/question/2.svg';
 import Icon3 from '~/assets/home/question/3.svg';

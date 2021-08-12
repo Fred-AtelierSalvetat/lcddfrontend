@@ -25,7 +25,7 @@ export const newSuccessAlert = ({
             message,
         },
     });
-
+    //TODOFSA Use react-toastify in place of bad boostrap/custo alertmsg
     return delay(1000).then(() => dispatch(dismissAlert(alertId)));
 };
 

@@ -40,16 +40,20 @@ export const roleFilterSelector = (state: RootStateType): UIfiltersRoles => from
 export const searchFilterSelector = (state: RootStateType): UIfiltersSearch =>
     fromUsers.searchFilterSelector(state.users);
 export const getVisibleUsers = (state: RootStateType): User[] => fromUsers.getVisibleUsers(state.users);
-export const isRequestInProgress = (request_type: UsersActionType) => (state: RootStateType): boolean =>
-    fromUsers.isRequestInProgress(state.users, request_type);
+export const isRequestInProgress =
+    (request_type: UsersActionType) =>
+    (state: RootStateType): boolean =>
+        fromUsers.isRequestInProgress(state.users, request_type);
 export const getAlerts = (state: RootStateType): Alert[] => fromAlerts.getAlerts(state.alerts);
 export const isCurrentUserLoggedIn = (state: RootStateType): boolean =>
     fromUser.isCurrentUserLoggedIn(state.authentication);
 export const getWorkshops = (state: WorkshopsState): Workshop[] => fromWorkshops.getWorkshops(state.workshops);
 export const workshopSearchFilterSelector = (state: WorkshopsState): SearchFilter =>
     fromWorkshops.searchFilterSelector(state.workshops);
-export const getWorkshopById = (id: Workshop.id) => (state: RootStateType): Workshop =>
-    fromWorkshops.getWorkshopById(state.workshops, id);
+export const getWorkshopById =
+    (id: Workshop.id) =>
+    (state: RootStateType): Workshop =>
+        fromWorkshops.getWorkshopById(state.workshops, id);
 export const isWorkshopStoreInialized = (state: RootStateType): boolean =>
     fromWorkshops.isWorkshopStoreInialized(state.workshops);
 export const getOrderBy = (state: RootStateType): Workshop.orderBy => fromWorkshops.getOrderBy(state.workshops);

@@ -2,16 +2,24 @@ import React, { FC } from 'react';
 import { Button, Form } from 'react-bootstrap';
 import { useForm } from 'react-hook-form';
 import InterestCard from '../shared/cards/InterestCard';
-import thematiques from '../shared/thematiques';
+import { useTopicsListQuery } from '~/api/lcddbackend-api.generated';
 
 const ModifyInterestsForm: FC = () => {
     const { handleSubmit } = useForm();
 
+    const { data: topics, error, isLoading } = useTopicsListQuery();
+    if (error) {
+        console.error(error);
+        return <div>{"Domaines d'expertise, erreur de chargement"}</div>;
+    }
+
     const onSubmit = () => {
         return false;
     };
-
-    return (
+    //TODOFSA Add spinner
+    return isLoading ? (
+        <p>{"Domaines d'expertises, chargement en cours"}</p>
+    ) : (
         <>
             <div className="form-title">
                 <h3>Modifier vos intérêts</h3>
@@ -21,8 +29,8 @@ const ModifyInterestsForm: FC = () => {
                     className="row row-cols-2 row-cols-sm-3 row-cols-md-4 row-cols-lg-4 row-cols-xl-6"
                     style={{ justifyContent: 'center' }}
                 >
-                    {thematiques.map((thematique) => (
-                        <InterestCard key={thematique.id} src={thematique.src} title={thematique.title} />
+                    {topics.map((topic) => (
+                        <InterestCard key={topic.id} src={topic.src} title={topîc.title} />
                     ))}
                 </div>
 

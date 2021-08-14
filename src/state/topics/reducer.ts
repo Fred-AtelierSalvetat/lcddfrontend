@@ -2,6 +2,9 @@ import * as actionType from './constants/actionTypes';
 
 import type { Topic } from './model';
 
+// Normalized data shape
+// {ids: [], entities: {}}
+
 const topics = (state: Topic[] = [], action) => {
     switch (action.type) {
         case actionType.FETCH_TOPICS_REQUEST:

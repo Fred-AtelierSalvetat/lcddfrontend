@@ -1,13 +1,12 @@
 import React, { FC, useEffect, useState } from 'react';
 import { Button, Form, Row } from 'react-bootstrap';
 import InterestCard from '../shared/cards/InterestCard';
-import thematiques from '../shared/thematiques';
 import { userActions } from '~/state/user/user.actions';
 import { connect, useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
 
-const thematiques_mobile_plus = thematiques.slice(0, 6);
-const thematiques_tablet_plus = thematiques.slice(0, 9);
+import { useTopicsListQuery } from '~/api/lcddbackend-api.generated';
+
 const MOBILE_VIEW_BREAKPOINT = 402;
 const TABLET_VIEW_BREAKPOINT = 768;
 
@@ -24,17 +23,25 @@ const Interests: FC<PropTypes.InferProps<typeof interestsPropTypes>> = ({ user }
     const [isTablet, setIsTablet] = useState(window.innerWidth < TABLET_VIEW_BREAKPOINT);
     const [isDesktop, setIsDesktop] = useState(!isMobile && !isTablet);
     const [fullDisplay, setFullDisplay] = useState(!isMobile && !isTablet);
+
+    const { data: topics, error } = useTopicsListQuery();
+    if (error) {
+        console.error(error);
+        return <div>{"Domaines d'expertise, erreur de chargement"}</div>;
+    }
+    //TODOFSA Mng loading
+
     let checkboxRef;
 
     const dispatch = useDispatch();
 
-    const getThematiquesToDisplay = () => {
-        if (fullDisplay) return thematiques;
-        if (isMobile) return thematiques_mobile_plus;
-        else if (isTablet) return thematiques_tablet_plus;
-        else return thematiques;
+    const getTopicsToDisplay = () => {
+        if (fullDisplay) return topics;
+        if (isMobile) return topics.slice(0, 6);
+        else if (isTablet) return topics.slice(0, 9);
+        else return topics;
     };
-    const [thematiquesToDisplay, setThematiquesToDisplay] = useState(getThematiquesToDisplay());
+    const [topicsToDisplay, setTopicsToDisplay] = useState(getTopicsToDisplay());
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -58,7 +65,7 @@ const Interests: FC<PropTypes.InferProps<typeof interestsPropTypes>> = ({ user }
 
     useEffect(() => {
         window.addEventListener('resize', updatePredicate);
-        setThematiquesToDisplay(getThematiquesToDisplay());
+        setTopicsToDisplay(getTopicsToDisplay());
     });
 
     const updatePredicate = () => {
@@ -149,8 +156,8 @@ const Interests: FC<PropTypes.InferProps<typeof interestsPropTypes>> = ({ user }
                 className="row row-cols-2 row-cols-sm-3 row-cols-md-4 row-cols-lg-4 row-cols-xl-6"
                 style={{ justifyContent: 'center' }}
             >
-                {thematiquesToDisplay.map((thematique) => (
-                    <InterestCard key={thematique.id} src={thematique.src} title={thematique.title} />
+                {topicsToDisplay.map((topic) => (
+                    <InterestCard key={topic.id} src={topic.src} title={topic.title} />
                 ))}
             </div>
 

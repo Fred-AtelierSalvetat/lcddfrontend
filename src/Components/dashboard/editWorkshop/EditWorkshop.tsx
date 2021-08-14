@@ -15,16 +15,8 @@ import { getWorkshopById, isWorkshopStoreInialized } from '~/state/reducers';
 import { fetchWorkshops, updateWorkshop, cancelWorkshop } from '~/state/workshops/actions';
 import ConfirmDialog from '~/Components/shared/modals/ConfirmDialog';
 import { refLegifrance, intervenants } from '~/Components/dashboard/shared/WkspForm';
-import topics from '~/Components/shared/thematiques';
 import type { Workshop } from '~/state/workshops/model';
 import * as status from '~/state/workshops/constants/status';
-
-const topicsList = topics.map((topic) => {
-    return {
-        value: topic.title,
-        label: topic.title,
-    };
-});
 
 const EditWorkshop: FC = () => {
     const { id } = useParams() as {
@@ -47,12 +39,9 @@ const EditWorkshop: FC = () => {
     });
 
     //TODO once backend will be ready: update workshop selector to return option instead of value.
-    const refLegifranceMapValueToOptions: (
-        listOfValues: Workshop.refLegifrance,
-    ) => { value: string; label: string }[] = (listOfValues) =>
-        listOfValues.map((value) => ({ value, label: refLegifrance.find((ref) => ref.value === value).label }));
-    const topicsToOptions: (listOfValues: Workshop.topics) => { value: string; label: string }[] = (listOfValues) =>
-        listOfValues.map((value) => ({ value, label: topicsList.find((ref) => ref.value === value).label }));
+    const refLegifranceMapValueToOptions: (listOfValues: Workshop.refLegifrance) => { value: string; label: string }[] =
+        (listOfValues) =>
+            listOfValues.map((value) => ({ value, label: refLegifrance.find((ref) => ref.value === value).label }));
     const speakersToOptions: (listOfValues: Workshop.speakers) => { value: string; label: string }[] = (listOfValues) =>
         listOfValues.map((value) => ({ value, label: intervenants.find((ref) => ref.value === value).label }));
 
@@ -66,7 +55,7 @@ const EditWorkshop: FC = () => {
             othersFormProp.setValue('title', workshop.title, { shouldValidate: true, shouldDirty: true });
             othersFormProp.setValue('startingdate', workshop.startingdate, { shouldValidate: true });
             othersFormProp.setValue('speakers', speakersToOptions(workshop.speakers), { shouldValidate: true });
-            othersFormProp.setValue('topics', topicsToOptions(workshop.topics), { shouldValidate: true });
+            othersFormProp.setValue('topics', workshop.topics, { shouldValidate: true });
             othersFormProp.setValue('refsLegifrance', refLegifranceMapValueToOptions(workshop.refsLegifrance), {
                 shouldValidate: true,
             });

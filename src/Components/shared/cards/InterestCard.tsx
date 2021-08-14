@@ -142,11 +142,7 @@ const InterestCard: FC<PropTypes.InferProps<typeof interestCardPropTypes>> = (pr
                 isMobile={isMobile}
             >
                 <SelectedStyled display={selected ? 'block' : 'none'} />
-                <CardImageStyled
-                    className="card-img-top"
-                    src={require('~/assets/thematiques/' + props.src)}
-                    alt={props.title}
-                />
+                <CardImageStyled className="card-img-top" src={props.src} alt={props.title} />
                 <CardBodyStyled className="card-body">
                     <CardTextStyled className="card-text" isMobile={isMobile}>
                         {props.title}

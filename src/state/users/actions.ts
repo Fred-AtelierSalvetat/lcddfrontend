@@ -7,51 +7,46 @@ import * as alertActions from '../alerts/actions';
 import { UserId, UIfiltersRoles, UIfiltersSearch } from './model';
 import { RootStateType, AppDispatchType } from '../store';
 
-const apiCallWrapper = ({
-    apiFct,
-    requestActionType,
-    successDispatch,
-    successAlertMsg,
-    failureDispatch,
-    failureAlertMsg,
-}) => (dispatch, getstate) => {
-    if (isRequestInProgress(requestActionType)(getstate())) {
-        return () => {};
-    }
-    dispatch({
-        type: requestActionType,
-        request_type: requestActionType,
-    });
+const apiCallWrapper =
+    ({ apiFct, requestActionType, successDispatch, successAlertMsg, failureDispatch, failureAlertMsg }) =>
+    (dispatch, getstate) => {
+        if (isRequestInProgress(requestActionType)(getstate())) {
+            return () => {};
+        }
+        dispatch({
+            type: requestActionType,
+            request_type: requestActionType,
+        });
 
-    return apiFct().then(
-        (response) => {
-            dispatch(
-                alertActions.newSuccessAlert({
-                    alertSubject: requestActionType,
-                    message: successAlertMsg,
-                }),
-            );
-            dispatch({
-                ...successDispatch,
-                response,
-                request_type: requestActionType,
-            });
-        },
-        () => {
-            dispatch(
-                alertActions.newFailureAlert({
-                    alertSubject: requestActionType,
-                    message: failureAlertMsg,
-                }),
-            );
+        return apiFct().then(
+            (response) => {
+                dispatch(
+                    alertActions.newSuccessAlert({
+                        alertSubject: requestActionType,
+                        message: successAlertMsg,
+                    }),
+                );
+                dispatch({
+                    ...successDispatch,
+                    response,
+                    request_type: requestActionType,
+                });
+            },
+            () => {
+                dispatch(
+                    alertActions.newFailureAlert({
+                        alertSubject: requestActionType,
+                        message: failureAlertMsg,
+                    }),
+                );
 
-            dispatch({
-                ...failureDispatch,
-                request_type: requestActionType,
-            });
-        },
-    );
-};
+                dispatch({
+                    ...failureDispatch,
+                    request_type: requestActionType,
+                });
+            },
+        );
+    };
 
 type ApiCallWrapperType = ReturnType<typeof apiCallWrapper>;
 
@@ -135,18 +130,20 @@ export const revokeUserAdminRight = (user_id: UserId): ApiCallWrapperType =>
         failureAlertMsg: 'Erreur lors de la suppression des droits administrateurs',
     });
 
-export const setUsersRoleFilter = (role_filter: UIfiltersRoles) => (
-    dispatch: AppDispatchType,
-    getstate: () => RootStateType,
-): (() => void) | { type: typeof types.SET_USER_ROLE_FILTER; role_filter: UIfiltersRole } => {
-    if (roleFilterSelector(getstate()) === role_filter) {
-        return () => {};
-    }
-    return dispatch({
-        type: types.SET_USER_ROLE_FILTER,
-        role_filter,
-    });
-};
+export const setUsersRoleFilter =
+    (role_filter: UIfiltersRoles) =>
+    (
+        dispatch: AppDispatchType,
+        getstate: () => RootStateType,
+    ): (() => void) | { type: typeof types.SET_USER_ROLE_FILTER; role_filter: UIfiltersRole } => {
+        if (roleFilterSelector(getstate()) === role_filter) {
+            return () => {};
+        }
+        return dispatch({
+            type: types.SET_USER_ROLE_FILTER,
+            role_filter,
+        });
+    };
 
 export const setUsersSearchFilter = (
     search_filter: UIfiltersSearch,

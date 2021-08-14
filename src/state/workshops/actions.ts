@@ -23,36 +23,27 @@ export const newWorkshop: (newWorkshop: {
     keywords: KeyWord[];
     files: File[];
     links: Link[];
-}) => void = ({
-    title,
-    startingdate,
-    endingdate,
-    speakers,
-    topics,
-    refsLegifrance,
-    description,
-    keywords,
-    files,
-    links,
-}) => (dispatch) => {
-    const newWorkshop = api.postNewWorkshop({
-        status: status.INCOMING,
-        title,
-        startingdate,
-        endingdate,
-        speakers,
-        topics,
-        refsLegifrance,
-        description,
-        keywords,
-        files,
-        links,
-    });
-    dispatch({
-        type: action.CREATE_WORKSHOP,
-        workshop: newWorkshop,
-    });
-};
+}) => void =
+    ({ title, startingdate, endingdate, speakers, topics, refsLegifrance, description, keywords, files, links }) =>
+    (dispatch) => {
+        const newWorkshop = api.postNewWorkshop({
+            status: status.INCOMING,
+            title,
+            startingdate,
+            endingdate,
+            speakers,
+            topics,
+            refsLegifrance,
+            description,
+            keywords,
+            files,
+            links,
+        });
+        dispatch({
+            type: action.CREATE_WORKSHOP,
+            workshop: newWorkshop,
+        });
+    };
 
 export const updateWorkshop: (workshop: Workshop) => void = (workshop) => (dispatch) => {
     api.updateWorkshop(workshop);
@@ -74,21 +65,25 @@ export const setOrderBy = (orderBy: OrderBy): { type: typeof action.SET_ORDER_BY
     orderBy,
 });
 
-export const cancelWorkshop = (id: Workshop.id): void => (dispatch) => {
-    api.deleteWorkshop(id);
-    dispatch({
-        type: action.CANCEL_WORKSHOP,
-        id,
-    });
-};
+export const cancelWorkshop =
+    (id: Workshop.id): void =>
+    (dispatch) => {
+        api.deleteWorkshop(id);
+        dispatch({
+            type: action.CANCEL_WORKSHOP,
+            id,
+        });
+    };
 
-export const deleteWorkshop = (id: Workshop.id): void => (dispatch) => {
-    api.deleteWorkshop(id);
-    dispatch({
-        type: action.DELETE_WORKSHOP,
-        id,
-    });
-};
+export const deleteWorkshop =
+    (id: Workshop.id): void =>
+    (dispatch) => {
+        api.deleteWorkshop(id);
+        dispatch({
+            type: action.DELETE_WORKSHOP,
+            id,
+        });
+    };
 
 //TODOFSA Update status on API
 export const archiveWorkshop = (id: Workshop.id): { type: typeof action.ARCHIVE_WORKSHOP; id: Workshop.id } => ({

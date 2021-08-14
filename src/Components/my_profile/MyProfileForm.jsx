@@ -6,12 +6,13 @@ import { validator } from '~/util/validator';
 import { FormFeedback } from '../shared/form/FormFeedBack';
 import * as api from '../../api/fetchUsers';
 import * as userRoles from '../../state/users/constants/roles';
-import metiers from '../shared/metiers';
 import chroma from 'chroma-js';
 import Select from 'react-select';
 import makeAnimated from 'react-select/animated';
 import Uploadimage from './Uploadimage';
 import Col from 'react-bootstrap/Col';
+
+import { useProfessionsListQuery } from '~/api/lcddbackend-api.generated';
 
 const MyProfileForm = (props) => {
     const currentUser = props.user;
@@ -21,10 +22,12 @@ const MyProfileForm = (props) => {
     const { register, handleSubmit, trigger, control, errors } = useForm({});
     const [newUser, setNewUser] = useState(currentUser || {});
 
-    const metiersList = metiers.map((metier) => {
+    const { data: professions, error } = useProfessionsListQuery();
+    error && console.error(error);
+    const metiersList = professions.map((profession) => {
         return {
-            value: metier.title,
-            label: metier.title,
+            value: profession.title,
+            label: profession.title,
         };
     });
 

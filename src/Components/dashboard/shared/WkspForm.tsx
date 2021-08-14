@@ -12,10 +12,6 @@ import { validator } from '~/util/validator';
 import Keywords from './Keywords';
 import Links from './Links';
 import Uploads from './Uploads';
-
-//Temp to be removed after redux implementation
-import topics from '~/Components/shared/thematiques';
-
 import PropTypes from 'prop-types';
 
 import './WkspForm.scss';
@@ -60,9 +56,15 @@ const WkspForm: FC<PropTypes.InferProps<typeof propTypes>> = ({
     register('files');
     register('links');
 
+    const { data: topics, error } = useTopicsListQuery();
+    if (error) {
+        console.error(error);
+        return <div>{"Domaines d'expertise, erreur de chargement"}</div>;
+    }
+    //TODOFSA Mng loading
     const topicsList = topics.map((topic) => {
         return {
-            value: topic.title,
+            value: topic.id,
             label: topic.title,
         };
     });

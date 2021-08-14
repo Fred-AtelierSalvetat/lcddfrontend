@@ -1,3 +1,7 @@
+.loadingError {
+    color: var(--danger);
+    font-weight: bold;
+}
 .textContainer {
     color: 'white';
     font-family: 'Segoe UI';

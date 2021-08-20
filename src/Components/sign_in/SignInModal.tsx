@@ -3,32 +3,36 @@ import { Redirect } from 'react-router-dom';
 import { Button, Form } from 'react-bootstrap';
 import { useForm } from 'react-hook-form';
 import { connect, useDispatch, useSelector } from 'react-redux';
+import PropTypes from 'prop-types';
 import { userActions } from '~/state/user/user.actions';
-import { validator } from '~/util/validator';
+import validator from '~/util/validator';
 import { FranceConnectButton } from '../shared/buttons/FranceConnectButton';
 import { FormFeedback } from '../shared/form/FormFeedBack';
 import OverlayModal from '../shared/modals/OverlayModal';
 import RoundSpinner from '../shared/RoundSpinner';
 import { isCurrentUserLoggedIn } from '~/state/reducers';
 
-import PropTypes from 'prop-types';
-
 const franceConnectLoginButtonPropTypes = { text: PropTypes.string.isRequired };
-const FranceConnectLoginButton: FC<PropTypes.InferProps<typeof franceConnectLoginButtonPropTypes>> = ({ text }) => {
-    return <FranceConnectButton text={text} style={{ width: '100%' }} />;
-};
+const FranceConnectLoginButton: FC<PropTypes.InferProps<typeof franceConnectLoginButtonPropTypes>> = ({ text }) => (
+    <FranceConnectButton text={text} style={{ width: '100%' }} />
+);
 FranceConnectLoginButton.propTypes = franceConnectLoginButtonPropTypes;
 
-const LoginOptions = () => {
-    return (
-        <div className="login-options">
-            <FranceConnectLoginButton text="S'identifier avec"></FranceConnectLoginButton>
-            <h4 style={{ backgroundColor: 'white', maxWidth: '100%', margin: '24px 0', textAlign: 'center' }}>
-                {"–– Ou s'identifier avec votre compte ––"}
-            </h4>
-        </div>
-    );
-};
+const LoginOptions = () => (
+    <div className="login-options">
+        <FranceConnectLoginButton text="S'identifier avec" />
+        <h4
+            style={{
+                backgroundColor: 'white',
+                maxWidth: '100%',
+                margin: '24px 0',
+                textAlign: 'center',
+            }}
+        >
+            –– Ou s'identifier avec votre compte ––
+        </h4>
+    </div>
+);
 const signInModalPropTypes = {
     show: PropTypes.bool.isRequired,
     onHandleClose: PropTypes.func.isRequired,
@@ -61,8 +65,8 @@ const SignInModal: FC<PropTypes.InferProps<typeof signInModalPropTypes>> = ({
 
     const header = (
         <div className="login-header">
-            <h1>{"S'identifier"}</h1>
-            <div className="lead">{"Vous n'êtes pas encore inscrit ?"}</div>
+            <h1>S'identifier</h1>
+            <div className="lead">Vous n'êtes pas encore inscrit ?</div>
             <div className="lead">
                 {'Inscrivez-vous '}
                 <a href="/sign-up" className="link" onClick={onSignUpLinkClick}>
@@ -74,7 +78,7 @@ const SignInModal: FC<PropTypes.InferProps<typeof signInModalPropTypes>> = ({
 
     const body = (
         <div className="login-body">
-            <LoginOptions></LoginOptions>
+            <LoginOptions />
             <div className="login-form">
                 <Form className="login-form" onSubmit={handleSubmit(onHandleSummit)}>
                     <Form.Group controlId="loginFormEmail">
@@ -87,7 +91,7 @@ const SignInModal: FC<PropTypes.InferProps<typeof signInModalPropTypes>> = ({
                             isInvalid={!!errors.email}
                             aria-invalid={!!errors.email}
                         />
-                        <FormFeedback field={errors.email}></FormFeedback>
+                        <FormFeedback field={errors.email} />
                     </Form.Group>
 
                     <Form.Group controlId="loginFormPassword">
@@ -99,19 +103,19 @@ const SignInModal: FC<PropTypes.InferProps<typeof signInModalPropTypes>> = ({
                             isInvalid={!!errors.password}
                             aria-invalid={!!errors.password}
                         />
-                        <FormFeedback field={errors.password}></FormFeedback>
+                        <FormFeedback field={errors.password} />
                     </Form.Group>
 
                     <div style={{ textAlign: 'right' }} className="link" onClick={onLostPasswordClick}>
-                        {"J'ai oublié mon mot de passe"}
+                        J'ai oublié mon mot de passe
                     </div>
 
                     <Form.Group controlId="loginFormCheckbox">
-                        <Form.Check type="checkbox" label="Se souvenir de moi"></Form.Check>
+                        <Form.Check type="checkbox" label="Se souvenir de moi" />
                     </Form.Group>
 
                     <Button variant="primary" type="submit" style={{ width: '100%', marginTop: '1rem' }}>
-                        {"S'identifier"}
+                        S'identifier
                         {loggingIn && (
                             <span style={{ marginLeft: '5px' }}>
                                 <RoundSpinner size="sm" />

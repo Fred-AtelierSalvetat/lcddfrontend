@@ -10,28 +10,26 @@ import { getAlerts } from '~/state/reducers';
 import './AlertNotificationBox.scss';
 
 const AlertNotificationBox: FC = () => {
-    const alerts = useSelector(getAlerts).reverse();
-    const dispatch = useDispatch();
+  const alerts = useSelector(getAlerts).reverse();
+  const dispatch = useDispatch();
 
-    return (
+  return (
         <div className="alertBox">
-            {alerts &&
-                alerts.map((alert) => {
-                    return (
-                        <Alert
-                            key={alert.id}
-                            variant={alert.alertType === alertTypes.SUCCESS ? 'success' : 'danger'}
-                            onClose={() => {
-                                dispatch(alertAction.dismissAlert(alert.id));
-                            }}
-                            dismissible
-                        >
-                            {alert.message}
-                        </Alert>
-                    );
-                })}
+            {alerts
+                && alerts.map((alert) => (
+                    <Alert
+                        key={alert.id}
+                        variant={alert.alertType === alertTypes.SUCCESS ? 'success' : 'danger'}
+                        onClose={() => {
+                          dispatch(alertAction.dismissAlert(alert.id));
+                        }}
+                        dismissible
+                    >
+                        {alert.message}
+                    </Alert>
+                ))}
         </div>
-    );
+  );
 };
 
 export default AlertNotificationBox;

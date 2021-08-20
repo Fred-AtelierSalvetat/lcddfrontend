@@ -5,21 +5,19 @@ import InterestCard from '../shared/cards/InterestCard';
 import { useTopicsListQuery } from '~/api/lcddbackend-api.generated';
 
 const ModifyInterestsForm: FC = () => {
-    const { handleSubmit } = useForm();
+  const { handleSubmit } = useForm();
 
-    const { data: topics, error, isLoading } = useTopicsListQuery();
-    if (error) {
-        console.error(error);
-        return <div>{"Domaines d'expertise, erreur de chargement"}</div>;
-    }
+  const { data: topics, error, isLoading } = useTopicsListQuery();
+  if (error) {
+    console.error(error);
+    return <div>Domaines d'expertise, erreur de chargement</div>;
+  }
 
-    const onSubmit = () => {
-        return false;
-    };
-    //TODOFSA Add spinner
-    return isLoading ? (
-        <p>{"Domaines d'expertises, chargement en cours"}</p>
-    ) : (
+  const onSubmit = () => false;
+  // TODOFSA Add spinner
+  return isLoading ? (
+        <p>Domaines d'expertises, chargement en cours</p>
+  ) : (
         <>
             <div className="form-title">
                 <h3>Modifier vos intérêts</h3>
@@ -41,7 +39,7 @@ const ModifyInterestsForm: FC = () => {
                 </Form.Group>
             </Form>
         </>
-    );
+  );
 };
 
 export default ModifyInterestsForm;

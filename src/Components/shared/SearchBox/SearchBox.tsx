@@ -1,25 +1,25 @@
 import React, { FC, useState, useRef } from 'react';
 
+import PropTypes from 'prop-types';
 import { ReactComponent as SearchIcon } from '~/assets/icons/search.svg';
 
-import PropTypes from 'prop-types';
 import './SearchBox.scss';
 
 const propTypes = {
-    placeholder: PropTypes.string,
-    value: PropTypes.string.isRequired,
-    setValue: PropTypes.func.isRequired,
+  placeholder: PropTypes.string,
+  value: PropTypes.string.isRequired,
+  setValue: PropTypes.func.isRequired,
 };
 
 const SearchBox: FC<PropTypes.InferProps<typeof propTypes>> = ({ placeholder, value, setValue }) => {
-    const [searchbox, setSearchbox] = useState(value);
-    const changeSearchBox = (e) => {
-        setSearchbox(e.target.value);
-        setValue(e.target.value);
-    };
-    const inputRef = useRef(null);
+  const [searchbox, setSearchbox] = useState(value);
+  const changeSearchBox = (e) => {
+    setSearchbox(e.target.value);
+    setValue(e.target.value);
+  };
+  const inputRef = useRef(null);
 
-    return (
+  return (
         <div className="searchbox">
             <input
                 type="text"
@@ -32,11 +32,11 @@ const SearchBox: FC<PropTypes.InferProps<typeof propTypes>> = ({ placeholder, va
 
             <SearchIcon
                 onClick={() => {
-                    inputRef && inputRef.current && inputRef.current.focus();
+                  inputRef && inputRef.current && inputRef.current.focus();
                 }}
             />
         </div>
-    );
+  );
 };
 
 SearchBox.propTypes = propTypes;

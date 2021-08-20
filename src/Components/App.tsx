@@ -1,9 +1,17 @@
 import React, { FC, Suspense } from 'react';
 import { Switch, Route, BrowserRouter } from 'react-router-dom';
 
+import Auth from '@aws-amplify/auth';
+import { useDispatch } from 'react-redux';
 import Header from './header';
 import Footer from './footer';
 import Home from './home';
+
+import { userActionTypes } from '~/state/user/constants/UserActionType';
+import { getUserFromCognitoUser } from '~/state/users/constants/utils/CognitoUser';
+
+// import 'airbnb-browser-shims';
+import './App.scss';
 
 const LegalNotice = React.lazy(() => import('./legal_notice'));
 const SignUp = React.lazy(() => import('./sign_up'));
@@ -18,29 +26,22 @@ const MyProfile = React.lazy(() => import('./my_profile'));
 const ErrorForm = React.lazy(() => import('./error/ErrorForm'));
 const Logout = React.lazy(() => import('./logout'));
 
-import Auth from '@aws-amplify/auth';
-import { useDispatch } from 'react-redux';
-import { userActionTypes } from '~/state/user/constants/UserActionType';
-import { getUserFromCognitoUser } from '~/state/users/constants/utils/CognitoUser';
-
-import './App.scss';
-
 const App: FC = () => {
-    const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
-    Auth.currentAuthenticatedUser()
-        .then((user) => {
-            const cognitoUser = user.attributes;
-            const currentUser = getUserFromCognitoUser(cognitoUser);
-            console.log('current user', currentUser);
-            dispatch({ type: userActionTypes.GET_CURRENT_USER_SUCCESS, user: currentUser });
-        })
-        .catch((err) => {
-            console.log('current user', err);
-            dispatch({ type: userActionTypes.GET_CURRENT_USER_FAILURE });
-        });
+  Auth.currentAuthenticatedUser()
+    .then((user) => {
+      const cognitoUser = user.attributes;
+      const currentUser = getUserFromCognitoUser(cognitoUser);
+      console.log('current user', currentUser);
+      dispatch({ type: userActionTypes.GET_CURRENT_USER_SUCCESS, user: currentUser });
+    })
+    .catch((err) => {
+      console.log('current user', err);
+      dispatch({ type: userActionTypes.GET_CURRENT_USER_FAILURE });
+    });
 
-    return (
+  return (
         <div className="App">
             <BrowserRouter>
                 <Header />
@@ -71,11 +72,11 @@ const App: FC = () => {
                 <Footer />
             </BrowserRouter>
         </div>
-    );
+  );
 };
 
 function About() {
-    return <h2>About</h2>;
+  return <h2>About</h2>;
 }
 
 export default App;

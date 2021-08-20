@@ -1,14 +1,12 @@
 import React, { FC, useState } from 'react';
-import { Jumbotron, Container, Row, Col, Spinner, InputGroup } from 'react-bootstrap';
+import { Jumbotron, Container, Row, Col, Spinner, InputGroup, Button, Form } from 'react-bootstrap';
 import { useLocation, useHistory } from 'react-router-dom';
+import { useForm } from 'react-hook-form';
+import PropTypes from 'prop-types';
 import Icon1 from '~/assets/home/2.jpg';
 import Icon5 from '~/assets/home/a.png';
 import Concept from '~/assets/home/question.jpg';
-import { Button, Form } from 'react-bootstrap';
-import { useForm } from 'react-hook-form';
-import { validator } from '../../util/validator';
-
-import PropTypes from 'prop-types';
+import validator from '../../util/validator';
 
 const MESSAGE_SENT_SUCCESS = 'Votre message a été bien envoyé';
 const MESSAGE_SENT_ERROR_NETWORK = 'Mauvaise réponse du réseau';
@@ -25,13 +23,11 @@ const jumbotron = {
     marginBottom: 0,
 };
 
-const RoundSpinner: FC = () => {
-    return (
-        <Spinner animation="border" role="status">
-            <span className="sr-only">Loading...</span>
-        </Spinner>
-    );
-};
+const RoundSpinner: FC = () => (
+    <Spinner animation="border" role="status">
+        <span className="sr-only">Loading...</span>
+    </Spinner>
+);
 
 const alertPropTypes = {
     show: PropTypes.bool.isRequired,
@@ -39,30 +35,26 @@ const alertPropTypes = {
     onClick: PropTypes.func.isRequired,
 };
 
-const AlertSuccess: FC<PropTypes.InferProps<typeof alertPropTypes>> = ({ show, message, onClick }) => {
-    return (
-        <div className={`alert alert-success ${show ? 'alert-shown' : 'alert-hidden'}`}>
-            <button type="button" className="close" data-dismiss="alert" aria-label="Close" onClick={onClick}>
-                <span aria-hidden="true">&times;</span>
-                <span className="sr-only">Close</span>
-            </button>
-            <strong>OK</strong> : <span> {message} </span>
-        </div>
-    );
-};
+const AlertSuccess: FC<PropTypes.InferProps<typeof alertPropTypes>> = ({ show, message, onClick }) => (
+    <div className={`alert alert-success ${show ? 'alert-shown' : 'alert-hidden'}`}>
+        <button type="button" className="close" data-dismiss="alert" aria-label="Close" onClick={onClick}>
+            <span aria-hidden="true">&times;</span>
+            <span className="sr-only">Close</span>
+        </button>
+        <strong>OK</strong> :<span> {message} </span>
+    </div>
+);
 AlertSuccess.propTypes = alertPropTypes;
 
-const AlertError: FC<PropTypes.InferProps<typeof alertPropTypes>> = ({ show, message, onClick }) => {
-    return (
-        <div className={`alert alert-danger ${show ? 'alert-shown' : 'alert-hidden'}`}>
-            <button type="button" className="close" data-dismiss="alert" aria-label="Close" onClick={onClick}>
-                <span aria-hidden="true">&times;</span>
-                <span className="sr-only">Close</span>
-            </button>
-            <strong>Erreur</strong> : <span> {message} </span>
-        </div>
-    );
-};
+const AlertError: FC<PropTypes.InferProps<typeof alertPropTypes>> = ({ show, message, onClick }) => (
+    <div className={`alert alert-danger ${show ? 'alert-shown' : 'alert-hidden'}`}>
+        <button type="button" className="close" data-dismiss="alert" aria-label="Close" onClick={onClick}>
+            <span aria-hidden="true">&times;</span>
+            <span className="sr-only">Close</span>
+        </button>
+        <strong>Erreur</strong> :<span> {message} </span>
+    </div>
+);
 AlertError.propTypes = alertPropTypes;
 
 const backgroundTransparency = {
@@ -70,9 +62,9 @@ const backgroundTransparency = {
 };
 
 const formFeedbackPropTypes = { field: PropTypes.shape({ message: PropTypes.string }) };
-const FormFeedback: FC<PropTypes.InferProps<typeof formFeedbackPropTypes>> = (props) => {
-    return <Form.Control.Feedback type="invalid">{props.field && props.field.message}</Form.Control.Feedback>;
-};
+const FormFeedback: FC<PropTypes.InferProps<typeof formFeedbackPropTypes>> = (props) => (
+    <Form.Control.Feedback type="invalid">{props.field && props.field.message}</Form.Control.Feedback>
+);
 FormFeedback.propTypes = formFeedbackPropTypes;
 
 type DevenirIntervenantFormData = {
@@ -269,9 +261,9 @@ const DevenirintervenantComponent: FC = () => {
                                                     aria-invalid={!!errors.email}
                                                     tabIndex={1}
                                                 />
-                                                <FormFeedback field={errors.email}></FormFeedback>
+                                                <FormFeedback field={errors.email} />
                                                 <Form.Text className="text-muted">
-                                                    {"We'll never share your email with anyone else."}
+                                                    We'll never share your email with anyone else.
                                                 </Form.Text>
                                             </Form.Group>
                                             <Form.Group controlId="Numero de télephone">
@@ -289,9 +281,9 @@ const DevenirintervenantComponent: FC = () => {
                                                         aria-invalid={!!errors.phone_number}
                                                         tabIndex={1}
                                                     />
-                                                    <FormFeedback field={errors.phone_number}></FormFeedback>
+                                                    <FormFeedback field={errors.phone_number} />
                                                     <Form.Text className="text-muted">
-                                                        {"We'll never share your phone number with anyone else."}
+                                                        We'll never share your phone number with anyone else.
                                                     </Form.Text>
                                                 </InputGroup>
                                             </Form.Group>
@@ -307,12 +299,12 @@ const DevenirintervenantComponent: FC = () => {
                                 ) : (
                                     <div className="py-4 px-3 py-md-5 px-md-4">
                                         <Row>
-                                            <Col></Col>
+                                            <Col />
                                             <Col>
                                                 {' '}
                                                 <img className="w-100" src={Icon5} alt="a" />
                                             </Col>
-                                            <Col></Col>
+                                            <Col />
                                         </Row>
                                         <br /> <br />
                                         <Row>

@@ -1,11 +1,10 @@
 import React, { FC } from 'react';
 import { useForm } from 'react-hook-form';
 import { Button, Form } from 'react-bootstrap';
-import { validator } from '~/util/validator';
+import PropTypes from 'prop-types';
+import validator from '~/util/validator';
 import { FormFeedback } from '../shared/form/FormFeedBack';
 import OverlayModal from '../shared/modals/OverlayModal';
-
-import PropTypes from 'prop-types';
 
 const propTypes = {
     show: PropTypes.bool.isRequired,
@@ -23,7 +22,7 @@ const SignInLostPasswordModal: FC<PropTypes.InferProps<typeof propTypes>> = ({
 
     const header = (
         <div className="login-header">
-            <h1>{"J'ai oublié mon mot de passe"}</h1>
+            <h1>J'ai oublié mon mot de passe</h1>
             <div className="link" onClick={onSignInClick}>
                 Retourner à la page de connexion
             </div>
@@ -48,7 +47,7 @@ const SignInLostPasswordModal: FC<PropTypes.InferProps<typeof propTypes>> = ({
                             aria-invalid={!!errors.email}
                             placeholder="Adresse e-mail"
                         />
-                        <FormFeedback field={errors.email}></FormFeedback>
+                        <FormFeedback field={errors.email} />
                     </Form.Group>
 
                     <Button variant="primary" type="submit" style={{ width: '100%', marginTop: '3rem' }}>

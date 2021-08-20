@@ -2,7 +2,7 @@ import * as userModel from '../state/users/constants/roles';
 import * as userStatus from '../state/users/constants/status';
 import { User, UserUpdate } from '../state/users/model';
 
-export let fakeDatabase: User[] = [
+export const fakeDatabase: User[] = [
     {
         user_id: 0,
         firstname: 'François',
@@ -280,14 +280,14 @@ export let fakeDatabase: User[] = [
 ];
 const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
-export const fetchUsers = () => (): Promise<User[]> => {
-    return delay(100).then(() => {
-        // if (Math.random() > 0.7) {
-        //     throw new Error("Pas de panique, c'est une erreur simulée (taux d'occurence 50%).");
-        // }
-        return fakeDatabase;
-    });
-};
+export const fetchUsers = () => (): Promise<User[]> =>
+    delay(100).then(
+        () =>
+            // if (Math.random() > 0.7) {
+            //     throw new Error("Pas de panique, c'est une erreur simulée (taux d'occurence 50%).");
+            // }
+            fakeDatabase,
+    );
 
 export const updateUser = (id: number, userUpdate: UserUpdate) => (): Promise<void | User[]> =>
     delay(100).then(() => {

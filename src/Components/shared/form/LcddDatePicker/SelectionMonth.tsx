@@ -4,27 +4,26 @@ import type { CSSProperties } from 'react';
 import { fr } from 'date-fns/locale';
 import className from 'classnames';
 
+import Proptypes from 'prop-types';
 import { width, height } from './clockConstants';
 
-import Proptypes from 'prop-types';
-
 const selectionMonthProptypes = {
-    month: Proptypes.number.isRequired,
-    setMonth: Proptypes.func.isRequired,
-    show: Proptypes.bool.isRequired,
+  month: Proptypes.number.isRequired,
+  setMonth: Proptypes.func.isRequired,
+  show: Proptypes.bool.isRequired,
 };
 
 const SelectionMonth: FC<Proptypes.InferProps<typeof selectionMonthProptypes>> = ({ month, setMonth, show }) => {
-    const [hoveredItem, setHoveredItem] = useState(-1);
-    const months: { value: number; label: string }[] = [];
-    if (fr.localize) {
-        for (let i = 0; i < 12; i++) {
-            months.push({ value: i, label: fr.localize.month(i, { width: 'abbreviated' }) });
-        }
+  const [hoveredItem, setHoveredItem] = useState(-1);
+  const months: { value: number; label: string }[] = [];
+  if (fr.localize) {
+    for (let i = 0; i < 12; i++) {
+      months.push({ value: i, label: fr.localize.month(i, { width: 'abbreviated' }) });
     }
+  }
 
-    return !show ? null : (
-        <div className="tabSelection" style={{ width: width, height: height }}>
+  return !show ? null : (
+        <div className="tabSelection" style={{ width, height }}>
             {months.map(({ value, label }) => (
                 <div
                     key={value}
@@ -38,7 +37,7 @@ const SelectionMonth: FC<Proptypes.InferProps<typeof selectionMonthProptypes>> =
                 </div>
             ))}
         </div>
-    );
+  );
 };
 
 SelectionMonth.propTypes = selectionMonthProptypes;

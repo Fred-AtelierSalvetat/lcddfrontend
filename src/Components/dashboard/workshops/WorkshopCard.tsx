@@ -23,39 +23,41 @@ import * as action from '~/state/workshops/actions';
 import './WorkshopCard.scss';
 
 const propTypes = {
-    workshop: PropTypes.shape({
-        id: PropTypes.string.isRequired,
-        status: PropTypes.string.isRequired,
-        thumbnail: PropTypes.string,
-        title: PropTypes.string.isRequired,
-        startingdate: PropTypes.object.isRequired,
-        //duration: PropTypes.object,
-        topics: PropTypes.arrayOf(PropTypes.string).isRequired,
-        description: PropTypes.string.isRequired,
-    }),
+  workshop: PropTypes.shape({
+    id: PropTypes.string.isRequired,
+    status: PropTypes.string.isRequired,
+    thumbnail: PropTypes.string,
+    title: PropTypes.string.isRequired,
+    startingdate: PropTypes.object.isRequired,
+    // duration: PropTypes.object,
+    topics: PropTypes.arrayOf(PropTypes.string).isRequired,
+    description: PropTypes.string.isRequired,
+  }),
 };
 
 const WorkshopCard: FC<PropTypes.InferProps<typeof propTypes>> = ({
-    workshop: { id, status, thumbnail, title, startingdate, topics, description },
+  workshop: {
+    id, status, thumbnail, title, startingdate, topics, description,
+  },
 }) => {
-    const dispatch = useDispatch();
-    const history = useHistory();
+  const dispatch = useDispatch();
+  const history = useHistory();
 
-    return (
+  return (
         <Card className="card">
             <div className="image-container">
                 {!!thumbnail && (
-                    //&& <Card.Img variant="top" alt="Workshop's thumbnail" src={thumbnail} />}
+                // && <Card.Img variant="top" alt="Workshop's thumbnail" src={thumbnail} />}
                     <Card.Img variant="top" alt="Workshop's thumbnail" data-src={thumbnail} className="lazyload" />
                 )}
                 <Card.ImgOverlay>
                     <div
                         className={className('status', {
-                            incoming: status === statusConst.INCOMING,
-                            live: status === statusConst.LIVE,
-                            published: status === statusConst.PUBLISHED,
-                            unpublished: status === statusConst.UNPUBLISHED,
-                            archived: status === statusConst.ARCHIVED,
+                          incoming: status === statusConst.INCOMING,
+                          live: status === statusConst.LIVE,
+                          published: status === statusConst.PUBLISHED,
+                          unpublished: status === statusConst.UNPUBLISHED,
+                          archived: status === statusConst.ARCHIVED,
                         })}
                     >
                         {status}
@@ -68,9 +70,9 @@ const WorkshopCard: FC<PropTypes.InferProps<typeof propTypes>> = ({
                                         <Action
                                             icon={<CancelIcon />}
                                             label="Annuler"
-                                            modalConfirmation={
+                                            modalConfirmation={(
                                                 <ConfirmDialog
-                                                    show={true}
+                                                    show
                                                     title="Annuler cet atelier"
                                                     body="Cette action n’est pas réversible."
                                                     cancelButton="Annuler"
@@ -78,7 +80,7 @@ const WorkshopCard: FC<PropTypes.InferProps<typeof propTypes>> = ({
                                                     handleClose={() => {}}
                                                     handleConfirm={() => dispatch(action.cancelWorkshop(id))}
                                                 />
-                                            }
+                                            )}
                                         />
                                         <Action
                                             icon={<VideoCamIcon />}
@@ -102,14 +104,14 @@ const WorkshopCard: FC<PropTypes.InferProps<typeof propTypes>> = ({
                                     />
                                 )}
                                 {[statusConst.PUBLISHED, statusConst.UNPUBLISHED, statusConst.ARCHIVED].includes(
-                                    status,
+                                  status,
                                 ) && (
                                     <Action
                                         icon={<DeleteForeverIcon />}
                                         label="Supprimer"
-                                        modalConfirmation={
+                                        modalConfirmation={(
                                             <ConfirmDialog
-                                                show={true}
+                                                show
                                                 title="Supprimer cet atelier et toutes les videos associées"
                                                 body="Cette action n’est pas réversible."
                                                 cancelButton="Annuler"
@@ -117,7 +119,7 @@ const WorkshopCard: FC<PropTypes.InferProps<typeof propTypes>> = ({
                                                 handleClose={() => {}}
                                                 handleConfirm={() => dispatch(action.deleteWorkshop(id))}
                                             />
-                                        }
+                                        )}
                                     />
                                 )}
                             </ActionMenuPopover>
@@ -127,13 +129,13 @@ const WorkshopCard: FC<PropTypes.InferProps<typeof propTypes>> = ({
                         title="Modifier"
                         className="editIcon"
                         onClick={() => {
-                            history.push(`/dashboard/editWorkshop/${id}`);
+                          history.push(`/dashboard/editWorkshop/${id}`);
                         }}
                     />
                     {status === statusConst.INCOMING ? (
                         <div className="startingdate">{format(startingdate, 'd MMMM yyyy HH:mm', { locale: fr })}</div>
                     ) : (
-                        <div className="duration">14:00:45</div> //TODO duration
+                        <div className="duration">14:00:45</div> // TODO duration
                     )}
                 </Card.ImgOverlay>
             </div>
@@ -144,7 +146,7 @@ const WorkshopCard: FC<PropTypes.InferProps<typeof propTypes>> = ({
                 <Card.Text className="description">{description}</Card.Text>
             </Card.Body>
         </Card>
-    );
+  );
 };
 
 WorkshopCard.propTypes = propTypes;

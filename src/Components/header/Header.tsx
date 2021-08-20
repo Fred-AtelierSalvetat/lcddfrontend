@@ -1,27 +1,26 @@
 import React, { FC, useEffect } from 'react';
 import { Nav, Navbar } from 'react-bootstrap';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import Logo from '~/assets/header/logo.png';
 import { SignInContainer } from '../sign_in';
 import { ReactComponent as DropdownIcon } from '~/assets/icons/dropdown-chevron.svg';
 import { checkScroll } from './checkScroll';
 import Profile from './Profile';
 import Notifications from './Notifications';
-import { connect } from 'react-redux';
 import './Header.scss';
 
-import PropTypes from 'prop-types';
-
 const headerPropsTypes = {
-    loggedIn: PropTypes.bool,
+  loggedIn: PropTypes.bool,
 };
 
 const Header: FC<PropTypes.InferProps<typeof headerPropsTypes>> = (props) => {
-    useEffect(() => {
-        const header = document.getElementById('lcdd-header');
-        header && window.addEventListener('scroll', () => checkScroll(header));
-    });
+  useEffect(() => {
+    const header = document.getElementById('lcdd-header');
+    header && window.addEventListener('scroll', () => checkScroll(header));
+  });
 
-    return (
+  return (
         <div id="lcdd-header">
             <Navbar bg="lcdd-primary" expand="lg" variant="dark">
                 <Navbar.Brand href="/">
@@ -40,7 +39,7 @@ const Header: FC<PropTypes.InferProps<typeof headerPropsTypes>> = (props) => {
                             <div className="nav-item dropdown">
                                 <Nav.Link href="/questions/" data-toggle="dropdown">
                                     Vos questions
-                                    <DropdownIcon style={{ marginLeft: '8px' }}></DropdownIcon>
+                                    <DropdownIcon style={{ marginLeft: '8px' }} />
                                 </Nav.Link>
                                 <ul className="dropdown-menu dropdown-menu-standard">
                                     <li>
@@ -86,7 +85,7 @@ const Header: FC<PropTypes.InferProps<typeof headerPropsTypes>> = (props) => {
                                         className="nav-item btn-link"
                                         style={{ marginRight: '1.2em', textDecoration: 'underline' }}
                                     >
-                                        {"S'inscrire"}
+                                        S'inscrire
                                     </Nav.Link>
                                     <SignInContainer />
                                 </>
@@ -96,14 +95,14 @@ const Header: FC<PropTypes.InferProps<typeof headerPropsTypes>> = (props) => {
                 </Navbar.Collapse>
             </Navbar>
         </div>
-    );
+  );
 };
 
 Header.propTypes = headerPropsTypes;
 
 const mapStateToProps = (state) => {
-    const { loggedIn, user } = state.authentication;
-    return { loggedIn, user };
+  const { loggedIn, user } = state.authentication;
+  return { loggedIn, user };
 };
 
 const connectedHeader = connect(mapStateToProps)(Header);

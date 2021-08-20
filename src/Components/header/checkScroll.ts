@@ -12,33 +12,33 @@ let toggled;
 const threshold = 300;
 
 export const checkScroll: (header: HTMLElement) => void = (header) => {
-    curScroll = w.scrollY || doc.scrollTop;
-    if (curScroll > prevScroll) {
-        // scrolled down
-        curDirection = 2;
-    } else if (curScroll < prevScroll) {
-        //scrolled up
-        curDirection = 1;
-    }
+  curScroll = w.scrollY || doc.scrollTop;
+  if (curScroll > prevScroll) {
+    // scrolled down
+    curDirection = 2;
+  } else if (curScroll < prevScroll) {
+    // scrolled up
+    curDirection = 1;
+  }
 
-    if (curDirection !== prevDirection) {
-        toggled = toggleHeader(header);
-    }
+  if (curDirection !== prevDirection) {
+    toggled = toggleHeader(header);
+  }
 
-    prevScroll = curScroll;
-    if (toggled) {
-        prevDirection = curDirection;
-    }
+  prevScroll = curScroll;
+  if (toggled) {
+    prevDirection = curDirection;
+  }
 };
 
 const toggleHeader = (header) => {
-    toggled = true;
-    if (curDirection === 2 && curScroll > threshold) {
-        header.classList.add('hide');
-    } else if (curDirection === 1) {
-        header.classList.remove('hide');
-    } else {
-        toggled = false;
-    }
-    return toggled;
+  toggled = true;
+  if (curDirection === 2 && curScroll > threshold) {
+    header.classList.add('hide');
+  } else if (curDirection === 1) {
+    header.classList.remove('hide');
+  } else {
+    toggled = false;
+  }
+  return toggled;
 };

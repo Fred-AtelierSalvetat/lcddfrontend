@@ -2,10 +2,10 @@ import * as actionTypes from './constants/actionTypes';
 import { AlertsType } from './constants/alertTypes';
 
 export type Alert = {
-    id: string;
-    alertType: AlertsType;
-    alertSubject: string;
-    message: JSX.Element;
+  id: string;
+  alertType: AlertsType;
+  alertSubject: string;
+  message: JSX.Element;
 };
 
 export type AlertState = Alert[];

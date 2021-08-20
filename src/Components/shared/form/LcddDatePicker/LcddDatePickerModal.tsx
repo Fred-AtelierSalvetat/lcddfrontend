@@ -3,6 +3,7 @@ import classNames from 'classnames';
 import { format } from 'date-fns';
 import { fr } from 'date-fns/locale';
 
+import PropTypes from 'prop-types';
 import SelectionYear from './SelectionYear';
 import SelectionMonth from './SelectionMonth';
 import SelectionDay from './SelectionDay';
@@ -11,46 +12,46 @@ import SelectionMinutes from './SelectionMinutes';
 
 import './LcddDatePicker.scss';
 
-import PropTypes from 'prop-types';
-
 const lcddDatePickerModalPropsTypes = {
-    value: PropTypes.instanceOf(Date),
-    setValue: PropTypes.func.isRequired,
+  value: PropTypes.instanceOf(Date),
+  setValue: PropTypes.func.isRequired,
 };
 
 const enumValue = (name) => Object.freeze({ toString: () => name });
 const selectionTargetEnum = Object.freeze({
-    YEAR: enumValue('years'),
-    MONTH: enumValue('months'),
-    DAY: enumValue('days'),
-    HOURS: enumValue('hours'),
-    MINUTES: enumValue('minutes'),
+  YEAR: enumValue('years'),
+  MONTH: enumValue('months'),
+  DAY: enumValue('days'),
+  HOURS: enumValue('hours'),
+  MINUTES: enumValue('minutes'),
 });
 
 const LcddDatePickerModal: FC<PropTypes.InferProps<typeof lcddDatePickerModalPropsTypes>> = ({ value, setValue }) => {
-    const refDate = new Date();
-    refDate.setHours(0);
-    refDate.setMinutes(0);
-    refDate.setSeconds(0);
-    const [date, setDate] = useState(value ? value : refDate);
+  const refDate = new Date();
+  refDate.setHours(0);
+  refDate.setMinutes(0);
+  refDate.setSeconds(0);
+  const [date, setDate] = useState(value || refDate);
 
     type newDateType = {
-        year?: number;
-        month?: number;
-        day?: number;
-        hours?: number;
-        minutes?: number;
+      year?: number;
+      month?: number;
+      day?: number;
+      hours?: number;
+      minutes?: number;
     };
 
-    const setNewDate: (newDateType) => void = ({ year, month, day, hours, minutes }) => {
-        const newDate = new Date(date);
-        typeof year !== 'undefined' && newDate.setFullYear(year);
-        typeof month !== 'undefined' && newDate.setMonth(month);
-        typeof day !== 'undefined' && newDate.setDate(day);
-        typeof hours !== 'undefined' && newDate.setHours(hours);
-        typeof minutes !== 'undefined' && newDate.setMinutes(minutes);
-        setDate(newDate);
-        setValue(newDate);
+    const setNewDate: (newDateType) => void = ({
+      year, month, day, hours, minutes,
+    }) => {
+      const newDate = new Date(date);
+      typeof year !== 'undefined' && newDate.setFullYear(year);
+      typeof month !== 'undefined' && newDate.setMonth(month);
+      typeof day !== 'undefined' && newDate.setDate(day);
+      typeof hours !== 'undefined' && newDate.setHours(hours);
+      typeof minutes !== 'undefined' && newDate.setMinutes(minutes);
+      setDate(newDate);
+      setValue(newDate);
     };
 
     const [currentSelection, setCurrentSelection] = useState(selectionTargetEnum.HOURS);
@@ -62,9 +63,9 @@ const LcddDatePickerModal: FC<PropTypes.InferProps<typeof lcddDatePickerModalPro
                 <div>
                     <span
                         className={classNames(
-                            'digitDisplay',
-                            { currentSelection: currentSelection === selectionTargetEnum.DAY },
-                            { preventMouseEvent: dragSelectionMode },
+                          'digitDisplay',
+                          { currentSelection: currentSelection === selectionTargetEnum.DAY },
+                          { preventMouseEvent: dragSelectionMode },
                         )}
                         onClick={() => setCurrentSelection(selectionTargetEnum.DAY)}
                     >
@@ -73,9 +74,9 @@ const LcddDatePickerModal: FC<PropTypes.InferProps<typeof lcddDatePickerModalPro
                     <span> </span>
                     <span
                         className={classNames(
-                            'digitDisplay',
-                            { currentSelection: currentSelection === selectionTargetEnum.MONTH },
-                            { preventMouseEvent: dragSelectionMode },
+                          'digitDisplay',
+                          { currentSelection: currentSelection === selectionTargetEnum.MONTH },
+                          { preventMouseEvent: dragSelectionMode },
                         )}
                         onClick={() => setCurrentSelection(selectionTargetEnum.MONTH)}
                     >
@@ -84,9 +85,9 @@ const LcddDatePickerModal: FC<PropTypes.InferProps<typeof lcddDatePickerModalPro
                     <span> </span>
                     <span
                         className={classNames(
-                            'digitDisplay',
-                            { currentSelection: currentSelection === selectionTargetEnum.YEAR },
-                            { preventMouseEvent: dragSelectionMode },
+                          'digitDisplay',
+                          { currentSelection: currentSelection === selectionTargetEnum.YEAR },
+                          { preventMouseEvent: dragSelectionMode },
                         )}
                         onClick={() => setCurrentSelection(selectionTargetEnum.YEAR)}
                     >
@@ -98,9 +99,9 @@ const LcddDatePickerModal: FC<PropTypes.InferProps<typeof lcddDatePickerModalPro
                 <div>
                     <span
                         className={classNames(
-                            'digitDisplay',
-                            { currentSelection: currentSelection === selectionTargetEnum.HOURS },
-                            { preventMouseEvent: dragSelectionMode },
+                          'digitDisplay',
+                          { currentSelection: currentSelection === selectionTargetEnum.HOURS },
+                          { preventMouseEvent: dragSelectionMode },
                         )}
                         onClick={() => setCurrentSelection(selectionTargetEnum.HOURS)}
                     >
@@ -109,9 +110,9 @@ const LcddDatePickerModal: FC<PropTypes.InferProps<typeof lcddDatePickerModalPro
                     <span>:</span>
                     <span
                         className={classNames(
-                            'digitDisplay',
-                            { currentSelection: currentSelection === selectionTargetEnum.MINUTES },
-                            { preventMouseEvent: dragSelectionMode },
+                          'digitDisplay',
+                          { currentSelection: currentSelection === selectionTargetEnum.MINUTES },
+                          { preventMouseEvent: dragSelectionMode },
                         )}
                         onClick={() => setCurrentSelection(selectionTargetEnum.MINUTES)}
                     >
@@ -134,7 +135,7 @@ const LcddDatePickerModal: FC<PropTypes.InferProps<typeof lcddDatePickerModalPro
                 <SelectionDay
                     date={{ day: date.getDate(), month: date.getMonth(), year: date.getFullYear() }}
                     setDate={({ day, month, year }) => {
-                        setNewDate({ day, month, year });
+                      setNewDate({ day, month, year });
                     }}
                     show={currentSelection === selectionTargetEnum.DAY}
                 />
@@ -158,6 +159,6 @@ const LcddDatePickerModal: FC<PropTypes.InferProps<typeof lcddDatePickerModalPro
 };
 
 LcddDatePickerModal.propTypes = lcddDatePickerModalPropsTypes;
-//TODO Fix PB Hours & minutes : select value != 0 then drag on 0 impossible
+// TODO Fix PB Hours & minutes : select value != 0 then drag on 0 impossible
 
 export default LcddDatePickerModal;

@@ -4,28 +4,27 @@ import Col from 'react-bootstrap/Col';
 
 import { useDropzone } from 'react-dropzone';
 
+import PropTypes from 'prop-types';
 import { ReactComponent as UploadIcon } from '~/assets/icons/upload_94px.svg';
 import { ReactComponent as FileIcon } from '~/assets/icons/insert_drive_file_24px.svg';
 import { ReactComponent as DeleteIcon } from '~/assets/icons/delete_24px.svg';
 
-import PropTypes from 'prop-types';
-
 const uploadsPropTypes = {
-    value: PropTypes.arrayOf(PropTypes.instanceOf(File)).isRequired,
-    setValue: PropTypes.func.isRequired,
+  value: PropTypes.arrayOf(PropTypes.instanceOf(File)).isRequired,
+  setValue: PropTypes.func.isRequired,
 };
 
 const Uploads: FC<PropTypes.InferProps<typeof uploadsPropTypes>> = ({ value = [], setValue }) => {
-    const onDrop = (acceptedFiles) => {
-        setValue([...value, ...acceptedFiles]);
-    };
-    const { getRootProps, getInputProps } = useDropzone({ onDrop, maxFiles: 10, maxSize: 7864320 });
+  const onDrop = (acceptedFiles) => {
+    setValue([...value, ...acceptedFiles]);
+  };
+  const { getRootProps, getInputProps } = useDropzone({ onDrop, maxFiles: 10, maxSize: 7864320 });
 
-    const deleteUpload = (toDelete) => {
-        setValue(value.filter((upload) => upload !== toDelete));
-    };
+  const deleteUpload = (toDelete) => {
+    setValue(value.filter((upload) => upload !== toDelete));
+  };
 
-    return (
+  return (
         <Form.Row>
             <Col className="rightborder" xs={4} sm={6}>
                 <div {...getRootProps({ className: 'dropzone' })}>
@@ -38,10 +37,9 @@ const Uploads: FC<PropTypes.InferProps<typeof uploadsPropTypes>> = ({ value = []
             </Col>
             <Col xs={8} sm={6}>
                 <div className="list">
-                    {!!value &&
-                        value.map(
-                            (file) =>
-                                file && (
+                    {!!value
+                        && value.map(
+                          (file) => file && (
                                     <div key={file.name} className="item">
                                         <div className="upload-item-header flex-shrink-1">
                                             <FileIcon />
@@ -49,12 +47,12 @@ const Uploads: FC<PropTypes.InferProps<typeof uploadsPropTypes>> = ({ value = []
                                         </div>
                                         <DeleteIcon className="action-icon" onClick={() => deleteUpload(file)} />
                                     </div>
-                                ),
+                          ),
                         )}
                 </div>
             </Col>
         </Form.Row>
-    );
+  );
 };
 
 Uploads.propTypes = uploadsPropTypes;

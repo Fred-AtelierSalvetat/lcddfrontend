@@ -1,53 +1,49 @@
 import React, { FC, useState } from 'react';
 
-import { Container, Row, Col, Form, Card, CardColumns } from 'react-bootstrap';
+import {
+  Container, Row, Col, Form, Card, CardColumns,
+} from 'react-bootstrap';
 import './Questions.style.css';
 
 const YourQuestions: FC = () => {
-    const [active, setActive] = useState({
-        linkOne: true,
-        linkTwo: false,
-        linkThree: false,
-    });
+  const [active, setActive] = useState({
+    linkOne: true,
+    linkTwo: false,
+    linkThree: false,
+  });
 
-    return (
+  return (
         <Container fluid>
             <Row>
                 <Col md={2} sm={0} className="sideBar">
                     <div className="links desktop">
                         <h5
                             className={`${active.linkOne ? 'active' : ''}`}
-                            onClick={() =>
-                                setActive({
-                                    linkOne: true,
-                                    linkTwo: false,
-                                    linkThree: false,
-                                })
-                            }
+                            onClick={() => setActive({
+                              linkOne: true,
+                              linkTwo: false,
+                              linkThree: false,
+                            })}
                         >
                             Questions en vidéo
                         </h5>
                         <h5
                             className={`${active.linkTwo ? 'active' : ''}`}
-                            onClick={() =>
-                                setActive({
-                                    linkOne: false,
-                                    linkTwo: true,
-                                    linkThree: false,
-                                })
-                            }
+                            onClick={() => setActive({
+                              linkOne: false,
+                              linkTwo: true,
+                              linkThree: false,
+                            })}
                         >
                             Questions en attente
                         </h5>
                         <h5
                             className={`${active.linkThree ? 'active' : ''}`}
-                            onClick={() =>
-                                setActive({
-                                    linkOne: false,
-                                    linkTwo: false,
-                                    linkThree: true,
-                                })
-                            }
+                            onClick={() => setActive({
+                              linkOne: false,
+                              linkTwo: false,
+                              linkThree: true,
+                            })}
                         >
                             Suggérer une question
                         </h5>
@@ -59,37 +55,31 @@ const YourQuestions: FC = () => {
                         <div className="links mobile">
                             <h5
                                 className={`${active.linkOne ? 'active' : ''}`}
-                                onClick={() =>
-                                    setActive({
-                                        linkOne: true,
-                                        linkTwo: false,
-                                        linkThree: false,
-                                    })
-                                }
+                                onClick={() => setActive({
+                                  linkOne: true,
+                                  linkTwo: false,
+                                  linkThree: false,
+                                })}
                             >
                                 Questions en vidéo
                             </h5>
                             <h5
                                 className={`${active.linkTwo ? 'active' : ''}`}
-                                onClick={() =>
-                                    setActive({
-                                        linkOne: false,
-                                        linkTwo: true,
-                                        linkThree: false,
-                                    })
-                                }
+                                onClick={() => setActive({
+                                  linkOne: false,
+                                  linkTwo: true,
+                                  linkThree: false,
+                                })}
                             >
                                 Questions en attente
                             </h5>
                             <h5
                                 className={`${active.linkThree ? 'active' : ''}`}
-                                onClick={() =>
-                                    setActive({
-                                        linkOne: false,
-                                        linkTwo: false,
-                                        linkThree: true,
-                                    })
-                                }
+                                onClick={() => setActive({
+                                  linkOne: false,
+                                  linkTwo: false,
+                                  linkThree: true,
+                                })}
                             >
                                 Suggérer une question
                             </h5>
@@ -123,8 +113,8 @@ const YourQuestions: FC = () => {
                                 <Card.Body>
                                     <Card.Title style={{ fontSize: '18px' }}>Card Title</Card.Title>
                                     <Card.Text style={{ fontSize: '16px' }}>
-                                        {'Some quick example text to build on the card title and make up the bulk ' +
-                                            "of the card's content."}
+                                        {'Some quick example text to build on the card title and make up the bulk '
+                                            + "of the card's content."}
                                     </Card.Text>
                                 </Card.Body>
                             </Card>
@@ -133,8 +123,8 @@ const YourQuestions: FC = () => {
                                 <Card.Body>
                                     <Card.Title style={{ fontSize: '18px' }}>Card Title</Card.Title>
                                     <Card.Text style={{ fontSize: '16px' }}>
-                                        {'Some quick example text to build on the card title and make up the bulk ' +
-                                            "of the card's content."}
+                                        {'Some quick example text to build on the card title and make up the bulk '
+                                            + "of the card's content."}
                                     </Card.Text>
                                 </Card.Body>
                             </Card>
@@ -143,8 +133,8 @@ const YourQuestions: FC = () => {
                                 <Card.Body>
                                     <Card.Title style={{ fontSize: '18px' }}>Card Title</Card.Title>
                                     <Card.Text style={{ fontSize: '16px' }}>
-                                        {'Some quick example text to build on the card title and make up the bulk ' +
-                                            "of the card's content."}
+                                        {'Some quick example text to build on the card title and make up the bulk '
+                                            + "of the card's content."}
                                         .
                                     </Card.Text>
                                 </Card.Body>
@@ -154,8 +144,8 @@ const YourQuestions: FC = () => {
                                 <Card.Body>
                                     <Card.Title style={{ fontSize: '18px' }}>Card Title</Card.Title>
                                     <Card.Text style={{ fontSize: '16px' }}>
-                                        {'Some quick example text to build on the card title and make up the bulk ' +
-                                            "of the card's content."}
+                                        {'Some quick example text to build on the card title and make up the bulk '
+                                            + "of the card's content."}
                                     </Card.Text>
                                 </Card.Body>
                             </Card>
@@ -164,8 +154,8 @@ const YourQuestions: FC = () => {
                                 <Card.Body>
                                     <Card.Title style={{ fontSize: '18px' }}>Card Title</Card.Title>
                                     <Card.Text style={{ fontSize: '16px' }}>
-                                        {'Some quick example text to build on the card title and make up the bulk ' +
-                                            "of the card's content."}
+                                        {'Some quick example text to build on the card title and make up the bulk '
+                                            + "of the card's content."}
                                     </Card.Text>
                                 </Card.Body>
                             </Card>
@@ -174,8 +164,8 @@ const YourQuestions: FC = () => {
                                 <Card.Body>
                                     <Card.Title style={{ fontSize: '18px' }}>Card Title</Card.Title>
                                     <Card.Text style={{ fontSize: '16px' }}>
-                                        {'Some quick example text to build on the card title and make up the bulk ' +
-                                            "of the card's content."}
+                                        {'Some quick example text to build on the card title and make up the bulk '
+                                            + "of the card's content."}
                                     </Card.Text>
                                 </Card.Body>
                             </Card>
@@ -184,8 +174,8 @@ const YourQuestions: FC = () => {
                                 <Card.Body>
                                     <Card.Title style={{ fontSize: '18px' }}>Card Title</Card.Title>
                                     <Card.Text style={{ fontSize: '16px' }}>
-                                        {'Some quick example text to build on the card title and make up the bulk ' +
-                                            "of the card's content."}
+                                        {'Some quick example text to build on the card title and make up the bulk '
+                                            + "of the card's content."}
                                     </Card.Text>
                                 </Card.Body>
                             </Card>
@@ -194,8 +184,8 @@ const YourQuestions: FC = () => {
                                 <Card.Body>
                                     <Card.Title style={{ fontSize: '18px' }}>Card Title</Card.Title>
                                     <Card.Text style={{ fontSize: '16px' }}>
-                                        {'Some quick example text to build on the card title and make up the bulk ' +
-                                            "of the card's content."}
+                                        {'Some quick example text to build on the card title and make up the bulk '
+                                            + "of the card's content."}
                                     </Card.Text>
                                 </Card.Body>
                             </Card>
@@ -204,7 +194,7 @@ const YourQuestions: FC = () => {
                 </Col>
             </Row>
         </Container>
-    );
+  );
 };
 
 export default YourQuestions;

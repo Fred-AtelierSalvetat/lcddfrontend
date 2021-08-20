@@ -1,5 +1,7 @@
 import React, { FC, useEffect, useState } from 'react';
 import { Form, Row } from 'react-bootstrap';
+import classNames from 'classnames';
+import PropTypes from 'prop-types';
 import { ReactComponent as CitoyenSquare } from '~/assets/images/CitoyenS.svg';
 import { ReactComponent as ProDuDroitSquare } from '~/assets/images/ProS.svg';
 import { ReactComponent as EtudiantSquare } from '~/assets/images/EtudiantS.svg';
@@ -7,69 +9,65 @@ import { ReactComponent as CitoyenRect } from '~/assets/images/CitoyenR.svg';
 import { ReactComponent as ProDuDroitRect } from '~/assets/images/ProR.svg';
 import { ReactComponent as EtudiantRect } from '~/assets/images/EtudiantR.svg';
 import { FranceConnectButton, FranceConnectButtonEmail } from '../shared/buttons/FranceConnectButton';
-import classNames from 'classnames';
-import PropTypes from 'prop-types';
 
 const DESKTOP_VIEW_BREAKPOINT = 726;
 
-const OU = () => {
-    return <div style={{ maxWidth: '100%', margin: '24px 0' }}>–––&nbsp;&nbsp;ou&nbsp;&nbsp;–––</div>;
-};
+const OU = () => <div style={{ maxWidth: '100%', margin: '24px 0' }}>–––&nbsp;&nbsp;ou&nbsp;&nbsp;–––</div>;
 
 const userRolePropTypes = {
-    step: PropTypes.number.isRequired,
-    setStep: PropTypes.func.isRequired,
-    user: PropTypes.object.isRequired,
-    setUser: PropTypes.func.isRequired,
+  step: PropTypes.number.isRequired,
+  setStep: PropTypes.func.isRequired,
+  user: PropTypes.object.isRequired,
+  setUser: PropTypes.func.isRequired,
 };
 // Step 1 UI
-const UserRole: FC<PropTypes.InferProps<typeof userRolePropTypes>> = ({ step, setStep, user, setUser }) => {
-    const [isDesktop, setIsDesktop] = useState(window.innerWidth > DESKTOP_VIEW_BREAKPOINT);
+const UserRole: FC<PropTypes.InferProps<typeof userRolePropTypes>> = ({
+  step, setStep, user, setUser,
+}) => {
+  const [isDesktop, setIsDesktop] = useState(window.innerWidth > DESKTOP_VIEW_BREAKPOINT);
 
-    useEffect(() => {
-        window.addEventListener('resize', updatePredicate);
+  useEffect(() => {
+    window.addEventListener('resize', updatePredicate);
+  });
+
+  const updatePredicate = () => {
+    setIsDesktop(window.innerWidth > DESKTOP_VIEW_BREAKPOINT);
+  };
+
+  const getListClasses = (clicked: boolean) => classNames({
+    'role-image': true,
+    'role-image-clicked': clicked,
+  });
+
+  const handleChange = (role: string) => {
+    setUser({
+      type: 'UPDATE_PERSONAL_INFO',
+      payload: { role },
     });
+  };
 
-    const updatePredicate = () => {
-        setIsDesktop(window.innerWidth > DESKTOP_VIEW_BREAKPOINT);
-    };
+  const handleContinue = (e) => {
+    e.preventDefault();
+    if (user.role !== '') setStep(step + 1);
+    else alert('Veuillez choisir un rôle avant de continuer !');
+  };
 
-    const getListClasses = (clicked: boolean) => {
-        return classNames({
-            'role-image': true,
-            'role-image-clicked': clicked,
-        });
-    };
+  const handleSpaceKeyUp = (e, role: string) => {
+    if (e.keyCode === 32 || e.keyCode === 13) {
+      e.preventDefault();
+      handleChange(role);
+    }
+  };
 
-    const handleChange = (role: string) => {
-        setUser({
-            type: 'UPDATE_PERSONAL_INFO',
-            payload: { role: role },
-        });
-    };
-
-    const handleContinue = (e) => {
-        e.preventDefault();
-        if (user.role !== '') setStep(step + 1);
-        else alert('Veuillez choisir un rôle avant de continuer !');
-    };
-
-    const handleSpaceKeyUp = (e, role: string) => {
-        if (e.keyCode === 32 || e.keyCode === 13) {
-            e.preventDefault();
-            handleChange(role);
-        }
-    };
-
-    return (
+  return (
         <Form onSubmit={handleContinue}>
             <div className="form-group">
                 <h2>Vous êtes</h2>
                 <Row
                     style={{
-                        margin: '10px auto',
-                        flexWrap: 'wrap',
-                        justifyContent: isDesktop ? 'space-between' : 'center',
+                      margin: '10px auto',
+                      flexWrap: 'wrap',
+                      justifyContent: isDesktop ? 'space-between' : 'center',
                     }}
                 >
                     {isDesktop ? (
@@ -159,7 +157,7 @@ const UserRole: FC<PropTypes.InferProps<typeof userRolePropTypes>> = ({ step, se
                 )}
             </div>
         </Form>
-    );
+  );
 };
 UserRole.propTypes = userRolePropTypes;
 

@@ -1,18 +1,18 @@
 import React, { FC } from 'react';
 import { Controller } from 'react-hook-form';
 
-import DatePicker from '~/Components/shared/form/DatePicker';
-//import LcddDatePicker from '~/Components/shared/form/LcddDatePicker/LcddDatePicker';
-import Select from '~/Components/shared/form/Select';
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
+import PropTypes from 'prop-types';
+import DatePicker from '~/Components/shared/form/DatePicker';
+// import LcddDatePicker from '~/Components/shared/form/LcddDatePicker/LcddDatePicker';
+import Select from '~/Components/shared/form/Select';
 
 import { FormFeedback } from '~/Components/shared/form/FormFeedBack';
-import { validator } from '~/util/validator';
+import validator from '~/util/validator';
 import Keywords from './Keywords';
 import Links from './Links';
 import Uploads from './Uploads';
-import PropTypes from 'prop-types';
 
 import './WkspForm.scss';
 
@@ -29,7 +29,7 @@ const propTypes = {
     handleSubmit: PropTypes.func.isRequired,
 };
 
-//TODO get real data from redux when backend// MDD ready
+// TODO get real data from redux when backend// MDD ready
 export const refLegifrance = [
     { value: 'Ref 1', label: 'Ref 1' },
     { value: 'Ref 2', label: 'Ref 2' },
@@ -59,15 +59,13 @@ const WkspForm: FC<PropTypes.InferProps<typeof propTypes>> = ({
     const { data: topics, error } = useTopicsListQuery();
     if (error) {
         console.error(error);
-        return <div>{"Domaines d'expertise, erreur de chargement"}</div>;
+        return <div>Domaines d'expertise, erreur de chargement</div>;
     }
-    //TODOFSA Mng loading
-    const topicsList = topics.map((topic) => {
-        return {
-            value: topic.id,
-            label: topic.title,
-        };
-    });
+    // TODOFSA Mng loading
+    const topicsList = topics.map((topic) => ({
+        value: topic.id,
+        label: topic.title,
+    }));
 
     return (
         <div id="workshop-form">
@@ -77,7 +75,7 @@ const WkspForm: FC<PropTypes.InferProps<typeof propTypes>> = ({
                 <Form.Row>
                     <Col xs={12} md={7} lg={9}>
                         <Form.Group controlId="workshopTitle">
-                            <Form.Label>{"Titre d'atelier (obligatoire)"}</Form.Label>
+                            <Form.Label>Titre d'atelier (obligatoire)</Form.Label>
                             <Form.Control
                                 type="text"
                                 name="title"
@@ -88,12 +86,12 @@ const WkspForm: FC<PropTypes.InferProps<typeof propTypes>> = ({
                                 defaultValue={watch('title')}
                                 onChange={async ({ target }) => await trigger(target.name)}
                             />
-                            <FormFeedback field={errors.title}></FormFeedback>
+                            <FormFeedback field={errors.title} />
                         </Form.Group>
                     </Col>
                     <Col xs={12} md={5} lg={3}>
                         <Form.Group controlId="workshopStartingDate">
-                            <Form.Label>{'Date & Heure (obligatoire)'}</Form.Label>
+                            <Form.Label>Date & Heure (obligatoire)</Form.Label>
                             <Controller
                                 name="startingdate"
                                 control={control}
@@ -108,7 +106,7 @@ const WkspForm: FC<PropTypes.InferProps<typeof propTypes>> = ({
                                     />
                                 )}
                             />
-                            <FormFeedback field={errors.startingdate}></FormFeedback>
+                            <FormFeedback field={errors.startingdate} />
                         </Form.Group>
                     </Col>
                 </Form.Row>
@@ -134,7 +132,7 @@ const WkspForm: FC<PropTypes.InferProps<typeof propTypes>> = ({
                                     />
                                 )}
                             />
-                            <FormFeedback field={errors.speakers}></FormFeedback>
+                            <FormFeedback field={errors.speakers} />
                         </Form.Group>
                     </Col>
                 </Form.Row>
@@ -162,7 +160,7 @@ const WkspForm: FC<PropTypes.InferProps<typeof propTypes>> = ({
                                         />
                                     )}
                                 />
-                                <FormFeedback field={errors.topics}></FormFeedback>
+                                <FormFeedback field={errors.topics} />
                             </Form.Group>
                         </Form.Row>
                         <Form.Row>
@@ -186,7 +184,7 @@ const WkspForm: FC<PropTypes.InferProps<typeof propTypes>> = ({
                                         />
                                     )}
                                 />
-                                <FormFeedback field={errors.refsLegifrance}></FormFeedback>
+                                <FormFeedback field={errors.refsLegifrance} />
                             </Form.Group>
                         </Form.Row>
                         <Form.Row className="no-margin">
@@ -203,7 +201,7 @@ const WkspForm: FC<PropTypes.InferProps<typeof propTypes>> = ({
                                     defaultValue={watch('description')}
                                     onChange={async ({ target }) => await trigger(target.name)}
                                 />
-                                <FormFeedback field={errors.description}></FormFeedback>
+                                <FormFeedback field={errors.description} />
                             </Form.Group>
                         </Form.Row>
                     </Col>

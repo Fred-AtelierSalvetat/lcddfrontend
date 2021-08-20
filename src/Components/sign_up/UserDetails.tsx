@@ -1,8 +1,8 @@
 import React, { FC, useEffect } from 'react';
 import { Button, Form } from 'react-bootstrap';
 import { useForm } from 'react-hook-form';
-import { validator } from '../../util/validator';
 import PropTypes from 'prop-types';
+import validator from '../../util/validator';
 import { FormFeedback } from '../shared/form/FormFeedBack';
 import PasswordFormGroup from '../shared/form/PasswordFormGroup';
 
@@ -69,10 +69,10 @@ const UserDetails: FC<PropTypes.InferProps<typeof userDetailsPropTypes>> = ({ st
                     ref={register(validator.lastName)}
                     isInvalid={!!errors.lastName}
                     aria-invalid={!!errors.lastName}
-                    isValid={!errors.lastName && !!watch('lastName')} //TODO strange, it seems dev wa,t to ensure field is not empty => missing validation rule(same below)
+                    isValid={!errors.lastName && !!watch('lastName')} // TODO strange, it seems dev wa,t to ensure field is not empty => missing validation rule(same below)
                     tabIndex={1}
                 />
-                <FormFeedback field={errors.lastName}></FormFeedback>
+                <FormFeedback field={errors.lastName} />
             </Form.Group>
 
             <Form.Group controlId="inscriptionFirstName">
@@ -87,7 +87,7 @@ const UserDetails: FC<PropTypes.InferProps<typeof userDetailsPropTypes>> = ({ st
                     isValid={!errors.firstName && !!watch('firstName')}
                     tabIndex={1}
                 />
-                <FormFeedback field={errors.firstName}></FormFeedback>
+                <FormFeedback field={errors.firstName} />
             </Form.Group>
 
             <Form.Group controlId="inscriptionCity">
@@ -102,7 +102,7 @@ const UserDetails: FC<PropTypes.InferProps<typeof userDetailsPropTypes>> = ({ st
                     isValid={!errors.city && !!watch('city')}
                     tabIndex={1}
                 />
-                <FormFeedback field={errors.city}></FormFeedback>
+                <FormFeedback field={errors.city} />
             </Form.Group>
 
             <Form.Group controlId="inscriptionEmail">
@@ -117,7 +117,7 @@ const UserDetails: FC<PropTypes.InferProps<typeof userDetailsPropTypes>> = ({ st
                     isValid={!errors.email && watch('email')}
                     tabIndex={1}
                 />
-                <FormFeedback field={errors.email}></FormFeedback>
+                <FormFeedback field={errors.email} />
             </Form.Group>
 
             <PasswordFormGroup

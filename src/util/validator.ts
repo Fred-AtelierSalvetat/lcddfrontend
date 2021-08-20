@@ -4,7 +4,7 @@ const EMAIL_PATTERN = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i;
 // const PASSWORD_PATTERN_ONE_NUMBER = /^(?=.*[0-9])$/;
 const PHONE_NUMBER_PATTERN = /^\d{9}$/;
 
-export const validator = {
+const validator = {
     firstName: {
         required: 'Le prénom est requis',
         minLength: {
@@ -172,3 +172,5 @@ export const validator = {
         validate: (): boolean => true,
     },
 };
+
+export default validator;

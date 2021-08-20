@@ -1,14 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { Provider } from 'react-redux';
+import Amplify from 'aws-amplify';
 import App from './Components/App';
 import * as serviceWorker from './serviceWorker';
-import { Provider } from 'react-redux';
 import { store } from './state/store';
 import 'lazysizes';
 import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.css';
 import './index.css';
-import Amplify from 'aws-amplify';
 import awsconfig from './aws-exports';
 
 Amplify.configure(awsconfig);

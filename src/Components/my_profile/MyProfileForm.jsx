@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Button, Form, InputGroup } from 'react-bootstrap';
 import { useForm, Controller } from 'react-hook-form';
 import { connect } from 'react-redux';
-import { validator } from '~/util/validator';
+import validator from '~/util/validator';
 import { FormFeedback } from '../shared/form/FormFeedBack';
 import * as api from '../../api/fetchUsers';
 import * as userRoles from '../../state/users/constants/roles';

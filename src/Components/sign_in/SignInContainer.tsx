@@ -7,42 +7,42 @@ import SignInResetPasswordModal from './SignInResetPasswordModal';
 import './SignIn.scss';
 
 const SignInContainer: FC = () => {
-    const [showSignIn, setShowSignIn] = useState(false);
-    const [showSignInLostPassword, setShowSignInLostPassword] = useState(false);
-    const [showSignInResetPassword, setShowSignInResetPassword] = useState(false);
-    const [showSignInLostPasswordEmailSent, setShowSignInLostPasswordEmailSent] = useState(false);
+  const [showSignIn, setShowSignIn] = useState(false);
+  const [showSignInLostPassword, setShowSignInLostPassword] = useState(false);
+  const [showSignInResetPassword, setShowSignInResetPassword] = useState(false);
+  const [showSignInLostPasswordEmailSent, setShowSignInLostPasswordEmailSent] = useState(false);
 
-    const onHandleClick = () => {
-        setShowSignIn(true);
-    };
+  const onHandleClick = () => {
+    setShowSignIn(true);
+  };
 
-    const onHandleClose = () => {
-        setShowSignIn(false);
-        setShowSignInLostPassword(false);
-        setShowSignInResetPassword(false);
-        setShowSignInLostPasswordEmailSent(false);
-    };
+  const onHandleClose = () => {
+    setShowSignIn(false);
+    setShowSignInLostPassword(false);
+    setShowSignInResetPassword(false);
+    setShowSignInLostPasswordEmailSent(false);
+  };
 
-    const onSignUpLinkClick = () => {
-        setShowSignIn(false);
-    };
+  const onSignUpLinkClick = () => {
+    setShowSignIn(false);
+  };
 
-    const onLostPasswordClick = () => {
-        setShowSignIn(false);
-        setShowSignInLostPassword(true);
-    };
+  const onLostPasswordClick = () => {
+    setShowSignIn(false);
+    setShowSignInLostPassword(true);
+  };
 
-    const onLostPasswordSubmit = () => {
-        setShowSignInLostPassword(false);
-        setShowSignInLostPasswordEmailSent(true);
-    };
+  const onLostPasswordSubmit = () => {
+    setShowSignInLostPassword(false);
+    setShowSignInLostPasswordEmailSent(true);
+  };
 
-    const onSignInClick = () => {
-        setShowSignIn(true);
-        setShowSignInLostPassword(false);
-    };
+  const onSignInClick = () => {
+    setShowSignIn(true);
+    setShowSignInLostPassword(false);
+  };
 
-    return (
+  return (
         <div>
             <Button variant="outline-primary" id="connexion-btn" onClick={onHandleClick}>
                 Se connecter
@@ -66,7 +66,7 @@ const SignInContainer: FC = () => {
 
             <SignInLostPasswordEmailSentModal show={showSignInLostPasswordEmailSent} onHandleClose={onHandleClose} />
         </div>
-    );
+  );
 };
 
 export default SignInContainer;

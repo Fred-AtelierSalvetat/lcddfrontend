@@ -1,11 +1,10 @@
 import React, { FC, useRef } from 'react';
 import { useForm } from 'react-hook-form';
 import { Button, Form } from 'react-bootstrap';
-import { validator } from '~/util/validator';
+import PropTypes from 'prop-types';
+import validator from '~/util/validator';
 import { FormFeedback } from '../shared/form/FormFeedBack';
 import OverlayModal from '../shared/modals/OverlayModal';
-
-import PropTypes from 'prop-types';
 
 const tooLongNamePropTypes = {
     show: PropTypes.bool.isRequired,
@@ -41,7 +40,7 @@ const SignInResetPasswordModal: FC<PropTypes.InferProps<typeof tooLongNamePropTy
                             isInvalid={!!errors.password}
                             aria-invalid={!!errors.password}
                         />
-                        <FormFeedback field={errors.password}></FormFeedback>
+                        <FormFeedback field={errors.password} />
                     </Form.Group>
 
                     <Form.Group controlId="loginFormPassword" style={{ marginBottom: '60px' }}>
@@ -56,7 +55,7 @@ const SignInResetPasswordModal: FC<PropTypes.InferProps<typeof tooLongNamePropTy
                             isInvalid={!!errors.passwordConfirmed}
                             aria-invalid={!!errors.passwordConfirmed}
                         />
-                        <FormFeedback field={errors.passwordConfirmed}></FormFeedback>
+                        <FormFeedback field={errors.passwordConfirmed} />
                     </Form.Group>
 
                     <Button variant="primary" type="submit" style={{ width: '100%' }}>

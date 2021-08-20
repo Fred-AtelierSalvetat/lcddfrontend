@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import { Button, Form } from 'react-bootstrap';
 import { useForm } from 'react-hook-form';
-import { validator } from '~/util/validator';
+import validator from '~/util/validator';
 import PasswordFormGroup from '../shared/form/PasswordFormGroup';
 
 const ModifyPasswordForm: FC = () => {
@@ -9,9 +9,7 @@ const ModifyPasswordForm: FC = () => {
         criteriaMode: 'all',
     });
 
-    const onSubmit = () => {
-        return false;
-    };
+    const onSubmit = () => false;
 
     const onHandleChange = (e) => {
         trigger(e.target.name);

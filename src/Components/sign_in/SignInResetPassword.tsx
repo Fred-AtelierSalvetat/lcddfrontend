@@ -1,18 +1,16 @@
 import React, { FC, useRef } from 'react';
 import { useForm } from 'react-hook-form';
 import { Container, Button, Form } from 'react-bootstrap';
-import { validator } from '~/util/validator';
+import validator from '~/util/validator';
 import { FormFeedback } from '../shared/form/FormFeedBack';
 import './SignIn.scss';
 
-const Header = () => {
-    return (
-        <div className="login-header">
-            <h1>Réinitialiser votre mot de passe</h1>
-            <h4>Remplir votre nouveau mot de passe</h4>
-        </div>
-    );
-};
+const Header = () => (
+    <div className="login-header">
+        <h1>Réinitialiser votre mot de passe</h1>
+        <h4>Remplir votre nouveau mot de passe</h4>
+    </div>
+);
 
 const SignInResetPassword: FC = () => {
     const { register, handleSubmit, errors, watch } = useForm();
@@ -27,7 +25,7 @@ const SignInResetPassword: FC = () => {
         <div className="lcdd-body-bg">
             <Container fluid className="container-login">
                 <div>
-                    <Header></Header>
+                    <Header />
                     <div className="login-body">
                         <div className="login-form">
                             <Form className="login-form" onSubmit={handleSubmit(onHandleSummit)}>
@@ -41,7 +39,7 @@ const SignInResetPassword: FC = () => {
                                         isInvalid={!!errors.password}
                                         aria-invalid={!!errors.password}
                                     />
-                                    <FormFeedback field={errors.password}></FormFeedback>
+                                    <FormFeedback field={errors.password} />
                                 </Form.Group>
 
                                 <Form.Group controlId="loginFormPassword" style={{ marginBottom: '60px' }}>
@@ -56,7 +54,7 @@ const SignInResetPassword: FC = () => {
                                         isInvalid={!!errors.passwordConfirmed}
                                         aria-invalid={!!errors.passwordConfirmed}
                                     />
-                                    <FormFeedback field={errors.passwordConfirmed}></FormFeedback>
+                                    <FormFeedback field={errors.passwordConfirmed} />
                                 </Form.Group>
 
                                 <Button variant="primary" type="submit" style={{ width: '100%' }}>

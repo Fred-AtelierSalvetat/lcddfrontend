@@ -1,26 +1,26 @@
 import React, { FC, useCallback } from 'react';
 import { useHistory } from 'react-router-dom';
-import Avatar from './../../assets/shared/avatar.jpg';
+import Avatar from '../../assets/shared/avatar.jpg';
 import './Speaker.css';
 
 import PropTypes from 'prop-types';
 
 const speakerPropTypes = {
-    id: PropTypes.number.isRequired,
-    name: PropTypes.string.isRequired,
-    rool: PropTypes.string.isRequired,
-    description: PropTypes.string,
+  id: PropTypes.number.isRequired,
+  name: PropTypes.string.isRequired,
+  rool: PropTypes.string.isRequired,
+  description: PropTypes.string,
 };
 
-export const Speaker: FC<PropTypes.InferProps<typeof speakerPropTypes>> = ({ id, name, rool, description }) => {
-    const history = useHistory();
+export const Speaker: FC<PropTypes.InferProps<typeof speakerPropTypes>> = ({
+  id, name, rool, description,
+}) => {
+  const history = useHistory();
 
-    // TO DO - Add components with params
-    const Redirection = useCallback(() => {
-        return history.push(`/profile/${id}`);
-    }, [id, history]);
-    console.log(Avatar);
-    return (
+  // TO DO - Add components with params
+  const Redirection = useCallback(() => history.push(`/profile/${id}`), [id, history]);
+  console.log(Avatar);
+  return (
         <div className="flex">
             <div>
                 <img src={Avatar} className="speaker-image" onClick={Redirection} />
@@ -31,6 +31,6 @@ export const Speaker: FC<PropTypes.InferProps<typeof speakerPropTypes>> = ({ id,
                 </div>
             </div>
         </div>
-    );
+  );
 };
 Speaker.propTypes = speakerPropTypes;

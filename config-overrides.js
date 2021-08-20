@@ -4,7 +4,7 @@ module.exports = function override(config) {
         ...config.resolve,
         alias: {
             ...config.alias,
-            '~': path.resolve(__dirname, 'src')
+            '~': path.resolve(__dirname, 'src'),
         },
     };
     return config;

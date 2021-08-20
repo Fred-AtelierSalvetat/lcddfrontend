@@ -2,14 +2,14 @@ import React, { FC, useState } from 'react';
 import { Button, Container, Form, Row } from 'react-bootstrap';
 import { useForm } from 'react-hook-form';
 import ReCAPTCHA from 'react-google-recaptcha';
+import PropTypes from 'prop-types';
 import { Wrapper } from '../shared/wrapper';
 import Expire from '../shared/utils/Expire';
 import { FormFeedback } from '../shared/form/FormFeedBack';
 import RoundSpinner from '../shared/RoundSpinner';
-import { validator } from '~/util/validator';
+import validator from '~/util/validator';
 import scrollToTopSmoothly from '~/util/scrollToTopSmoothly';
 import './ContactUs.scss';
-import PropTypes from 'prop-types';
 
 const SITE_KEY = process.env.REACT_APP_GOOGLE_CAPTCHA_SITE_KEY || '';
 const MESSAGE_SENT_SUCCESS = 'Votre message a été bien envoyé';
@@ -23,30 +23,26 @@ const alertPropsTypes = {
     onClick: PropTypes.func.isRequired,
 };
 
-const AlertSuccess: FC<PropTypes.InferProps<typeof alertPropsTypes>> = ({ show, message, onClick }) => {
-    return (
-        <div className={`alert alert-success ${show ? 'alert-shown' : 'alert-hidden'}`}>
-            <button type="button" className="close" data-dismiss="alert" aria-label="Close" onClick={onClick}>
-                <span aria-hidden="true">&times;</span>
-                <span className="sr-only">Close</span>
-            </button>
-            <strong>OK</strong> : <span> {message} </span>
-        </div>
-    );
-};
+const AlertSuccess: FC<PropTypes.InferProps<typeof alertPropsTypes>> = ({ show, message, onClick }) => (
+    <div className={`alert alert-success ${show ? 'alert-shown' : 'alert-hidden'}`}>
+        <button type="button" className="close" data-dismiss="alert" aria-label="Close" onClick={onClick}>
+            <span aria-hidden="true">&times;</span>
+            <span className="sr-only">Close</span>
+        </button>
+        <strong>OK</strong> :<span> {message} </span>
+    </div>
+);
 AlertSuccess.propTypes = alertPropsTypes;
 
-const AlertError: FC<PropTypes.InferProps<typeof alertPropsTypes>> = ({ show, message, onClick }) => {
-    return (
-        <div className={`alert alert-danger ${show ? 'alert-shown' : 'alert-hidden'}`}>
-            <button type="button" className="close" data-dismiss="alert" aria-label="Close" onClick={onClick}>
-                <span aria-hidden="true">&times;</span>
-                <span className="sr-only">Close</span>
-            </button>
-            <strong>Erreur</strong> : <span> {message} </span>
-        </div>
-    );
-};
+const AlertError: FC<PropTypes.InferProps<typeof alertPropsTypes>> = ({ show, message, onClick }) => (
+    <div className={`alert alert-danger ${show ? 'alert-shown' : 'alert-hidden'}`}>
+        <button type="button" className="close" data-dismiss="alert" aria-label="Close" onClick={onClick}>
+            <span aria-hidden="true">&times;</span>
+            <span className="sr-only">Close</span>
+        </button>
+        <strong>Erreur</strong> :<span> {message} </span>
+    </div>
+);
 AlertError.propTypes = alertPropsTypes;
 
 type ContactUsFormData = {
@@ -69,7 +65,6 @@ const ContactUs: FC = () => {
 
     const onHandleChange = ({ target }) => {
         console.log(target.name, target.value);
-
         trigger(target.name);
     };
 
@@ -193,7 +188,7 @@ const ContactUs: FC = () => {
                             isInvalid={!!errors.firstName}
                             aria-invalid={!!errors.firstName}
                         />
-                        <FormFeedback field={errors.firstName}></FormFeedback>
+                        <FormFeedback field={errors.firstName} />
                     </Form.Group>
 
                     <Form.Group controlId="contactFormLastName">
@@ -207,7 +202,7 @@ const ContactUs: FC = () => {
                             isInvalid={!!errors.lastName}
                             aria-invalid={!!errors.lastName}
                         />
-                        <FormFeedback field={errors.lastName}></FormFeedback>
+                        <FormFeedback field={errors.lastName} />
                     </Form.Group>
 
                     <Form.Group controlId="contactFormEmail">
@@ -221,7 +216,7 @@ const ContactUs: FC = () => {
                             isInvalid={!!errors.email}
                             aria-invalid={!!errors.email}
                         />
-                        <FormFeedback field={errors.email}></FormFeedback>
+                        <FormFeedback field={errors.email} />
                     </Form.Group>
 
                     <Form.Group controlId="contactFormSubject">
@@ -235,7 +230,7 @@ const ContactUs: FC = () => {
                             isInvalid={!!errors.subject}
                             aria-invalid={!!errors.subject}
                         />
-                        <FormFeedback field={errors.subject}></FormFeedback>
+                        <FormFeedback field={errors.subject} />
                     </Form.Group>
 
                     <Form.Group controlId="contactFormMessage">
@@ -250,7 +245,7 @@ const ContactUs: FC = () => {
                             isInvalid={!!errors.message}
                             aria-invalid={!!errors.message}
                         />
-                        <FormFeedback field={errors.message}></FormFeedback>
+                        <FormFeedback field={errors.message} />
                     </Form.Group>
 
                     <Form.Group>
@@ -266,7 +261,7 @@ const ContactUs: FC = () => {
                                 Envoyer
                             </Button>
                         </Row>
-                        {!recaptchaValidated && <FormFeedback field={errors.captcha}></FormFeedback>}
+                        {!recaptchaValidated && <FormFeedback field={errors.captcha} />}
                     </Form.Group>
                 </Form>
             </Container>

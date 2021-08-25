@@ -104,3 +104,21 @@
         align-items: center;
     }
 }
+@media (min-width: 1190px) {
+    .styled-card {
+        width: 1240px;
+        margin-left: 170px;
+        height: 87px;
+        display: flex;
+        margin-bottom: 50px;
+        flex-direction: row;
+        justify-content: space-between;
+        border: 2px solid #113f59;
+        background-color: #ffffff;
+        align-items: center;
+    }
+    .atelier {
+        margin-left: 170px !important;
+    }
+
+}

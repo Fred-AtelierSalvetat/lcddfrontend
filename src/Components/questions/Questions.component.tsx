@@ -1,7 +1,9 @@
 import React, { FC, useState } from 'react';
 
-import { Container, Row, Col, Form, Card, CardColumns } from 'react-bootstrap';
+import Select from 'react-select';
+import { Container, Row, Col, Form, CardDeck } from 'react-bootstrap';
 import './Questions.style.css';
+import Cards from './Cards';
 
 const YourQuestions: FC = () => {
     const [active, setActive] = useState({
@@ -9,7 +11,41 @@ const YourQuestions: FC = () => {
         linkTwo: false,
         linkThree: false,
     });
+    const data = [
+        { value: 1, label: 'Arbitrage' },
+        { value: 2, label: 'Associations et fondations' },
+        { value: 3, label: 'Assurances' },
+        { value: 4, label: 'Banque et bourse' },
+        { value: 5, label: 'affaires et concurence' },
+        { value: 6, label: 'Crédit et consommation' },
+        { value: 7, label: 'Dommages corporels' },
+        { value: 8, label: "Droit international et de l'Union Européenne" },
+        { value: 9, label: 'Droit public' },
+        { value: 10, label: 'Droit rural' },
+        { value: 11, label: 'Envionnement' },
+        { value: 12, label: 'Etrangers et nationalité' },
+        { value: 13, label: 'Famille, personnes et patrimoine' },
+        { value: 14, label: 'Fiducie' },
+        { value: 15, label: 'Fiscalité et douane' },
+        { value: 16, label: "Garanties, sûretés et mesures d'exécution" },
+        { value: 17, label: 'Immobilier' },
+        { value: 18, label: 'Pénal' },
+        { value: 19, label: "Procédure d'appel" },
+        { value: 20, label: 'Propriété intellectuelle' },
+        { value: 21, label: 'Santé' },
+        { value: 22, label: 'Sécurité sociale et protection sociale' },
+        { value: 23, label: 'Sociétés' },
+        { value: 24, label: 'Sport' },
+        { value: 25, label: 'Technologie et informatique' },
+        { value: 26, label: 'Transport' },
+        { value: 27, label: 'Travail' },
+    ];
 
+    const [selectedValue, setSelectedValue] = useState([]);
+
+    const handleChange = (e) => {
+        setSelectedValue(Array.isArray(e) ? e.map((x) => x.value) : []);
+    };
     return (
         <Container fluid>
             <Row>
@@ -95,7 +131,8 @@ const YourQuestions: FC = () => {
                             </h5>
                         </div>
                         <div className="search">
-                            <h3>Questions en vidéo</h3>
+                            <h3>Questions en </h3>
+                            <h3>vidéo</h3>
                             <Form className="search-form">
                                 <Form.Group controlId="formGroupEmail">
                                     <Form.Label className="formLabel">
@@ -105,101 +142,19 @@ const YourQuestions: FC = () => {
                                 </Form.Group>
                             </Form>
                         </div>
-                        <p>Selectioner thematiques</p>
-                        <select name="thematiques">
-                            <option value="" style={{ fontSize: '16px', lineHeight: '24px' }}>
-                                Selectioner 1 - 4 thematiques
-                            </option>
-                            <option value="dog">Dog</option>
-                            <option value="cat">Cat</option>
-                            <option value="hamster">Hamster</option>
-                            <option value="parrot">Parrot</option>
-                            <option value="spider">Spider</option>
-                            <option value="goldfish">Goldfish</option>
-                        </select>
-                        <CardColumns>
-                            <Card>
-                                <Card.Img variant="top" src="/cardImage.svg" />
-                                <Card.Body>
-                                    <Card.Title style={{ fontSize: '18px' }}>Card Title</Card.Title>
-                                    <Card.Text style={{ fontSize: '16px' }}>
-                                        {'Some quick example text to build on the card title and make up the bulk ' +
-                                            "of the card's content."}
-                                    </Card.Text>
-                                </Card.Body>
-                            </Card>
-                            <Card>
-                                <Card.Img variant="top" src="/cardImage.svg" />
-                                <Card.Body>
-                                    <Card.Title style={{ fontSize: '18px' }}>Card Title</Card.Title>
-                                    <Card.Text style={{ fontSize: '16px' }}>
-                                        {'Some quick example text to build on the card title and make up the bulk ' +
-                                            "of the card's content."}
-                                    </Card.Text>
-                                </Card.Body>
-                            </Card>
-                            <Card>
-                                <Card.Img variant="top" src="/cardImage.svg" />
-                                <Card.Body>
-                                    <Card.Title style={{ fontSize: '18px' }}>Card Title</Card.Title>
-                                    <Card.Text style={{ fontSize: '16px' }}>
-                                        {'Some quick example text to build on the card title and make up the bulk ' +
-                                            "of the card's content."}
-                                        .
-                                    </Card.Text>
-                                </Card.Body>
-                            </Card>
-                            <Card>
-                                <Card.Img variant="top" src="/cardImage.svg" />
-                                <Card.Body>
-                                    <Card.Title style={{ fontSize: '18px' }}>Card Title</Card.Title>
-                                    <Card.Text style={{ fontSize: '16px' }}>
-                                        {'Some quick example text to build on the card title and make up the bulk ' +
-                                            "of the card's content."}
-                                    </Card.Text>
-                                </Card.Body>
-                            </Card>
-                            <Card>
-                                <Card.Img variant="top" src="/cardImage.svg" />
-                                <Card.Body>
-                                    <Card.Title style={{ fontSize: '18px' }}>Card Title</Card.Title>
-                                    <Card.Text style={{ fontSize: '16px' }}>
-                                        {'Some quick example text to build on the card title and make up the bulk ' +
-                                            "of the card's content."}
-                                    </Card.Text>
-                                </Card.Body>
-                            </Card>
-                            <Card>
-                                <Card.Img variant="top" src="/cardImage.svg" />
-                                <Card.Body>
-                                    <Card.Title style={{ fontSize: '18px' }}>Card Title</Card.Title>
-                                    <Card.Text style={{ fontSize: '16px' }}>
-                                        {'Some quick example text to build on the card title and make up the bulk ' +
-                                            "of the card's content."}
-                                    </Card.Text>
-                                </Card.Body>
-                            </Card>
-                            <Card>
-                                <Card.Img variant="top" src="/cardImage.svg" />
-                                <Card.Body>
-                                    <Card.Title style={{ fontSize: '18px' }}>Card Title</Card.Title>
-                                    <Card.Text style={{ fontSize: '16px' }}>
-                                        {'Some quick example text to build on the card title and make up the bulk ' +
-                                            "of the card's content."}
-                                    </Card.Text>
-                                </Card.Body>
-                            </Card>
-                            <Card>
-                                <Card.Img variant="top" src="/cardImage.svg" />
-                                <Card.Body>
-                                    <Card.Title style={{ fontSize: '18px' }}>Card Title</Card.Title>
-                                    <Card.Text style={{ fontSize: '16px' }}>
-                                        {'Some quick example text to build on the card title and make up the bulk ' +
-                                            "of the card's content."}
-                                    </Card.Text>
-                                </Card.Body>
-                            </Card>
-                        </CardColumns>
+                        <div className="select">
+                        <Select
+                            className="dropdown"
+                            placeholder="Selectionner thematique"
+                            value={data.filter(obj => selectedValue.includes(obj.value))}
+                            options={data}
+                            onChange={handleChange}
+                            isMulti
+                            isClearable/>
+                        </div>
+                        <CardDeck>
+                            <Cards />
+                        </CardDeck>
                     </Container>
                 </Col>
             </Row>

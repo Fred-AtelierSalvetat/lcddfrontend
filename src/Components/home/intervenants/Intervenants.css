@@ -5,6 +5,10 @@
     display: flex;
     align-items: baseline;
     margin-left: 100px;
+    width: 1140px;
+    margin-left: 300px;
+
+
 }
 .voirplus {
     text-decoration: underline;
@@ -13,6 +17,8 @@
     display: flex;
     align-items: baseline;
     justify-content: center;
+    width: 1140px;
+    margin-left: 310px;
 }
 @media only screen and (max-width: 991px) {
     .intervenantHeader {

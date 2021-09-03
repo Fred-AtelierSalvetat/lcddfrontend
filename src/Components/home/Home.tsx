@@ -6,6 +6,7 @@ import IntervenantsComponent from './intervenants/Intervenants';
 import DomainesExpertiseComponent from './domaines_expertise/DomainesExpertise';
 import ProchainAtelierComponent from './prochain_atelier/ProchainAtelier';
 import QuestionsVideoComponent from './questions_video/QuestionsVideo';
+import QuestionsAttente from './questions_attente/QuestionsAttente';
 import AOS from 'aos';
 
 const Home: FC = () => {
@@ -17,6 +18,7 @@ const Home: FC = () => {
             <ConceptComponent />
             <VosQuestionsComponent />
             <AteliersComponent />
+            <QuestionsAttente />
             <QuestionsVideoComponent />
             <ProchainAtelierComponent />
             <IntervenantsComponent />

@@ -1,7 +1,8 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {Card} from 'react-bootstrap';
 
-function Cards() {
+function Cards(props) {
+    const [cards, setCards]= useState(true)
     const CardData=[
         {
             img:'/cardImage.svg',
@@ -62,10 +63,10 @@ function Cards() {
     ];
     return (
         <div className='row row-cols-1  row-cols-md-4 '>
-        {CardData.map((props)=>{
-                    return(
-                        <div className='col mb-4'>
-
+            {!props.isHome && cards &&
+            CardData.map((props)=>{
+                return(
+                    <div className='col mb-4'>
                         <Card >
                             <Card.Img variant='top' src={props.img} />
                             <Card.Body>
@@ -75,11 +76,25 @@ function Cards() {
                                 </Card.Text>
                             </Card.Body>
                         </Card>
-                        </div>
-                    );
-                }
-            )
-            }
+                    </div>
+                );
+            })}
+            {props.isHome &&
+            CardData.slice(0,4).map((props)=>{
+                return(
+                    <div className='col mb-4'>
+                        <Card >
+                            <Card.Img variant='top' src={props.img} />
+                            <Card.Body>
+                                <Card.Title style={{ fontSize: '18px' }}>{props.title}</Card.Title>
+                                <Card.Text style={{ fontSize: '16px' }}>
+                                    {props.backside}
+                                </Card.Text>
+                            </Card.Body>
+                        </Card>
+                    </div>
+                );
+            })}
         </div>
     );
 }

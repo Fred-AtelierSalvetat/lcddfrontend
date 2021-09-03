@@ -1,6 +1,7 @@
 import React , {useState} from 'react';
 import Cards from '../../questions/Cards'
 import '../intervenants/Intervenants.css';
+import {Nav} from "react-bootstrap";
 
 
 function QuestionsAttente(props) {
@@ -13,9 +14,9 @@ function QuestionsAttente(props) {
                         Question en videos
                     </div>
                     <div className="voirplus">
-                        <a href="/" className="link">
+                        <Nav.Link href="/questions" className="link">
                             Voir plus
-                        </a>
+                        </Nav.Link>
                     </div>
                 </div>
             </div>

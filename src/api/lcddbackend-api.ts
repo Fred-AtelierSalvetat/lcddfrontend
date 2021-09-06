@@ -8,3 +8,19 @@ export default api;
 //     endpoints: () => ({}),
 // });
 // api.injectEndpoints({ endpoints: generatedApi.endpoints, overrideExisting: false });
+
+//TODO FSA
+// const formData = new FormData();
+// formData.append("avatar", avatar);
+// formData.append("name", name);
+
+// jwtRefreshingFetch(
+//     `${process.env.REACT_APP_BACKEND_BASE_URL}/api/activities/`,
+//     {
+//       method: "POST",
+//       credentials: "include",
+//       headers: {
+//         accept: "*/*",
+//       },
+//       body: formData,
+//     }

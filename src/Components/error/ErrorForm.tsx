@@ -4,21 +4,21 @@ import { ReactComponent as Logo_error } from '~/assets/logos/Logo_error.svg';
 import './ErrorForm.css';
 
 const ErrorForm: FC = () => {
-  const history = useHistory();
+    const history = useHistory();
 
-  const redirectionVideo = () => {
-    history.push('/questions/'); // Redirect to contact
-  };
+    const redirectionVideo = () => {
+        history.push('/questions/'); // Redirect to contact
+    };
 
-  const redirectionTV = () => {
-    history.push('/webTV'); // Redirect to contact
-  };
+    const redirectionTV = () => {
+        history.push('/webTV'); // Redirect to contact
+    };
 
-  const redirectionNousContacter = () => {
-    history.push('/contact-us'); // Redirect to contact
-  };
+    const redirectionNousContacter = () => {
+        history.push('/contact-us'); // Redirect to contact
+    };
 
-  return (
+    return (
         <div>
             <div className="text_display2">Oups!</div>
             <div className="text_h1_heading">Something went wrong. We are working on it.</div>
@@ -35,7 +35,7 @@ const ErrorForm: FC = () => {
             </div>
             <Logo_error className="image" title="Logo_error" />
         </div>
-  );
+    );
 };
 
 export default ErrorForm;

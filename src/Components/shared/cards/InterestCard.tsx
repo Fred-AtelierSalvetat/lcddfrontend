@@ -6,15 +6,13 @@ import { ReactComponent as Selected } from '~/assets/icons/Selected.svg';
 const MOBILE_VIEW_BREAKPOINT = 991;
 
 const cardPropTypes = {
-  className: PropTypes.string.isRequired,
-  onClick: PropTypes.func.isRequired,
-  isMobile: PropTypes.bool.isRequired,
-  onKeyDown: PropTypes.func.isRequired,
-  children: PropTypes.node.isRequired,
+    className: PropTypes.string.isRequired,
+    onClick: PropTypes.func.isRequired,
+    isMobile: PropTypes.bool.isRequired,
+    onKeyDown: PropTypes.func.isRequired,
+    children: PropTypes.node.isRequired,
 };
-const Card: FC<PropTypes.InferProps<typeof cardPropTypes>> = ({
-  className, onClick, onKeyDown, children,
-}) => (
+const Card: FC<PropTypes.InferProps<typeof cardPropTypes>> = ({ className, onClick, onKeyDown, children }) => (
     <div className={className} tabIndex={1} onClick={onClick} onKeyUp={onKeyDown}>
         {children}
     </div>
@@ -22,9 +20,9 @@ const Card: FC<PropTypes.InferProps<typeof cardPropTypes>> = ({
 Card.propTypes = cardPropTypes;
 
 const cardImagePropTypes = {
-  className: PropTypes.string.isRequired,
-  src: PropTypes.object.isRequired,
-  alt: PropTypes.string.isRequired,
+    className: PropTypes.string.isRequired,
+    src: PropTypes.object.isRequired,
+    alt: PropTypes.string.isRequired,
 };
 const CardImage: FC<PropTypes.InferProps<typeof cardImagePropTypes>> = ({ className, src, alt }) => (
     <img className={className} src={src} alt={alt} />
@@ -32,9 +30,9 @@ const CardImage: FC<PropTypes.InferProps<typeof cardImagePropTypes>> = ({ classN
 CardImage.propTypes = cardImagePropTypes;
 
 const cardTextPropTypes = {
-  className: PropTypes.string.isRequired,
-  isMobile: PropTypes.bool.isRequired,
-  children: PropTypes.node.isRequired,
+    className: PropTypes.string.isRequired,
+    isMobile: PropTypes.bool.isRequired,
+    children: PropTypes.node.isRequired,
 };
 const CardText: FC<PropTypes.InferProps<typeof cardTextPropTypes>> = ({ className, children }) => (
     <p className={className}>{children}</p>
@@ -42,8 +40,8 @@ const CardText: FC<PropTypes.InferProps<typeof cardTextPropTypes>> = ({ classNam
 CardText.propTypes = cardTextPropTypes;
 
 const cardBodyPropTypes = {
-  className: PropTypes.string.isRequired,
-  children: PropTypes.node.isRequired,
+    className: PropTypes.string.isRequired,
+    children: PropTypes.node.isRequired,
 };
 const CardBody: FC<PropTypes.InferProps<typeof cardBodyPropTypes>> = ({ className, children }) => (
     <div className={className}>{children}</div>
@@ -93,46 +91,45 @@ const CardTextStyled = styled(CardText)`
 `;
 
 const interestCardPropTypes = {
-  src: PropTypes.string.isRequired,
-  title: PropTypes.string.isRequired,
-  readOnly: PropTypes.bool,
+    src: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
+    readOnly: PropTypes.bool,
 };
 const InterestCard: FC<PropTypes.InferProps<typeof interestCardPropTypes>> = (props) => {
-  const [selected, setSelected] = useState(false);
-  const [isMobile, setIsMobile] = useState(window.innerWidth < MOBILE_VIEW_BREAKPOINT);
+    const [selected, setSelected] = useState(false);
+    const [isMobile, setIsMobile] = useState(window.innerWidth < MOBILE_VIEW_BREAKPOINT);
 
-  useEffect(() => {
-    window.addEventListener('resize', updatePredicate);
-  });
+    useEffect(() => {
+        window.addEventListener('resize', updatePredicate);
+    });
 
-  const updatePredicate = () => {
-    setIsMobile(window.innerWidth < MOBILE_VIEW_BREAKPOINT);
-  };
+    const updatePredicate = () => {
+        setIsMobile(window.innerWidth < MOBILE_VIEW_BREAKPOINT);
+    };
 
-  const handleClick = () => {
-    if (props.readOnly) {
+    const handleClick = () => {
+        if (props.readOnly) {
+        } else if (selected) setSelected(false);
+        else setSelected(true);
+    };
 
-    } else if (selected) setSelected(false);
-    else setSelected(true);
-  };
+    const handleOnKeyDown = (e) => {
+        if (e.keyCode === 32 || e.keyCode === 13) {
+            e.preventDefault();
+            e.target.click();
+            return false;
+        }
+    };
 
-  const handleOnKeyDown = (e) => {
-    if (e.keyCode === 32 || e.keyCode === 13) {
-      e.preventDefault();
-      e.target.click();
-      return false;
-    }
-  };
-
-  return (
+    return (
         <div
             className="col mb-4"
             style={{
-              paddingLeft: isMobile ? '1px' : '',
-              paddingRight: isMobile ? '1px' : '',
-              display: 'flex',
-              justifyContent: 'center',
-              marginRight: '10px',
+                paddingLeft: isMobile ? '1px' : '',
+                paddingRight: isMobile ? '1px' : '',
+                display: 'flex',
+                justifyContent: 'center',
+                marginRight: '10px',
             }}
         >
             <InterestCardStyled
@@ -150,7 +147,7 @@ const InterestCard: FC<PropTypes.InferProps<typeof interestCardPropTypes>> = (pr
                 </CardBodyStyled>
             </InterestCardStyled>
         </div>
-  );
+    );
 };
 InterestCard.propTypes = interestCardPropTypes;
 

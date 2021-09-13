@@ -22,13 +22,13 @@ import type { UsersActionType } from './users/constants/actionTypes';
 import type { User, UIfiltersRole, UIfiltersSearch } from './users/model';
 
 export const reducersList = {
-  home: homeReducer,
-  speakers: SpeakerReducer,
-  users,
-  workshops,
-  alerts,
-  registration: userRegistrationReducer,
-  authentication: userAuthenticationReducer,
+    home: homeReducer,
+    speakers: SpeakerReducer,
+    users,
+    workshops,
+    alerts,
+    registration: userRegistrationReducer,
+    authentication: userAuthenticationReducer,
 };
 
 export const rootReducer = combineReducers(reducersList);
@@ -37,13 +37,23 @@ export type AppState = ReturnType<typeof rootReducer>;
 
 export const getRoles: () => UIfiltersRole[] = () => Object.keys(roleFilterMap);
 export const roleFilterSelector = (state: RootStateType): UIfiltersRoles => fromUsers.roleFilterSelector(state.users);
-export const searchFilterSelector = (state: RootStateType): UIfiltersSearch => fromUsers.searchFilterSelector(state.users);
+export const searchFilterSelector = (state: RootStateType): UIfiltersSearch =>
+    fromUsers.searchFilterSelector(state.users);
 export const getVisibleUsers = (state: RootStateType): User[] => fromUsers.getVisibleUsers(state.users);
-export const isRequestInProgress = (request_type: UsersActionType) => (state: RootStateType): boolean => fromUsers.isRequestInProgress(state.users, request_type);
+export const isRequestInProgress =
+    (request_type: UsersActionType) =>
+    (state: RootStateType): boolean =>
+        fromUsers.isRequestInProgress(state.users, request_type);
 export const getAlerts = (state: RootStateType): Alert[] => fromAlerts.getAlerts(state.alerts);
-export const isCurrentUserLoggedIn = (state: RootStateType): boolean => fromUser.isCurrentUserLoggedIn(state.authentication);
+export const isCurrentUserLoggedIn = (state: RootStateType): boolean =>
+    fromUser.isCurrentUserLoggedIn(state.authentication);
 export const getWorkshops = (state: WorkshopsState): Workshop[] => fromWorkshops.getWorkshops(state.workshops);
-export const workshopSearchFilterSelector = (state: WorkshopsState): SearchFilter => fromWorkshops.searchFilterSelector(state.workshops);
-export const getWorkshopById = (id: Workshop.id) => (state: RootStateType): Workshop => fromWorkshops.getWorkshopById(state.workshops, id);
-export const isWorkshopStoreInialized = (state: RootStateType): boolean => fromWorkshops.isWorkshopStoreInialized(state.workshops);
+export const workshopSearchFilterSelector = (state: WorkshopsState): SearchFilter =>
+    fromWorkshops.searchFilterSelector(state.workshops);
+export const getWorkshopById =
+    (id: Workshop.id) =>
+    (state: RootStateType): Workshop =>
+        fromWorkshops.getWorkshopById(state.workshops, id);
+export const isWorkshopStoreInialized = (state: RootStateType): boolean =>
+    fromWorkshops.isWorkshopStoreInialized(state.workshops);
 export const getOrderBy = (state: RootStateType): Workshop.orderBy => fromWorkshops.getOrderBy(state.workshops);

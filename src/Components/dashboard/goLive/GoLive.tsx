@@ -1,11 +1,7 @@
-import React, {
-  FC, useState, useEffect, useRef,
-} from 'react';
+import React, { FC, useState, useEffect, useRef } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link, useParams } from 'react-router-dom';
-import {
-  Button, Container, Row, Col, Overlay, Tooltip,
-} from 'react-bootstrap';
+import { Button, Container, Row, Col, Overlay, Tooltip } from 'react-bootstrap';
 // import copy from 'copy-to-clipboard';
 
 import { getWorkshopById, isWorkshopStoreInialized } from '~/state/reducers';
@@ -19,48 +15,49 @@ import './GoLive.scss';
 const TOOLTIP_DURATION = 1000;
 
 const GoLive: FC = () => {
-  const { id } = useParams() as {
-    id: Workshop.id;
-  };
-  const dispatch = useDispatch();
-  const workshop = useSelector(getWorkshopById(id));
+    const { id } = useParams() as {
+        id: Workshop.id;
+    };
+    const dispatch = useDispatch();
+    const workshop = useSelector(getWorkshopById(id));
 
-  // Allow direct call to page
-  const needFetching = !useSelector(isWorkshopStoreInialized);
-  useEffect(() => {
-    if (needFetching) dispatch(fetchWorkshops);
-  }, []);
+    // Allow direct call to page
+    const needFetching = !useSelector(isWorkshopStoreInialized);
+    useEffect(() => {
+        if (needFetching) dispatch(fetchWorkshops);
+    }, []);
 
-  const broadcastBoxAction = workshop
-        && {
-          [status.INCOMING]: (
+    const broadcastBoxAction =
+        workshop &&
+        {
+            [status.INCOMING]: (
                 <Button variant="success" onClick={() => dispatch(goLive(workshop.id))}>
                     Commencer la diffusion
                 </Button>
-          ),
-          [status.LIVE]: (
+            ),
+            [status.LIVE]: (
                 <Button variant="danger" onClick={() => dispatch(endLive(workshop.id))}>
                     Terminer la diffusion
                 </Button>
-          ),
-          [status.UNPUBLISHED]: (
+            ),
+            [status.UNPUBLISHED]: (
                 // TODO Update url once implemented
                 <Link to="/dashboard/workshops">
                     Publier atelier
                     <ArrowBackIcon />
                 </Link>
-          ),
+            ),
         }[workshop.status];
 
-  // TODO Fetch RTMP value/key
-  const rtmpAddress = 'https://www.figma.com/file/rMePFUqQqTNHj22bA6NgmO/?node-id=3528%3A760';
-  const streamKey = '3528%3A760';
-  const rtmpAddressRef = useRef();
-  const streamKeyRef = useRef();
-  const [showRtmpTooltip, setShowRtmpTooltip] = useState(false);
-  const [showKeyTooltip, setShowKeyTooltip] = useState(false);
+    // TODO Fetch RTMP value/key
+    const rtmpAddress = 'https://www.figma.com/file/rMePFUqQqTNHj22bA6NgmO/?node-id=3528%3A760';
+    const streamKey = '3528%3A760';
+    const rtmpAddressRef = useRef();
+    const streamKeyRef = useRef();
+    const [showRtmpTooltip, setShowRtmpTooltip] = useState(false);
+    const [showKeyTooltip, setShowKeyTooltip] = useState(false);
 
-  return needFetching ? null : (
+    return needFetching ? null : (
         <div id="goLivePage">
             <h1>{workshop.title}</h1>
             <Container>
@@ -79,9 +76,9 @@ const GoLive: FC = () => {
                                 <CopyIcon
                                     ref={rtmpAddressRef}
                                     onClick={() => {
-                                      copy(rtmpAddress);
-                                      setShowRtmpTooltip(true);
-                                      setTimeout(() => setShowRtmpTooltip(false), TOOLTIP_DURATION);
+                                        copy(rtmpAddress);
+                                        setShowRtmpTooltip(true);
+                                        setTimeout(() => setShowRtmpTooltip(false), TOOLTIP_DURATION);
                                     }}
                                 />
                                 <Overlay target={rtmpAddressRef.current} show={showRtmpTooltip} placement="top">
@@ -94,16 +91,13 @@ const GoLive: FC = () => {
                             </div>
                             <div className="dataLine">
                                 <p className="label">Clé</p>
-                                <p className="value">
-{`: ${streamKey}`}
-{' '}
-                                </p>
+                                <p className="value">{`: ${streamKey}`} </p>
                                 <CopyIcon
                                     ref={streamKeyRef}
                                     onClick={() => {
-                                      copy(streamKey);
-                                      setShowKeyTooltip(true);
-                                      setTimeout(() => setShowKeyTooltip(false), TOOLTIP_DURATION);
+                                        copy(streamKey);
+                                        setShowKeyTooltip(true);
+                                        setTimeout(() => setShowKeyTooltip(false), TOOLTIP_DURATION);
                                     }}
                                 />
                                 <Overlay target={streamKeyRef.current} show={showKeyTooltip} placement="top">
@@ -153,7 +147,7 @@ const GoLive: FC = () => {
                 </Row>
             </Container>
         </div>
-  );
+    );
 };
 
 export default GoLive;

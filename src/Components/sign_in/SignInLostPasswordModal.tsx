@@ -22,7 +22,7 @@ const SignInLostPasswordModal: FC<PropTypes.InferProps<typeof propTypes>> = ({
 
     const header = (
         <div className="login-header">
-            <h1>J'ai oublié mon mot de passe</h1>
+            <h1>{"J'ai oublié mon mot de passe"}</h1>
             <div className="link" onClick={onSignInClick}>
                 Retourner à la page de connexion
             </div>

@@ -4,7 +4,7 @@ import { BsBell } from 'react-icons/bs';
 import PropTypes from 'prop-types';
 
 const notificationsPropsTypes = {
-  number: PropTypes.number.isRequired,
+    number: PropTypes.number.isRequired,
 };
 
 const Notifications: FC<PropTypes.InferProps<typeof notificationsPropsTypes>> = ({ number }) => (

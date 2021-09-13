@@ -9,13 +9,12 @@ const LegalNotice: FC = () => (
             <Container>
                 <h1 className="primary">Mentions légales</h1>
                 <div className="lead">
-                    {'Conformément aux dispositions des articles 6-III et 19 de la Loi n° 2004-575 du 21 juin 2004 '
-                            + "pour la Confiance dans l'économie numérique, dite LCEN, nous portons à la connaissance des utilisateurs "
-                            + 'et visiteurs du site '}
+                    {'Conformément aux dispositions des articles 6-III et 19 de la Loi n° 2004-575 du 21 juin 2004 ' +
+                        "pour la Confiance dans l'économie numérique, dite LCEN, nous portons à la connaissance des utilisateurs " +
+                        'et visiteurs du site '}
                     <a href="https://lachainedudroit.fr" className="link" title="Visiter ce site">
                         lachainedudroit.fr
-                    </a>
-                    {' '}
+                    </a>{' '}
                     les informations suivantes:
                 </div>
             </Container>
@@ -23,12 +22,10 @@ const LegalNotice: FC = () => (
         <Container className="container-large-space">
             <h2 className="primary">L’EDITEUR</h2>
             <p>
-                Le site
-                {' '}
+                Le site{' '}
                 <a href="https://lachainedudroit.fr" className="link" title="Visiter ce site">
                     lachainedudroit.fr
-                </a>
-                {' '}
+                </a>{' '}
                 est la propriété exclusive de l’association LA CHAINE DU DROIT, qui l’édite.
             </p>
 
@@ -41,16 +38,13 @@ const LegalNotice: FC = () => (
             <p>Ladite association est immatriculée à l’INSEE sous le numéro SIRET 820 598 357 00011</p>
 
             <p>
-                Adresse de courrier électronique:
-                {' '}
+                Adresse de courrier électronique:{' '}
                 <a href="mailto:contact@lachainedudroit.fr" className="link" title="Envoyer un message">
                     contact@lachainedudroit.fr
                 </a>
             </p>
 
-            <p>
-                Le directeur de la publication est Ambroise ARMAND en sa qualité de Président de LA CHAINE DU DROIT.
-            </p>
+            <p>Le directeur de la publication est Ambroise ARMAND en sa qualité de Président de LA CHAINE DU DROIT.</p>
 
             <h2 className="primary">L’HÉBERGEUR</h2>
             <p>

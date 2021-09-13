@@ -27,21 +27,21 @@ const ErrorForm = React.lazy(() => import('./error/ErrorForm'));
 const Logout = React.lazy(() => import('./logout'));
 
 const App: FC = () => {
-  const dispatch = useDispatch();
+    const dispatch = useDispatch();
 
-  Auth.currentAuthenticatedUser()
-    .then((user) => {
-      const cognitoUser = user.attributes;
-      const currentUser = getUserFromCognitoUser(cognitoUser);
-      console.log('current user', currentUser);
-      dispatch({ type: userActionTypes.GET_CURRENT_USER_SUCCESS, user: currentUser });
-    })
-    .catch((err) => {
-      console.log('current user', err);
-      dispatch({ type: userActionTypes.GET_CURRENT_USER_FAILURE });
-    });
+    Auth.currentAuthenticatedUser()
+        .then((user) => {
+            const cognitoUser = user.attributes;
+            const currentUser = getUserFromCognitoUser(cognitoUser);
+            console.log('current user', currentUser);
+            dispatch({ type: userActionTypes.GET_CURRENT_USER_SUCCESS, user: currentUser });
+        })
+        .catch((err) => {
+            console.log('current user', err);
+            dispatch({ type: userActionTypes.GET_CURRENT_USER_FAILURE });
+        });
 
-  return (
+    return (
         <div className="App">
             <BrowserRouter>
                 <Header />
@@ -72,11 +72,11 @@ const App: FC = () => {
                 <Footer />
             </BrowserRouter>
         </div>
-  );
+    );
 };
 
 function About() {
-  return <h2>About</h2>;
+    return <h2>About</h2>;
 }
 
 export default App;

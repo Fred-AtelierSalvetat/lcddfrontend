@@ -9,10 +9,10 @@ import ProchainAtelierComponent from './prochain_atelier/ProchainAtelier';
 import QuestionsVideoComponent from './questions_video/QuestionsVideo';
 
 const Home: FC = () => {
-  useEffect(() => {
-    AOS.init({ duration: 700 });
-  }, []);
-  return (
+    useEffect(() => {
+        AOS.init({ duration: 700 });
+    }, []);
+    return (
         <div>
             <ConceptComponent />
             <VosQuestionsComponent />
@@ -22,7 +22,7 @@ const Home: FC = () => {
             <IntervenantsComponent />
             <DomainesExpertiseComponent />
         </div>
-  );
+    );
 };
 
 export default Home;

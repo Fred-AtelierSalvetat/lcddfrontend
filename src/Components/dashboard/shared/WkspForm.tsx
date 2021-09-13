@@ -59,7 +59,7 @@ const WkspForm: FC<PropTypes.InferProps<typeof propTypes>> = ({
     const { data: topics, error } = useTopicsListQuery();
     if (error) {
         console.error(error);
-        return <div>Domaines d'expertise, erreur de chargement</div>;
+        return <div>{"Domaines d'expertise, erreur de chargement"}</div>;
     }
     // TODOFSA Mng loading
     const topicsList = topics.map((topic) => ({
@@ -75,7 +75,7 @@ const WkspForm: FC<PropTypes.InferProps<typeof propTypes>> = ({
                 <Form.Row>
                     <Col xs={12} md={7} lg={9}>
                         <Form.Group controlId="workshopTitle">
-                            <Form.Label>Titre d'atelier (obligatoire)</Form.Label>
+                            <Form.Label>{"Titre d'atelier (obligatoire)"}</Form.Label>
                             <Form.Control
                                 type="text"
                                 name="title"

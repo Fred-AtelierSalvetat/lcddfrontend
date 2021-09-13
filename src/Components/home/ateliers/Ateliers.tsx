@@ -42,8 +42,8 @@ const AteliersComponent: FC = () => (
                             2.
                         </div>
                         <h4 className="text-atelier mr-5 mt-3">
-                            {"Un thème ou un domaine juridique sera mis à l'honneur avec un intervenant qui répond "
-                                    + 'aux interrogations.'}
+                            {"Un thème ou un domaine juridique sera mis à l'honneur avec un intervenant qui répond " +
+                                'aux interrogations.'}
                         </h4>
                         <img className="icon-questions mt-3" src={Icon2} alt="icon2" />
                     </Row>
@@ -53,8 +53,7 @@ const AteliersComponent: FC = () => (
                             3.
                         </div>
                         <h4 className="text-atelier mt-3">
-                            Les internautes pourront ainsi interragir avec le plateau en posant des questions
-                            écrites.
+                            Les internautes pourront ainsi interragir avec le plateau en posant des questions écrites.
                         </h4>
                     </Row>
                     <Row className="mb-4">
@@ -62,7 +61,7 @@ const AteliersComponent: FC = () => (
                             4.
                         </div>
                         <h4 className="text-atelier mr-4 mt-3">
-                            Une fois le direct terminé, l'atelier sera prédécoupé, chapitré puis mis en ligne.
+                            {"Une fois le direct terminé, l'atelier sera prédécoupé, chapitré puis mis en ligne."}
                         </h4>
                         <img className="icon-questions mt-3" src={Icon4} alt="icon4" />
                     </Row>

@@ -8,33 +8,33 @@ const animatedComponents = makeAnimated();
 
 // Note propTypes allow React hook form Controller use and straight use out of form
 const selectPropTypes = {
-  isInvalid: PropTypes.bool,
-  onChange: PropTypes.func.isRequired,
-  onBlur: PropTypes.func,
-  value: PropTypes.arrayOf(PropTypes.object),
-  isSearchable: PropTypes.bool.isRequired,
-  isClearable: PropTypes.bool,
-  isDisabled: PropTypes.bool,
-  isMulti: PropTypes.bool,
-  closeMenuOnSelect: PropTypes.bool,
-  placeholder: PropTypes.string,
-  options: PropTypes.arrayOf(
-    PropTypes.exact({
-      value: PropTypes.string.isRequired,
-      label: PropTypes.string.isRequired,
-    }),
-  ).isRequired,
-  value: PropTypes.arrayOf(
-    PropTypes.exact({
-      value: PropTypes.string.isRequired,
-      label: PropTypes.string.isRequired,
-    }),
-  ),
-  inputId: PropTypes.string,
+    isInvalid: PropTypes.bool,
+    onChange: PropTypes.func.isRequired,
+    onBlur: PropTypes.func,
+    value: PropTypes.arrayOf(PropTypes.object),
+    isSearchable: PropTypes.bool.isRequired,
+    isClearable: PropTypes.bool,
+    isDisabled: PropTypes.bool,
+    isMulti: PropTypes.bool,
+    closeMenuOnSelect: PropTypes.bool,
+    placeholder: PropTypes.string,
+    options: PropTypes.arrayOf(
+        PropTypes.exact({
+            value: PropTypes.string.isRequired,
+            label: PropTypes.string.isRequired,
+        }),
+    ).isRequired,
+    value: PropTypes.arrayOf(
+        PropTypes.exact({
+            value: PropTypes.string.isRequired,
+            label: PropTypes.string.isRequired,
+        }),
+    ),
+    inputId: PropTypes.string,
 };
 
 const Select = forwardRef<HTMLInputElement, PropTypes.InferProps<typeof selectPropTypes>>(
-  ({ isInvalid, ...others }, ref) => (
+    ({ isInvalid, ...others }, ref) => (
         <ReactSelect
             className={`select ${isInvalid ? 'is-invalid' : ''}`}
             classNamePrefix={isInvalid ? 'select-invalid' : 'select'}
@@ -42,7 +42,7 @@ const Select = forwardRef<HTMLInputElement, PropTypes.InferProps<typeof selectPr
             ref={ref}
             {...others}
         />
-  ),
+    ),
 );
 Select.propTypes = selectPropTypes;
 

@@ -12,10 +12,7 @@ const Footer: FC = () => (
             <div id="footer-contact">
                 {/* Disponible que pour les professionnels */}
                 {/* <a href="#/speakers">Devenir intervenant</a> | */}
-                <a href="/contact-us">Contact</a>
-                {' '}
-                |
-                <a href="/legal-notice">Mentions Légales</a>
+                <a href="/contact-us">Contact</a> |<a href="/legal-notice">Mentions Légales</a>
             </div>
 
             <div id="footer-right">

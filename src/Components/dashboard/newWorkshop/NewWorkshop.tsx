@@ -13,38 +13,38 @@ import defaultValues from '../shared/defaultValues';
 import { newWorkshop } from '~/state/workshops/actions';
 
 const NewWorkshop: FC = () => {
-  const { handleSubmit, reset, ...othersFormProp } = useForm({
-    mode: 'all',
-    defaultValues,
-  });
+    const { handleSubmit, reset, ...othersFormProp } = useForm({
+        mode: 'all',
+        defaultValues,
+    });
 
-  const dispatch = useDispatch();
-  const history = useHistory();
+    const dispatch = useDispatch();
+    const history = useHistory();
 
-  const onSubmit = (data) => {
-    dispatch(
-      newWorkshop({
-        title: data.title,
-        startingdate: data.startingdate,
-        endingdate: data.startingdate, // TODO implement, how -> backend implementation??
-        speakers: data.speakers.map((obj) => obj.value),
-        topics: data.topics.map((obj) => obj.value),
-        refsLegifrance: data.refsLegifrance.map((obj) => obj.value),
-        description: data.description,
-        keywords: data.keywords,
-        files: data.files,
-        links: data.links,
-      }),
-    );
-    history.push('/dashboard/workshops');
-  };
+    const onSubmit = (data) => {
+        dispatch(
+            newWorkshop({
+                title: data.title,
+                startingdate: data.startingdate,
+                endingdate: data.startingdate, // TODO implement, how -> backend implementation??
+                speakers: data.speakers.map((obj) => obj.value),
+                topics: data.topics.map((obj) => obj.value),
+                refsLegifrance: data.refsLegifrance.map((obj) => obj.value),
+                description: data.description,
+                keywords: data.keywords,
+                files: data.files,
+                links: data.links,
+            }),
+        );
+        history.push('/dashboard/workshops');
+    };
 
-  const onSubmitError = () => {};
+    const onSubmitError = () => {};
 
-  return (
+    return (
         <ErrorBoundary>
             <WkspForm
-                headerButtonLine={(
+                headerButtonLine={
                     <Form.Row>
                         <Col>
                             <div className="right-floating-buttonbox">
@@ -54,9 +54,9 @@ const NewWorkshop: FC = () => {
                             </div>
                         </Col>
                     </Form.Row>
-                  )}
+                }
                 {...othersFormProp}
-                footerButtonLine={(
+                footerButtonLine={
                     <Form.Row>
                         <Col>
                             <div className="right-floating-buttonbox">
@@ -64,7 +64,7 @@ const NewWorkshop: FC = () => {
                                     type="reset"
                                     variant="outline-primary"
                                     onClick={() => {
-                                      reset(defaultValues);
+                                        reset(defaultValues);
                                     }}
                                 >
                                     Annuler
@@ -75,11 +75,11 @@ const NewWorkshop: FC = () => {
                             </div>
                         </Col>
                     </Form.Row>
-                  )}
+                }
                 handleSubmit={handleSubmit(onSubmit, onSubmitError)}
             />
         </ErrorBoundary>
-  );
+    );
 };
 
 export default NewWorkshop;

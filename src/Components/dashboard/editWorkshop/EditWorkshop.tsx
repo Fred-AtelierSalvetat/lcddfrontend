@@ -19,78 +19,81 @@ import type { Workshop } from '~/state/workshops/model';
 import * as status from '~/state/workshops/constants/status';
 
 const EditWorkshop: FC = () => {
-  const { id } = useParams() as {
-    id?: Workshop.id;
-  };
-  const dispatch = useDispatch();
-  const history = useHistory();
+    const { id } = useParams() as {
+        id?: Workshop.id;
+    };
+    const dispatch = useDispatch();
+    const history = useHistory();
 
-  const workshop = useSelector(getWorkshopById(id));
+    const workshop = useSelector(getWorkshopById(id));
 
-  // Allow direct call to page
-  const needFetching = !useSelector(isWorkshopStoreInialized);
-  useEffect(() => {
-    if (needFetching) dispatch(fetchWorkshops);
-  }, []);
+    // Allow direct call to page
+    const needFetching = !useSelector(isWorkshopStoreInialized);
+    useEffect(() => {
+        if (needFetching) dispatch(fetchWorkshops);
+    }, []);
 
-  const { handleSubmit, ...othersFormProp } = useForm({
-    mode: 'all',
-    defaultValues: workshop || defaultValues,
-  });
+    const { handleSubmit, ...othersFormProp } = useForm({
+        mode: 'all',
+        defaultValues: workshop || defaultValues,
+    });
 
-  // TODO once backend will be ready: update workshop selector to return option instead of value.
-  const refLegifranceMapValueToOptions: (listOfValues: Workshop.refLegifrance) => { value: string; label: string }[] = (listOfValues) => listOfValues.map((value) => ({ value, label: refLegifrance.find((ref) => ref.value === value).label }));
-  const speakersToOptions: (listOfValues: Workshop.speakers) => { value: string; label: string }[] = (listOfValues) => listOfValues.map((value) => ({ value, label: intervenants.find((ref) => ref.value === value).label }));
+    // TODO once backend will be ready: update workshop selector to return option instead of value.
+    const refLegifranceMapValueToOptions: (listOfValues: Workshop.refLegifrance) => { value: string; label: string }[] =
+        (listOfValues) =>
+            listOfValues.map((value) => ({ value, label: refLegifrance.find((ref) => ref.value === value).label }));
+    const speakersToOptions: (listOfValues: Workshop.speakers) => { value: string; label: string }[] = (listOfValues) =>
+        listOfValues.map((value) => ({ value, label: intervenants.find((ref) => ref.value === value).label }));
 
-  // Once workshops are fetch, edited workshop will be returned by selector
-  // => apply it's values to the form
-  const [reset, setReset] = useState(false);
+    // Once workshops are fetch, edited workshop will be returned by selector
+    // => apply it's values to the form
+    const [reset, setReset] = useState(false);
 
-  useEffect(() => {
-    if (workshop) {
-      setReset(false);
-      othersFormProp.setValue('title', workshop.title, { shouldValidate: true, shouldDirty: true });
-      othersFormProp.setValue('startingdate', workshop.startingdate, { shouldValidate: true });
-      othersFormProp.setValue('speakers', speakersToOptions(workshop.speakers), { shouldValidate: true });
-      othersFormProp.setValue('topics', workshop.topics, { shouldValidate: true });
-      othersFormProp.setValue('refsLegifrance', refLegifranceMapValueToOptions(workshop.refsLegifrance), {
-        shouldValidate: true,
-      });
-      othersFormProp.setValue('description', workshop.description, { shouldValidate: true });
-      othersFormProp.setValue('keywords', workshop.keywords, { shouldValidate: true });
-      othersFormProp.setValue('files', workshop.files, { shouldValidate: true });
-      othersFormProp.setValue('links', workshop.links, { shouldValidate: true });
-    }
-  }, [workshop, reset]);
+    useEffect(() => {
+        if (workshop) {
+            setReset(false);
+            othersFormProp.setValue('title', workshop.title, { shouldValidate: true, shouldDirty: true });
+            othersFormProp.setValue('startingdate', workshop.startingdate, { shouldValidate: true });
+            othersFormProp.setValue('speakers', speakersToOptions(workshop.speakers), { shouldValidate: true });
+            othersFormProp.setValue('topics', workshop.topics, { shouldValidate: true });
+            othersFormProp.setValue('refsLegifrance', refLegifranceMapValueToOptions(workshop.refsLegifrance), {
+                shouldValidate: true,
+            });
+            othersFormProp.setValue('description', workshop.description, { shouldValidate: true });
+            othersFormProp.setValue('keywords', workshop.keywords, { shouldValidate: true });
+            othersFormProp.setValue('files', workshop.files, { shouldValidate: true });
+            othersFormProp.setValue('links', workshop.links, { shouldValidate: true });
+        }
+    }, [workshop, reset]);
 
-  const onSubmit = (data) => {
-    console.log('data =', data);
-    dispatch(
-      updateWorkshop({
-        id: workshop.id,
-        status: workshop.status,
-        title: data.title,
-        startingdate: data.startingdate,
-        // endingdate, //TODO
-        speakers: data.speakers.map((obj) => obj.value),
-        topics: data.topics.map((obj) => obj.value),
-        refsLegifrance: data.refsLegifrance.map((obj) => obj.value),
-        description: data.description,
-        keywords: data.keywords,
-        files: data.files,
-        links: data.links,
-      }),
-    );
-    history.push('/dashboard/workshops');
-  };
+    const onSubmit = (data) => {
+        console.log('data =', data);
+        dispatch(
+            updateWorkshop({
+                id: workshop.id,
+                status: workshop.status,
+                title: data.title,
+                startingdate: data.startingdate,
+                // endingdate, //TODO
+                speakers: data.speakers.map((obj) => obj.value),
+                topics: data.topics.map((obj) => obj.value),
+                refsLegifrance: data.refsLegifrance.map((obj) => obj.value),
+                description: data.description,
+                keywords: data.keywords,
+                files: data.files,
+                links: data.links,
+            }),
+        );
+        history.push('/dashboard/workshops');
+    };
 
-  const onSubmitError = (errors) => console.error('onSubmitError :', errors);
+    const onSubmitError = (errors) => console.error('onSubmitError :', errors);
 
-  const [showCancelDialog, setShowCancelDialog] = useState(false);
+    const [showCancelDialog, setShowCancelDialog] = useState(false);
 
-  if (!workshop) return null;
+    if (!workshop) return null;
 
-  return (
+    return (
         <div id="editWorkshopPage">
             {workshop.status === status.INCOMING ? (
                 <ErrorBoundary>
@@ -102,13 +105,13 @@ const EditWorkshop: FC = () => {
                         okButton="Annuler l'atelier"
                         handleClose={() => setShowCancelDialog(false)}
                         handleConfirm={() => {
-                          dispatch(cancelWorkshop(workshop.id));
-                          history.push('/dashboard/workshops'); // TODO Add sort by status
+                            dispatch(cancelWorkshop(workshop.id));
+                            history.push('/dashboard/workshops'); // TODO Add sort by status
                         }}
                     />
                     <WkspForm
                         title="Modifier atelier"
-                        headerButtonLine={(
+                        headerButtonLine={
                             <Form.Row>
                                 <Col>
                                     <Link to="/dashboard/workshops" className="left-floating-box">
@@ -119,17 +122,17 @@ const EditWorkshop: FC = () => {
                                 <Col>
                                     <div className="right-floating-buttonbox">
                                         <Button variant="danger" onClick={() => setShowCancelDialog(true)}>
-                                            Annuler l'atelier
+                                            {"Annuler l'atelier"}
                                         </Button>
                                         <Button type="submit" variant="primary">
-                                            Modifier l'atelier
+                                            {"Modifier l'atelier"}
                                         </Button>
                                     </div>
                                 </Col>
                             </Form.Row>
-                          )}
+                        }
                         {...othersFormProp}
-                        footerButtonLine={(
+                        footerButtonLine={
                             <Form.Row>
                                 <Col>
                                     <div className="right-floating-buttonbox">
@@ -137,26 +140,26 @@ const EditWorkshop: FC = () => {
                                             type="reset"
                                             variant="outline-primary"
                                             onClick={() => {
-                                              setReset(true);
+                                                setReset(true);
                                             }}
                                         >
                                             Annuler
                                         </Button>
                                         <Button type="submit" variant="primary">
-                                            Modifier l'atelier
+                                            {"Modifier l'atelier"}
                                         </Button>
                                     </div>
                                 </Col>
                             </Form.Row>
-                          )}
+                        }
                         handleSubmit={handleSubmit(onSubmit, onSubmitError)}
                     />
                 </ErrorBoundary>
             ) : (
-              'Not yet implemented'
+                'Not yet implemented'
             )}
         </div>
-  );
+    );
 };
 
 export default EditWorkshop;

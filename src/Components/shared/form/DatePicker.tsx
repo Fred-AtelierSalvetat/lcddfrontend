@@ -13,25 +13,25 @@ registerLocale('fr', fr);
 registerLocale('enUS', enUS);
 
 const datePickerPropsTypes = {
-  placeholder: PropTypes.string.isRequired,
-  dateFormat: PropTypes.string.isRequired,
-  isInvalid: PropTypes.bool.isRequired,
-  onChange: PropTypes.func.isRequired,
-  onBlur: PropTypes.func.isRequired,
-  value: PropTypes.instanceOf(Date),
-  inputId: PropTypes.string,
+    placeholder: PropTypes.string.isRequired,
+    dateFormat: PropTypes.string.isRequired,
+    isInvalid: PropTypes.bool.isRequired,
+    onChange: PropTypes.func.isRequired,
+    onBlur: PropTypes.func.isRequired,
+    value: PropTypes.instanceOf(Date),
+    inputId: PropTypes.string,
 };
 
 const DatePicker: FC<PropTypes.InferProps<typeof datePickerPropsTypes>> = ({
-  placeholder,
-  dateFormat,
-  isInvalid,
-  onChange,
-  onBlur,
-  value,
-  inputId,
+    placeholder,
+    dateFormat,
+    isInvalid,
+    onChange,
+    onBlur,
+    value,
+    inputId,
 }) => {
-  const DatePickerCustomInput = (props: HTMLProps<HTMLInputElement>, ref: Ref<HTMLInputElement>) => (
+    const DatePickerCustomInput = (props: HTMLProps<HTMLInputElement>, ref: Ref<HTMLInputElement>) => (
         <div id="datepicker-custom-input-container" className={props.className}>
             <input
                 {...props}
@@ -42,9 +42,9 @@ const DatePicker: FC<PropTypes.InferProps<typeof datePickerPropsTypes>> = ({
             />
             <CalendarIcon />
         </div>
-  );
+    );
 
-  return (
+    return (
         <ReactDatePicker
             onChange={onChange}
             onBlur={onBlur}
@@ -60,7 +60,7 @@ const DatePicker: FC<PropTypes.InferProps<typeof datePickerPropsTypes>> = ({
             filterDate={(d) => new Date() < d}
             customInput={createElement(forwardRef(DatePickerCustomInput))}
         />
-  );
+    );
 };
 
 DatePicker.propTypes = datePickerPropsTypes;

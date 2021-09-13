@@ -15,7 +15,7 @@ const VosQuestionsComponent: FC = () => (
                 <div id="vosquestion__header">
                     <div className="header__right">
                         <h1 style={{ color: '#113F59' }}>Vos questions</h1>
-                        <h4 style={{ color: '#333333', opacity: '0.8' }}>C'est simple</h4>
+                        <h4 style={{ color: '#333333', opacity: '0.8' }}>{"C'est simple"}</h4>
                     </div>
                     <div className="header__left" style={{ textDecoration: 'underline' }}>
                         <a href="/" className="link">
@@ -31,9 +31,7 @@ const VosQuestionsComponent: FC = () => (
                     </Row>
                     <Row className="mb-4">
                         <div className="display-1 mr-4 enum">2.</div>
-                        <h4 className="text-question mr-3 mt-3">
-                            Nous vous proposons des réponses claires en vidéo.
-                        </h4>
+                        <h4 className="text-question mr-3 mt-3">Nous vous proposons des réponses claires en vidéo.</h4>
                         <img className="icon-questions mt-1" src={Icon2} alt="icon2" />
                     </Row>
                     <Row className="mb-4">

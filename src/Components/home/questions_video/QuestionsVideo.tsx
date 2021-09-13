@@ -14,8 +14,7 @@ const QuestionsVideoComponent: FC = () => (
         <div className="styled-card-questions" style={{ display: 'flex', flexDirection: 'row' }}>
             <div>
                 <p className=" ml-4 mt-3">
-                    Question 1 Question 2 Question 3 Question 4 Question 5 Question 6 Question 7 Question 8 Question
-                    9 ?
+                    Question 1 Question 2 Question 3 Question 4 Question 5 Question 6 Question 7 Question 8 Question 9 ?
                 </p>
             </div>
             <div>

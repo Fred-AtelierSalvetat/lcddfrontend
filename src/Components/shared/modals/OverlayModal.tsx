@@ -4,11 +4,11 @@ import { Modal } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 
 const overlayModal = {
-  show: PropTypes.bool.isRequired,
-  onHide: PropTypes.func.isRequired,
-  header: PropTypes.node,
-  body: PropTypes.node,
-  footer: PropTypes.node,
+    show: PropTypes.bool.isRequired,
+    onHide: PropTypes.func.isRequired,
+    header: PropTypes.node,
+    body: PropTypes.node,
+    footer: PropTypes.node,
 };
 
 const OverlayModal: FC<PropTypes.InferType<typeof overlayModal>> = (props) => (

@@ -14,43 +14,43 @@ import { statusOrder } from '~/state/workshops/constants/status';
 import './Profile.css';
 
 type Params = {
-  id: string;
+    id: string;
 };
 
 const Profile: FC = () => {
-  const params = useParams() as Params;
+    const params = useParams() as Params;
 
-  // Adding the follow fetchSpeakers to cover the case where user is coming directly from admin dashboard
-  // without going through the Speakers components
-  // Note: This is a quickfix but a clean solution on redux state must be planned
-  const { name, rool, description } = api.findSpeakerById(Number(params.id));
+    // Adding the follow fetchSpeakers to cover the case where user is coming directly from admin dashboard
+    // without going through the Speakers components
+    // Note: This is a quickfix but a clean solution on redux state must be planned
+    const { name, rool, description } = api.findSpeakerById(Number(params.id));
 
-  const dispatch = useDispatch();
+    const dispatch = useDispatch();
 
-  useEffect(() => {
-    console.log('Just before dispatch(fetchWorkshops)');
-    dispatch(fetchWorkshops);
-  }, []);
+    useEffect(() => {
+        console.log('Just before dispatch(fetchWorkshops)');
+        dispatch(fetchWorkshops);
+    }, []);
 
-  const sortFct = {
-    title: (a, b) => a.title.localeCompare(b.title),
-    status: (a, b) => statusOrder.indexOf(a.status) - statusOrder.indexOf(b.status),
-  };
+    const sortFct = {
+        title: (a, b) => a.title.localeCompare(b.title),
+        status: (a, b) => statusOrder.indexOf(a.status) - statusOrder.indexOf(b.status),
+    };
 
-  const orderByOptions = [
-    { label: 'titre', value: 'title' },
-    { label: 'statuts', value: 'status' },
-  ];
-  const orderBy = orderByOptions[1]; // TODO Get it from url query params
-  const [orderedWorkshop, setOrderedWorkshop] = useState<Workshop[]>([]);
+    const orderByOptions = [
+        { label: 'titre', value: 'title' },
+        { label: 'statuts', value: 'status' },
+    ];
+    const orderBy = orderByOptions[1]; // TODO Get it from url query params
+    const [orderedWorkshop, setOrderedWorkshop] = useState<Workshop[]>([]);
 
-  const visibleWorkshops = useSelector(getWorkshops);
-  useEffect(() => {
-    console.log('visibleWorkshops =', visibleWorkshops);
-    setOrderedWorkshop(visibleWorkshops.sort(sortFct[orderBy.value]));
-  }, [visibleWorkshops]);
+    const visibleWorkshops = useSelector(getWorkshops);
+    useEffect(() => {
+        console.log('visibleWorkshops =', visibleWorkshops);
+        setOrderedWorkshop(visibleWorkshops.sort(sortFct[orderBy.value]));
+    }, [visibleWorkshops]);
 
-  return (
+    return (
         <>
             <div className={classnames('wrapper', { 'flex-direction-column': true })}>
                 <div className="photo">
@@ -80,8 +80,8 @@ const Profile: FC = () => {
             <div className="cardWrapper">
                 <Container fluid id="videosPage">
                     <Row>
-                        {orderedWorkshop
-                            && orderedWorkshop.map((workshop) => (
+                        {orderedWorkshop &&
+                            orderedWorkshop.map((workshop) => (
                                 <Col key={workshop.id} className="speakerCard" xs={12} md={6} lg={3}>
                                     <SpeakerCard workshop={workshop} />
                                 </Col>
@@ -90,7 +90,7 @@ const Profile: FC = () => {
                 </Container>
             </div>
         </>
-  );
+    );
 };
 
 export default Profile;

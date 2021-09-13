@@ -26,7 +26,7 @@ module.exports = {
         'plugin:@typescript-eslint/recommended', // Uses the recommended rules from the @typescript-eslint/eslint-plugin
         'prettier/@typescript-eslint', // Uses eslint-config-prettier to disable ESLint rules from @typescript-eslint/eslint-plugin that would conflict with prettier
         'plugin:prettier/recommended', // Enables eslint-plugin-prettier and eslint-config-prettier. This will display prettier errors as ESLint errors. Make sure this is always the last configuration in the extends array.
-        'airbnb-typescript',
+        //'airbnb-typescript',
     ],
     ignorePatterns: ['**/*generated.*'],
     rules: {
@@ -46,11 +46,11 @@ module.exports = {
                 endOfLine: 'auto',
             },
         ],
-        'max-len': [2, 120],
-        indent: [1, 4],
-        'react/jsx-indent': [1, 4],
-        'react/jsx-indent-props': [1, 4],
-        '@typescript-eslint/indent': [1, 4],
+        // 'max-len': [2, 120],
+        // indent: [1, 4],
+        // 'react/jsx-indent': [1, 4],
+        // 'react/jsx-indent-props': [1, 4],
+        // '@typescript-eslint/indent': [1, 4],
     },
 };
 

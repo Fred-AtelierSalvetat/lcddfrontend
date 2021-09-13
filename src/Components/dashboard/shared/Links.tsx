@@ -6,60 +6,60 @@ import PropTypes from 'prop-types';
 import { ReactComponent as DeleteIcon } from '~/assets/icons/delete_24px.svg';
 
 const linksPropTypes = {
-  value: PropTypes.arrayOf(
-    PropTypes.exact({
-      title: PropTypes.string.isRequired,
-      url: PropTypes.string.isRequired,
-    }),
-  ).isRequired,
-  setValue: PropTypes.func.isRequired,
+    value: PropTypes.arrayOf(
+        PropTypes.exact({
+            title: PropTypes.string.isRequired,
+            url: PropTypes.string.isRequired,
+        }),
+    ).isRequired,
+    setValue: PropTypes.func.isRequired,
 };
 
 const Links: FC<PropTypes.InferProps<typeof linksPropTypes>> = ({ value = [], setValue }) => {
-  const [inputLinkURL, setInputLinkURL] = useState('');
-  const [inputLinkTitle, setInputLinkTitle] = useState('');
-  const refUrlInput = useRef<HTMLInputElement>(null);
-  const refTitleInput = useRef<HTMLInputElement>(null);
+    const [inputLinkURL, setInputLinkURL] = useState('');
+    const [inputLinkTitle, setInputLinkTitle] = useState('');
+    const refUrlInput = useRef<HTMLInputElement>(null);
+    const refTitleInput = useRef<HTMLInputElement>(null);
 
-  const addLink = () => {
-    if (!inputLinkURL) {
-      refUrlInput && refUrlInput.current && refUrlInput.current.focus();
-      return;
-    }
-    if (!inputLinkTitle) {
-      refTitleInput && refTitleInput.current && refTitleInput.current.focus();
-      return;
-    }
-    setValue([...value, { title: inputLinkTitle, url: inputLinkURL }]);
-    setInputLinkURL('');
-    setInputLinkTitle('');
-    refUrlInput && refUrlInput.current && refUrlInput.current.focus();
-  };
+    const addLink = () => {
+        if (!inputLinkURL) {
+            refUrlInput && refUrlInput.current && refUrlInput.current.focus();
+            return;
+        }
+        if (!inputLinkTitle) {
+            refTitleInput && refTitleInput.current && refTitleInput.current.focus();
+            return;
+        }
+        setValue([...value, { title: inputLinkTitle, url: inputLinkURL }]);
+        setInputLinkURL('');
+        setInputLinkTitle('');
+        refUrlInput && refUrlInput.current && refUrlInput.current.focus();
+    };
 
-  const deleteLink = (toDelete) => {
-    setValue(value.filter((link) => link !== toDelete));
-  };
+    const deleteLink = (toDelete) => {
+        setValue(value.filter((link) => link !== toDelete));
+    };
 
-  const handleKeyDownTitle = (event) => {
-    if (!inputLinkTitle) return;
-    switch (event.key) {
-      case 'Enter':
-      case 'Tab':
-        addLink();
-        event.preventDefault();
-    }
-  };
-  const handleKeyDownURL = (event) => {
-    if (!inputLinkURL) return;
-    switch (event.key) {
-      case 'Enter':
-      case 'Tab':
-        addLink();
-        event.preventDefault();
-    }
-  };
+    const handleKeyDownTitle = (event) => {
+        if (!inputLinkTitle) return;
+        switch (event.key) {
+            case 'Enter':
+            case 'Tab':
+                addLink();
+                event.preventDefault();
+        }
+    };
+    const handleKeyDownURL = (event) => {
+        if (!inputLinkURL) return;
+        switch (event.key) {
+            case 'Enter':
+            case 'Tab':
+                addLink();
+                event.preventDefault();
+        }
+    };
 
-  return (
+    return (
         <>
             <Form.Group controlId="workshopLinksURL">
                 <Form.Label>Lien URL</Form.Label>
@@ -88,9 +88,10 @@ const Links: FC<PropTypes.InferProps<typeof linksPropTypes>> = ({ value = [], se
             </Button>
 
             <div className="list">
-                {!!value
-                    && value.map(
-                      (link) => link && (
+                {!!value &&
+                    value.map(
+                        (link) =>
+                            link && (
                                 <div key={link.title + link.url} className="item flex-shrink-1">
                                     <div className="no-margin flex-shrink-1">
                                         <div className="flex-shrink-1 wrap-anywhere">{link.title}</div>
@@ -105,11 +106,11 @@ const Links: FC<PropTypes.InferProps<typeof linksPropTypes>> = ({ value = [], se
                                     </div>
                                     <DeleteIcon className="action-icon" onClick={() => deleteLink(link)} />
                                 </div>
-                      ),
+                            ),
                     )}
             </div>
         </>
-  );
+    );
 };
 
 Links.propTypes = linksPropTypes;

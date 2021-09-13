@@ -11,16 +11,16 @@ import Notifications from './Notifications';
 import './Header.scss';
 
 const headerPropsTypes = {
-  loggedIn: PropTypes.bool,
+    loggedIn: PropTypes.bool,
 };
 
 const Header: FC<PropTypes.InferProps<typeof headerPropsTypes>> = (props) => {
-  useEffect(() => {
-    const header = document.getElementById('lcdd-header');
-    header && window.addEventListener('scroll', () => checkScroll(header));
-  });
+    useEffect(() => {
+        const header = document.getElementById('lcdd-header');
+        header && window.addEventListener('scroll', () => checkScroll(header));
+    });
 
-  return (
+    return (
         <div id="lcdd-header">
             <Navbar bg="lcdd-primary" expand="lg" variant="dark">
                 <Navbar.Brand href="/">
@@ -85,7 +85,7 @@ const Header: FC<PropTypes.InferProps<typeof headerPropsTypes>> = (props) => {
                                         className="nav-item btn-link"
                                         style={{ marginRight: '1.2em', textDecoration: 'underline' }}
                                     >
-                                        S'inscrire
+                                        {"S'inscrire"}
                                     </Nav.Link>
                                     <SignInContainer />
                                 </>
@@ -95,14 +95,14 @@ const Header: FC<PropTypes.InferProps<typeof headerPropsTypes>> = (props) => {
                 </Navbar.Collapse>
             </Navbar>
         </div>
-  );
+    );
 };
 
 Header.propTypes = headerPropsTypes;
 
 const mapStateToProps = (state) => {
-  const { loggedIn, user } = state.authentication;
-  return { loggedIn, user };
+    const { loggedIn, user } = state.authentication;
+    return { loggedIn, user };
 };
 
 const connectedHeader = connect(mapStateToProps)(Header);

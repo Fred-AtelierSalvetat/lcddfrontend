@@ -15,29 +15,29 @@ import { sortOptions } from '~/state/workshops/constants/orderBy';
 import './Workshops.scss';
 
 const Workshops: FC = () => {
-  const history = useHistory();
+    const history = useHistory();
 
-  const location = useLocation();
-  const UrlQueryParam = new URLSearchParams(location.search);
-  const orderByParam = UrlQueryParam.get('orderBy');
+    const location = useLocation();
+    const UrlQueryParam = new URLSearchParams(location.search);
+    const orderByParam = UrlQueryParam.get('orderBy');
 
-  const orderBy = useSelector(getOrderBy);
-  const workshops = useSelector(getWorkshops);
-  const searchBoxValue = useSelector(workshopSearchFilterSelector);
+    const orderBy = useSelector(getOrderBy);
+    const workshops = useSelector(getWorkshops);
+    const searchBoxValue = useSelector(workshopSearchFilterSelector);
 
-  const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(fetchWorkshops);
-  }, []);
+    const dispatch = useDispatch();
+    useEffect(() => {
+        dispatch(fetchWorkshops);
+    }, []);
 
-  const getURLwithQueryParam = (value) => `${location.pathname}?orderBy=${value}`;
+    const getURLwithQueryParam = (value) => `${location.pathname}?orderBy=${value}`;
 
-  if (!orderByParam || !sortOptions.includes(orderByParam)) {
-    return <Redirect to={`${getURLwithQueryParam(orderBy)}`} />;
-  }
-  if (orderBy !== orderByParam) dispatch(setOrderBy(orderByParam));
+    if (!orderByParam || !sortOptions.includes(orderByParam)) {
+        return <Redirect to={`${getURLwithQueryParam(orderBy)}`} />;
+    }
+    if (orderBy !== orderByParam) dispatch(setOrderBy(orderByParam));
 
-  return (
+    return (
         <Container fluid id="workshopsPage">
             <Row className="headerRow">
                 <Col className="searchDiv" xs={12} md={6} lg={9}>
@@ -59,15 +59,15 @@ const Workshops: FC = () => {
                 </Col>
             </Row>
             <Row className="workshopList">
-                {workshops
-                    && workshops.map((workshop) => (
+                {workshops &&
+                    workshops.map((workshop) => (
                         <Col key={workshop.id} className="workshopCard" xs={12} md={6} lg={3}>
                             <WorkshopCard workshop={workshop} />
                         </Col>
                     ))}
             </Row>
         </Container>
-  );
+    );
 };
 
 export default Workshops;

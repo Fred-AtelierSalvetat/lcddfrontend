@@ -1,7 +1,5 @@
 import React, { FC } from 'react';
-import {
-  Container, Row, Col, Form,
-} from 'react-bootstrap';
+import { Container, Row, Col, Form } from 'react-bootstrap';
 import './Concept.css';
 
 const ConceptComponent: FC = () => (

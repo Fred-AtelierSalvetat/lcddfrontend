@@ -29,7 +29,7 @@ const LoginOptions = () => (
                 textAlign: 'center',
             }}
         >
-            –– Ou s'identifier avec votre compte ––
+            {" –– Ou s'identifier avec votre compte ––"}
         </h4>
     </div>
 );
@@ -65,8 +65,8 @@ const SignInModal: FC<PropTypes.InferProps<typeof signInModalPropTypes>> = ({
 
     const header = (
         <div className="login-header">
-            <h1>S'identifier</h1>
-            <div className="lead">Vous n'êtes pas encore inscrit ?</div>
+            <h1>{"S'identifier"}</h1>
+            <div className="lead">{"Vous n'êtes pas encore inscrit ?"}</div>
             <div className="lead">
                 {'Inscrivez-vous '}
                 <a href="/sign-up" className="link" onClick={onSignUpLinkClick}>
@@ -107,7 +107,7 @@ const SignInModal: FC<PropTypes.InferProps<typeof signInModalPropTypes>> = ({
                     </Form.Group>
 
                     <div style={{ textAlign: 'right' }} className="link" onClick={onLostPasswordClick}>
-                        J'ai oublié mon mot de passe
+                        {"J'ai oublié mon mot de passe"}
                     </div>
 
                     <Form.Group controlId="loginFormCheckbox">
@@ -115,7 +115,7 @@ const SignInModal: FC<PropTypes.InferProps<typeof signInModalPropTypes>> = ({
                     </Form.Group>
 
                     <Button variant="primary" type="submit" style={{ width: '100%', marginTop: '1rem' }}>
-                        S'identifier
+                        {"S'identifier"}
                         {loggingIn && (
                             <span style={{ marginLeft: '5px' }}>
                                 <RoundSpinner size="sm" />

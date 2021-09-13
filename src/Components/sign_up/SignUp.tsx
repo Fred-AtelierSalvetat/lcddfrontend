@@ -16,34 +16,35 @@ const StepText = styled.p`
     color: var(--primary);
 `;
 
-const getClassesForContainer = (step: number) => classNames({
-  'container-transparent': true,
-  'container-transparent-large': step + 1 === 3,
-});
+const getClassesForContainer = (step: number) =>
+    classNames({
+        'container-transparent': true,
+        'container-transparent-large': step + 1 === 3,
+    });
 
 const SignUp = () => {
-  const [step, setStep] = useState(0);
-  const [user, setUser] = useReducer(UserReducer, DefaultUser);
-  const [showDialog, setShowDialog] = useState(false);
-  const history = useHistory();
+    const [step, setStep] = useState(0);
+    const [user, setUser] = useReducer(UserReducer, DefaultUser);
+    const [showDialog, setShowDialog] = useState(false);
+    const history = useHistory();
 
-  const steps = FormSteps(step, setStep, user, setUser);
+    const steps = FormSteps(step, setStep, user, setUser);
 
-  const handleCancelDialog = () => {
-    setShowDialog(false);
-  };
+    const handleCancelDialog = () => {
+        setShowDialog(false);
+    };
 
-  const handleConfirmDialog = () => {
-    setShowDialog(false);
-    history.push('/'); // Redirect to homepage
-  };
+    const handleConfirmDialog = () => {
+        setShowDialog(false);
+        history.push('/'); // Redirect to homepage
+    };
 
-  const handleShowDialog = () => {
-    setShowDialog(true);
-    console.log('clicked', showDialog);
-  };
+    const handleShowDialog = () => {
+        setShowDialog(true);
+        console.log('clicked', showDialog);
+    };
 
-  return (
+    return (
         <div className="lcdd-body-bg">
             <ConfirmDialog
                 show={showDialog}
@@ -67,8 +68,8 @@ const SignUp = () => {
 
                     <Row>
                         <div className="text-standard">
-                            {'Lorem Ipsum is simply dummy text of the printing and typesetting industry. '
-                                + "Lorem Ipsum has been the industry's standard dummy text ever."}
+                            {'Lorem Ipsum is simply dummy text of the printing and typesetting industry. ' +
+                                "Lorem Ipsum has been the industry's standard dummy text ever."}
                         </div>
                     </Row>
 
@@ -87,17 +88,11 @@ const SignUp = () => {
                                     d="M12 8a.5.5 0 0 1-.5.5H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5a.5.5 0 0 1 .5.5z"
                                 />
                             </svg>
-                            Retourner à l'accueil
+                            {"Retourner à l'accueil"}
                         </div>
                         {step + 1 === 3 ? (
                             <div className="link" tabIndex={1}>
-                                <SrollLink
-                                    to="submit-btn-final"
-                                    spy
-                                    smooth
-                                    duration={500}
-                                    activeClass="active"
-                                >
+                                <SrollLink to="submit-btn-final" spy smooth duration={500} activeClass="active">
                                     Selectionner plus tard
                                 </SrollLink>
                             </div>
@@ -108,16 +103,16 @@ const SignUp = () => {
                 </div>
             </Container>
         </div>
-  );
+    );
 };
 
 const mapState = (state) => {
-  const { registering } = state.registration;
-  return { registering };
+    const { registering } = state.registration;
+    return { registering };
 };
 
 const actionCreators = {
-  register: userActions.register,
+    register: userActions.register,
 };
 
 const connectedSignUpPage = connect(mapState, actionCreators)(SignUp);

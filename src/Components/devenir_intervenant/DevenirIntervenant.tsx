@@ -263,7 +263,7 @@ const DevenirintervenantComponent: FC = () => {
                                                 />
                                                 <FormFeedback field={errors.email} />
                                                 <Form.Text className="text-muted">
-                                                    We'll never share your email with anyone else.
+                                                    {"We'll never share your email with anyone else."}
                                                 </Form.Text>
                                             </Form.Group>
                                             <Form.Group controlId="Numero de télephone">
@@ -283,7 +283,7 @@ const DevenirintervenantComponent: FC = () => {
                                                     />
                                                     <FormFeedback field={errors.phone_number} />
                                                     <Form.Text className="text-muted">
-                                                        We'll never share your phone number with anyone else.
+                                                        {"We'll never share your phone number with anyone else."}
                                                     </Form.Text>
                                                 </InputGroup>
                                             </Form.Group>

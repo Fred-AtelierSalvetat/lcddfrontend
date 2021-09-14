@@ -7,10 +7,11 @@
     background-image: url(./../../../assets/home/question.jpg);
     border: 1px solid #ffffff;
     box-sizing: border-box;
-}
-.container {
-    margin-right: 15px !important;
-    margin-left: 15px !important;
+
+    .container {
+        margin-right: 15px !important;
+        margin-left: 15px !important;
+    }
 }
 
 .background-transparency-question {

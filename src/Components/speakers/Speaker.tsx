@@ -19,7 +19,6 @@ export const Speaker: FC<PropTypes.InferProps<typeof speakerPropTypes>> = ({ id,
     const Redirection = useCallback(() => {
         return history.push(`/profile/${id}`);
     }, [id, history]);
-    console.log(Avatar);
     return (
         <div className="flex">
             <div>

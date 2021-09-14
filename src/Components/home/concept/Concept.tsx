@@ -5,7 +5,7 @@ import './Concept.css';
 const ConceptComponent: FC = () => {
     return (
         <div id="overlay" className=" d-flex flex-column justify-content-center">
-            <Container className="mb-5">
+            <Container id="container" className="mb-5">
                 <div id="concept__header" className="display-1 text-shadow">
                     Le Droit en Questions
                 </div>

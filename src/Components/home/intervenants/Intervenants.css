@@ -9,6 +9,7 @@
     margin-left: 300px;
 
 
+    justify-content: space-evenly;
 }
 .voirplus {
     text-decoration: underline;
@@ -45,5 +46,11 @@
 @media only screen and (max-width: 767px) {
     .intervenant__container {
         margin-bottom: 200px;
+    }
+}
+@media only screen and (min-width: 1190px) {
+    .intervenantHeader {
+        justify-content: space-evenly;
+        margin-left: 300px !important;
     }
 }

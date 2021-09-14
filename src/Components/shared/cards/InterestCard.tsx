@@ -1,3 +1,5 @@
+/* eslint @typescript-eslint/no-var-requires: "off" */
+
 import React, { FC, useEffect, useState } from 'react';
 import { ReactComponent as Selected } from '~/assets/icons/Selected.svg';
 import styled from 'styled-components';
@@ -144,7 +146,7 @@ const InterestCard: FC<PropTypes.InferProps<typeof interestCardPropTypes>> = (pr
                 <SelectedStyled display={selected ? 'block' : 'none'} />
                 <CardImageStyled
                     className="card-img-top"
-                    src={require('~/assets/thematiques/' + props.src)}
+                    src={require('~/assets/thematiques/' + props.src).default}
                     alt={props.title}
                 />
                 <CardBodyStyled className="card-body">

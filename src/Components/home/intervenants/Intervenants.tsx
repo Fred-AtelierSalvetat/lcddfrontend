@@ -22,10 +22,10 @@ const IntervenantsComponent: FC = () => {
         <div className="intervenant__container" data-aos="slide-up">
             <div>
                 <div className="intervenantHeader">
-                    <div className="display-4 mb-3" style={{ color: '#113F59', flex: 1 }}>
+                    <div className="display-4 mb-3" style={{ color: '#113F59' }}>
                         Nos intervenants
                     </div>
-                    <div className="voirplus">
+                    <div className="voirplus" style={{  }}>
                         <a href="/" className="link">
                             Voir plus
                         </a>

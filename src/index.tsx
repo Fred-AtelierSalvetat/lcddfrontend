@@ -5,7 +5,7 @@ import Amplify from 'aws-amplify';
 import App from './Components/App';
 import * as serviceWorker from './serviceWorker';
 import { store } from './state/store';
-import 'lazysizes';
+//import 'lazysizes';
 import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.css';
 import './index.css';

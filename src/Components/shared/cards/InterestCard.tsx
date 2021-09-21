@@ -1,3 +1,5 @@
+/* eslint @typescript-eslint/no-var-requires: "off" */
+
 import React, { FC, useEffect, useState } from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';

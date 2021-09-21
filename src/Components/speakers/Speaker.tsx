@@ -16,8 +16,9 @@ export const Speaker: FC<PropTypes.InferProps<typeof speakerPropTypes>> = ({ id,
     const history = useHistory();
 
     // TO DO - Add components with params
-    const Redirection = useCallback(() => history.push(`/profile/${id}`), [id, history]);
-    console.log(Avatar);
+    const Redirection = useCallback(() => {
+        return history.push(`/profile/${id}`);
+    }, [id, history]);
     return (
         <div className="flex">
             <div>

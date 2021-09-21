@@ -12,7 +12,7 @@ import makeAnimated from 'react-select/animated';
 import Uploadimage from './Uploadimage';
 import Col from 'react-bootstrap/Col';
 
-import { useProfessionsListQuery } from '~/api/lcddbackend-api.generated';
+import { useGetAllProfessionsQuery } from '~/api/lcddbackend-api.generated';
 
 const MyProfileForm = (props) => {
     const currentUser = props.user;
@@ -22,12 +22,12 @@ const MyProfileForm = (props) => {
     const { register, handleSubmit, trigger, control, errors } = useForm({});
     const [newUser, setNewUser] = useState(currentUser || {});
 
-    const { data: professions, error } = useProfessionsListQuery();
+    const { data: professions, error } = useGetAllProfessionsQuery();
     error && console.error(error);
     const metiersList = professions.map((profession) => {
         return {
-            value: profession.title,
-            label: profession.title,
+            value: profession.name,
+            label: profession.name,
         };
     });
 

@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import InterestCard from '../shared/cards/InterestCard';
 import { userActions } from '~/state/user/user.actions';
 
-import { useTopicsListQuery } from '~/api/lcddbackend-api.generated';
+import { useGetAllTopicsQuery } from '~/api/lcddbackend-api.generated';
 
 const MOBILE_VIEW_BREAKPOINT = 402;
 const TABLET_VIEW_BREAKPOINT = 768;
@@ -24,7 +24,7 @@ const Interests: FC<PropTypes.InferProps<typeof interestsPropTypes>> = ({ user }
     const [isDesktop, setIsDesktop] = useState(!isMobile && !isTablet);
     const [fullDisplay, setFullDisplay] = useState(!isMobile && !isTablet);
 
-    const { data: topics, error } = useTopicsListQuery();
+    const { data: topics, error } = useGetAllTopicsQuery();
     if (error) {
         console.error(error);
         return <div>{"Domaines d'expertise, erreur de chargement"}</div>;
@@ -156,9 +156,10 @@ const Interests: FC<PropTypes.InferProps<typeof interestsPropTypes>> = ({ user }
                 className="row row-cols-2 row-cols-sm-3 row-cols-md-4 row-cols-lg-4 row-cols-xl-6"
                 style={{ justifyContent: 'center' }}
             >
-                {topicsToDisplay.map((topic) => (
-                    <InterestCard key={topic.id} src={topic.src} title={topic.title} />
-                ))}
+                {topicsToDisplay &&
+                    topicsToDisplay.map((topic) => (
+                        <InterestCard key={topic.id} src={topic.file} title={topic.topic} />
+                    ))}
             </div>
 
             {!isDesktop && ((fullDisplay && <MoinsIcon />) || <PlusIcon />)}

@@ -50,7 +50,7 @@
         "test": "react-app-rewired test --transformIgnorePatterns \"node_modules/(?!react-bootstrap/esm/Feedback.*)/\"",
         "eject": "react-app-rewired eject",
         "lint": "eslint '*/**/*.{js,ts,tsx}' --quiet --fix",
-        "updateapi": "npx @rtk-incubator/rtk-query-codegen-openapi --file ./src/api/lcddbackend-api.generated.ts --hooks http://django-env.eba-bkqvym6c.eu-west-3.elasticbeanstalk.com/swagger/?format=openapi"
+        "updateapi": "npx @rtk-incubator/rtk-query-codegen-openapi --file ./src/api/lcddbackend-api.generated.ts --hooks http://lcdddevtestapp-env.eba-d22aejrz.eu-west-3.elasticbeanstalk.com/v3/api-docs"
     },
     "eslintConfig": {
         "extends": "react-app"

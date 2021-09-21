@@ -3,10 +3,10 @@ import InterestCard from '../../shared/cards/InterestCard';
 import './DomainesExpertise.css';
 import 'aos/dist/aos.css';
 
-import { useTopicsListQuery } from '~/api/lcddbackend-api.generated';
+import { useGetAllTopicsQuery } from '~/api/lcddbackend-api.generated';
 
 const DomainesExpertiseComponent: FC = () => {
-    const { data: topics, error, isLoading } = useTopicsListQuery();
+    const { data: topics, error, isLoading } = useGetAllTopicsQuery();
     if (error) {
         console.error(error);
         return <div className="loadingError">{"Domaines d'expertise, erreur de chargement"}</div>;
@@ -31,7 +31,7 @@ const DomainesExpertiseComponent: FC = () => {
                 style={{ justifyContent: 'center' }}
             >
                 {topics.map((topic) => (
-                    <InterestCard key={topic.id} src={topic.thumbnail} title={topic.title} readOnly />
+                    <InterestCard key={topic.id} src={topic.file} title={topic.topic} readOnly />
                 ))}
             </div>
         </div>

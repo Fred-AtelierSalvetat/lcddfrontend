@@ -2,12 +2,12 @@ import React, { FC } from 'react';
 import { Button, Form } from 'react-bootstrap';
 import { useForm } from 'react-hook-form';
 import InterestCard from '../shared/cards/InterestCard';
-import { useTopicsListQuery } from '~/api/lcddbackend-api.generated';
+import { useGetAllTopicsQuery } from '~/api/lcddbackend-api.generated';
 
 const ModifyInterestsForm: FC = () => {
     const { handleSubmit } = useForm();
 
-    const { data: topics, error, isLoading } = useTopicsListQuery();
+    const { data: topics, error, isLoading } = useGetAllTopicsQuery();
     if (error) {
         console.error(error);
         return <div>{"Domaines d'expertise, erreur de chargement"}</div>;
@@ -28,7 +28,7 @@ const ModifyInterestsForm: FC = () => {
                     style={{ justifyContent: 'center' }}
                 >
                     {topics.map((topic) => (
-                        <InterestCard key={topic.id} src={topic.src} title={topîc.title} />
+                        <InterestCard key={topic.id} src={topic.file} title={topîc.topic} />
                     ))}
                 </div>
 

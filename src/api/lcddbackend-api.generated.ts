@@ -1,216 +1,422 @@
 import { createApi } from '@reduxjs/toolkit/query/react';
 import { fetchBaseQuery } from '@reduxjs/toolkit/query';
 export const api = createApi({
-    baseQuery: fetchBaseQuery({ baseUrl: 'http://django-env.eba-bkqvym6c.eu-west-3.elasticbeanstalk.com/api' }),
+    baseQuery: fetchBaseQuery({ baseUrl: 'http://lcdddevtestapp-env.eba-d22aejrz.eu-west-3.elasticbeanstalk.com' }),
     tagTypes: [],
     endpoints: (build) => ({
-        professionsList: build.query<ProfessionsListApiResponse, ProfessionsListApiArg>({
-            query: () => ({ url: `/professions/` }),
+        updateUser: build.mutation<UpdateUserApiResponse, UpdateUserApiArg>({
+            query: (queryArg) => ({ url: `/api/v1/user/update`, method: 'POST', body: queryArg.utilisateurRequestDto }),
         }),
-        refsLegifranceList: build.query<RefsLegifranceListApiResponse, RefsLegifranceListApiArg>({
-            query: () => ({ url: `/refsLegifrance/` }),
+        createUser: build.mutation<CreateUserApiResponse, CreateUserApiArg>({
+            query: (queryArg) => ({ url: `/api/v1/user/create`, method: 'POST', body: queryArg.utilisateurRequestDto }),
         }),
-        refsLegifranceRead: build.query<RefsLegifranceReadApiResponse, RefsLegifranceReadApiArg>({
-            query: (queryArg) => ({ url: `/refsLegifrance/${queryArg.id}/` }),
+        uploadPic: build.mutation<UploadPicApiResponse, UploadPicApiArg>({
+            query: (queryArg) => ({ url: `/api/v1/topic/upload`, method: 'POST', body: queryArg.body }),
         }),
-        topicsList: build.query<TopicsListApiResponse, TopicsListApiArg>({
-            query: () => ({ url: `/topics/` }),
+        sendEmail: build.mutation<SendEmailApiResponse, SendEmailApiArg>({
+            query: (queryArg) => ({ url: `/api/v1/sendMail`, method: 'POST', body: queryArg.contactRequestDto }),
         }),
-        usersList: build.query<UsersListApiResponse, UsersListApiArg>({
-            query: (queryArg) => ({ url: `/users/`, params: { lcdd_role: queryArg.lcddRole } }),
+        sendEmailIntervenant: build.mutation<SendEmailIntervenantApiResponse, SendEmailIntervenantApiArg>({
+            query: (queryArg) => ({
+                url: `/api/v1/sendMailIntervenant`,
+                method: 'POST',
+                body: queryArg.emailIntervenantDto,
+            }),
         }),
-        usersCreate: build.mutation<UsersCreateApiResponse, UsersCreateApiArg>({
-            query: (queryArg) => ({ url: `/users/`, method: 'POST', body: queryArg.userProfile }),
+        add: build.mutation<AddApiResponse, AddApiArg>({
+            query: (queryArg) => ({ url: `/api/v1/preference/add`, method: 'POST', body: queryArg.userPreferenceDto }),
         }),
-        usersRead: build.query<UsersReadApiResponse, UsersReadApiArg>({
-            query: (queryArg) => ({ url: `/users/${queryArg.id}/` }),
+        searchForArticles: build.mutation<SearchForArticlesApiResponse, SearchForArticlesApiArg>({
+            query: (queryArg) => ({
+                url: `/api/v1/legifrance/search`,
+                method: 'POST',
+                body: queryArg.legiFranceSearchFormDto,
+            }),
         }),
-        usersUpdate: build.mutation<UsersUpdateApiResponse, UsersUpdateApiArg>({
-            query: (queryArg) => ({ url: `/users/${queryArg.id}/`, method: 'PUT', body: queryArg.userProfile }),
+        updateintervenant: build.mutation<UpdateintervenantApiResponse, UpdateintervenantApiArg>({
+            query: (queryArg) => ({
+                url: `/api/v1/intervenant/update`,
+                method: 'POST',
+                body: queryArg.intervenantResponseDto,
+            }),
         }),
-        usersPartialUpdate: build.mutation<UsersPartialUpdateApiResponse, UsersPartialUpdateApiArg>({
-            query: (queryArg) => ({ url: `/users/${queryArg.id}/`, method: 'PATCH', body: queryArg.userProfile }),
+        createIntervenant: build.mutation<CreateIntervenantApiResponse, CreateIntervenantApiArg>({
+            query: (queryArg) => ({
+                url: `/api/v1/intervenant/create`,
+                method: 'POST',
+                body: queryArg.intervenantRequestDto,
+            }),
         }),
-        usersDelete: build.mutation<UsersDeleteApiResponse, UsersDeleteApiArg>({
-            query: (queryArg) => ({ url: `/users/${queryArg.id}/`, method: 'DELETE' }),
+        getUserById: build.query<GetUserByIdApiResponse, GetUserByIdApiArg>({
+            query: (queryArg) => ({ url: `/api/v1/user/${queryArg.id}` }),
         }),
-        workshopsList: build.query<WorkshopsListApiResponse, WorkshopsListApiArg>({
-            query: () => ({ url: `/workshops/` }),
+        getAllUsers: build.query<GetAllUsersApiResponse, GetAllUsersApiArg>({
+            query: () => ({ url: `/api/v1/user/all` }),
         }),
-        workshopsCreate: build.mutation<WorkshopsCreateApiResponse, WorkshopsCreateApiArg>({
-            query: (queryArg) => ({ url: `/workshops/`, method: 'POST', body: queryArg.workshop }),
+        getTopicById: build.query<GetTopicByIdApiResponse, GetTopicByIdApiArg>({
+            query: (queryArg) => ({ url: `/api/v1/topic/${queryArg.id}` }),
         }),
-        workshopsRead: build.query<WorkshopsReadApiResponse, WorkshopsReadApiArg>({
-            query: (queryArg) => ({ url: `/workshops/${queryArg.id}/` }),
+        getAllTopics: build.query<GetAllTopicsApiResponse, GetAllTopicsApiArg>({
+            query: () => ({ url: `/api/v1/topic/all` }),
         }),
-        workshopsUpdate: build.mutation<WorkshopsUpdateApiResponse, WorkshopsUpdateApiArg>({
-            query: (queryArg) => ({ url: `/workshops/${queryArg.id}/`, method: 'PUT', body: queryArg.workshop }),
+        getAll: build.query<GetAllApiResponse, GetAllApiArg>({
+            query: () => ({ url: `/api/v1/preference/get` }),
         }),
-        workshopsPartialUpdate: build.mutation<WorkshopsPartialUpdateApiResponse, WorkshopsPartialUpdateApiArg>({
-            query: (queryArg) => ({ url: `/workshops/${queryArg.id}/`, method: 'PATCH', body: queryArg.workshop }),
+        getApiV1PreferenceGetByKey: build.query<
+            GetApiV1PreferenceGetByKeyApiResponse,
+            GetApiV1PreferenceGetByKeyApiArg
+        >({
+            query: (queryArg) => ({ url: `/api/v1/preference/get/${queryArg.key}` }),
         }),
-        workshopsDelete: build.mutation<WorkshopsDeleteApiResponse, WorkshopsDeleteApiArg>({
-            query: (queryArg) => ({ url: `/workshops/${queryArg.id}/`, method: 'DELETE' }),
+        getAllowed: build.query<GetAllowedApiResponse, GetAllowedApiArg>({
+            query: () => ({ url: `/api/v1/preference/allowed` }),
+        }),
+        suggestArticles: build.query<SuggestArticlesApiResponse, SuggestArticlesApiArg>({
+            query: (queryArg) => ({
+                url: `/api/v1/legifrance/suggest/${queryArg.supply}`,
+                params: { textSearch: queryArg.textSearch },
+            }),
+        }),
+        suggestArticlesFromElastic: build.query<
+            SuggestArticlesFromElasticApiResponse,
+            SuggestArticlesFromElasticApiArg
+        >({
+            query: (queryArg) => ({
+                url: `/api/v1/legifrance/suggest-elastic/${queryArg.supply}`,
+                params: { textSearch: queryArg.textSearch },
+            }),
+        }),
+        getIntervenant: build.query<GetIntervenantApiResponse, GetIntervenantApiArg>({
+            query: (queryArg) => ({ url: `/api/v1/intervenant/${queryArg.professionalEmail}` }),
+        }),
+        getAllIntervenants: build.query<GetAllIntervenantsApiResponse, GetAllIntervenantsApiArg>({
+            query: () => ({ url: `/api/v1/intervenant/all` }),
+        }),
+        getAllStatus: build.query<GetAllStatusApiResponse, GetAllStatusApiArg>({
+            query: () => ({ url: `/api/v1/enum/status/all` }),
+        }),
+        getAllRoles: build.query<GetAllRolesApiResponse, GetAllRolesApiArg>({
+            query: () => ({ url: `/api/v1/enum/role/all` }),
+        }),
+        getAllProfessions: build.query<GetAllProfessionsApiResponse, GetAllProfessionsApiArg>({
+            query: () => ({ url: `/api/v1/enum/profession/all` }),
+        }),
+        stopChannel: build.query<StopChannelApiResponse, StopChannelApiArg>({
+            query: () => ({ url: `/api/v1/channel/stop` }),
+        }),
+        handleRunningProgress: build.query<HandleRunningProgressApiResponse, HandleRunningProgressApiArg>({
+            query: () => ({ url: `/api/v1/channel/state` }),
+        }),
+        startChannel: build.query<StartChannelApiResponse, StartChannelApiArg>({
+            query: () => ({ url: `/api/v1/channel/start` }),
+        }),
+        deleteChannel: build.query<DeleteChannelApiResponse, DeleteChannelApiArg>({
+            query: () => ({ url: `/api/v1/channel/delete` }),
+        }),
+        handleCreationProgress: build.query<HandleCreationProgressApiResponse, HandleCreationProgressApiArg>({
+            query: () => ({ url: `/api/v1/channel/creation-progress` }),
+        }),
+        createChannel: build.query<CreateChannelApiResponse, CreateChannelApiArg>({
+            query: () => ({ url: `/api/v1/channel/create` }),
+        }),
+        deleteApiV1PreferenceDeleteByKey: build.mutation<
+            DeleteApiV1PreferenceDeleteByKeyApiResponse,
+            DeleteApiV1PreferenceDeleteByKeyApiArg
+        >({
+            query: (queryArg) => ({ url: `/api/v1/preference/delete/${queryArg.key}`, method: 'DELETE' }),
+        }),
+        deleteAll: build.mutation<DeleteAllApiResponse, DeleteAllApiArg>({
+            query: () => ({ url: `/api/v1/preference/delete-all`, method: 'DELETE' }),
         }),
     }),
 });
-export type ProfessionsListApiResponse = /** status 200  */ Profession[];
-export type ProfessionsListApiArg = {};
-export type RefsLegifranceListApiResponse = /** status 200  */ RefLegifrance[];
-export type RefsLegifranceListApiArg = {};
-export type RefsLegifranceReadApiResponse = /** status 200  */ RefLegifrance;
-export type RefsLegifranceReadApiArg = {
-    /** A unique integer value identifying this ref legifrance. */
+export type UpdateUserApiResponse =
+    /** status 201 Mettre à jour d'une utilisateur avec succès */ UtilisateurRequestDto[];
+export type UpdateUserApiArg = {
+    utilisateurRequestDto: UtilisateurRequestDto;
+};
+export type CreateUserApiResponse = /** status 201 Ajout d'une utilisateur avec succès */ UtilisateurRequestDto[];
+export type CreateUserApiArg = {
+    utilisateurRequestDto: UtilisateurRequestDto;
+};
+export type UploadPicApiResponse = /** status 201 Ajout d'une pictogramme thematiques avec succès */ TopicDto[];
+export type UploadPicApiArg = {
+    body: {
+        file?: Blob;
+    };
+};
+export type SendEmailApiResponse = unknown;
+export type SendEmailApiArg = {
+    contactRequestDto: ContactRequestDTO;
+};
+export type SendEmailIntervenantApiResponse = unknown;
+export type SendEmailIntervenantApiArg = {
+    emailIntervenantDto: EmailIntervenantDTO;
+};
+export type AddApiResponse = /** status 201 Ajout d'une préférence utilisateur avec succès */ undefined;
+export type AddApiArg = {
+    userPreferenceDto: UserPreferenceDto;
+};
+export type SearchForArticlesApiResponse = /** status 200 Success */ SearchResponse;
+export type SearchForArticlesApiArg = {
+    legiFranceSearchFormDto: LegiFranceSearchFormDto;
+};
+export type UpdateintervenantApiResponse =
+    /** status 201 Mettre à jour d'une intervenant avec succès */ IntervenantResponseDTO[];
+export type UpdateintervenantApiArg = {
+    intervenantResponseDto: IntervenantResponseDTO;
+};
+export type CreateIntervenantApiResponse =
+    /** status 201 Ajout d'une intervenant avec succès */ IntervenantRequestDTO[];
+export type CreateIntervenantApiArg = {
+    intervenantRequestDto: IntervenantRequestDTO;
+};
+export type GetUserByIdApiResponse = /** status 200 L'utilisateur renvoyée avec succès */ UtilisateurResponseDto[];
+export type GetUserByIdApiArg = {
     id: number;
 };
-export type TopicsListApiResponse = /** status 200  */ Topic[];
-export type TopicsListApiArg = {};
-export type UsersListApiResponse = /** status 200  */ UserProfile[];
-export type UsersListApiArg = {
-    /** Filter the returned list by lcdd_role, multiple values are handles as OR : filter1 OR filter2 */
-    lcddRole?:
-        | 'SPEAKER_AWAITING_ANSWER'
-        | 'SPEAKER_AWAITING_VALIDATION'
-        | 'SPEAKER'
-        | 'PROFESSIONAL'
-        | 'STUDENT'
-        | 'CITIZEN'
-        | 'ADMIN';
-};
-export type UsersCreateApiResponse = /** status 201  */ UserProfile;
-export type UsersCreateApiArg = {
-    userProfile: UserProfile;
-};
-export type UsersReadApiResponse = /** status 200  */ UserProfile;
-export type UsersReadApiArg = {
-    /** A unique integer value identifying this user profile. */
+export type GetAllUsersApiResponse =
+    /** status 200 Liste des utilisateurs renvoyée avec succès */ UtilisateurResponseDto[];
+export type GetAllUsersApiArg = {};
+export type GetTopicByIdApiResponse = /** status 200 La thematiques renvoyée avec succès */ TopicDto[];
+export type GetTopicByIdApiArg = {
     id: number;
 };
-export type UsersUpdateApiResponse = /** status 200  */ UserProfile;
-export type UsersUpdateApiArg = {
-    /** A unique integer value identifying this user profile. */
-    id: number;
-    userProfile: UserProfile;
+export type GetAllTopicsApiResponse = /** status 200 Liste des thematiques renvoyée avec succès */ TopicDto[];
+export type GetAllTopicsApiArg = {};
+export type GetAllApiResponse =
+    /** status 200 Liste des préférences de l'utilisateur renvoyée avec succès */ UserPreferenceDto[];
+export type GetAllApiArg = {};
+export type GetApiV1PreferenceGetByKeyApiResponse =
+    /** status 200 Préférence de l'utilisateur renvoyée avec succès */ UserPreferenceDto[];
+export type GetApiV1PreferenceGetByKeyApiArg = {
+    key: string;
 };
-export type UsersPartialUpdateApiResponse = /** status 200  */ UserProfile;
-export type UsersPartialUpdateApiArg = {
-    /** A unique integer value identifying this user profile. */
-    id: number;
-    userProfile: UserProfile;
+export type GetAllowedApiResponse = /** status 200 Liste des préférences renvoyée avec succès */ PreferenceDto[];
+export type GetAllowedApiArg = {};
+export type SuggestArticlesApiResponse = /** status 200 Success */ SuggestResponse;
+export type SuggestArticlesApiArg = {
+    supply: string;
+    textSearch: string;
 };
-export type UsersDeleteApiResponse = unknown;
-export type UsersDeleteApiArg = {
-    /** A unique integer value identifying this user profile. */
-    id: number;
+export type SuggestArticlesFromElasticApiResponse = /** status 200 Success */ SuggestResponse;
+export type SuggestArticlesFromElasticApiArg = {
+    supply: string;
+    textSearch: string;
 };
-export type WorkshopsListApiResponse = /** status 200  */ Workshop[];
-export type WorkshopsListApiArg = {};
-export type WorkshopsCreateApiResponse = /** status 201  */ Workshop;
-export type WorkshopsCreateApiArg = {
-    workshop: Workshop;
+export type GetIntervenantApiResponse = /** status 200 L'intervenant renvoyée avec succès */ UtilisateurResponseDto[];
+export type GetIntervenantApiArg = {
+    professionalEmail: string;
 };
-export type WorkshopsReadApiResponse = /** status 200  */ Workshop;
-export type WorkshopsReadApiArg = {
-    /** A unique integer value identifying this workshop. */
-    id: number;
+export type GetAllIntervenantsApiResponse =
+    /** status 200 Liste des intervenants renvoyée avec succès */ UtilisateurResponseDto[];
+export type GetAllIntervenantsApiArg = {};
+export type GetAllStatusApiResponse = /** status 200 Liste des statuses renvoyée avec succès */ EnumDto[];
+export type GetAllStatusApiArg = {};
+export type GetAllRolesApiResponse = /** status 200 Liste des roles renvoyée avec succès */ EnumDto[];
+export type GetAllRolesApiArg = {};
+export type GetAllProfessionsApiResponse = /** status 200 Liste des professions renvoyée avec succès */ EnumDto[];
+export type GetAllProfessionsApiArg = {};
+export type StopChannelApiResponse = /** status 200 The Channel stopping is progressing */ InfoFront[];
+export type StopChannelApiArg = {};
+export type HandleRunningProgressApiResponse = /** status 200 the current Channel state */ InfoFront[];
+export type HandleRunningProgressApiArg = {};
+export type StartChannelApiResponse = /** status 200 The Channel start is progressing */ InfoFront[];
+export type StartChannelApiArg = {};
+export type DeleteChannelApiResponse = /** status 200 The Channel delete is progressing */ InfoFront[];
+export type DeleteChannelApiArg = {};
+export type HandleCreationProgressApiResponse =
+    /** status 200 The Channel is created and the RTMP adresses and URLs for the live are returned */ AdressesRtmpHttp[];
+export type HandleCreationProgressApiArg = {};
+export type CreateChannelApiResponse = /** status 200 The channel creation is launched */ InfoFront[];
+export type CreateChannelApiArg = {};
+export type DeleteApiV1PreferenceDeleteByKeyApiResponse = /** status 204 Suppression faite avec succès */ undefined;
+export type DeleteApiV1PreferenceDeleteByKeyApiArg = {
+    key: string;
 };
-export type WorkshopsUpdateApiResponse = /** status 200  */ Workshop;
-export type WorkshopsUpdateApiArg = {
-    /** A unique integer value identifying this workshop. */
-    id: number;
-    workshop: Workshop;
+export type DeleteAllApiResponse = /** status 204 Suppression faite avec succès */ undefined;
+export type DeleteAllApiArg = {};
+export type UtilisateurRequestDto = {
+    firstname?: string;
+    lastname?: string;
+    email: string;
+    town?: string;
+    roleId?: number;
+    statusId?: number;
+    is_email_verified?: boolean;
 };
-export type WorkshopsPartialUpdateApiResponse = /** status 200  */ Workshop;
-export type WorkshopsPartialUpdateApiArg = {
-    /** A unique integer value identifying this workshop. */
-    id: number;
-    workshop: Workshop;
+export type ErrorDto = {
+    timestamp?: string;
+    status?: string;
+    message?: string;
 };
-export type WorkshopsDeleteApiResponse = unknown;
-export type WorkshopsDeleteApiArg = {
-    /** A unique integer value identifying this workshop. */
-    id: number;
-};
-export type Profession = {
+export type TopicDto = {
     id?: number;
-    profession: string;
+    topic?: string;
+    file?: Blob;
 };
-export type RefLegifrance = {
-    id?: number;
-    ref: string;
+export type ContactRequestDTO = {
+    firstName: string;
+    lastName: string;
+    email: string;
+    subject: string;
+    message: string;
 };
-export type Topic = {
-    id?: number;
-    thumbnail?: string;
-    title: string;
+export type EmailIntervenantDTO = {
+    email: string;
+    phone_number: string;
 };
-export type Group = {
-    id?: number;
-    name: string;
+export type UserPreferenceDto = {
+    pref?: string;
 };
-export type User = {
-    id?: number;
-    first_name?: string;
-    last_name?: string;
+export type TitleDto = {
+    id?: string;
+    cid?: string;
+    title?: string;
+    legalStatus?: string;
+    startDate?: string;
+    endDate?: string;
+    nature?: string;
+};
+export type SearchResultDto = {
+    titles?: TitleDto[];
+    text?: string;
+    type?: string;
+    origin?: string;
+    etat?: string;
+    date?: number;
+    sections?: string[];
+    nor?: string;
+};
+export type SearchResponse = {
+    totalResultNumber?: number;
+    results?: SearchResultDto[];
+};
+export type LegiFranceSearchFormDto = {
+    searchValue?: string;
+    pageNumber?: number;
+    pageSize?: number;
+};
+export type IntervenantResponseDTO = {
+    firstname?: string;
+    lastname?: string;
+    phone?: string;
     email?: string;
-    is_active?: boolean;
-    groups: Group[];
+    professionalEmail?: string;
+    email_verified?: boolean;
+    town?: string;
+    bio?: string;
+    professionId?: number;
+    roleId?: number;
+    statusId?: number;
+    picByte?: string[];
 };
-export type UserProfile = {
-    user: User;
-    lcdd_role?:
-        | 'SPEAKER_AWAITING_ANSWER'
-        | 'SPEAKER_AWAITING_VALIDATION'
-        | 'SPEAKER'
-        | 'PROFESSIONAL'
-        | 'STUDENT'
-        | 'CITIZEN'
-        | 'ADMIN';
-    city?: string;
-    interests?: {
-        id?: number;
-        title: string;
-        thumbnail: string;
-    }[];
+export type IntervenantRequestDTO = {
+    phone: string;
+    professionalEmail: string;
+    bio: string;
+    professionId?: number;
+    email: string;
+    pic_byte?: string[];
 };
-export type Keyword = {
+export type UtilisateurResponseDto = {
     id?: number;
-    keyword: string;
-    workshop: number;
+    firstname?: string;
+    lastname?: string;
+    phone?: string;
+    email?: string;
+    professionalEmail?: string;
+    email_verified?: boolean;
+    town?: string;
+    bio?: string;
+    professionId?: number;
+    roleId?: number;
+    statusId?: number;
+    picByte?: string[];
 };
-export type Workshop = {
-    status?: 'INCOMING' | 'LIVE' | 'UNPUBLISHED' | 'PUBLISHED' | 'ARCHIVED';
-    thumbnailUrl?: string;
-    videoUrl?: string;
-    title: string;
-    startingdate: string;
-    topics?: {
-        id?: number;
-        title: string;
-        thumbnail: string;
-    }[];
-    description: string;
-    refsLegifrance?: {
-        id?: number;
-        ref: string;
-    }[];
-    keywords?: Keyword[];
+export type PreferenceDto = {
+    key?: string;
+    description?: string;
+};
+export type ChapterSearchResult = {
+    title?: string;
+    id?: string;
+    hlTitre?: string[];
+    hlSousTitres?: string[];
+    hlMotsCles?: string[];
+    hlResume?: string[];
+    hlThematique?: string[];
+    hlDescription?: string[];
+    hlCodesArticles?: string[];
+    hlCodesJurisprudence?: string[];
+};
+export type DocumentDto = {
+    id?: string;
+    label?: string;
+    origin?: string;
+    nature?: string;
+    dateVersion?: number;
+    section?: string;
+    idTexte?: string;
+};
+export type ResultsDto = {
+    title?: {
+        [key: string]: DocumentDto;
+    };
+    articles?: {
+        [key: string]: DocumentDto;
+    };
+    section?: {
+        [key: string]: DocumentDto;
+    };
+};
+export type SuggestResponse = {
+    chapterResults?: ChapterSearchResult[];
+    results?: ResultsDto;
+};
+export type EnumDto = {
+    name?: string;
+    id?: number;
+};
+export type InfoFront = {
+    message?: string;
+};
+export type AdressesRtmpHttp = {
+    rtmp1?: string;
+    rtmp2?: string;
+    dashEndPoint?: string;
+    hlsEndpoint?: string;
 };
 export const {
-    useProfessionsListQuery,
-    useRefsLegifranceListQuery,
-    useRefsLegifranceReadQuery,
-    useTopicsListQuery,
-    useUsersListQuery,
-    useUsersCreateMutation,
-    useUsersReadQuery,
-    useUsersUpdateMutation,
-    useUsersPartialUpdateMutation,
-    useUsersDeleteMutation,
-    useWorkshopsListQuery,
-    useWorkshopsCreateMutation,
-    useWorkshopsReadQuery,
-    useWorkshopsUpdateMutation,
-    useWorkshopsPartialUpdateMutation,
-    useWorkshopsDeleteMutation,
+    useUpdateUserMutation,
+    useCreateUserMutation,
+    useUploadPicMutation,
+    useSendEmailMutation,
+    useSendEmailIntervenantMutation,
+    useAddMutation,
+    useSearchForArticlesMutation,
+    useUpdateintervenantMutation,
+    useCreateIntervenantMutation,
+    useGetUserByIdQuery,
+    useGetAllUsersQuery,
+    useGetTopicByIdQuery,
+    useGetAllTopicsQuery,
+    useGetAllQuery,
+    useGetApiV1PreferenceGetByKeyQuery,
+    useGetAllowedQuery,
+    useSuggestArticlesQuery,
+    useSuggestArticlesFromElasticQuery,
+    useGetIntervenantQuery,
+    useGetAllIntervenantsQuery,
+    useGetAllStatusQuery,
+    useGetAllRolesQuery,
+    useGetAllProfessionsQuery,
+    useStopChannelQuery,
+    useHandleRunningProgressQuery,
+    useStartChannelQuery,
+    useDeleteChannelQuery,
+    useHandleCreationProgressQuery,
+    useCreateChannelQuery,
+    useDeleteApiV1PreferenceDeleteByKeyMutation,
+    useDeleteAllMutation,
 } = api;

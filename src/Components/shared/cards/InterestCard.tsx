@@ -120,7 +120,7 @@ const InterestCard: FC<PropTypes.InferProps<typeof interestCardPropTypes>> = (pr
             return false;
         }
     };
-
+    console.log('FSA props.src', props.src);
     return (
         <div
             className="col mb-4"

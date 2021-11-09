@@ -1,3 +1,6 @@
+/* eslint-disable */
+//FIRST DEV MOFYING THIS FILE, MUST FIX WARNINGS (too many for a single dev, then boyscout rule!)
+
 import React, { useState } from 'react';
 import Cards from '../../questions/Cards';
 import '../intervenants/Intervenants.css';

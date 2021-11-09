@@ -14,6 +14,7 @@ import Keywords from './Keywords';
 import Links from './Links';
 import Uploads from './Uploads';
 
+import { useGetAllTopicsQuery } from '~/api/lcddbackend-api.generated';
 import './WkspForm.scss';
 
 const propTypes = {
@@ -56,16 +57,19 @@ const WkspForm: FC<PropTypes.InferProps<typeof propTypes>> = ({
     register('files');
     register('links');
 
-    const { data: topics, error } = useTopicsListQuery();
-    if (error) {
-        console.error(error);
+    let topicsList = [];
+    const { data: topics, isError, isSuccess, ...others } = useGetAllTopicsQuery();
+    if (isSuccess) {
+        topicsList = topics.map((topic) => ({
+            value: topic.id,
+            label: topic.topic,
+        }));
+    } else if (isError) {
+        //This parameter is mandatory hence the form is unusable on fetch error
         return <div>{"Domaines d'expertise, erreur de chargement"}</div>;
     }
+
     // TODOFSA Mng loading
-    const topicsList = topics.map((topic) => ({
-        value: topic.id,
-        label: topic.title,
-    }));
 
     return (
         <div id="workshop-form">

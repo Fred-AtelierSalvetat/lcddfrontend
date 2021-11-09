@@ -25,7 +25,7 @@ const IntervenantsComponent: FC = () => {
                     <div className="display-4 mb-3" style={{ color: '#113F59' }}>
                         Nos intervenants
                     </div>
-                    <div className="voirplus" style={{  }}>
+                    <div className="voirplus" style={{}}>
                         <a href="/" className="link">
                             Voir plus
                         </a>

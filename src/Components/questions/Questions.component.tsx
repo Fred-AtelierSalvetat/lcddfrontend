@@ -143,14 +143,15 @@ const YourQuestions: FC = () => {
                             </Form>
                         </div>
                         <div className="select">
-                        <Select
-                            className="dropdown"
-                            placeholder="Selectionner thematique"
-                            value={data.filter(obj => selectedValue.includes(obj.value))}
-                            options={data}
-                            onChange={handleChange}
-                            isMulti
-                            isClearable/>
+                            <Select
+                                className="dropdown"
+                                placeholder="Selectionner thematique"
+                                value={data.filter((obj) => selectedValue.includes(obj.value))}
+                                options={data}
+                                onChange={handleChange}
+                                isMulti
+                                isClearable
+                            />
                         </div>
                         <CardDeck>
                             <Cards />
